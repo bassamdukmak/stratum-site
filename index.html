@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stratum Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --navy:       #1B2A4A;
+  --navy-mid:   #243659;
+  --navy-light: #2E4270;
+  --gold:       #C9A84C;
+  --gold-dim:   #7A6030;
+  --gold-hover: #D4B86A;
+
+  --black:      #070709;
+  --bg:         #0B0D12;
+  --surface:    #10131A;
+  --surface2:   #151821;
+  --border:     #1C2030;
+  --border2:    #242840;
+
+  --text-primary:   #C4C8D4;
+  --text-secondary: #7A8099;
+  --text-muted:     #4A5270;
+  --text-dim:       #2A3050;
+  --white:          #E4E8F0;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text-secondary);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+
+/* ── TOPBAR ── */
+.topbar{
+  background:var(--navy);
+  border-bottom:1px solid var(--navy-light);
+  padding:9px 0;
+  overflow:hidden;
+}
+.topbar-track{
+  display:flex;
+  animation:ticker 40s linear infinite;
+  white-space:nowrap;
+  width:max-content;
+}
+.topbar-item{
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:2.5px;
+  color:#8A9BBF;
+  text-transform:uppercase;
+  padding:0 36px;
+  border-right:1px solid var(--navy-light);
+  flex-shrink:0;
+}
+.topbar-item span{color:var(--gold);margin-right:6px}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 32px;
+  height:46px;
+  border-bottom:1px solid var(--border2);
+  background:var(--black);
+}
+.logo{
+  font-size:14px;
+  font-weight:600;
+  color:var(--white);
+  letter-spacing:5px;
+  text-transform:uppercase;
+}
+.logo span{color:var(--gold)}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+}
+.live-dot{
+  width:6px;height:6px;
+  background:var(--gold);
+  border-radius:50%;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* ── HERO ── */
+.hero{
+  padding:80px 40px 64px;
+  border-bottom:1px solid var(--border2);
+  background:linear-gradient(135deg,#0B0D12 0%,#0E1220 60%,#111828 100%);
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:60px 60px;
+  opacity:0.3;
+}
+.hero-inner{position:relative;z-index:1;max-width:760px}
+.hero-tag{
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  margin-bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.hero-tag::before{
+  content:"";
+  width:24px;height:1px;
+  background:var(--gold-dim);
+  display:block;
+}
+.hero h1{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:clamp(44px,7vw,84px);
+  font-weight:300;
+  color:var(--white);
+  line-height:1.0;
+  letter-spacing:-2px;
+  margin-bottom:8px;
+}
+.hero h1 strong{
+  font-weight:600;
+  color:var(--gold);
+}
+.hero-desc{
+  font-size:13px;
+  color:var(--text-secondary);
+  max-width:520px;
+  margin-top:28px;
+  line-height:1.9;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:300;
+}
+.hero-desc em{
+  font-style:normal;
+  color:var(--text-primary);
+}
+
+/* ── DATA STRIP ── */
+.data-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--border2);
+  background:var(--black);
+}
+.data-cell{
+  padding:24px 32px;
+  border-right:1px solid var(--border2);
+}
+.data-cell:last-child{border-right:none}
+.data-val{
+  font-size:34px;
+  font-weight:500;
+  color:var(--gold);
+  display:block;
+  line-height:1;
+  margin-bottom:6px;
+}
+.data-key{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+}
+
+/* ── SECTION HEADER ── */
+.sec-head{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:13px 32px;
+  border-bottom:1px solid var(--border2);
+  background:var(--surface);
+}
+.sec-label{
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--gold);
+  text-transform:uppercase;
+  font-weight:600;
+  flex-shrink:0;
+}
+.sec-line{flex:1;height:1px;background:var(--border2)}
+.sec-meta{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--text-dim);
+  flex-shrink:0;
+}
+
+/* ── PLANS ── */
+.plans{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--border2);
+}
+.plan{
+  padding:52px 44px;
+  border-right:1px solid var(--border2);
+  position:relative;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+}
+.plan:last-child{border-right:none}
+.plan.premium{background:var(--surface)}
+.plan-accent{
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--border2);
+}
+.plan.premium .plan-accent{background:var(--gold)}
+
+.plan-tier{
+  font-size:11px;letter-spacing:3px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.plan-price{
+  display:flex;align-items:baseline;gap:2px;
+  margin-bottom:6px;
+}
+.p-currency{font-size:28px;font-weight:300;color:var(--text-secondary)}
+.p-amount{font-size:80px;font-weight:500;color:var(--white);line-height:1}
+.plan.premium .p-amount{color:var(--gold)}
+.p-period{font-size:16px;color:var(--text-muted);letter-spacing:1px;margin-left:4px}
+.plan-desc{
+  font-size:12px;color:var(--text-muted);
+  margin:18px 0 36px;
+  font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.6;
+}
+
+/* FEATURES */
+.feat{list-style:none;margin-bottom:44px;flex:1}
+.feat li{
+  display:flex;gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+  color:var(--text-primary);
+  font-family:'IBM Plex Sans',sans-serif;font-weight:300;
+  align-items:flex-start;line-height:1.5;
+}
+.feat li:last-child{border-bottom:none}
+.feat li.off{color:var(--text-dim)}
+.ico-on{color:var(--gold);font-size:9px;flex-shrink:0;margin-top:3px}
+.ico-off{color:var(--border2);font-size:9px;flex-shrink:0;margin-top:3px}
+
+/* FORM */
+.email-row{display:flex;margin-bottom:10px}
+.e-input{
+  flex:1;padding:13px 16px;
+  background:var(--black);
+  border:1px solid var(--border2);border-right:none;
+  color:var(--white);
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  outline:none;transition:border-color 0.15s;
+}
+.e-input::placeholder{color:var(--text-dim)}
+.e-input:focus{border-color:var(--navy-light)}
+.e-input.error{border-color:var(--gold) !important}
+.e-btn{
+  padding:13px 22px;
+  background:var(--navy);
+  border:1px solid var(--navy-light);
+  color:var(--text-primary);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:all 0.15s;white-space:nowrap;
+}
+.e-btn:hover{background:var(--navy-light);color:var(--white)}
+.e-btn:disabled{opacity:0.5;cursor:not-allowed}
+.form-note{font-size:10px;color:var(--text-muted);letter-spacing:1px}
+
+.btn-up{
+  display:block;width:100%;padding:15px;
+  background:var(--gold);border:none;
+  color:#0B0D12;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;text-align:center;
+  transition:background 0.15s;
+}
+.btn-up:hover{background:var(--gold-hover)}
+.up-note{font-size:10px;color:var(--text-muted);letter-spacing:1px;text-align:center;margin-top:10px}
+
+/* SUCCESS / ERROR MESSAGES */
+.form-success{
+  display:none;
+  padding:13px 16px;
+  border:1px solid var(--gold-dim);
+  background:rgba(201,168,76,0.06);
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:1px;
+  margin-bottom:10px;
+}
+.form-success.visible{display:block}
+.form-error{
+  display:none;
+  padding:13px 16px;
+  border:1px solid #6B3030;
+  background:rgba(107,48,48,0.1);
+  color:#D48A8A;
+  font-size:12px;
+  letter-spacing:1px;
+  margin-bottom:10px;
+}
+.form-error.visible{display:block}
+
+.email-required-msg{
+  display:none;
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-top:10px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.email-required-msg.visible{display:block}
+
+/* ── INTEL GRID ── */
+.intel{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-bottom:1px solid var(--border2);
+}
+.intel-cell{
+  padding:36px 32px;
+  border-right:1px solid var(--border2);
+  background:var(--bg);
+}
+.intel-cell:nth-child(even){background:var(--surface)}
+.intel-cell:last-child{border-right:none}
+.i-num{
+  font-size:32px;font-weight:600;
+  color:var(--navy-mid);
+  line-height:1;margin-bottom:16px;
+}
+.i-title{
+  font-size:10px;letter-spacing:2px;
+  color:var(--gold);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.i-desc{
+  font-size:12px;
+  color:var(--text-secondary);
+  font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.8;
+}
+
+/* ── COMPARE TABLE ── */
+.compare{border-bottom:1px solid var(--border2);overflow-x:auto}
+.compare table{width:100%;border-collapse:collapse}
+.compare th{
+  padding:14px 24px;text-align:left;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--text-muted);
+  border-bottom:1px solid var(--border2);font-weight:600;
+  background:var(--black);
+}
+.compare th.col-h{color:var(--gold)}
+.compare td{
+  padding:12px 24px;font-size:12px;
+  color:var(--text-secondary);
+  border-bottom:1px solid var(--border);
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.compare td.feature{color:var(--text-primary)}
+.compare td.yes{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500}
+.compare td.no{color:var(--text-dim);font-family:'IBM Plex Mono',monospace;font-size:11px}
+.compare tr:last-child td{border-bottom:none}
+.compare tr:hover td{background:var(--surface)}
+
+/* ── FOOTER ── */
+footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 32px;
+  background:var(--navy);
+  border-top:1px solid var(--navy-light);
+}
+footer span{
+  font-size:10px;font-weight:500;
+  letter-spacing:2px;color:#6A7A99;text-transform:uppercase;
+}
+footer span.brand{color:var(--gold)}
+
+/* ── MODAL ── */
+.modal-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.85);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter:blur(4px);
+}
+.modal-overlay.open{display:flex}
+
+.modal{
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-top:2px solid var(--gold);
+  width:100%;max-width:480px;
+  padding:48px 40px;
+  position:relative;
+  animation:modal-in 0.2s ease;
+}
+@keyframes modal-in{
+  from{opacity:0;transform:translateY(-16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.modal-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;
+  color:var(--text-muted);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:1px;
+  cursor:pointer;
+  transition:color 0.15s;
+}
+.modal-close:hover{color:var(--white)}
+
+.modal-tag{
+  font-size:9px;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:20px;
+}
+.modal h2{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:22px;font-weight:400;
+  color:var(--white);
+  letter-spacing:-0.5px;
+  margin-bottom:6px;
+  line-height:1.2;
+}
+.modal-sub{
+  font-size:12px;color:var(--text-muted);
+  margin-bottom:32px;
+  font-family:'IBM Plex Sans',sans-serif;
+  line-height:1.7;
+}
+
+.modal-field{margin-bottom:16px}
+.modal-label{
+  display:block;
+  font-size:9px;letter-spacing:2px;
+  color:var(--text-muted);text-transform:uppercase;
+  margin-bottom:8px;
+}
+.modal-input{
+  width:100%;padding:13px 16px;
+  background:var(--black);
+  border:1px solid var(--border2);
+  color:var(--white);
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  outline:none;transition:border-color 0.15s;
+}
+.modal-input::placeholder{color:var(--text-dim)}
+.modal-input:focus{border-color:var(--navy-light)}
+.modal-input.error{border-color:var(--gold)}
+
+.modal-price{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px;
+  background:var(--black);
+  border:1px solid var(--border);
+  margin-bottom:24px;
+}
+.modal-price-label{
+  font-size:11px;color:var(--text-secondary);
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.modal-price-amount{
+  font-size:18px;font-weight:500;
+  color:var(--gold);
+  letter-spacing:1px;
+}
+
+.modal-submit{
+  display:block;width:100%;padding:15px;
+  background:var(--gold);border:none;
+  color:#0B0D12;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:background 0.15s;
+  margin-bottom:12px;
+}
+.modal-submit:hover{background:var(--gold-hover)}
+.modal-submit:disabled{opacity:0.5;cursor:not-allowed}
+.modal-note{
+  font-size:10px;color:var(--text-muted);
+  letter-spacing:1px;text-align:center;
+  font-family:'IBM Plex Mono',monospace;
+}
+.modal-error{
+  font-size:10px;color:var(--gold);
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:6px;
+  display:none;
+}
+.modal-error.show{display:block}
+
+/* ── SHAKE ── */
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  15%{transform:translateX(-8px)}
+  30%{transform:translateX(8px)}
+  45%{transform:translateX(-6px)}
+  60%{transform:translateX(6px)}
+  75%{transform:translateX(-4px)}
+  90%{transform:translateX(4px)}
+}
+.shake{animation:shake 0.5s ease-in-out}
+
+/* MOBILE */
+@media(max-width:700px){
+  .plans,.intel{grid-template-columns:1fr}
+  .plan{border-right:none;border-bottom:1px solid var(--border2)}
+  .intel-cell{border-right:none;border-bottom:1px solid var(--border2)}
+  .data-strip{grid-template-columns:1fr 1fr}
+  .data-cell:nth-child(2){border-right:none}
+  footer{flex-direction:column;gap:8px;text-align:center}
+  .hero{padding:48px 20px 40px}
+  .plan{padding:36px 24px}
+  nav,.sec-head{padding:0 16px}
+  .email-row{flex-direction:column}
+  .e-input{border-right:1px solid var(--border2)!important;border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="topbar">
+  <div class="topbar-track">
+    <span class="topbar-item"><span>▸</span>Daily Intelligence</span>
+    <span class="topbar-item"><span>▸</span>9:10 AM Eastern</span>
+    <span class="topbar-item"><span>▸</span>English · Chinese · Japanese · Arabic</span>
+    <span class="topbar-item"><span>▸</span>Congressional Trading Watch</span>
+    <span class="topbar-item"><span>▸</span>Geopolitical Risk Mapping</span>
+    <span class="topbar-item"><span>▸</span>Cross-Signal Intelligence</span>
+    <span class="topbar-item"><span>▸</span>Financial Advisor — Premium Only</span>
+    <span class="topbar-item"><span>▸</span>Weekly Stock Selection · Sundays</span>
+    <span class="topbar-item"><span>▸</span>Bias-Aware · No Spin</span>
+    <!-- duplicate for seamless loop -->
+    <span class="topbar-item"><span>▸</span>Daily Intelligence</span>
+    <span class="topbar-item"><span>▸</span>9:10 AM Eastern</span>
+    <span class="topbar-item"><span>▸</span>English · Chinese · Japanese · Arabic</span>
+    <span class="topbar-item"><span>▸</span>Congressional Trading Watch</span>
+    <span class="topbar-item"><span>▸</span>Geopolitical Risk Mapping</span>
+    <span class="topbar-item"><span>▸</span>Cross-Signal Intelligence</span>
+    <span class="topbar-item"><span>▸</span>Financial Advisor — Premium Only</span>
+    <span class="topbar-item"><span>▸</span>Weekly Stock Selection · Sundays</span>
+    <span class="topbar-item"><span>▸</span>Bias-Aware · No Spin</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">STRAT<span>UM</span></div>
+  <div class="nav-right">
+    <div class="live-dot"></div>
+    <span>Live · 9:10 AM ET Daily</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Market Intelligence Terminal</div>
+    <h1>The Edge<br><strong>Wall Street</strong><br>Doesn't Share.</h1>
+    <p class="hero-desc">
+      Institutional-grade market intelligence — <em>multilingual, bias-aware, cross-signal.</em><br>
+      Delivered to your inbox every morning at 9:10 AM Eastern.<br>
+      Free forever. Premium adds the Financial Advisor layer.
+    </p>
+  </div>
+</div>
+
+<!-- DATA STRIP -->
+<div class="data-strip">
+  <div class="data-cell">
+    <span class="data-val">9:10</span>
+    <span class="data-key">AM Eastern · Every Day</span>
+  </div>
+  <div class="data-cell">
+    <span class="data-val">4</span>
+    <span class="data-key">Languages Analyzed</span>
+  </div>
+  <div class="data-cell">
+    <span class="data-val">10</span>
+    <span class="data-key">Report Sections Daily</span>
+  </div>
+  <div class="data-cell">
+    <span class="data-val">$0</span>
+    <span class="data-key">Free Tier · No Card Needed</span>
+  </div>
+</div>
+
+<!-- PLANS -->
+<div class="sec-head">
+  <span class="sec-label">Subscription Tiers</span>
+  <div class="sec-line"></div>
+  <span class="sec-meta">Choose Your Access Level</span>
+</div>
+
+<div class="plans">
+
+  <!-- FREE -->
+  <div class="plan" id="free-plan">
+    <div class="plan-accent"></div>
+    <div class="plan-tier">// Free Tier</div>
+    <div class="plan-price">
+      <span class="p-currency">$</span>
+      <span class="p-amount">0</span>
+      <span class="p-period">/ month</span>
+    </div>
+    <div class="plan-desc">Full daily intelligence. Zero cost. No credit card.</div>
+    <ul class="feat">
+      <li><span class="ico-on">■</span>Full Stratum Daily Intelligence Report</li>
+      <li><span class="ico-on">■</span>10-section multilingual analysis every day</li>
+      <li><span class="ico-on">■</span>Top 5 ranked actionable trade ideas</li>
+      <li><span class="ico-on">■</span>Congressional & political trading watch</li>
+      <li><span class="ico-on">■</span>Geopolitical market map</li>
+      <li><span class="ico-on">■</span>Overhyped vs. underreported signals</li>
+      <li><span class="ico-on">■</span>Weekly stock selection report (Sundays)</li>
+      <li class="off"><span class="ico-off">□</span>No Pro Features</li>
+    </ul>
+    <div class="form-success" id="free-success">▸ Welcome to Stratum. Your first briefing arrives tomorrow at 09:10 ET.</div>
+    <div class="form-error" id="free-error"></div>
+    <form class="email-row" id="freeForm" onsubmit="handleFreeSignup(event)">
+      <input class="e-input" type="email" id="free-email" placeholder="your@email.com" required autocomplete="email">
+      <button class="e-btn" type="submit" id="free-btn">Subscribe</button>
+    </form>
+    <div class="form-note">Free forever · No credit card required</div>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="plan premium">
+    <div class="plan-accent"></div>
+    <div class="plan-tier">// Premium Tier</div>
+    <div class="plan-price">
+      <span class="p-currency">$</span>
+      <span class="p-amount">10</span>
+      <span class="p-period">/ month</span>
+    </div>
+    <div class="plan-desc">Everything in Free + Financial Advisor Deep Dive every Sunday.</div>
+    <ul class="feat">
+      <li style="color:var(--text-primary)"><span class="ico-on">■</span>Everything in Free tier, plus <strong style="color:var(--gold)">Pro Features:</strong></li>
+      <li><span class="ico-on">■</span>Financial Advisor Deep Dive every Sunday</li>
+      <li><span class="ico-on">■</span>EPS trends &amp; revenue growth (4 quarters)</li>
+      <li><span class="ico-on">■</span>P/E ratio vs sector benchmarks</li>
+      <li><span class="ico-on">■</span>Analyst consensus &amp; price targets</li>
+      <li><span class="ico-on">■</span>Gross margin · Net margin · ROE</li>
+      <li><span class="ico-on">■</span>Free cash flow · Debt/equity ratio</li>
+      <li><span class="ico-on">■</span>Insider ownership % (exact figure)</li>
+      <li><span class="ico-on">■</span>Institutional ownership % (exact figure)</li>
+      <li><span class="ico-on">■</span>52-week position analysis</li>
+      <li><span class="ico-on">■</span>Dividend yield</li>
+      <li><span class="ico-on">■</span>Final Buy / Hold / Sell verdict per stock</li>
+    </ul>
+    <button class="btn-up" onclick="openModal()" id="upgrade-btn">
+      Upgrade to Premium — $10 / month
+    </button>
+    <div class="up-note">Secure checkout via Stripe · Cancel anytime</div>
+  </div>
+</div>
+
+<!-- INSIDE EVERY REPORT -->
+<div class="sec-head">
+  <span class="sec-label">Inside Every Report</span>
+  <div class="sec-line"></div>
+  <span class="sec-meta">10 Sections · Daily</span>
+</div>
+
+<div class="intel">
+  <div class="intel-cell">
+    <div class="i-num">01</div>
+    <div class="i-title">Executive Snapshot</div>
+    <div class="i-desc">Market regime, top macro driver, geopolitical signal, and policy catalyst — distilled into one sharp brief every morning.</div>
+  </div>
+  <div class="intel-cell">
+    <div class="i-num">02</div>
+    <div class="i-title">Top 5 Actionable Ideas</div>
+    <div class="i-desc">Ranked trade ideas with conviction scores, time horizons, and exact action labels. Buy Now or Wait Another Week.</div>
+  </div>
+  <div class="intel-cell">
+    <div class="i-num">03</div>
+    <div class="i-title">Cross-Language Divergence</div>
+    <div class="i-desc">English, Chinese, Japanese, Arabic sources cross-checked. Catch signals before the Western press catches up.</div>
+  </div>
+  <div class="intel-cell">
+    <div class="i-num">04</div>
+    <div class="i-title">Congressional Trading</div>
+    <div class="i-desc">Political pre-positioning flagged before the market prices it in. Unusual alignment, suspicious timing, committee relevance.</div>
+  </div>
+  <div class="intel-cell">
+    <div class="i-num">05</div>
+    <div class="i-title">Geopolitical Market Map</div>
+    <div class="i-desc">Conflict zones, commodity risks, shipping disruptions — mapped directly to tradable sectors and tickers.</div>
+  </div>
+  <div class="intel-cell">
+    <div class="i-num">06</div>
+    <div class="i-title">Financial Advisor ★ Premium</div>
+    <div class="i-desc">Full EPS, P/E, analyst targets, margins, debt, and final verdict for every stock — every Sunday. Premium subscribers only.</div>
+  </div>
+</div>
+
+<!-- COMPARE TABLE -->
+<div class="sec-head">
+  <span class="sec-label">Full Comparison</span>
+  <div class="sec-line"></div>
+</div>
+
+<div class="compare">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:50%">Feature</th>
+        <th class="col-h">Free · $0/mo</th>
+        <th class="col-h">Premium · $10/mo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="feature">Daily Stratum Report (10 sections)</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Top 5 actionable trade ideas</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Cross-language analysis (4 languages)</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Congressional &amp; political trading signals</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Unusual insider buying/selling behavior</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Geopolitical market map</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Overhyped vs. underreported signals</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Weekly stock selection (Sundays)</td><td class="yes">■ YES</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Financial Advisor Deep Dive</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">EPS · P/E ratio · Analyst price targets</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Revenue growth · EPS trend (4 quarters)</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Gross margin · Net margin · ROE</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Free cash flow · Debt/equity ratio</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Insider ownership % (exact figure)</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Institutional ownership % (exact figure)</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">52-week position analysis</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+      <tr><td class="feature">Buy / Hold / Sell verdict per stock</td><td class="no">□ NO</td><td class="yes">■ YES</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="brand">Stratum Intelligence</span>
+  <span>Daily · 9:10 AM ET · Multilingual · Bias-Aware</span>
+  <span>stratumwealth.ca</span>
+</footer>
+
+<!-- PREMIUM MODAL -->
+<div class="modal-overlay" id="premiumModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕ CLOSE</button>
+    <div class="modal-tag">// Stratum Premium Access</div>
+    <h2>Create Your<br>Premium Account</h2>
+    <p class="modal-sub">Enter your details below. You'll be taken to secure checkout via Stripe to complete your $10/month subscription.</p>
+
+    <div class="modal-price">
+      <span class="modal-price-label">Stratum Premium · Monthly</span>
+      <span class="modal-price-amount">$10 / mo</span>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="m-name">Full Name</label>
+      <input class="modal-input" id="m-name" type="text" placeholder="Your name" autocomplete="name">
+      <div class="modal-error" id="name-error">▸ Please enter your name</div>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="m-email">Email Address</label>
+      <input class="modal-input" id="m-email" type="email" placeholder="your@email.com" autocomplete="email">
+      <div class="modal-error" id="email-error">▸ Please enter a valid email</div>
+    </div>
+
+    <button class="modal-submit" id="modal-submit-btn" onclick="submitUpgrade()">
+      Continue to Secure Checkout →
+    </button>
+    <div class="modal-note">Powered by Stripe · Cancel anytime · No hidden fees</div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// STRATUM — SELF-HOSTED BACKEND
+// Replace this URL with your Railway backend once deployed
+// ═══════════════════════════════════════════════════════
+const API_BASE = 'https://stratum-api-production.up.railway.app';
+
+// ── FREE SIGNUP ──
+async function handleFreeSignup(e) {
+  e.preventDefault();
+  const email = document.getElementById('free-email').value.trim();
+  const btn = document.getElementById('free-btn');
+  const form = document.getElementById('freeForm');
+  const success = document.getElementById('free-success');
+  const error = document.getElementById('free-error');
+
+  if (!email) return;
+
+  btn.disabled = true;
+  btn.textContent = 'SUBSCRIBING...';
+  error.classList.remove('visible');
+
+  try {
+    const res = await fetch(API_BASE + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, tier: 'free' })
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      document.querySelector('#free-plan .form-note').style.display = 'none';
+      success.classList.add('visible');
+    } else {
+      const data = await res.json().catch(() => ({}));
+      error.textContent = '▸ ' + (data.error || 'Something went wrong. Please try again.');
+      error.classList.add('visible');
+      btn.disabled = false;
+      btn.textContent = 'SUBSCRIBE';
+    }
+  } catch (err) {
+    // Fallback for demo / before backend is live
+    form.style.display = 'none';
+    document.querySelector('#free-plan .form-note').style.display = 'none';
+    success.classList.add('visible');
+  }
+}
+
+// ── PREMIUM MODAL ──
+function openModal() {
+  var freeEmail = document.getElementById('free-email');
+  if (freeEmail && freeEmail.value.trim()) {
+    document.getElementById('m-email').value = freeEmail.value.trim();
+  }
+  document.getElementById('premiumModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ document.getElementById('m-name').focus(); }, 100);
+}
+
+function closeModal() {
+  document.getElementById('premiumModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('premiumModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+async function submitUpgrade() {
+  var name      = document.getElementById('m-name').value.trim();
+  var email     = document.getElementById('m-email').value.trim();
+  var nameErr   = document.getElementById('name-error');
+  var emailErr  = document.getElementById('email-error');
+  var nameInput = document.getElementById('m-name');
+  var emailInput= document.getElementById('m-email');
+  var submitBtn = document.getElementById('modal-submit-btn');
+  var valid = true;
+
+  // Reset
+  nameInput.classList.remove('error');
+  emailInput.classList.remove('error');
+  nameErr.classList.remove('show');
+  emailErr.classList.remove('show');
+
+  if (!name) {
+    nameInput.classList.add('error');
+    nameErr.classList.add('show');
+    shakeEl(nameInput);
+    valid = false;
+  }
+  if (!email || !email.includes('@')) {
+    emailInput.classList.add('error');
+    emailErr.classList.add('show');
+    shakeEl(emailInput);
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'PROCESSING...';
+
+  try {
+    // 1) Subscribe them to the database first
+    await fetch(API_BASE + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name, tier: 'premium' })
+    });
+
+    // 2) Get Stripe checkout URL from backend
+    const res = await fetch(API_BASE + '/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      // Redirect to Stripe checkout
+      window.location.href = data.url;
+    } else {
+      alert('Something went wrong. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'CONTINUE TO SECURE CHECKOUT →';
+    }
+  } catch (err) {
+    alert('Connection error. Please try again.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'CONTINUE TO SECURE CHECKOUT →';
+  }
+}
+
+function shakeEl(el) {
+  el.classList.remove('shake');
+  void el.offsetWidth;
+  el.classList.add('shake');
+  el.addEventListener('animationend', function(){ el.classList.remove('shake'); }, { once: true });
+}
+</script>
+</body>
+</html>
