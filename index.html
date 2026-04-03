@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -34,7 +34,7 @@ body{
   background:var(--bg);
   color:var(--text-secondary);
   font-family:'IBM Plex Mono',monospace;
-  font-size:13px;
+  font-size:16px;
   line-height:1.5;
   overflow-x:hidden;
 }
@@ -53,7 +53,7 @@ body{
   width:max-content;
 }
 .topbar-item{
-  font-size:10px;font-weight:500;
+  font-size:12px;font-weight:500;
   letter-spacing:2.5px;color:#8A9BBF;
   text-transform:uppercase;
   padding:0 36px;
@@ -115,22 +115,23 @@ nav{
 .data-cell{padding:24px 32px;border-right:1px solid var(--border2);}
 .data-cell:last-child{border-right:none}
 .data-val{font-size:34px;font-weight:500;color:var(--gold);display:block;line-height:1;margin-bottom:6px;}
-.data-key{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
+.data-key{font-size:16px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
 
 /* ── SECTION HEADER ── */
 .sec-head{
   display:flex;align-items:center;gap:16px;
   padding:13px 32px;border-bottom:1px solid var(--border2);background:var(--surface);
 }
-.sec-label{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:600;flex-shrink:0;}
+.sec-label{font-size:16px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:600;flex-shrink:0;}
 .sec-line{flex:1;height:1px;background:var(--border2)}
-.sec-meta{font-size:9px;letter-spacing:2px;color:var(--text-dim);flex-shrink:0;}
+.sec-meta{font-size:16px;letter-spacing:2px;color:var(--text-dim);flex-shrink:0;}
 
 /* ── PLANS ── */
-.plans{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border2);}
+.plans{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border2);align-items:stretch;}
 .plan{
   padding:48px 36px;border-right:1px solid var(--border2);
   position:relative;background:var(--bg);
+  display:flex;flex-direction:column;
 }
 .plan:last-child{border-right:none}
 .plan.plus{background:var(--surface);position:relative;}
@@ -139,62 +140,69 @@ nav{
 .plan.plus .plan-accent{background:var(--gold);}
 .plan.quant-card .plan-accent{background:var(--navy-light);}
 
-/* MOST POPULAR BADGE */
+/* MOST POPULAR BADGE — sits on top of gold accent bar, all cards same baseline */
 .popular-badge{
-  position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);
+  position:absolute;top:2px;left:50%;transform:translateX(-50%);
   background:var(--gold);color:var(--black);
   font-size:9px;letter-spacing:3px;font-weight:600;text-transform:uppercase;
-  padding:5px 14px;white-space:nowrap;
+  padding:4px 14px;white-space:nowrap;
+  z-index:10;
 }
+/* Wrapper — no extra padding, all 3 cards sit at identical level */
+.plans-wrapper{
+  position:relative;
+  border-bottom:1px solid var(--border2);
+}
+.plans-wrapper .plans{border-bottom:none;}
 
-.plan-tier{font-size:9px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;}
+.plan-tier{font-size:15px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;}
 .plan-price{display:flex;align-items:baseline;gap:2px;margin-bottom:4px;}
-.p-currency{font-size:18px;font-weight:300;color:var(--text-secondary)}
+.p-currency{font-size:20px;font-weight:300;color:var(--text-secondary)}
 .p-amount{font-size:56px;font-weight:500;color:var(--white);line-height:1;}
 .plan.plus .p-amount{color:var(--gold);}
 .p-decimal{font-size:28px;font-weight:500;color:var(--white);line-height:1;align-self:flex-start;margin-top:10px;}
 .plan.plus .p-decimal{color:var(--gold);}
-.p-period{font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-left:4px;}
+.p-period{font-size:14px;color:var(--text-muted);letter-spacing:1px;margin-left:4px;}
 .plan-annual{
-  font-size:10px;color:var(--text-muted);letter-spacing:1px;
-  margin-bottom:14px;height:16px;
+  font-size:14px;color:var(--text-muted);letter-spacing:1px;
+  margin-bottom:14px;height:20px;
 }
 .plan-annual span{color:var(--gold);}
-.plan-desc{font-size:12px;color:var(--text-muted);margin:0 0 28px;font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.6;}
+.plan-desc{font-size:15px;color:var(--text-muted);margin:0 0 28px;font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.6;}
 
 /* FEATURES */
-.feat{list-style:none;margin-bottom:36px;}
+.feat{list-style:none;margin-bottom:36px;flex:1;}
 .feat li{
-  display:flex;gap:10px;padding:9px 0;
+  display:flex;gap:10px;padding:10px 0;
   border-bottom:1px solid var(--border);
-  font-size:11px;color:var(--text-primary);
+  font-size:16px;color:var(--text-primary);
   font-family:'IBM Plex Sans',sans-serif;font-weight:300;
-  align-items:flex-start;line-height:1.5;
+  align-items:flex-start;line-height:1.6;
 }
 .feat li:last-child{border-bottom:none}
 .feat li.off{color:var(--text-dim)}
-.feat li.section-label{color:var(--gold);font-weight:500;border-bottom:none;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;}
-.ico-on{color:var(--gold);font-size:8px;flex-shrink:0;margin-top:4px;}
-.ico-off{color:var(--border2);font-size:8px;flex-shrink:0;margin-top:4px;}
+.feat li.section-label{color:var(--gold);font-weight:500;border-bottom:none;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;}
+.ico-on{color:var(--gold);font-size:9px;flex-shrink:0;margin-top:5px;}
+.ico-off{color:var(--border2);font-size:9px;flex-shrink:0;margin-top:5px;}
 
 /* FORM */
 .email-row{display:flex;margin-bottom:10px;}
 .e-input{
   flex:1;padding:13px 16px;background:var(--black);
   border:1px solid var(--border2);border-right:none;
-  color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:15px;
   outline:none;transition:border-color 0.15s;
 }
 .e-input::placeholder{color:var(--text-dim)}
 .e-input:focus{border-color:var(--navy-light)}
 .e-btn{
   padding:13px 18px;background:var(--navy);border:1px solid var(--navy-light);
-  color:var(--text-primary);font-family:'IBM Plex Mono',monospace;font-size:10px;
+  color:var(--text-primary);font-family:'IBM Plex Mono',monospace;font-size:13px;
   letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.15s;white-space:nowrap;
 }
 .e-btn:hover{background:var(--navy-light);color:var(--white)}
 .e-btn:disabled{opacity:0.5;cursor:not-allowed}
-.form-note{font-size:10px;color:var(--text-muted);letter-spacing:1px;}
+.form-note{font-size:14px;color:var(--text-muted);letter-spacing:1px;}
 
 /* T&C CHECKBOX */
 .tc-row{
@@ -206,7 +214,7 @@ nav{
   accent-color:var(--gold);cursor:pointer;
 }
 .tc-row label{
-  font-size:10px;color:var(--text-muted);line-height:1.5;cursor:pointer;
+  font-size:13px;color:var(--text-muted);line-height:1.5;cursor:pointer;
 }
 .tc-row label a{color:var(--gold);text-decoration:none;}
 .tc-row label a:hover{text-decoration:underline;}
@@ -229,7 +237,7 @@ nav{
   color:var(--text-secondary);
 }
 .btn-up.outline:hover{background:var(--navy);color:var(--white);}
-.up-note{font-size:10px;color:var(--text-muted);letter-spacing:1px;text-align:center;margin-top:10px;}
+.up-note{font-size:14px;color:var(--text-muted);letter-spacing:1px;text-align:center;margin-top:10px;}
 
 /* SUCCESS / ERROR */
 .form-success{
@@ -251,27 +259,27 @@ nav{
 .intel-cell:nth-child(even){background:var(--surface)}
 .intel-cell:last-child{border-right:none}
 .i-num{font-size:32px;font-weight:600;color:var(--navy-mid);line-height:1;margin-bottom:16px;}
-.i-title{font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
-.i-desc{font-size:12px;color:var(--text-secondary);font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.8;}
+.i-title{font-size:14px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.i-desc{font-size:15px;color:var(--text-secondary);font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.8;}
 
 /* ── COMPARE TABLE ── */
 .compare{border-bottom:1px solid var(--border2);overflow-x:auto;}
 .compare table{width:100%;border-collapse:collapse;}
 .compare th{
   padding:14px 20px;text-align:left;
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
   color:var(--text-muted);border-bottom:1px solid var(--border2);font-weight:600;
   background:var(--black);
 }
 .compare th.col-h{color:var(--gold);}
 .compare td{
-  padding:11px 20px;font-size:11px;color:var(--text-secondary);
+  padding:12px 20px;font-size:14px;color:var(--text-secondary);
   border-bottom:1px solid var(--border);
   font-family:'IBM Plex Sans',sans-serif;
 }
 .compare td.feature{color:var(--text-primary);}
-.compare td.yes{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;}
-.compare td.no{color:var(--text-dim);font-family:'IBM Plex Mono',monospace;font-size:10px;}
+.compare td.yes{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;}
+.compare td.no{color:var(--text-dim);font-family:'IBM Plex Mono',monospace;font-size:12px;}
 .compare tr:last-child td{border-bottom:none}
 .compare tr:hover td{background:var(--surface)}
 .compare-section-header td{
@@ -289,7 +297,7 @@ footer{
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 32px;background:var(--navy);border-top:1px solid var(--navy-light);
 }
-footer span{font-size:10px;font-weight:500;letter-spacing:2px;color:#6A7A99;text-transform:uppercase;}
+footer span{font-size:14px;font-weight:500;letter-spacing:2px;color:#6A7A99;text-transform:uppercase;}
 footer span.brand{color:var(--gold)}
 
 /* ── MODAL ── */
@@ -324,7 +332,7 @@ footer span.brand{color:var(--gold)}
 .modal-label{display:block;font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px;}
 .modal-input{
   width:100%;padding:12px 16px;background:var(--black);border:1px solid var(--border2);
-  color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:12px;
+  color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:15px;
   outline:none;transition:border-color 0.15s;
 }
 .modal-input::placeholder{color:var(--text-dim)}
@@ -363,7 +371,7 @@ footer span.brand{color:var(--gold)}
 .modal-error.show{display:block}
 .modal-tc{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;}
 .modal-tc input[type="checkbox"]{width:13px;height:13px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);cursor:pointer;}
-.modal-tc label{font-size:10px;color:var(--text-muted);line-height:1.5;cursor:pointer;}
+.modal-tc label{font-size:13px;color:var(--text-muted);line-height:1.5;cursor:pointer;}
 .modal-tc label a{color:var(--gold);text-decoration:none;}
 .modal-tc-error{font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:10px;display:none;}
 .modal-tc-error.show{display:block}
@@ -406,7 +414,7 @@ footer span.brand{color:var(--gold)}
     <span class="topbar-item"><span>▸</span>Congressional Trading — Quant Only</span>
     <span class="topbar-item"><span>▸</span>Geopolitical Risk Mapping</span>
     <span class="topbar-item"><span>▸</span>Cross-Signal Intelligence</span>
-    <span class="topbar-item"><span>▸</span>Financial Advisor — Quant Only</span>
+    <span class="topbar-item"><span>▸</span>Financial Advisor — Plus &amp; Quant</span>
     <span class="topbar-item"><span>▸</span>Weekly + Monthly Reports · Plus & Quant</span>
     <span class="topbar-item"><span>▸</span>Bias-Aware · No Spin</span>
     <span class="topbar-item"><span>▸</span>Daily Intelligence</span>
@@ -415,7 +423,7 @@ footer span.brand{color:var(--gold)}
     <span class="topbar-item"><span>▸</span>Congressional Trading — Quant Only</span>
     <span class="topbar-item"><span>▸</span>Geopolitical Risk Mapping</span>
     <span class="topbar-item"><span>▸</span>Cross-Signal Intelligence</span>
-    <span class="topbar-item"><span>▸</span>Financial Advisor — Quant Only</span>
+    <span class="topbar-item"><span>▸</span>Financial Advisor — Plus &amp; Quant</span>
     <span class="topbar-item"><span>▸</span>Weekly + Monthly Reports · Plus & Quant</span>
     <span class="topbar-item"><span>▸</span>Bias-Aware · No Spin</span>
   </div>
@@ -431,56 +439,517 @@ footer span.brand{color:var(--gold)}
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-inner" style="display:flex;align-items:flex-start;gap:60px;">
-    <div style="flex:1;">
-      <div class="hero-tag">Market Intelligence Terminal</div>
-      <h1>The Edge<br><strong>Wall Street</strong><br>Doesn't Share.</h1>
-      <p class="hero-desc">
-        Institutional-grade market intelligence — <em>multilingual, bias-aware, cross-signal.</em><br>
-        Delivered to your inbox every morning at 9:10 AM Eastern.<br>
-        Free forever. Upgrade for daily reports, weekly &amp; monthly summaries.
-      </p>
-    </div>
-    <!-- PROOF OF CALL IMAGE -->
-    <div style="flex-shrink:0;" class="hero-mark">
-      <div style="position:relative;">
-        <div style="
-          position:absolute;top:0;left:0;right:0;
-          background:linear-gradient(180deg,transparent 60%,#0B0D12 100%);
-          z-index:2;height:100%;pointer-events:none;">
+<div class="hero" style="padding:0;min-height:600px;display:flex;align-items:stretch;">
+  <div class="hero-inner" style="display:flex;align-items:stretch;gap:0;max-width:100%;width:100%;padding:0;position:relative;z-index:1;">
+
+    <!-- LEFT: headline -->
+    <div style="flex:1;padding:64px 48px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div class="hero-tag">Market Intelligence Terminal</div>
+        <h1>The Edge<br><strong>Wall Street</strong><br>Doesn't Share.</h1>
+        <p class="hero-desc">
+          Institutional-grade market intelligence — <em>multilingual, bias-aware, cross-signal.</em><br>
+          Delivered to your inbox every morning at 9:10 AM Eastern.<br>
+          Free forever. Upgrade for daily reports &amp; full analysis.
+        </p>
+      </div>
+
+      <!-- FEATURE BULLETS -->
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:40px;">
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;">
+          <div style="flex-shrink:0;font-size:11px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;min-width:100px;margin-top:2px;">Cross-Language</div>
+          <div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Scans English, Chinese, Japanese &amp; Arabic sources simultaneously. Catch signals before the Western press.</div>
         </div>
-        <div style="
-          position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;
-          border:1px solid #242840;z-index:3;pointer-events:none;">
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;">
+          <div style="flex-shrink:0;font-size:11px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;min-width:100px;margin-top:2px;">Bias-Aware</div>
+          <div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Every signal filtered through observable facts, attribution claims, and legitimacy framing. No spin.</div>
         </div>
-        <div style="
-          position:absolute;top:0;left:0;right:0;height:2px;
-          background:var(--gold);z-index:4;">
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;">
+          <div style="flex-shrink:0;font-size:11px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;min-width:100px;margin-top:2px;">Geopolitical</div>
+          <div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Conflict zones, shipping disruptions, and commodity risks mapped directly to tradable sectors and tickers.</div>
         </div>
-        <img src="silver-call.png" alt="Stratum Silver Call — Jan 27 2026"
-          style="
-            display:block;
-            width:380px;
-            height:auto;
-            opacity:0.92;
-            filter:saturate(0.9) brightness(0.95);
-          ">
-        <div style="
-          position:absolute;bottom:0;left:0;right:0;
-          padding:12px 16px;
-          background:rgba(7,7,9,0.85);
-          z-index:5;
-          border-top:1px solid #242840;
-          backdrop-filter:blur(4px);
-        ">
-          <div style="font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">// Verified Call · Jan 27, 2026</div>
-          <div style="font-size:11px;color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;">Silver SELL · 88% confidence · −38% in 48hrs</div>
+        <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;">
+          <div style="flex-shrink:0;font-size:11px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;min-width:100px;margin-top:2px;">9:10 AM ET</div>
+          <div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Every report arrives before the market opens. Read it with your morning coffee. Act before the crowd.</div>
         </div>
       </div>
+
+      <!-- DISCLAIMER -->
+      <div style="margin-top:28px;font-size:10px;color:#2A3050;font-family:'IBM Plex Sans',sans-serif;line-height:1.7;">
+        ⚠ Not financial advice. For informational purposes only. Always consult a qualified financial professional.
+      </div>
     </div>
+
+    <!-- RIGHT: full-height slideshow -->
+    <div style="flex-shrink:0;width:520px;border-left:1px solid #242840;display:flex;flex-direction:column;" class="hero-mark">
+      <div id="hero-slide-wrap" style="border-top:2px solid #C9A84C;background:#070709;flex:1;display:flex;flex-direction:column;">
+
+        <div id="hero-slides" style="flex:1;display:flex;flex-direction:column;">
+
+          <!-- Slide 1: What Is Stratum -->
+          <div class="hslide on" style="flex:1;padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>01 / 08 · What Is Stratum</div>
+              <div style="font-family:'IBM Plex Sans',sans-serif;font-size:24px;font-weight:300;color:#E4E8F0;line-height:1.2;margin-bottom:28px;">Institutional-grade intel<br><strong style="font-weight:600;color:#C9A84C;">for everyone.</strong></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">9:10</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">AM ET Daily</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">10</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">Report Sections</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">4</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">Languages Scanned</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">$0</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">To Start</div></div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Inside Reports -->
+          <div class="hslide" style="flex:1;padding:36px 32px;display:none;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>02 / 08 · Inside Every Report</div>
+              <div style="font-family:'IBM Plex Sans',sans-serif;font-size:24px;font-weight:300;color:#E4E8F0;line-height:1.2;margin-bottom:28px;">10 sections.<br><strong style="font-weight:600;color:#C9A84C;">One sharp brief.</strong></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:16px 18px;"><div style="font-size:10px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:6px;">Executive Snapshot</div><div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Market regime + biggest driver + what to watch before open.</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:16px 18px;"><div style="font-size:10px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:6px;">Top 5 Trade Ideas</div><div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Ranked by conviction. Buy Now, Watch, or Avoid.</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:16px 18px;"><div style="font-size:10px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:6px;">Cross-Language Intel</div><div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">English · Chinese · Japanese · Arabic — catch signals first.</div></div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Weekly & Monthly Tournament Funnel -->
+          <div class="hslide" style="flex:1;padding:20px 24px 16px;display:none;flex-direction:column;gap:0;overflow-y:auto;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">
+              <div>
+                <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>03 / 08 · Weekly &amp; Monthly</div>
+                <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:300;color:#E4E8F0;line-height:1.2;">We refine. We eliminate.<br><strong style="font-weight:600;color:#C9A84C;">We conclude.</strong></div>
+              </div>
+              <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;border:1px solid #C9A84C;padding:4px 10px;text-transform:uppercase;flex-shrink:0;">Quant Only</div>
+            </div>
+
+            <!-- DAILIES ROW -->
+            <div style="font-size:9px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;text-align:center;margin-bottom:6px;flex-shrink:0;">Week 1 · 5 daily reports</div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px;flex-shrink:0;">
+              <div style="background:#10131A;border:1px solid #1C2030;border-top:2px solid #1C2030;padding:8px 6px;text-align:center;">
+                <div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;margin-bottom:2px;">Mon</div>
+                <div style="font-size:10px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;">Daily</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-top:2px solid #1C2030;padding:8px 6px;text-align:center;">
+                <div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;margin-bottom:2px;">Tue</div>
+                <div style="font-size:10px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;">Daily</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-top:2px solid #1C2030;padding:8px 6px;text-align:center;">
+                <div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;margin-bottom:2px;">Wed</div>
+                <div style="font-size:10px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;">Daily</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #C25A5A;border-top:2px solid #C25A5A;padding:8px 6px;text-align:center;position:relative;">
+                <div style="position:absolute;top:-1px;right:-1px;background:#C25A5A;font-size:7px;color:#fff;padding:1px 4px;letter-spacing:1px;">CUT</div>
+                <div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;margin-bottom:2px;">Thu</div>
+                <div style="font-size:10px;color:#4A5270;font-family:'IBM Plex Sans',sans-serif;">Bad news</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-top:2px solid #1C2030;padding:8px 6px;text-align:center;">
+                <div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;margin-bottom:2px;">Fri</div>
+                <div style="font-size:10px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;">Daily</div>
+              </div>
+            </div>
+
+            <!-- FUNNEL ARROW 1 -->
+            <div style="display:flex;justify-content:center;align-items:center;height:22px;flex-shrink:0;position:relative;">
+              <svg width="100%" height="22" style="overflow:visible;display:block;">
+                <line x1="10%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="30%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="50%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1.5"/>
+                <line x1="70%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="90%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <polygon points="calc(50% - 5),15 calc(50% + 5),15 50%,22" fill="#C9A84C"/>
+              </svg>
+            </div>
+            <div style="text-align:center;font-size:9px;color:#4A5270;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;flex-shrink:0;">bad picks eliminated · refined conclusion</div>
+
+            <!-- WEEKLY ROW -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;flex-shrink:0;">
+              <div style="background:#131620;border:1px solid #C9A84C;border-top:2px solid #C9A84C;padding:8px 6px;text-align:center;position:relative;">
+                <div style="position:absolute;top:-1px;right:-1px;background:#C9A84C;font-size:7px;color:#070709;padding:1px 4px;letter-spacing:1px;">KEEP</div>
+                <div style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;margin-bottom:2px;">Week 1</div>
+                <div style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</div>
+              </div>
+              <div style="background:#131620;border:1px solid #C9A84C;border-top:2px solid #C9A84C;padding:8px 6px;text-align:center;opacity:0.7;">
+                <div style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;margin-bottom:2px;">Week 2</div>
+                <div style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</div>
+              </div>
+              <div style="background:#131620;border:1px solid #C9A84C;border-top:2px solid #C9A84C;padding:8px 6px;text-align:center;opacity:0.5;">
+                <div style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;margin-bottom:2px;">Week 3</div>
+                <div style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</div>
+              </div>
+              <div style="background:#131620;border:1px solid #C9A84C;border-top:2px solid #C9A84C;padding:8px 6px;text-align:center;opacity:0.3;">
+                <div style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;margin-bottom:2px;">Week 4</div>
+                <div style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</div>
+              </div>
+            </div>
+
+            <!-- FUNNEL ARROW 2 -->
+            <div style="display:flex;justify-content:center;align-items:center;height:22px;flex-shrink:0;position:relative;">
+              <svg width="100%" height="22" style="overflow:visible;display:block;">
+                <line x1="12.5%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="37.5%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="62.5%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="87.5%" y1="0" x2="50%" y2="18" stroke="#C9A84C" stroke-width="1" stroke-dasharray="3,3"/>
+                <polygon points="calc(50% - 5),15 calc(50% + 5),15 50%,22" fill="#C9A84C"/>
+              </svg>
+            </div>
+            <div style="text-align:center;font-size:9px;color:#4A5270;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;flex-shrink:0;">4 weeklies reviewed · only strongest survive</div>
+
+            <!-- MONTHLY -->
+            <div style="background:#151821;border:1px solid #C9A84C;border-top:2px solid #C9A84C;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;">
+              <div>
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:3px;">First Monday · Monthly Report</div>
+                <div style="font-size:12px;color:#E4E8F0;font-family:'IBM Plex Sans',sans-serif;">The month's definitive conclusion</div>
+              </div>
+              <div style="background:#C9A84C;font-size:9px;letter-spacing:1px;color:#070709;padding:4px 10px;text-transform:uppercase;flex-shrink:0;">Final</div>
+            </div>
+
+            <!-- RULE STRIPS -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px;flex-shrink:0;">
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:9px 12px;">
+                <div style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;margin-bottom:3px;">Daily → Weekly</div>
+                <div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.5;">Stocks with bad news during the week are cut. Only clean picks survive to Sunday.</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #5A9C6A;padding:9px 12px;">
+                <div style="font-size:9px;letter-spacing:1px;color:#5A9C6A;text-transform:uppercase;margin-bottom:3px;">Weekly → Monthly</div>
+                <div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.5;">Only names that held conviction across the full month make the final report.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Financial Advisor -->
+          <div class="hslide" style="flex:1;padding:28px 32px;display:none;flex-direction:column;gap:14px;">
+            <div>
+              <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>04 / 08 · Financial Advisor Deep Dive</div>
+              <div style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:300;color:#E4E8F0;line-height:1.2;">18 data points per stock.<br><strong style="font-weight:600;color:#C9A84C;">Every Sunday. Plus &amp; Quant.</strong></div>
+            </div>
+            <!-- Row 1: Fundamentals -->
+            <div>
+              <div style="font-size:9px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #1C2030;padding-bottom:5px;">Fundamental Metrics</div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">EPS (TTM)</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Trailing 12 months earnings per share</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">P/E Ratio</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Current vs. sector average P/E</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">EPS Trend</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Last 4 quarters — improving or declining</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Revenue Growth</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Year-over-year % change</div></div>
+              </div>
+            </div>
+            <!-- Row 2: Analyst + Profitability -->
+            <div>
+              <div style="font-size:9px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #1C2030;padding-bottom:5px;">Analyst Consensus &amp; Profitability</div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Consensus</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Strong Buy → Strong Sell rating</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Price Target</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Average analyst price target</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Gross Margin</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">% — profitability before overhead</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Net Margin + ROE</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Bottom-line % + return on equity</div></div>
+              </div>
+            </div>
+            <!-- Row 3: Balance Sheet + Ownership -->
+            <div>
+              <div style="font-size:9px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #1C2030;padding-bottom:5px;">Balance Sheet &amp; Ownership</div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Free Cash Flow</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Cash generated after capex</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Debt / Equity</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Leverage ratio + net debt position</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Insider Ownership</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Exact % held by insiders</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Institutional Own.</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Exact % held by institutions</div></div>
+              </div>
+            </div>
+            <!-- Row 4: Technical + Verdict -->
+            <div>
+              <div style="font-size:9px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid #1C2030;padding-bottom:5px;">Technical &amp; Final Verdict</div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">52-Week Range</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">High / low + current position %</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Dividend Yield</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">Annual % yield to shareholders</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;padding:10px;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Financial Verdict</div><div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;">YES / CONDITIONAL / NO</div></div>
+                <div style="background:#10131A;border:1px solid #1C2030;border:1px solid #C9A84C;padding:10px;background:#151821;"><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Final Label</div><div style="font-size:11px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;font-weight:500;">Strong Buy → Avoid</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5: Choose Plan -->
+          <div class="hslide" style="flex:1;padding:36px 32px;display:none;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>05 / 08 · Choose Your Plan</div>
+              <div style="font-family:'IBM Plex Sans',sans-serif;font-size:24px;font-weight:300;color:#E4E8F0;line-height:1.2;margin-bottom:28px;">Start free.<br><strong style="font-weight:600;color:#C9A84C;">Upgrade when ready.</strong></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="plan-pick-card" onclick="document.getElementById('free-plan').scrollIntoView({behavior:'smooth',block:'center'});" style="background:#10131A;border:2px solid #1C2030;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s;" onmouseover="this.style.borderColor='#C9A84C'" onmouseout="this.style.borderColor='#1C2030'">
+                <div><span style="font-size:12px;color:#7A8099;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Free</span><div style="font-size:11px;color:#4A5270;margin-top:3px;font-family:'IBM Plex Sans',sans-serif;">1 report/week · No card needed</div></div>
+                <div style="text-align:right;"><span style="font-size:24px;font-weight:500;color:#E4E8F0;">$0</span><div style="font-size:10px;color:#4A5270;letter-spacing:1px;">/ forever</div></div>
+              </div>
+              <div class="plan-pick-card" onclick="document.getElementById('free-plan').nextElementSibling.scrollIntoView({behavior:'smooth',block:'center'});" style="background:#151821;border:2px solid #C9A84C;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s;" onmouseover="this.style.boxShadow='0 0 0 1px #C9A84C'" onmouseout="this.style.boxShadow='none'">
+                <div><span style="font-size:12px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Plus</span><div style="font-size:11px;color:#7A8099;margin-top:3px;font-family:'IBM Plex Sans',sans-serif;">Daily + Financial Advisor</div></div>
+                <div style="text-align:right;"><span style="font-size:24px;font-weight:500;color:#C9A84C;">$19.99<span style="font-size:13px;color:#7A8099;">/mo</span></span><div style="font-size:10px;color:#C9A84C;letter-spacing:1px;opacity:0.7;">Most Popular</div></div>
+              </div>
+              <div class="plan-pick-card" onclick="document.querySelector('.plan.quant-card') ? document.querySelector('.plan.quant-card').scrollIntoView({behavior:'smooth',block:'center'}) : document.getElementById('free-plan').scrollIntoView({behavior:'smooth'});" style="background:#10131A;border:2px solid #1C2030;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s;" onmouseover="this.style.borderColor='#C9A84C'" onmouseout="this.style.borderColor='#1C2030'">
+                <div><span style="font-size:12px;color:#C4C8D4;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Quant</span><div style="font-size:11px;color:#4A5270;margin-top:3px;font-family:'IBM Plex Sans',sans-serif;">Everything + Weekly + Monthly + Congressional</div></div>
+                <div style="text-align:right;"><span style="font-size:24px;font-weight:500;color:#E4E8F0;">$49.99<span style="font-size:13px;color:#7A8099;">/mo</span></span><div style="font-size:10px;color:#4A5270;letter-spacing:1px;">/ month</div></div>
+              </div>
+            </div>
+            <div style="font-size:10px;color:#2A3050;text-align:center;font-family:'IBM Plex Sans',sans-serif;margin-top:8px;">Click any plan to jump to full details ↓</div>
+          </div>
+
+          <!-- Slide 6: Verified Call – Silver -->
+          <div class="hslide" style="flex:1;padding:28px 32px;display:none;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+              <div>
+                <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>06 / 08 · Verified Call · Silver</div>
+                <div style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:300;color:#E4E8F0;line-height:1.2;">Chinese media warned buyers.<br><strong style="font-weight:600;color:#C9A84C;">−38% crash in 48 hours.</strong></div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+                <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;color:#C25A5A;border:1px solid #C25A5A;background:rgba(194,90,90,0.1);margin-bottom:4px;">SELL · 88%</div>
+                <div style="font-size:10px;color:#4A5270;">Jan 27, 2026</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">$101.59</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Signal Price</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C25A5A;margin-bottom:3px;">−38%</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">48hr Crash</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">$66.69</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Price Feb 5</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">88%</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Conviction</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:12px 14px;">
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:5px;">Chinese Media Signal</div>
+                <div style="font-size:12px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Chinese financial media explicitly warned buyers of a crash. English sources were still bullish. Stratum caught the divergence.</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:12px 14px;">
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:5px;">Technical Signal</div>
+                <div style="font-size:12px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Silver was in extreme overbought territory above $112. RSI divergence confirmed. Textbook distribution pattern at the peak.</div>
+              </div>
+            </div>
+            <div style="background:#070709;border:1px solid #1C2030;flex:1;">
+              <div style="padding:6px 12px;border-bottom:1px solid #1C2030;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:9px;letter-spacing:2px;color:#C9A84C;">SLV · DAILY · JAN–FEB 2026</span>
+                <span id="hSlvOhlc" style="font-size:9px;color:#4A5270;">Hover for OHLC</span>
+              </div>
+              <canvas id="hSlvChart" style="display:block;width:100%;cursor:crosshair;"></canvas>
+            </div>
+            <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #5A9C6A;padding:12px 16px;display:flex;align-items:flex-start;gap:12px;">
+              <span style="color:#5A9C6A;font-size:16px;flex-shrink:0;">✓</span>
+              <div><div style="font-size:9px;letter-spacing:2px;color:#5A9C6A;text-transform:uppercase;margin-bottom:3px;">Verified Outcome</div><div style="font-size:12px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">SLV peaked at $106.45 intraday on Jan 28. By Feb 5 it had crashed to $65.51 — a 38% collapse in under 48 hours while retail buyers were still long.</div></div>
+            </div>
+          </div>
+
+          <!-- Slide 7: Verified Call – Oil -->
+          <div class="hslide" style="flex:1;padding:28px 32px;display:none;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+              <div>
+                <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>07 / 08 · Verified Call · Oil (USO)</div>
+                <div style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:300;color:#E4E8F0;line-height:1.2;">Arabic sources flagged Hormuz risk.<br><strong style="font-weight:600;color:#C9A84C;">USO +90% in 90 days.</strong></div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+                <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;color:#5A9C6A;border:1px solid #5A9C6A;background:rgba(90,156,106,0.1);margin-bottom:4px;">BUY</div>
+                <div style="font-size:10px;color:#4A5270;">Dec 2025</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">$68.03</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">USO Signal</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#5A9C6A;margin-bottom:3px;">+90%</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Peak Move</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">$121.67</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">USO Peak</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">20%</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Oil via Hormuz</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:12px 14px;">
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:5px;">Arabic Media Signal</div>
+                <div style="font-size:12px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Arabic sources flagged escalating Strait of Hormuz risk weeks before English media. Stratum's cross-language engine caught it first.</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:12px 14px;">
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:5px;">Supply Chain Signal</div>
+                <div style="font-size:12px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">20% of global seaborne oil transits Hormuz. Any disruption creates an immediate supply shock. OPEC+ cuts amplified the setup.</div>
+              </div>
+            </div>
+            <div style="background:#070709;border:1px solid #1C2030;flex:1;">
+              <div style="padding:6px 12px;border-bottom:1px solid #1C2030;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:9px;letter-spacing:2px;color:#C9A84C;">USO · DAILY · DEC 2025–MAR 2026</span>
+                <span id="hUsoOhlc" style="font-size:9px;color:#4A5270;">Hover for OHLC</span>
+              </div>
+              <canvas id="hUsoChart" style="display:block;width:100%;cursor:crosshair;"></canvas>
+            </div>
+            <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #5A9C6A;padding:12px 16px;display:flex;align-items:flex-start;gap:12px;">
+              <span style="color:#5A9C6A;font-size:16px;flex-shrink:0;">✓</span>
+              <div><div style="font-size:9px;letter-spacing:2px;color:#5A9C6A;text-transform:uppercase;margin-bottom:3px;">Verified Outcome</div><div style="font-size:12px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">USO rose from $68 in Dec 2025 to $129.83 by Mar 30 — a +90% move. US-Israel coordinated strikes on Feb 28 triggered Hormuz closure, exactly as the Arabic signal predicted.</div></div>
+            </div>
+          </div>
+
+          <!-- Slide 8: Verified Call – Tesla -->
+          <div class="hslide" style="flex:1;padding:28px 32px;display:none;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+              <div>
+                <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>08 / 08 · Verified Call · Tesla (TSLA)</div>
+                <div style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:300;color:#E4E8F0;line-height:1.2;">322x P/E. China tax cliff incoming.<br><strong style="font-weight:600;color:#C9A84C;">Sell the December hype.</strong></div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;margin-left:12px;">
+                <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;color:#C25A5A;border:1px solid #C25A5A;background:rgba(194,90,90,0.1);margin-bottom:4px;">SELL</div>
+                <div style="font-size:10px;color:#4A5270;">Dec 22, 2025</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">$488.73</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Signal Price</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C25A5A;margin-bottom:3px;">−28%</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Drop Mar 30</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">$355.28</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">Mar 30 Close</div></div>
+              <div style="background:#10131A;border:1px solid #1C2030;padding:12px;"><div style="font-size:16px;font-weight:500;color:#C9A84C;margin-bottom:3px;">322x</div><div style="font-size:9px;letter-spacing:1px;color:#4A5270;text-transform:uppercase;">P/E Ratio</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:12px 14px;">
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:5px;">Chinese Media Signal</div>
+                <div style="font-size:12px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">30,000 RMB tax exemption expiring Dec 31. Record Dec sales were a temporal artifact — annual China sales fell 5% for the first time ever.</div>
+              </div>
+              <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;padding:12px 14px;">
+                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:5px;">Congressional Trading Alert</div>
+                <div style="font-size:12px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">$1.27M in suspicious congressional TSLA trades detected post-Musk endorsements. Political premium, not fundamental value.</div>
+              </div>
+            </div>
+            <div style="background:#070709;border:1px solid #1C2030;flex:1;">
+              <div style="padding:6px 12px;border-bottom:1px solid #1C2030;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:9px;letter-spacing:2px;color:#C9A84C;">TSLA · DAILY · DEC 2025–MAR 2026</span>
+                <span id="hTslaOhlc" style="font-size:9px;color:#4A5270;">Hover for OHLC</span>
+              </div>
+              <canvas id="hTslaChart" style="display:block;width:100%;cursor:crosshair;"></canvas>
+            </div>
+            <div style="background:#10131A;border:1px solid #1C2030;border-left:2px solid #5A9C6A;padding:12px 16px;display:flex;align-items:flex-start;gap:12px;">
+              <span style="color:#5A9C6A;font-size:16px;flex-shrink:0;">✓</span>
+              <div><div style="font-size:9px;letter-spacing:2px;color:#5A9C6A;text-transform:uppercase;margin-bottom:3px;">Verified Outcome</div><div style="font-size:12px;color:#C4C8D4;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">TSLA fell from $488.73 to $355.28 by Mar 30 — a 28% drop. The China tax cliff hit Jan 1 exactly as predicted. US Q4 deliveries collapsed 46%. Confirmed on April 2 delivery data.</div></div>
+            </div>
+          </div>
+
+        </div><!-- end hero-slides -->
+
+        <!-- Nav -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-top:1px solid #1C2030;background:#070709;flex-shrink:0;">
+          <div id="hero-dots" style="display:flex;gap:8px;"></div>
+          <div style="display:flex;gap:8px;">
+            <button onclick="heroNav(-1)" style="background:transparent;border:1px solid #242840;color:#4A5270;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 18px;cursor:pointer;" onmouseover="this.style.borderColor='#C9A84C';this.style.color='#C9A84C'" onmouseout="this.style.borderColor='#242840';this.style.color='#4A5270'">&#8592;</button>
+            <button onclick="heroNav(1)" style="background:transparent;border:1px solid #242840;color:#4A5270;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 18px;cursor:pointer;" onmouseover="this.style.borderColor='#C9A84C';this.style.color='#C9A84C'" onmouseout="this.style.borderColor='#242840';this.style.color='#4A5270'">&#8594;</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- end slideshow -->
+
   </div>
 </div>
+
+<script>
+(function(){
+  var cur=0, total=8;
+  var slides=document.querySelectorAll('.hslide');
+  var dotEl=document.getElementById('hero-dots');
+  var chartDrawn=[false,false,false];
+
+  for(var i=0;i<total;i++){
+    var d=document.createElement('div');
+    d.style.cssText='width:6px;height:6px;background:'+(i===0?'#C9A84C':'#1C2030')+';cursor:pointer;transition:background 0.2s;flex-shrink:0;';
+    (function(idx,el){el.onclick=function(){heroSet(idx);};})(i,d);
+    dotEl.appendChild(d);
+  }
+
+  window.heroNav=function(dir){heroSet((cur+dir+total)%total);};
+  window.heroSet=function(n){
+    slides[cur].style.display='none';
+    document.querySelectorAll('#hero-dots div')[cur].style.background='#1C2030';
+    cur=n;
+    slides[cur].style.display='flex';
+    document.querySelectorAll('#hero-dots div')[cur].style.background='#C9A84C';
+    if(n===5&&!chartDrawn[0]){heroDrawChart('hSlvChart',H_SLV,true,false,'hSlvOhlc');chartDrawn[0]=true;}
+    if(n===6&&!chartDrawn[1]){heroDrawChart('hUsoChart',H_USO,false,true,'hUsoOhlc');chartDrawn[1]=true;}
+    if(n===7&&!chartDrawn[2]){heroDrawChart('hTslaChart',H_TSLA,true,false,'hTslaOhlc');chartDrawn[2]=true;}
+  };
+
+  var H_SLV=[
+    {d:'01/15',o:80.74,h:84.33,l:80.54,c:83.32},{d:'01/16',o:80.33,h:81.52,l:78.75,c:81.02},
+    {d:'01/20',o:86.19,h:86.33,l:84.38,c:85.39},{d:'01/21',o:85.60,h:85.90,l:81.89,c:83.96},
+    {d:'01/22',o:84.79,h:87.52,l:84.71,c:87.13},{d:'01/23',o:90.19,h:92.98,l:89.67,c:92.91},
+    {d:'01/26',o:99.37,h:106.70,l:96.51,c:98.34,sell:true},{d:'01/27',o:97.98,h:101.74,l:95.07,c:101.59,sell:true},
+    {d:'01/28',o:102.78,h:106.45,l:100.00,c:105.60},{d:'01/29',o:109.53,h:109.83,l:96.74,c:105.57},
+    {d:'01/30',o:89.33,h:92.14,l:69.12,c:75.44},{d:'02/02',o:73.80,h:74.92,l:68.26,c:72.44},
+    {d:'02/05',o:68.23,h:70.52,l:65.51,c:66.69},{d:'02/09',o:72.88,h:76.16,l:72.55,c:76.04}
+  ];
+  var H_USO=[
+    {d:'12/22',o:69.56,h:69.85,l:69.22,c:69.73,buy:true},{d:'12/29',o:69.85,h:70.13,l:69.57,c:69.61},
+    {d:'01/08',o:68.79,h:70.65,l:68.39,c:70.54},{d:'01/20',o:72.80,h:73.13,l:71.71,c:71.86},
+    {d:'02/02',o:75.50,h:75.67,l:74.46,c:75.33},{d:'02/19',o:80.43,h:81.27,l:79.69,c:81.19},
+    {d:'03/02',o:87.62,h:88.64,l:83.20,c:87.19},{d:'03/03',o:94.10,h:94.37,l:87.33,c:90.20,spike:true},
+    {d:'03/06',o:105.38,h:109.98,l:104.53,c:108.77},{d:'03/09',o:119.42,h:124.07,l:98.47,c:104.33},
+    {d:'03/18',o:121.03,h:122.87,l:117.45,c:121.67},{d:'03/30',o:126.84,h:130.08,l:126.31,c:129.83}
+  ];
+  var H_TSLA=[
+    {d:'12/15',o:469.44,h:481.77,l:467.66,c:475.31},{d:'12/19',o:488.12,h:490.49,l:474.72,c:481.20},
+    {d:'12/22',o:489.88,h:498.83,l:485.33,c:488.73,sell:true},{d:'12/26',o:485.23,h:489.09,l:473.82,c:475.19},
+    {d:'12/31',o:456.10,h:456.55,l:449.30,c:449.72},{d:'01/09',o:435.95,h:449.05,l:430.39,c:445.01},
+    {d:'01/20',o:429.36,h:430.73,l:417.44,c:419.25},{d:'02/04',o:420.46,h:423.90,l:399.18,c:406.01},
+    {d:'02/11',o:427.96,h:436.35,l:420.03,c:428.27},{d:'03/03',o:395.09,h:396.34,l:385.39,c:392.43},
+    {d:'03/13',o:399.17,h:400.20,l:389.95,c:391.20},{d:'03/20',o:379.85,h:379.89,l:364.46,c:367.96},
+    {d:'03/30',o:365.86,h:367.29,l:352.14,c:355.28}
+  ];
+
+  window.heroDrawChart=function(id,data,isSell,isBuy,ohlcId){
+    var canvas=document.getElementById(id);
+    if(!canvas)return;
+    var dpr=window.devicePixelRatio||1;
+    var W=canvas.offsetWidth||456;
+    var H=canvas.parentElement.offsetHeight-38||140;
+    if(H<80)H=120;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    canvas.style.height=H+'px';
+    var ctx=canvas.getContext('2d');
+    ctx.scale(dpr,dpr);
+    var pad={l:38,r:8,t:14,b:20};
+    var cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+    var max=Math.max.apply(null,data.map(function(d){return d.h;}))*1.01;
+    var min=Math.min.apply(null,data.map(function(d){return d.l;}))*0.99;
+    var range=max-min;
+    function py(v){return pad.t+cH-(v-min)/range*cH;}
+    function xOf(i){return pad.l+(i+0.5)*(cW/data.length);}
+    ctx.strokeStyle='#1C2030'; ctx.lineWidth=0.5;
+    for(var g=0;g<4;g++){
+      var y=pad.t+g*cH/3;
+      ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
+      ctx.fillStyle='#4A5270'; ctx.font='8px monospace'; ctx.textAlign='right';
+      ctx.fillText('$'+(max-g*range/3).toFixed(0),pad.l-3,y+3);
+    }
+    var cw=Math.max(3,(cW/data.length)*0.6);
+    for(var i=0;i<data.length;i++){
+      if(data[i].sell){ctx.fillStyle='rgba(194,90,90,0.08)';ctx.fillRect(xOf(i)-cw*2,pad.t,cw*4,cH);}
+      if(data[i].buy){ctx.fillStyle='rgba(90,156,106,0.08)';ctx.fillRect(xOf(i)-cw*2,pad.t,cw*4,cH);}
+      if(data[i].spike){ctx.fillStyle='rgba(201,168,76,0.06)';ctx.fillRect(xOf(i)-cw*3,pad.t,cw*6,cH);}
+    }
+    for(var i=0;i<data.length;i++){
+      var d=data[i]; var x=xOf(i); var bull=d.c>=d.o; var col=bull?'#5A9C6A':'#C25A5A';
+      ctx.strokeStyle=col; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(x,py(d.h)); ctx.lineTo(x,py(d.l)); ctx.stroke();
+      ctx.fillStyle=col;
+      ctx.fillRect(x-cw/2,py(Math.max(d.o,d.c)),cw,Math.max(1,py(Math.min(d.o,d.c))-py(Math.max(d.o,d.c))));
+    }
+    var sigDone=false;
+    for(var i=0;i<data.length;i++){
+      if(!sigDone&&data[i].sell){
+        var x=xOf(i); ctx.strokeStyle='#C25A5A'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
+        ctx.beginPath(); ctx.moveTo(x,pad.t+10); ctx.lineTo(x,H-pad.b); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle='#C25A5A'; ctx.font='bold 8px monospace'; ctx.textAlign='center';
+        ctx.fillText('▼ SELL',x,pad.t+8); sigDone=true;
+      }
+      if(!sigDone&&data[i].buy){
+        var x=xOf(i); ctx.strokeStyle='#5A9C6A'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
+        ctx.beginPath(); ctx.moveTo(x,pad.t+10); ctx.lineTo(x,H-pad.b); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle='#5A9C6A'; ctx.font='bold 8px monospace'; ctx.textAlign='center';
+        ctx.fillText('▲ BUY',x,pad.t+8); sigDone=true;
+      }
+      if(data[i].spike){
+        var x=xOf(i); ctx.strokeStyle='#C9A84C'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
+        ctx.beginPath(); ctx.moveTo(x,pad.t+10); ctx.lineTo(x,H-pad.b); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle='#C9A84C'; ctx.font='bold 8px monospace'; ctx.textAlign='center';
+        ctx.fillText('HORMUZ',x,pad.t+8);
+      }
+    }
+    ctx.fillStyle='#4A5270'; ctx.font='7px monospace'; ctx.textAlign='center';
+    var step=Math.ceil(data.length/6);
+    for(var i=0;i<data.length;i+=step) ctx.fillText(data[i].d,xOf(i),H-pad.b+12);
+    if(ohlcId){
+      canvas.onmousemove=function(e){var rect=canvas.getBoundingClientRect();var idx=Math.floor((e.clientX-rect.left-pad.l)/(cW/data.length));if(idx>=0&&idx<data.length){var d=data[idx];var el=document.getElementById(ohlcId);if(el)el.textContent=d.d+' O:$'+d.o.toFixed(2)+' H:$'+d.h.toFixed(2)+' L:$'+d.l.toFixed(2)+' C:$'+d.c.toFixed(2);}};
+      canvas.onmouseleave=function(){var el=document.getElementById(ohlcId);if(el)el.textContent='Hover for OHLC';};
+    }
+  };
+})();
+</script>
 
 <!-- DATA STRIP -->
 <div class="data-strip">
@@ -509,6 +978,7 @@ footer span.brand{color:var(--gold)}
   <span class="sec-meta">Choose Your Access Level</span>
 </div>
 
+<div class="plans-wrapper">
 <div class="plans">
 
   <!-- FREE -->
@@ -526,25 +996,28 @@ footer span.brand{color:var(--gold)}
       <li><span class="ico-on">■</span>1 full report per week (random day)</li>
       <li><span class="ico-on">■</span>Same content quality as Plus</li>
       <li><span class="ico-on">■</span>Executive snapshot &amp; regime indicator</li>
-      <li><span class="ico-on">■</span>Sector signals &amp; sentiment reading</li>
+      <li><span class="ico-on">■</span>Top 5 trade ideas + conviction scores</li>
+      <li><span class="ico-on">■</span>Cross-language divergence (4 languages)</li>
       <li class="off"><span class="ico-off">□</span>No daily delivery</li>
       <li class="off"><span class="ico-off">□</span>No weekly summary</li>
-      <li class="off"><span class="ico-off">□</span>No monthly summary</li>
-      <li class="off"><span class="ico-off">□</span>No congressional trading</li>
+      <li class="off"><span class="ico-off">□</span>No monthly wrap-up</li>
       <li class="off"><span class="ico-off">□</span>No financial advisor</li>
+      <li class="off"><span class="ico-off">□</span>No congressional trading</li>
     </ul>
     <div class="form-success" id="free-success">▸ Welcome to Stratum. Your first briefing arrives this week.</div>
     <div class="form-error" id="free-error"></div>
+    <div style="margin-top:auto;">
     <form class="email-row" id="freeForm" onsubmit="handleFreeSignup(event)">
       <input class="e-input" type="email" id="free-email" placeholder="your@email.com" required autocomplete="email">
       <button class="e-btn" type="submit" id="free-btn">Subscribe</button>
     </form>
     <div class="tc-row" id="free-tc-row">
       <input type="checkbox" id="free-tc" name="free-tc">
-      <label for="free-tc">I have read and agree to the <a href="#terms" onclick="showTerms(event)">Terms and Conditions</a> and acknowledge that Stratum is an informational tool, not financial advice.</label>
+      <label for="free-tc">I have read and agree to the <a href="javascript:void(0)" onclick="showTerms(event)">Terms and Conditions</a> and acknowledge that Stratum is an informational tool, not financial advice.</label>
     </div>
     <div class="tc-error" id="free-tc-error">▸ Please accept the Terms and Conditions</div>
     <div class="form-note" id="free-form-note">No credit card required</div>
+    </div>
   </div>
 
   <!-- PLUS -->
@@ -558,18 +1031,19 @@ footer span.brand{color:var(--gold)}
       <span class="p-period">/ month</span>
     </div>
     <div class="plan-annual" id="plus-annual"><span>$17.99/mo billed annually</span> · Save 10%</div>
-    <div class="plan-desc">Full daily intelligence + weekly summary + monthly wrap. Every morning at 9:10 AM.</div>
+    <div class="plan-desc">Daily intelligence + Financial Advisor Deep Dive. Every morning at 9:10 AM.</div>
     <ul class="feat">
       <li><span class="ico-on">■</span>Daily report every morning at 9:10 AM</li>
       <li><span class="ico-on">■</span>Full 10-section analysis</li>
       <li><span class="ico-on">■</span>Top 5 trade ideas + conviction scores</li>
       <li><span class="ico-on">■</span>Cross-language divergence (4 languages)</li>
       <li><span class="ico-on">■</span>Geopolitical market radar</li>
-      <li><span class="ico-on">■</span>Overhyped vs. underreported signals</li>
-      <li><span class="ico-on">■</span>Weekly stock selection (Sundays)</li>
-      <li><span class="ico-on">■</span>Monthly wrap-up &amp; final decisions</li>
+      <li><span class="ico-on">■</span>Financial Advisor deep dive</li>
+      <li><span class="ico-on">■</span>EPS · P/E · Analyst price targets</li>
+      <li><span class="ico-on">■</span>Buy / Hold / Sell verdict per stock</li>
+      <li class="off"><span class="ico-off">□</span>No weekly summary</li>
+      <li class="off"><span class="ico-off">□</span>No monthly wrap-up</li>
       <li class="off"><span class="ico-off">□</span>No congressional trading</li>
-      <li class="off"><span class="ico-off">□</span>No financial advisor</li>
     </ul>
     <button class="btn-up" onclick="openModal('plus')" id="plus-btn">
       Start Plus — $19.99 / month
@@ -587,17 +1061,14 @@ footer span.brand{color:var(--gold)}
       <span class="p-period">/ month</span>
     </div>
     <div class="plan-annual" id="prem-annual"><span>$44.99/mo billed annually</span> · For serious investors</div>
-    <div class="plan-desc">Everything in Plus + Congressional Trading + Financial Advisor Deep Dive.</div>
+    <div class="plan-desc">Everything in Plus + Weekly &amp; Monthly summaries + Congressional trading watch. The complete edge.</div>
     <ul class="feat">
       <li><span class="ico-on">■</span>Everything in Plus, and:</li>
+      <li><span class="ico-on">■</span>Weekly stock selection (Sundays)</li>
+      <li><span class="ico-on">■</span>Monthly wrap-up &amp; final decisions</li>
       <li><span class="ico-on">■</span>Congressional &amp; political trading watch</li>
-      <li><span class="ico-on">■</span>Financial Advisor deep dive (Sundays)</li>
-      <li><span class="ico-on">■</span>EPS · P/E · Analyst price targets</li>
-      <li><span class="ico-on">■</span>Revenue growth · Margin analysis · ROE</li>
-      <li><span class="ico-on">■</span>Free cash flow · Debt/equity ratio</li>
-      <li><span class="ico-on">■</span>Insider &amp; institutional ownership %</li>
-      <li><span class="ico-on">■</span>52-week position analysis</li>
-      <li><span class="ico-on">■</span>Buy / Hold / Sell verdict per stock</li>
+      <li><span class="ico-on">■</span>Suspicious timing vs. committee hearings</li>
+      <li><span class="ico-on">■</span>Specific names, tickers, dates flagged</li>
     </ul>
     <button class="btn-up outline" onclick="openModal('quant')" id="quant-btn">
       Start Quant — $49.99 / month
@@ -605,9 +1076,8 @@ footer span.brand{color:var(--gold)}
     <div class="up-note">Or $44.99/mo billed annually · Cancel anytime</div>
   </div>
 
-</div>
-
-<!-- INSIDE EVERY REPORT -->
+</div><!-- end plans -->
+</div><!-- end plans-wrapper -->
 <div class="sec-head">
   <span class="sec-label">Inside Every Report</span>
   <div class="sec-line"></div>
@@ -642,8 +1112,8 @@ footer span.brand{color:var(--gold)}
   </div>
   <div class="intel-cell">
     <div class="i-num">06</div>
-    <div class="i-title">Financial Advisor ★ Quant</div>
-    <div class="i-desc">Full EPS, P/E, analyst targets, margins, debt, and final verdict for every stock — every Sunday. Quant only.</div>
+    <div class="i-title">Financial Advisor ★ Plus &amp; Quant</div>
+    <div class="i-desc">Full EPS, P/E, analyst targets, margins, debt, and final verdict for every stock — every Sunday. Plus &amp; Quant subscribers.</div>
   </div>
 </div>
 
@@ -663,12 +1133,12 @@ footer span.brand{color:var(--gold)}
   <div class="intel-cell">
     <div class="i-num">W</div>
     <div class="i-title">Weekly Report · Sundays</div>
-    <div class="i-desc">Reviews all 5 daily reports. Eliminates stocks that had negative news during the week. Arrives at a refined final conclusion with the week's best picks.</div>
+    <div class="i-desc">Reviews all 5 daily reports. Eliminates stocks with negative news. Final conclusion delivered. <em style="font-style:normal;color:#C9A84C;">Quant only.</em></div>
   </div>
   <div class="intel-cell">
     <div class="i-num">M</div>
     <div class="i-title">Monthly Report</div>
-    <div class="i-desc">Reviews all 4 weekly reports. Eliminates any previously recommended stocks that deteriorated. Delivers the month's definitive investment conclusion.</div>
+    <div class="i-desc">Reviews all 4 weekly reports. Only the strongest stocks survive. Delivers the month's definitive investment conclusion. <em style="font-style:normal;color:#C9A84C;">Quant only.</em></div>
   </div>
 </div>
 
@@ -698,16 +1168,19 @@ footer span.brand{color:var(--gold)}
       <tr><td class="feature">Geopolitical market radar</td><td class="yes">■</td><td class="yes">■</td><td class="yes">■</td></tr>
       <tr><td class="feature">Overhyped vs. underreported signals</td><td class="yes">■</td><td class="yes">■</td><td class="yes">■</td></tr>
       <tr class="compare-section-header"><td colspan="4">Report Cadence</td></tr>
-      <tr><td class="feature">Weekly stock selection (Sundays)</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
-      <tr><td class="feature">Monthly wrap-up &amp; final decisions</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
-      <tr class="compare-section-header"><td colspan="4">Quant Intelligence</td></tr>
-      <tr><td class="feature">Congressional &amp; political trading</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
-      <tr><td class="feature">Financial Advisor deep dive</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
-      <tr><td class="feature">EPS · P/E ratio · Analyst price targets</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
-      <tr><td class="feature">Revenue growth · Margin analysis · ROE</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
-      <tr><td class="feature">Free cash flow · Debt/equity ratio</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
-      <tr><td class="feature">Insider &amp; institutional ownership %</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
-      <tr><td class="feature">Buy / Hold / Sell verdict per stock</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Weekly stock selection (Sundays)</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Monthly wrap-up &amp; final decisions</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
+      <tr class="compare-section-header"><td colspan="4">Financial Advisor — Plus &amp; Quant</td></tr>
+      <tr><td class="feature">Financial Advisor deep dive</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
+      <tr><td class="feature">EPS · P/E ratio · Analyst price targets</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Revenue growth · Margin analysis · ROE</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Free cash flow · Debt/equity ratio</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Insider &amp; institutional ownership %</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Buy / Hold / Sell verdict per stock</td><td class="no">✕</td><td class="yes">■</td><td class="yes">■</td></tr>
+      <tr class="compare-section-header"><td colspan="4">Quant Exclusive</td></tr>
+      <tr><td class="feature">Congressional &amp; political trading watch</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Suspicious timing vs. committee hearings</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
+      <tr><td class="feature">Political pre-positioning alerts</td><td class="no">✕</td><td class="no">✕</td><td class="yes">■</td></tr>
       <tr class="compare-section-header"><td colspan="4">Pricing</td></tr>
       <tr><td class="feature">Annual discount</td><td class="no">—</td><td class="yes">■ $17.99/mo</td><td class="yes">■ $44.99/mo</td></tr>
     </tbody>
@@ -715,19 +1188,68 @@ footer span.brand{color:var(--gold)}
 </div>
 
 <!-- TERMS SECTION (hidden, shown inline when clicked) -->
-<div id="terms-section" style="display:none;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:40px 40px;background:var(--surface);">
-  <div class="sec-head" style="margin:-40px -40px 32px;padding:13px 40px;">
+<div id="terms-section" style="display:none;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);background:var(--surface);">
+  <div class="sec-head">
     <span class="sec-label">Terms &amp; Conditions</span>
     <div class="sec-line"></div>
     <span class="sec-meta" style="cursor:pointer;color:var(--gold);" onclick="hideTerms()">✕ Close</span>
   </div>
-  <div style="max-width:760px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;line-height:1.9;color:var(--text-secondary);">
-    <p style="margin-bottom:16px;"><strong style="color:var(--text-primary);">1. No Financial Advice.</strong> Stratum Intelligence is an informational and educational service only. Nothing published constitutes financial advice, investment advice, or trading advice. Always consult a qualified financial professional before making any investment decisions.</p>
-    <p style="margin-bottom:16px;"><strong style="color:var(--text-primary);">2. No Guarantees.</strong> Past performance is not indicative of future results. All analysis is opinion-based and may be incorrect. Stratum Intelligence makes no warranty regarding accuracy or completeness.</p>
-    <p style="margin-bottom:16px;"><strong style="color:var(--text-primary);">3. Subscriptions.</strong> Paid subscriptions are billed monthly or annually via Stripe. You may cancel at any time. Refunds are not provided for partial billing periods.</p>
-    <p style="margin-bottom:16px;"><strong style="color:var(--text-primary);">4. Data &amp; Privacy.</strong> We collect only your email address for the purpose of delivering reports. We do not sell or share your data with third parties.</p>
-    <p style="margin-bottom:16px;"><strong style="color:var(--text-primary);">5. Unsubscribe.</strong> Every email contains a one-click unsubscribe link. You may opt out at any time.</p>
-    <p><strong style="color:var(--text-primary);">6. Jurisdiction.</strong> These terms are governed by the laws of Canada. By subscribing, you agree to these terms.</p>
+  <div style="max-width:860px;margin:0 auto;padding:40px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.9;color:var(--text-secondary);">
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:32px;">Last Updated: March 31, 2026</p>
+    <p style="margin-bottom:24px;color:var(--text-primary);">Welcome to Stratum Intelligence. By accessing our website, subscribing to our reports, or using our services, you agree to be bound by the following terms. Please read them carefully.</p>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">1. No Financial Advice</h3>
+    <p style="margin-bottom:12px;">Stratum Intelligence is an informational and educational service only. Nothing published by Stratum Intelligence constitutes financial advice, investment advice, or trading advice.</p>
+    <ul style="margin:0 0 24px 20px;list-style:disc;">
+      <li>We do not provide personalized investment recommendations.</li>
+      <li>All content is for general informational purposes only.</li>
+      <li>You should always consult with a qualified financial professional or registered investment advisor before making any financial decisions.</li>
+    </ul>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">2. AI-Generated Content &amp; Accuracy</h3>
+    <p style="margin-bottom:12px;">You acknowledge that Stratum Intelligence utilizes artificial intelligence (AI) and automated systems to generate stock reports and analysis.</p>
+    <ul style="margin:0 0 24px 20px;list-style:disc;">
+      <li><strong style="color:var(--text-primary);">Risk of Error:</strong> AI can produce inaccurate, incomplete, or "hallucinated" data.</li>
+      <li><strong style="color:var(--text-primary);">Verification:</strong> You are responsible for verifying any data or analysis provided by Stratum Intelligence before acting upon it.</li>
+      <li><strong style="color:var(--text-primary);">No Warranty:</strong> We provide the service on an "as-is" and "as-available" basis. We make no warranties regarding the accuracy, completeness, or timeliness of the information.</li>
+    </ul>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">3. No Guarantees &amp; Risk of Loss</h3>
+    <p style="margin-bottom:12px;">Investing in financial markets involves significant risk.</p>
+    <ul style="margin:0 0 24px 20px;list-style:disc;">
+      <li>Past performance is not indicative of future results.</li>
+      <li>All analysis is opinion-based and may be incorrect.</li>
+      <li>Stratum Intelligence, its founders, and its affiliates are not responsible for any financial losses or damages you may incur from using our service. By using this service, you assume 100% of the risk for your investment decisions.</li>
+    </ul>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">4. Subscriptions &amp; Billing</h3>
+    <ul style="margin:0 0 24px 20px;list-style:disc;">
+      <li><strong style="color:var(--text-primary);">Payments:</strong> Paid subscriptions are processed securely via Stripe.</li>
+      <li><strong style="color:var(--text-primary);">Billing:</strong> You will be billed monthly or annually depending on your chosen plan.</li>
+      <li><strong style="color:var(--text-primary);">Cancellations:</strong> You may cancel your subscription at any time through your account settings or by contacting support.</li>
+      <li><strong style="color:var(--text-primary);">Refunds:</strong> We do not provide refunds or credits for partial billing periods or unused months.</li>
+    </ul>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">5. Intellectual Property</h3>
+    <p style="margin-bottom:12px;">All content provided by Stratum Intelligence — including but not limited to reports, text, AI analysis, logos, and software — is the intellectual property of Stratum Intelligence.</p>
+    <ul style="margin:0 0 24px 20px;list-style:disc;">
+      <li>You are granted a limited, non-transferable license to use the reports for personal use only.</li>
+      <li>You may not redistribute, resell, scrape, or commercially exploit our reports without express written consent.</li>
+    </ul>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">6. Data &amp; Privacy</h3>
+    <p style="margin-bottom:12px;">We value your privacy.</p>
+    <ul style="margin:0 0 24px 20px;list-style:disc;">
+      <li><strong style="color:var(--text-primary);">Data Collection:</strong> We collect only the information necessary to provide the service (e.g., your email address for report delivery and Stripe data for billing).</li>
+      <li><strong style="color:var(--text-primary);">Third Parties:</strong> We do not sell or share your personal data with third parties for marketing purposes.</li>
+      <li><strong style="color:var(--text-primary);">Communication:</strong> Every automated email includes a one-click unsubscribe link.</li>
+    </ul>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">7. Limitation of Liability</h3>
+    <p style="margin-bottom:24px;">To the maximum extent permitted by law, Stratum Intelligence and its founders shall not be liable for any direct, indirect, incidental, or consequential damages resulting from your use of the service or your inability to access the service.</p>
+
+    <h3 style="color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;">8. Governing Law</h3>
+    <p style="margin-bottom:0;">These terms are governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada. Any disputes arising from these terms shall be resolved in the courts of Ottawa, Ontario.</p>
   </div>
 </div>
 
@@ -779,7 +1301,7 @@ footer span.brand{color:var(--gold)}
 
     <div class="modal-tc">
       <input type="checkbox" id="modal-tc" name="modal-tc">
-      <label for="modal-tc">I have read and agree to the <a href="#terms" onclick="showTerms(event);closeModal();">Terms and Conditions</a> and acknowledge that Stratum is an informational tool, not financial advice.</label>
+      <label for="modal-tc">I have read and agree to the <a href="javascript:void(0)" onclick="showTerms(event);closeModal();">Terms and Conditions</a> and acknowledge that Stratum is an informational tool, not financial advice.</label>
     </div>
     <div class="modal-tc-error" id="modal-tc-error">▸ Please accept the Terms and Conditions</div>
 
@@ -867,7 +1389,7 @@ var modalConfig = {
   quant: {
     tag: '// Stratum Quant Access',
     title: 'Upgrade to Quant',
-    sub: 'Everything in Plus + Congressional Trading + Financial Advisor Deep Dive every Sunday.',
+    sub: 'Everything in Plus + Congressional Trading Watch. Full deep dive on every stock pick.',
     monthly: { label: 'Stratum Quant · Monthly', amount: '$49.99 / mo' },
     annual:  { label: 'Stratum Quant · Annual',  amount: '$44.99 / mo' }
   }
