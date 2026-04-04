@@ -545,124 +545,132 @@ footer span.brand{color:var(--gold)}
           </div>
 
           <!-- Slide 3: Weekly & Monthly Tournament Funnel -->
-          <div class="hslide" style="flex:1;padding:20px 24px 16px;display:none;flex-direction:column;gap:0;overflow-y:auto;">
+          <div class="hslide" style="flex:1;padding:0;display:none;flex-direction:column;overflow-y:auto;">
+            <div style="min-height:100%;display:flex;align-items:center;justify-content:center;padding:8px;">
+              <div style="max-width:760px;width:100%;display:flex;flex-direction:column;gap:0;">
 
-            <!-- HEADER -->
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">
-              <div>
-                <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>03 / 08 &middot; Weekly &amp; Monthly</div>
-                <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:300;color:#E4E8F0;line-height:1.2;">We refine. We eliminate.<br><strong style="font-weight:600;color:#C9A84C;">We conclude.</strong></div>
-              </div>
-              <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;border:1px solid #C9A84C;padding:4px 10px;text-transform:uppercase;flex-shrink:0;">Quant Only</div>
+        <header style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px;">
+            <div style="color:#64748b;font-size:10px;font-weight:700;letter-spacing:0.2em;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;">
+                <span style="width:24px;height:1px;background:#64748b;display:block;"></span>
+                03 / 08 <span style="margin:0 6px;">•</span> WEEKLY &amp; MONTHLY
             </div>
-
-            <!-- WEEK 1 LABEL -->
-            <div style="font-size:9px;letter-spacing:2px;color:#5A9C6A;text-transform:uppercase;margin-bottom:6px;flex-shrink:0;display:flex;align-items:center;gap:8px;">
-              <span style="color:#5A9C6A;">WEEK 1</span>
-              <span style="color:#4A5270;">&bull;</span>
-              <span style="color:#4A5270;">5 DAILY REPORTS</span>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                <h1 style="font-size:22px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;line-height:1.3;color:#e2e8f0;margin:0;">
+                    We refine. We eliminate.<br>
+                    <span style="color:#ceaa70;font-weight:700;">We conclude.</span>
+                </h1>
+                <button style="border:1px solid #ceaa70;color:#ceaa70;padding:6px 14px;font-size:10px;font-weight:700;letter-spacing:0.15em;background:transparent;cursor:pointer;font-family:'IBM Plex Mono',monospace;">
+                    QUANT ONLY
+                </button>
             </div>
+        </header>
 
-            <!-- DAILIES ROW -->
-            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px;flex-shrink:0;">
-              <div style="background:#0D1410;border:1px solid #2D4A3E;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
-                <span style="border:1px solid #5A9C6A;color:#5A9C6A;font-size:9px;padding:1px 6px;letter-spacing:1px;">MON</span>
-                <span style="font-size:10px;color:#5A9C6A;font-family:'IBM Plex Sans',sans-serif;">Daily</span>
-              </div>
-              <div style="background:#0D1410;border:1px solid #2D4A3E;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
-                <span style="border:1px solid #5A9C6A;color:#5A9C6A;font-size:9px;padding:1px 6px;letter-spacing:1px;">TUE</span>
-                <span style="font-size:10px;color:#5A9C6A;font-family:'IBM Plex Sans',sans-serif;">Daily</span>
-              </div>
-              <div style="background:#0D1410;border:1px solid #2D4A3E;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
-                <span style="border:1px solid #5A9C6A;color:#5A9C6A;font-size:9px;padding:1px 6px;letter-spacing:1px;">WED</span>
-                <span style="font-size:10px;color:#5A9C6A;font-family:'IBM Plex Sans',sans-serif;">Daily</span>
-              </div>
-              <div style="background:#110D0D;border:1px solid #C25A5A;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative;">
-                <div style="position:absolute;top:-1px;right:-1px;background:#C25A5A;font-size:7px;color:#fff;padding:1px 5px;letter-spacing:1px;">CUT</div>
-                <span style="border:1px solid #C25A5A;color:#C25A5A;font-size:9px;padding:1px 6px;letter-spacing:1px;">THU</span>
-                <span style="font-size:10px;color:#4A5270;font-family:'IBM Plex Sans',sans-serif;">Bad news</span>
-              </div>
-              <div style="background:#0D1410;border:1px solid #2D4A3E;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
-                <span style="border:1px solid #5A9C6A;color:#5A9C6A;font-size:9px;padding:1px 6px;letter-spacing:1px;">FRI</span>
-                <span style="font-size:10px;color:#5A9C6A;font-family:'IBM Plex Sans',sans-serif;">Daily</span>
-              </div>
+        <section style="display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:10;">
+            <h2 style="color:#4db89c;font-size:10px;font-weight:700;letter-spacing:0.15em;font-family:'IBM Plex Mono',monospace;">WEEK 1 <span style="margin:0 6px;color:#64748b;">•</span> <span style="color:#64748b;">5 DAILY REPORTS</span></h2>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:100%;">
+                <div style="background:#161822;border:1px solid #2d4a46;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px;box-shadow:0 0 15px rgba(45,74,70,0.3);">
+                    <span style="border:1px solid #4db89c;color:#4db89c;padding:1px 6px;font-size:11px;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;">MON</span>
+                    <span style="color:#4db89c;font-size:11px;font-family:'IBM Plex Mono',monospace;">Daily</span>
+                </div>
+                <div style="background:#161822;border:1px solid #2d4a46;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px;box-shadow:0 0 15px rgba(45,74,70,0.3);">
+                    <span style="border:1px solid #4db89c;color:#4db89c;padding:1px 6px;font-size:11px;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;">TUE</span>
+                    <span style="color:#4db89c;font-size:11px;font-family:'IBM Plex Mono',monospace;">Daily</span>
+                </div>
+                <div style="background:#161822;border:1px solid #2d4a46;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px;box-shadow:0 0 15px rgba(45,74,70,0.3);">
+                    <span style="border:1px solid #4db89c;color:#4db89c;padding:1px 6px;font-size:11px;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;">WED</span>
+                    <span style="color:#4db89c;font-size:11px;font-family:'IBM Plex Mono',monospace;">Daily</span>
+                </div>
+                <div style="background:#161822;border:1px solid #2d4a46;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px;box-shadow:0 0 15px rgba(45,74,70,0.3);">
+                    <span style="border:1px solid #4db89c;color:#4db89c;padding:1px 6px;font-size:11px;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;">THU</span>
+                    <span style="color:#4db89c;font-size:11px;font-family:'IBM Plex Mono',monospace;">Daily</span>
+                </div>
+                <div style="background:#161822;border:1px solid #2d4a46;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 6px;box-shadow:0 0 15px rgba(45,74,70,0.3);">
+                    <span style="border:1px solid #4db89c;color:#4db89c;padding:1px 6px;font-size:11px;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;">FRI</span>
+                    <span style="color:#4db89c;font-size:11px;font-family:'IBM Plex Mono',monospace;">Daily</span>
+                </div>
             </div>
+        </section>
 
-            <!-- CURVED SVG FUNNEL 1: 5 lines converge to center -->
-            <div style="width:100%;height:56px;flex-shrink:0;position:relative;">
-              <svg width="100%" height="56" viewBox="0 0 1000 100" preserveAspectRatio="none" fill="none">
+        <div style="width:100%;height:64px;margin-top:-2px;margin-bottom:-2px;position:relative;z-index:0;">
+            <svg style="width:100%;height:100%;" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none" stroke="url(#greenToGold)" stroke-width="2">
                 <defs>
-                  <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#5A9C6A"/>
-                    <stop offset="100%" stop-color="#C9A84C"/>
-                  </linearGradient>
+                    <linearGradient id="greenToGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#4db89c" />
+                        <stop offset="100%" stop-color="#ceaa70" />
+                    </linearGradient>
                 </defs>
-                <path d="M 100 0 C 100 50, 500 50, 500 100" stroke="url(#g1)" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-                <path d="M 300 0 C 300 50, 500 50, 500 100" stroke="url(#g1)" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-                <path d="M 500 0 C 500 50, 500 50, 500 100" stroke="url(#g1)" stroke-width="2" fill="none"/>
-                <path d="M 700 0 C 700 50, 500 50, 500 100" stroke="url(#g1)" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-                <path d="M 900 0 C 900 50, 500 50, 500 100" stroke="url(#g1)" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-              </svg>
-            </div>
+                <path d="M 100 0 C 100 40, 125 40, 125 70 L 125 100" />
+                <path d="M 300 0 C 300 40, 125 40, 125 70 L 125 100" />
+                <path d="M 500 0 C 500 40, 125 40, 125 70 L 125 100" />
+                <path d="M 700 0 C 700 40, 125 40, 125 70 L 125 100" />
+                <path d="M 900 0 C 900 40, 125 40, 125 70 L 125 100" />
+            </svg>
+        </div>
 
-            <!-- BAD PICKS / REFINED labels -->
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;flex-shrink:0;">
-              <div style="font-size:9px;letter-spacing:1.5px;color:#C9A84C;text-transform:uppercase;">BAD PICKS ELIMINATED</div>
-              <div style="font-size:9px;letter-spacing:1.5px;color:#4A5270;text-transform:uppercase;">REFINED CONCLUSION</div>
+        <section style="display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:10;">
+            <div style="display:flex;justify-content:space-between;width:100%;">
+                <h2 style="color:#ceaa70;font-size:10px;font-weight:700;letter-spacing:0.15em;padding-left:12.5%;font-family:'IBM Plex Mono',monospace;">BAD PICKS ELIMINATED</h2>
+                <h2 style="color:#64748b;font-size:10px;font-weight:700;letter-spacing:0.15em;padding-right:12.5%;font-family:'IBM Plex Mono',monospace;">REFINED CONCLUSION</h2>
             </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;">
+                <div style="background:#161822;border:1px solid #ceaa70;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;position:relative;box-shadow:0 0 15px rgba(206,170,112,0.15);">
+                    <div style="position:absolute;top:-10px;right:6px;background:#ceaa70;color:#0a0b10;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;font-family:'IBM Plex Mono',monospace;">KEEP</div>
+                    <span style="color:#ceaa70;font-weight:700;font-size:11px;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;">WEEK 1</span>
+                    <span style="color:#ceaa70;font-size:11px;opacity:0.8;font-family:'IBM Plex Mono',monospace;">Weekly</span>
+                </div>
+                <div style="background:#161822;border:1px solid #ceaa70;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;box-shadow:0 0 15px rgba(206,170,112,0.15);opacity:0.8;">
+                    <span style="color:#ceaa70;font-weight:700;font-size:11px;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;">WEEK 2</span>
+                    <span style="color:#ceaa70;font-size:11px;opacity:0.8;font-family:'IBM Plex Mono',monospace;">Weekly</span>
+                </div>
+                <div style="background:#161822;border:1px solid #ceaa70;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;box-shadow:0 0 15px rgba(206,170,112,0.15);opacity:0.8;">
+                    <span style="color:#ceaa70;font-weight:700;font-size:11px;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;">WEEK 3</span>
+                    <span style="color:#ceaa70;font-size:11px;opacity:0.8;font-family:'IBM Plex Mono',monospace;">Weekly</span>
+                </div>
+                <div style="background:#161822;border:1px solid #ceaa70;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;box-shadow:0 0 15px rgba(206,170,112,0.15);opacity:0.8;">
+                    <span style="color:#ceaa70;font-weight:700;font-size:11px;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;">WEEK 4</span>
+                    <span style="color:#ceaa70;font-size:11px;opacity:0.8;font-family:'IBM Plex Mono',monospace;">Weekly</span>
+                </div>
+            </div>
+        </section>
 
-            <!-- WEEKLY ROW -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;flex-shrink:0;">
-              <div style="background:#151821;border:1px solid #C9A84C;padding:10px 6px;text-align:center;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
-                <div style="position:absolute;top:-1px;right:-1px;background:#C9A84C;font-size:7px;color:#070709;padding:1px 5px;letter-spacing:1px;font-weight:700;">KEEP</div>
-                <span style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;font-weight:700;">WEEK 1</span>
-                <span style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</span>
-              </div>
-              <div style="background:#151821;border:1px solid #C9A84C;padding:10px 6px;text-align:center;opacity:0.75;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
-                <span style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;font-weight:700;">WEEK 2</span>
-                <span style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</span>
-              </div>
-              <div style="background:#151821;border:1px solid #C9A84C;padding:10px 6px;text-align:center;opacity:0.5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
-                <span style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;font-weight:700;">WEEK 3</span>
-                <span style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</span>
-              </div>
-              <div style="background:#151821;border:1px solid #C9A84C;padding:10px 6px;text-align:center;opacity:0.3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;">
-                <span style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;font-weight:700;">WEEK 4</span>
-                <span style="font-size:10px;color:#C9A84C;font-family:'IBM Plex Sans',sans-serif;">Weekly</span>
+        <div style="width:100%;height:64px;margin-top:-2px;margin-bottom:-2px;position:relative;z-index:0;">
+            <svg style="width:100%;height:100%;color:#ceaa70;" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M 125 0 C 125 50, 500 50, 500 100" />
+                <path d="M 375 0 C 375 50, 500 50, 500 100" />
+                <path d="M 625 0 C 625 50, 500 50, 500 100" />
+                <path d="M 875 0 C 875 50, 500 50, 500 100" />
+            </svg>
+        </div>
+
+        <section style="width:100%;position:relative;z-index:10;margin-bottom:12px;">
+            <div style="background:#161822;border:1px solid #ceaa70;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 0 15px rgba(206,170,112,0.15);">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <h2 style="color:#ceaa70;font-size:10px;font-weight:700;letter-spacing:0.15em;margin:0;font-family:'IBM Plex Mono',monospace;">FIRST MONDAY <span style="margin:0 6px;color:#64748b;">•</span> <span style="color:#64748b;">MONTHLY REPORT</span></h2>
+                    <p style="font-size:16px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;color:#e2e8f0;margin:0;">The month&#39;s definitive conclusion</p>
+                </div>
+                <button style="background:#ceaa70;color:#0a0b10;font-weight:700;padding:10px 20px;font-size:12px;letter-spacing:0.15em;border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;">
+                    FINAL
+                </button>
+            </div>
+        </section>
+
+        <section style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;">
+            <div style="border:1px solid #4db89c;padding:14px;background:rgba(13,20,16,0.4);">
+                <h3 style="color:#4db89c;font-size:10px;font-weight:700;letter-spacing:0.15em;margin:0 0 8px 0;font-family:'IBM Plex Mono',monospace;">DAILY <span style="margin:0 6px;color:#64748b;">—</span> <span style="color:#64748b;">WEEKLY</span></h3>
+                <p style="color:#8c9bab;font-size:12px;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;margin:0;">
+                    Stocks with bad news during the week are cut. Only clean picks survive to Sunday.
+                </p>
+            </div>
+            <div style="border:1px solid #ceaa70;padding:14px;background:rgba(22,20,15,0.4);">
+                <h3 style="color:#ceaa70;font-size:10px;font-weight:700;letter-spacing:0.15em;margin:0 0 8px 0;font-family:'IBM Plex Mono',monospace;">WEEKLY <span style="margin:0 6px;color:#64748b;">—</span> <span style="color:#ceaa70;">MONTHLY</span></h3>
+                <p style="color:#8c9bab;font-size:12px;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;margin:0;">
+                    Only names that held conviction across the full month make the final report.
+                </p>
+            </div>
+        </section>
+
               </div>
             </div>
-
-            <!-- CURVED SVG FUNNEL 2: 4 lines converge to center -->
-            <div style="width:100%;height:56px;flex-shrink:0;position:relative;">
-              <svg width="100%" height="56" viewBox="0 0 1000 100" preserveAspectRatio="none" fill="none">
-                <path d="M 125 0 C 125 50, 500 50, 500 100" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-                <path d="M 375 0 C 375 50, 500 50, 500 100" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-                <path d="M 625 0 C 625 50, 500 50, 500 100" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-                <path d="M 875 0 C 875 50, 500 50, 500 100" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-              </svg>
-            </div>
-
-            <!-- MONTHLY FINAL CARD -->
-            <div style="background:#151821;border:1px solid #C9A84C;border-top:2px solid #C9A84C;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;box-shadow:0 0 20px rgba(201,168,76,0.1);">
-              <div>
-                <div style="font-size:9px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;margin-bottom:4px;">First Monday &middot; Monthly Report</div>
-                <div style="font-size:13px;color:#E4E8F0;font-family:'IBM Plex Sans',sans-serif;font-weight:300;">The month&rsquo;s definitive conclusion</div>
-              </div>
-              <div style="background:#C9A84C;font-size:9px;letter-spacing:2px;color:#070709;padding:6px 14px;text-transform:uppercase;font-weight:700;flex-shrink:0;">FINAL</div>
-            </div>
-
-            <!-- RULE STRIPS -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px;flex-shrink:0;">
-              <div style="background:#0D1410;border:1px solid #2D4A3E;border-left:2px solid #5A9C6A;padding:9px 12px;">
-                <div style="font-size:9px;letter-spacing:1px;color:#5A9C6A;text-transform:uppercase;margin-bottom:3px;">Daily &rarr; Weekly</div>
-                <div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.5;">Stocks with bad news during the week are cut. Only clean picks survive to Sunday.</div>
-              </div>
-              <div style="background:#151309;border:1px solid #2A2415;border-left:2px solid #C9A84C;padding:9px 12px;">
-                <div style="font-size:9px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;margin-bottom:3px;">Weekly &rarr; Monthly</div>
-                <div style="font-size:11px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.5;">Only names that held conviction across the full month make the final report.</div>
-              </div>
-            </div>
-
           </div>
 
           <!-- Slide 4: Financial Advisor -->
