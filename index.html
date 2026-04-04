@@ -1638,7 +1638,25 @@ footer span.brand{color:var(--gold)}
   <span class="brand">Stratum Wealth</span>
   <span>Daily · 9:10 AM ET · Multilingual · Bias-Aware</span>
   <span>stratumwealth.ca</span>
+  <span><a href="javascript:void(0)" onclick="openManagePortal()" style="color:#4A5270;text-decoration:none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#4A5270'">Manage Subscription</a></span>
 </footer>
+
+<!-- MANAGE SUBSCRIPTION MODAL -->
+<div class="modal-overlay" id="manageModal">
+  <div class="modal" style="max-width:420px;">
+    <button class="modal-close" onclick="closeManageModal()">✕ CLOSE</button>
+    <div class="modal-tag">// Manage Your Subscription</div>
+    <h2>Manage or Cancel</h2>
+    <p class="modal-sub">Enter your email to access your billing portal. You can upgrade, downgrade, or cancel anytime.</p>
+    <div class="modal-field">
+      <label class="modal-label" for="portal-email">Email Address</label>
+      <input class="modal-input" id="portal-email" type="email" placeholder="your@email.com" autocomplete="email">
+      <div class="modal-error" id="portal-error"></div>
+    </div>
+    <button class="modal-submit" id="portal-btn" onclick="openPortal()">Open Billing Portal →</button>
+    <div class="modal-note">Powered by Stripe · Secure · Cancel anytime</div>
+  </div>
+</div>
 
 <!-- UPGRADE MODAL (Plus & Quant) -->
 <div class="modal-overlay" id="upgradeModal">
@@ -1917,6 +1935,54 @@ function shakeEl(el) {
   void el.offsetWidth;
   el.classList.add('shake');
   el.addEventListener('animationend', function(){ el.classList.remove('shake'); }, { once: true });
+}
+
+// ── MANAGE SUBSCRIPTION PORTAL ──
+function openManagePortal() {
+  document.getElementById('manageModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ document.getElementById('portal-email').focus(); }, 100);
+}
+function closeManageModal() {
+  document.getElementById('manageModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('manageModal').addEventListener('click', function(e) {
+  if (e.target === this) closeManageModal();
+});
+async function openPortal() {
+  const email = document.getElementById('portal-email').value.trim();
+  const btn = document.getElementById('portal-btn');
+  const err = document.getElementById('portal-error');
+  err.classList.remove('show');
+  if (!email || !email.includes('@')) {
+    err.textContent = '▸ Please enter your email address';
+    err.classList.add('show');
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = 'OPENING...';
+  try {
+    const res = await fetch(API_BASE + '/create-portal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      window.location.href = data.url;
+    } else {
+      err.textContent = '▸ ' + (data.error || 'No subscription found for this email.');
+      err.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'Open Billing Portal →';
+    }
+  } catch (e) {
+    err.textContent = '▸ Connection error. Please try again.';
+    err.classList.add('show');
+    btn.disabled = false;
+    btn.textContent = 'Open Billing Portal →';
+  }
 }
 </script>
 </body>
