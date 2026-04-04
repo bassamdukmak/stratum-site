@@ -1753,16 +1753,31 @@ async function handleFreeSignup(e) {
     });
 
     if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (data.message === 'proceed_to_checkout') {
+        // They're already subscribed free, let them upgrade
+        openModal('plus');
+        return;
+      }
       form.style.display = 'none';
       document.getElementById('free-tc-row').style.display = 'none';
       document.getElementById('free-form-note').style.display = 'none';
       success.classList.add('visible');
     } else {
       const data = await res.json().catch(() => ({}));
-      error.textContent = '▸ ' + (data.error || 'Something went wrong. Please try again.');
-      error.classList.add('visible');
-      btn.disabled = false;
-      btn.textContent = 'SUBSCRIBE';
+      if (data.already) {
+        // Already subscribed — show friendly message
+        form.style.display = 'none';
+        document.getElementById('free-tc-row').style.display = 'none';
+        document.getElementById('free-form-note').style.display = 'none';
+        success.textContent = '▸ ' + data.error;
+        success.classList.add('visible');
+      } else {
+        error.textContent = '▸ ' + (data.error || 'Something went wrong. Please try again.');
+        error.classList.add('visible');
+        btn.disabled = false;
+        btn.textContent = 'SUBSCRIBE';
+      }
     }
   } catch (err) {
     form.style.display = 'none';
@@ -1890,12 +1905,21 @@ async function submitUpgrade() {
   submitBtn.textContent = 'PROCESSING...';
 
   try {
-    // 1) Create subscriber record first
-    await fetch(API_BASE + '/subscribe', {
+    // 1) Create or check subscriber record
+    const subCheck = await fetch(API_BASE + '/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, name, tier: currentModalTier })
     });
+    if (!subCheck.ok) {
+      const subData = await subCheck.json().catch(() => ({}));
+      if (subData.already) {
+        alert(subData.error + '\n\nIf you want to upgrade, please contact us at reports@stratumwealth.ca');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Continue to Secure Checkout →';
+        return;
+      }
+    }
 
     // 2) Get Stripe checkout URL
     const res = await fetch(API_BASE + '/create-checkout', {
