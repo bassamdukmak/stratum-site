@@ -1914,10 +1914,20 @@ async function submitUpgrade() {
     if (!subCheck.ok) {
       const subData = await subCheck.json().catch(() => ({}));
       if (subData.already) {
-        alert(subData.error + '\n\nIf you want to upgrade, please contact us at reports@stratumwealth.ca');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Continue to Secure Checkout →';
-        return;
+        const currentTier = subData.tier;
+        const wantTier = currentModalTier;
+        // Allow upgrade: free→plus, free→quant, plus→quant
+        const upgradeAllowed = (currentTier === 'free') ||
+                               (currentTier === 'plus' && wantTier === 'quant');
+        if (!upgradeAllowed) {
+          // Same tier or downgrade — show manage portal instead
+          const go = confirm(subData.error + '\n\nWould you like to manage your subscription (cancel, update card, or change plan)?');
+          if (go) openBillingPortal(email);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Continue to Secure Checkout →';
+          return;
+        }
+        // Otherwise fall through to checkout — it's an upgrade
       }
     }
 
@@ -1959,6 +1969,30 @@ function shakeEl(el) {
   void el.offsetWidth;
   el.classList.add('shake');
   el.addEventListener('animationend', function(){ el.classList.remove('shake'); }, { once: true });
+}
+
+// ── BILLING PORTAL ──
+async function openBillingPortal(email) {
+  if (!email) {
+    email = prompt('Enter your subscription email address:');
+    if (!email) return;
+  }
+  try {
+    const res = await fetch(API_BASE + '/create-portal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      window.location.href = data.url;
+    } else {
+      const data = await res.json().catch(() => ({}));
+      alert(data.error || 'Could not find a subscription for that email. Please check and try again.');
+    }
+  } catch (err) {
+    alert('Connection error. Please try again.');
+  }
 }
 
 // ── MANAGE SUBSCRIPTION PORTAL ──
