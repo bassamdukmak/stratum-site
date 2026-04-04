@@ -418,19 +418,153 @@ footer span.brand{color:var(--gold)}
   .plans{grid-template-columns:1fr}
   .plan{border-right:none;border-bottom:1px solid var(--border2)}
   .plan.plus{border-top:3px solid var(--gold);}
-  .hero-mark{display:none;}
+  .hero-mark{display:none!important;}
+  /* Fix hero once right panel hides: unset forced height, tighten padding */
+  .hero{min-height:unset!important;}
+  .hero-inner>div:first-child{padding:48px 36px!important;justify-content:flex-start!important;gap:28px!important;}
 }
 @media(max-width:700px){
   .intel{grid-template-columns:1fr}
-  .intel-cell{border-right:none;border-bottom:1px solid var(--border2)}
+  .intel-cell{border-right:none;border-bottom:1px solid var(--border2);padding:24px 20px}
   .data-strip{grid-template-columns:1fr 1fr}
   .data-cell:nth-child(2){border-right:none}
+  .data-val{font-size:26px}
+  .data-key{font-size:10px;letter-spacing:1px}
   footer{flex-direction:column;gap:8px;text-align:center}
-  .hero{padding:48px 20px 40px}
+  /* Override hero inline padding:0 and min-height:600px */
+  .hero{padding:0!important;min-height:unset!important}
+  /* Override hero left panel inline padding:64px 48px */
+  .hero-inner>div:first-child{padding:36px 20px!important;justify-content:flex-start!important;gap:24px!important}
+  /* Smaller h1 on narrow screens (overrides clamp(44px,7vw,84px)) */
+  .hero h1{font-size:clamp(28px,8vw,48px)!important;letter-spacing:-1px}
   .plan{padding:36px 20px}
   nav,.sec-head{padding:0 16px}
+  .sec-label{font-size:11px;letter-spacing:2px}
+  .sec-meta{font-size:10px;letter-spacing:1px}
   .email-row{flex-direction:column}
   .e-input{border-right:1px solid var(--border2)!important;border-bottom:none}
+}
+/* ── PHONE (≤480px) ── */
+@media(max-width:480px){
+  /* Hero: tighter padding */
+  .hero-inner>div:first-child{padding:24px 16px!important;gap:18px!important}
+  /* Hero h1 */
+  .hero h1{font-size:clamp(26px,7vw,36px)!important}
+  /* Hero-desc */
+  .hero-desc{font-size:12px;margin-top:16px}
+  /* Hero feature bullets: stack label above description text */
+  .hero-bullets>div{flex-direction:column!important;gap:6px!important;padding:12px 14px!important}
+  .hero-bullets>div>div:first-child{min-width:unset!important;margin-top:0!important}
+  /* Hero feature bullets container: tighten gap */
+  .hero-bullets{gap:8px!important;margin-top:20px!important}
+  /* Nav */
+  nav{padding:0 12px;height:42px}
+  .logo{font-size:12px;letter-spacing:4px}
+  .nav-right{font-size:9px;letter-spacing:1px}
+  /* Topbar ticker */
+  .topbar-item{font-size:10px!important;padding:0 18px!important;letter-spacing:1px!important}
+  /* Data strip */
+  .data-cell{padding:16px 14px}
+  .data-val{font-size:22px}
+  .data-key{font-size:9px}
+  /* Section headers */
+  .sec-head{padding:10px 12px!important;gap:8px}
+  .sec-label{font-size:10px;letter-spacing:1px}
+  .sec-meta{font-size:9px;letter-spacing:0.5px}
+  /* Hero tag */
+  .hero-tag{letter-spacing:1.5px!important;font-size:9px}
+  /* Plans */
+  .plan{padding:28px 16px}
+  .plan-tier{font-size:11px}
+  .p-amount{font-size:44px}
+  .p-decimal{font-size:22px}
+  .plan-desc{font-size:13px}
+  /* Feature list */
+  .feat li{font-size:13px;padding:9px 0}
+  /* Buttons */
+  .btn-up{font-size:9px;padding:13px}
+  .e-btn{font-size:11px;padding:13px 14px}
+  /* Intel grid */
+  .intel-cell{padding:20px 16px}
+  .i-num{font-size:24px}
+  .i-title{font-size:12px}
+  .i-desc{font-size:13px}
+  /* Compare table */
+  .compare th{padding:10px 10px;font-size:9px;letter-spacing:2px}
+  .compare td{padding:10px 10px;font-size:12px}
+  .compare td.feature{font-size:12px}
+  .compare td.yes,.compare td.no{font-size:11px}
+  /* Modal: full-width on phones */
+  .modal{padding:24px 16px;margin:0;max-width:100%;border-left:none;border-right:none;border-bottom:none;}
+  .modal-overlay.open{align-items:flex-end}
+  .modal h2{font-size:18px}
+  .modal-sub{font-size:11px}
+  .tier-select{grid-template-columns:1fr}
+  /* Footer */
+  footer{padding:12px 16px}
+  footer span{font-size:11px;letter-spacing:1px}
+}
+/* ── MOBILE SLIDES SECTION ── */
+.mobile-slides-section{display:none;border-bottom:1px solid var(--border2);background:var(--black);}
+@media(max-width:900px){.mobile-slides-section{display:block;}}
+.msec-head{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border2);background:var(--surface);}
+.msec-label{font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;}
+.msec-counter{font-size:10px;color:var(--text-muted);letter-spacing:1px;}
+.mslide{display:none;padding:24px 16px;flex-direction:column;gap:16px;min-height:300px;}
+.mslide.on{display:flex;}
+.mslide-lbl{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;display:flex;align-items:center;gap:10px;}
+.mslide-lbl::before{content:"";display:block;width:14px;height:1px;background:var(--gold-dim);flex-shrink:0;}
+.mslide-ttl{font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:300;color:var(--white);line-height:1.3;}
+.mslide-ttl strong{font-weight:600;color:var(--gold);}
+.mslide-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.mslide-stat{background:var(--surface);border:1px solid var(--border);padding:14px;display:flex;flex-direction:column;gap:5px;}
+.mstat-v{font-size:26px;font-weight:500;color:var(--gold);line-height:1;}
+.mstat-k{font-size:9px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;}
+.mslide-cards{display:flex;flex-direction:column;gap:8px;}
+.mcard{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--gold);padding:12px 14px;}
+.mcard-t{font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:5px;}
+.mcard-d{font-size:12px;color:var(--text-secondary);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;}
+.mmets{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.mmet{background:var(--surface);border:1px solid var(--border);padding:10px;}
+.mmet-v{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:3px;}
+.mmet-k{font-size:9px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;}
+.mbadge-sell{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;color:var(--red);border:1px solid var(--red);background:rgba(194,90,90,0.1);flex-shrink:0;}
+.mbadge-buy{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;color:#5A9C6A;border:1px solid #5A9C6A;background:rgba(90,156,106,0.1);flex-shrink:0;}
+.mverdict{background:var(--surface);border:1px solid var(--border);border-left:2px solid #5A9C6A;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.mverdict-ico{color:#5A9C6A;font-size:14px;flex-shrink:0;}
+.mverdict-lbl{font-size:8px;letter-spacing:2px;color:#5A9C6A;text-transform:uppercase;margin-bottom:3px;}
+.mverdict-txt{font-size:12px;color:var(--text-primary);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;}
+.mflow{display:flex;flex-direction:column;gap:0;}
+.mflow-step{background:var(--surface);border:1px solid var(--border);padding:12px 14px;}
+.mflow-step+.mflow-step{border-top:none;}
+.mflow-step-lbl{font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.mflow-step-txt{font-size:12px;color:var(--text-secondary);font-family:'IBM Plex Sans',sans-serif;line-height:1.5;}
+.mflow-arrow{text-align:center;color:var(--gold-dim);font-size:16px;line-height:1;padding:4px 0;}
+.mplan-card{background:var(--surface);border:2px solid var(--border2);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s;}
+.mplan-card+.mplan-card{margin-top:6px;}
+.mplan-card:active{border-color:var(--gold);}
+.mplan-card.featured{border-color:var(--gold);}
+.mplan-name{font-size:11px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;font-weight:600;margin-bottom:3px;}
+.mplan-card.featured .mplan-name{color:var(--gold);}
+.mplan-sub{font-size:11px;color:var(--text-dim);font-family:'IBM Plex Sans',sans-serif;}
+.mplan-price{font-size:20px;font-weight:500;color:var(--white);text-align:right;}
+.mplan-card.featured .mplan-price{color:var(--gold);}
+.mplan-per{font-size:10px;color:var(--text-muted);}
+.mslides-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid var(--border2);}
+.mdots{display:flex;gap:6px;align-items:center;}
+.marrows{display:flex;gap:6px;}
+.marrow-btn{background:transparent;border:1px solid var(--border2);color:var(--text-muted);font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 18px;cursor:pointer;transition:all 0.15s;}
+.marrow-btn:active{border-color:var(--gold);color:var(--gold);}
+
+/* ── VERY SMALL PHONES (≤380px) ── */
+@media(max-width:380px){
+  .hero-inner>div:first-child{padding:20px 14px!important}
+  .hero h1{font-size:clamp(24px,7vw,32px)!important}
+  .data-cell{padding:12px 10px;border-right:none;border-bottom:1px solid var(--border2);}
+  .data-val{font-size:20px}
+  .data-key{font-size:8px;letter-spacing:0.5px}
+  .logo{font-size:11px;letter-spacing:3px}
+  nav{padding:0 10px}
 }
 </style>
 </head>
@@ -486,7 +620,7 @@ footer span.brand{color:var(--gold)}
       </div>
 
       <!-- FEATURE BULLETS -->
-      <div style="display:flex;flex-direction:column;gap:12px;margin-top:40px;">
+      <div class="hero-bullets" style="display:flex;flex-direction:column;gap:12px;margin-top:40px;">
         <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#10131A;border:1px solid #1C2030;border-left:2px solid #C9A84C;">
           <div style="flex-shrink:0;font-size:11px;letter-spacing:2px;color:#C9A84C;text-transform:uppercase;min-width:100px;margin-top:2px;">Cross-Language</div>
           <div style="font-size:13px;color:#7A8099;font-family:'IBM Plex Sans',sans-serif;line-height:1.6;">Scans English, Chinese, Japanese &amp; Arabic sources simultaneously. Catch signals before the Western press.</div>
@@ -1003,6 +1137,195 @@ footer span.brand{color:var(--gold)}
       canvas.onmousemove=function(e){var rect=canvas.getBoundingClientRect();var idx=Math.floor((e.clientX-rect.left-pad.l)/(cW/data.length));if(idx>=0&&idx<data.length){var d=data[idx];var el=document.getElementById(ohlcId);if(el)el.textContent=d.d+' O:$'+d.o.toFixed(2)+' H:$'+d.h.toFixed(2)+' L:$'+d.l.toFixed(2)+' C:$'+d.c.toFixed(2);}};
       canvas.onmouseleave=function(){var el=document.getElementById(ohlcId);if(el)el.textContent='Hover for OHLC';};
     }
+  };
+})();
+</script>
+
+<!-- ── MOBILE SLIDES (≤900px only) ── -->
+<div class="mobile-slides-section">
+  <div class="msec-head">
+    <span class="msec-label">&#9658; Stratum Intelligence</span>
+    <span class="msec-counter" id="mSlideCounter">1 / 8</span>
+  </div>
+
+  <div id="mSlidesWrap">
+
+    <!-- M-Slide 1: What Is Stratum -->
+    <div class="mslide on">
+      <div class="mslide-lbl">01 / 08 &middot; What Is Stratum</div>
+      <div class="mslide-ttl">Institutional-grade intel<br><strong>for everyone.</strong></div>
+      <div class="mslide-stats">
+        <div class="mslide-stat"><span class="mstat-v">9:10</span><span class="mstat-k">AM ET Daily</span></div>
+        <div class="mslide-stat"><span class="mstat-v">10</span><span class="mstat-k">Report Sections</span></div>
+        <div class="mslide-stat"><span class="mstat-v">4</span><span class="mstat-k">Languages Scanned</span></div>
+        <div class="mslide-stat"><span class="mstat-v">$0</span><span class="mstat-k">To Start</span></div>
+      </div>
+    </div>
+
+    <!-- M-Slide 2: Inside Every Report -->
+    <div class="mslide">
+      <div class="mslide-lbl">02 / 08 &middot; Inside Every Report</div>
+      <div class="mslide-ttl">10 sections.<br><strong>One sharp brief.</strong></div>
+      <div class="mslide-cards">
+        <div class="mcard"><div class="mcard-t">Executive Snapshot</div><div class="mcard-d">Market regime + biggest driver + what to watch before open.</div></div>
+        <div class="mcard"><div class="mcard-t">Top 5 Trade Ideas</div><div class="mcard-d">Ranked by conviction. Buy Now, Watch, or Avoid.</div></div>
+        <div class="mcard"><div class="mcard-t">Cross-Language Intel</div><div class="mcard-d">English &middot; Chinese &middot; Japanese &middot; Arabic — catch signals first.</div></div>
+        <div class="mcard"><div class="mcard-t">Geopolitical Radar</div><div class="mcard-d">Conflict zones and commodity risks mapped directly to tradable tickers.</div></div>
+      </div>
+    </div>
+
+    <!-- M-Slide 3: Weekly & Monthly -->
+    <div class="mslide">
+      <div class="mslide-lbl">03 / 08 &middot; Weekly &amp; Monthly</div>
+      <div class="mslide-ttl">We refine. We eliminate.<br><strong>We conclude.</strong></div>
+      <div class="mflow">
+        <div class="mflow-step">
+          <div class="mflow-step-lbl">Daily &mdash; Mon to Fri</div>
+          <div class="mflow-step-txt">5 daily reports each week. Every signal tracked from market open to close.</div>
+        </div>
+        <div class="mflow-arrow">&#8595;</div>
+        <div class="mflow-step">
+          <div class="mflow-step-lbl">Weekly &mdash; Every Sunday</div>
+          <div class="mflow-step-txt">Bad picks eliminated. Only clean signals that survived the full week make the weekly report.</div>
+        </div>
+        <div class="mflow-arrow">&#8595;</div>
+        <div class="mflow-step">
+          <div class="mflow-step-lbl">Monthly &mdash; First Monday <span style="color:var(--gold-dim);letter-spacing:1px;">&middot; Quant Only</span></div>
+          <div class="mflow-step-txt">Only names with conviction across the full month reach the definitive monthly conclusion.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- M-Slide 4: Financial Advisor -->
+    <div class="mslide">
+      <div class="mslide-lbl">04 / 08 &middot; Financial Advisor Deep Dive</div>
+      <div class="mslide-ttl">18 data points per stock.<br><strong>Every Sunday. Plus &amp; Quant.</strong></div>
+      <div class="mmets">
+        <div class="mmet"><div class="mmet-v">EPS (TTM)</div><div class="mmet-k">Trailing Earnings</div></div>
+        <div class="mmet"><div class="mmet-v">P/E Ratio</div><div class="mmet-k">vs. Sector Avg</div></div>
+        <div class="mmet"><div class="mmet-v">Free Cash Flow</div><div class="mmet-k">After Capex</div></div>
+        <div class="mmet"><div class="mmet-v">Consensus</div><div class="mmet-k">Strong Buy &rarr; Sell</div></div>
+        <div class="mmet"><div class="mmet-v">Insider Own.</div><div class="mmet-k">Exact % Held</div></div>
+        <div class="mmet"><div class="mmet-v">52-Week Range</div><div class="mmet-k">High / Low %</div></div>
+        <div class="mmet"><div class="mmet-v">Gross Margin</div><div class="mmet-k">Profitability %</div></div>
+        <div class="mmet" style="border-color:var(--gold);background:var(--surface2);"><div class="mmet-v" style="color:var(--gold);">Final Label</div><div class="mmet-k">Strong Buy &rarr; Avoid</div></div>
+      </div>
+    </div>
+
+    <!-- M-Slide 5: Choose Plan -->
+    <div class="mslide">
+      <div class="mslide-lbl">05 / 08 &middot; Choose Your Plan</div>
+      <div class="mslide-ttl">Start free.<br><strong>Upgrade when ready.</strong></div>
+      <div>
+        <div class="mplan-card" onclick="document.getElementById('free-plan').scrollIntoView({behavior:'smooth',block:'center'});">
+          <div><div class="mplan-name">Free</div><div class="mplan-sub">1 report/week &middot; No card needed</div></div>
+          <div><div class="mplan-price">$0</div><div class="mplan-per">/ forever</div></div>
+        </div>
+        <div class="mplan-card featured" onclick="document.getElementById('free-plan').nextElementSibling.scrollIntoView({behavior:'smooth',block:'center'});">
+          <div><div class="mplan-name">Plus</div><div class="mplan-sub">Daily + Financial Advisor</div></div>
+          <div><div class="mplan-price">$19.99</div><div class="mplan-per" style="color:var(--gold);opacity:0.7;">Most Popular</div></div>
+        </div>
+        <div class="mplan-card" onclick="document.querySelector('.plan.quant-card').scrollIntoView({behavior:'smooth',block:'center'});">
+          <div><div class="mplan-name">Quant</div><div class="mplan-sub">Everything + Congressional</div></div>
+          <div><div class="mplan-price">$49.99</div><div class="mplan-per">/mo</div></div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--text-dim);text-align:center;font-family:'IBM Plex Sans',sans-serif;">Tap any plan to see full details &darr;</div>
+    </div>
+
+    <!-- M-Slide 6: Verified Call – Silver -->
+    <div class="mslide">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <div class="mslide-lbl">06 / 08 &middot; Verified Call &middot; Silver</div>
+        <span class="mbadge-sell">SELL &middot; 88%</span>
+      </div>
+      <div class="mslide-ttl">Chinese media warned buyers.<br><strong>&minus;38% crash in 48 hours.</strong></div>
+      <div class="mslide-stats">
+        <div class="mslide-stat"><span class="mstat-v">$101.59</span><span class="mstat-k">Signal Price</span></div>
+        <div class="mslide-stat"><span class="mstat-v" style="color:var(--red);">&minus;38%</span><span class="mstat-k">48hr Crash</span></div>
+        <div class="mslide-stat"><span class="mstat-v">$66.69</span><span class="mstat-k">Price Feb 5</span></div>
+        <div class="mslide-stat"><span class="mstat-v">88%</span><span class="mstat-k">Conviction</span></div>
+      </div>
+      <div class="mslide-cards">
+        <div class="mcard"><div class="mcard-t">Chinese Media Signal</div><div class="mcard-d">Chinese financial media explicitly warned buyers of a crash. English sources were still bullish. Stratum caught the divergence.</div></div>
+        <div class="mcard"><div class="mcard-t">Technical Signal</div><div class="mcard-d">Silver was in extreme overbought territory above $112. RSI divergence confirmed. Textbook distribution pattern at the peak.</div></div>
+      </div>
+      <div class="mverdict"><span class="mverdict-ico">&#10003;</span><div><div class="mverdict-lbl">Verified Outcome</div><div class="mverdict-txt">SLV peaked at $106.45 intraday on Jan 28. By Feb 5 it had crashed to $65.51 — a 38% collapse while retail buyers were still long.</div></div></div>
+    </div>
+
+    <!-- M-Slide 7: Verified Call – Oil -->
+    <div class="mslide">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <div class="mslide-lbl">07 / 08 &middot; Verified Call &middot; Oil (USO)</div>
+        <span class="mbadge-buy">BUY</span>
+      </div>
+      <div class="mslide-ttl">Arabic sources flagged Hormuz risk.<br><strong>USO +90% in 90 days.</strong></div>
+      <div class="mslide-stats">
+        <div class="mslide-stat"><span class="mstat-v">$68.03</span><span class="mstat-k">USO Signal</span></div>
+        <div class="mslide-stat"><span class="mstat-v" style="color:#5A9C6A;">+90%</span><span class="mstat-k">Peak Move</span></div>
+        <div class="mslide-stat"><span class="mstat-v">$121.67</span><span class="mstat-k">USO Peak</span></div>
+        <div class="mslide-stat"><span class="mstat-v">20%</span><span class="mstat-k">Oil via Hormuz</span></div>
+      </div>
+      <div class="mslide-cards">
+        <div class="mcard"><div class="mcard-t">Arabic Media Signal</div><div class="mcard-d">Arabic sources flagged escalating Strait of Hormuz risk weeks before English media. Stratum's cross-language engine caught it first.</div></div>
+        <div class="mcard"><div class="mcard-t">Supply Chain Signal</div><div class="mcard-d">20% of global seaborne oil transits Hormuz. Any disruption creates an immediate supply shock. OPEC+ cuts amplified the setup.</div></div>
+      </div>
+      <div class="mverdict"><span class="mverdict-ico">&#10003;</span><div><div class="mverdict-lbl">Verified Outcome</div><div class="mverdict-txt">USO rose from $68 in Dec 2025 to $129.83 by Mar 30 — a +90% move. US-Israel strikes triggered Hormuz closure exactly as the Arabic signal predicted.</div></div></div>
+    </div>
+
+    <!-- M-Slide 8: Verified Call – Tesla -->
+    <div class="mslide">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <div class="mslide-lbl">08 / 08 &middot; Verified Call &middot; Tesla (TSLA)</div>
+        <span class="mbadge-sell">SELL</span>
+      </div>
+      <div class="mslide-ttl">322x P/E. China tax cliff incoming.<br><strong>Sell the December hype.</strong></div>
+      <div class="mslide-stats">
+        <div class="mslide-stat"><span class="mstat-v">$488.73</span><span class="mstat-k">Signal Price</span></div>
+        <div class="mslide-stat"><span class="mstat-v" style="color:var(--red);">&minus;28%</span><span class="mstat-k">Drop Mar 30</span></div>
+        <div class="mslide-stat"><span class="mstat-v">$355.28</span><span class="mstat-k">Mar 30 Close</span></div>
+        <div class="mslide-stat"><span class="mstat-v">322x</span><span class="mstat-k">P/E Ratio</span></div>
+      </div>
+      <div class="mslide-cards">
+        <div class="mcard"><div class="mcard-t">Chinese Media Signal</div><div class="mcard-d">30,000 RMB tax exemption expiring Dec 31. Record Dec sales were a temporal artifact — annual China sales fell 5% for the first time ever.</div></div>
+        <div class="mcard"><div class="mcard-t">Congressional Trading Alert</div><div class="mcard-d">$1.27M in suspicious congressional TSLA trades detected post-Musk endorsements. Political premium, not fundamental value.</div></div>
+      </div>
+      <div class="mverdict"><span class="mverdict-ico">&#10003;</span><div><div class="mverdict-lbl">Verified Outcome</div><div class="mverdict-txt">TSLA fell from $488.73 to $355.28 by Mar 30 — a 28% drop. The China tax cliff hit Jan 1 exactly as predicted. US Q4 deliveries collapsed 46%.</div></div></div>
+    </div>
+
+  </div><!-- end mSlidesWrap -->
+
+  <div class="mslides-nav">
+    <div class="mdots" id="mDots"></div>
+    <div class="marrows">
+      <button class="marrow-btn" onclick="mNav(-1)">&#8592;</button>
+      <button class="marrow-btn" onclick="mNav(1)">&#8594;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var cur=0,total=8;
+  var slides=document.querySelectorAll('.mslide');
+  var dotEl=document.getElementById('mDots');
+  var ctr=document.getElementById('mSlideCounter');
+  for(var i=0;i<total;i++){
+    var d=document.createElement('div');
+    d.style.cssText='width:6px;height:6px;background:'+(i===0?'#C9A84C':'#1C2030')+';cursor:pointer;transition:background 0.2s;flex-shrink:0;';
+    (function(idx,el){el.onclick=function(){mSet(idx);};})(i,d);
+    dotEl.appendChild(d);
+  }
+  window.mNav=function(dir){mSet((cur+dir+total)%total);};
+  window.mSet=function(n){
+    slides[cur].classList.remove('on');
+    slides[cur].style.display='none';
+    document.querySelectorAll('#mDots div')[cur].style.background='#1C2030';
+    cur=n;
+    slides[cur].classList.add('on');
+    slides[cur].style.display='flex';
+    document.querySelectorAll('#mDots div')[cur].style.background='#C9A84C';
+    if(ctr)ctr.textContent=(cur+1)+' / '+total;
   };
 })();
 </script>
