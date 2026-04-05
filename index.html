@@ -1427,10 +1427,13 @@ footer span.brand{color:var(--gold)}
       <li class="off"><span class="ico-off">□</span>No monthly wrap-up</li>
       <li class="off"><span class="ico-off">□</span>No congressional trading</li>
     </ul>
-    <button class="btn-up" onclick="openModal('plus')" id="plus-btn">
+    <button class="btn-up" onclick="openModal('plus', true)" id="plus-btn" style="margin-bottom:8px;">
       Start Free Trial — 7 Days Free
     </button>
-    <div class="up-note">Then $19.99/mo · Or $17.99/mo billed annually · Cancel anytime</div>
+    <button class="btn-up outline" onclick="openModal('plus', false)" style="margin-bottom:0;">
+      Subscribe Now — $19.99 / month
+    </button>
+    <div class="up-note">Or $17.99/mo billed annually · Cancel anytime</div>
   </div>
 
   <!-- QUANT -->
@@ -1792,12 +1795,19 @@ var currentModalTier = 'plus';
 var currentBilling = 'monthly';
 
 var modalConfig = {
-  plus: {
+  plus_trial: {
     tag: '// Stratum Plus — 7-Day Free Trial',
     title: 'Start Your Free Trial',
     sub: '7 days free — no charge today. Daily reports every morning at 9:10 AM ET. Cancel before day 8 and pay nothing.',
-    monthly: { label: 'Stratum Plus · Free for 7 days, then $19.99/mo',  amount: '$0 today' },
-    annual:  { label: 'Stratum Plus · Free for 7 days, then $17.99/mo',  amount: '$0 today' }
+    monthly: { label: 'Stratum Plus · Free for 7 days, then $19.99/mo', amount: '$0 today' },
+    annual:  { label: 'Stratum Plus · Free for 7 days, then $17.99/mo', amount: '$0 today' }
+  },
+  plus: {
+    tag: '// Stratum Plus Access',
+    title: 'Subscribe to Plus',
+    sub: 'Daily intelligence every morning at 9:10 AM ET. Financial Advisor Deep Dive every Sunday.',
+    monthly: { label: 'Stratum Plus · Monthly', amount: '$19.99 / mo' },
+    annual:  { label: 'Stratum Plus · Annual',  amount: '$17.99 / mo' }
   },
   quant: {
     tag: '// Stratum Quant Access',
@@ -1830,8 +1840,13 @@ function setBilling(billing) {
   }
 }
 
-function openModal(tier) {
-  currentModalTier = tier || 'plus';
+function openModal(tier, withTrial) {
+  // withTrial: true = free trial, false = direct subscribe, undefined = default (trial for plus)
+  var effectiveTier = tier || 'plus';
+  if (effectiveTier === 'plus') {
+    effectiveTier = (withTrial === false) ? 'plus' : 'plus_trial';
+  }
+  currentModalTier = effectiveTier;
   currentBilling = 'monthly';
   var cfg = modalConfig[currentModalTier];
   document.getElementById('modal-tag-label').textContent = cfg.tag;
@@ -1932,10 +1947,12 @@ async function submitUpgrade() {
     }
 
     // 2) Get Stripe checkout URL
+    var checkoutTier = currentModalTier === 'plus_trial' ? 'plus' : currentModalTier;
+    var withTrial = currentModalTier === 'plus_trial';
     const res = await fetch(API_BASE + '/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, name, tier: currentModalTier, billing: currentBilling })
+      body: JSON.stringify({ email, name, tier: checkoutTier, billing: currentBilling, trial: withTrial })
     });
 
     if (res.ok) {
