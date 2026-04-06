@@ -1386,7 +1386,7 @@ footer span.brand{color:var(--gold)}
       <li class="off"><span class="ico-off">□</span>No financial advisor</li>
       <li class="off"><span class="ico-off">□</span>No congressional trading</li>
     </ul>
-    <div class="form-success" id="free-success">▸ Welcome to Stratum. Your first briefing arrives this week.</div>
+    <div class="form-success" id="free-success">▸ Check your inbox — verify your email to activate your subscription.</div>
     <div class="form-error" id="free-error"></div>
     <div style="margin-top:auto;">
     <form class="email-row" id="freeForm" onsubmit="handleFreeSignup(event)">
@@ -2059,6 +2059,28 @@ async function openPortal() {
     btn.textContent = 'Open Billing Portal →';
   }
 }
+
+// ── CONFIRM REDIRECT HANDLER ──
+// When user clicks the verification link, they get redirected to ?confirmed=true
+// Show congratulations in place of the signup form
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('confirmed') === 'true') {
+    var form     = document.getElementById('freeForm');
+    var tcRow    = document.getElementById('free-tc-row');
+    var formNote = document.getElementById('free-form-note');
+    var success  = document.getElementById('free-success');
+    if (form)     form.style.display = 'none';
+    if (tcRow)    tcRow.style.display = 'none';
+    if (formNote) formNote.style.display = 'none';
+    if (success) {
+      success.textContent = '▸ You\'re in. Welcome to Stratum — your first report arrives this week.';
+      success.classList.add('visible');
+    }
+    // Clean the URL so refreshing doesn't re-trigger
+    window.history.replaceState({}, '', '/');
+  }
+})();
 </script>
 </body>
 </html>
