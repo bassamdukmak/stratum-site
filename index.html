@@ -578,6 +578,157 @@ footer span.brand{color:var(--gold)}
   .logo{font-size:11px;letter-spacing:3px}
   nav{padding:0 10px}
 }
+
+/* ── HAMBURGER MENU ── */
+.hamburger {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  cursor:pointer;
+  padding:6px;
+  margin-left:16px;
+  background:none;
+  border:none;
+  z-index:1001;
+}
+.hamburger span {
+  display:block;
+  width:20px;
+  height:2px;
+  background:var(--text-secondary);
+  transition:all 0.25s ease;
+}
+.hamburger:hover span { background:var(--gold); }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+.dropdown-menu {
+  display:none;
+  position:fixed;
+  top:46px;
+  right:0;
+  width:260px;
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-top:2px solid var(--gold);
+  z-index:1000;
+  animation:dropdown-in 0.2s ease;
+}
+.dropdown-menu.open { display:block; }
+@keyframes dropdown-in {
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.dropdown-item {
+  display:block;
+  padding:14px 20px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+  transition:all 0.15s;
+  text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;
+}
+.dropdown-item:last-child { border-bottom:none; }
+.dropdown-item:hover { background:var(--surface2); color:var(--gold); padding-left:26px; }
+
+/* ── PAGE OVERLAYS ── */
+.page-overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  z-index:999;
+  overflow-y:auto;
+  animation:page-in 0.25s ease;
+}
+.page-overlay.open { display:block; }
+@keyframes page-in {
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.page-inner {
+  max-width:720px;
+  margin:0 auto;
+  padding:60px 32px 80px;
+}
+.page-close {
+  position:fixed;
+  top:14px;
+  right:20px;
+  background:none;
+  border:none;
+  color:var(--text-muted);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:2px;
+  cursor:pointer;
+  text-transform:uppercase;
+  z-index:1001;
+  transition:color 0.15s;
+}
+.page-close:hover { color:var(--gold); }
+.page-tag {
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.page-title {
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:32px;
+  font-weight:300;
+  color:var(--white);
+  letter-spacing:-1px;
+  margin-bottom:32px;
+  line-height:1.1;
+}
+.page-section {
+  margin-bottom:36px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:36px;
+}
+.page-section:last-child { border-bottom:none; }
+.page-section h3 {
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:12px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.page-section p, .page-section li {
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.9;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:300;
+  margin-bottom:8px;
+}
+.page-section ul { list-style:none; padding:0; }
+.page-section ul li::before { content:"▸ "; color:var(--gold); }
+.faq-item { margin-bottom:20px; }
+.faq-q {
+  font-size:12px;
+  color:var(--white);
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:0.5px;
+  margin-bottom:6px;
+}
+.faq-a {
+  font-size:13px;
+  color:var(--text-secondary);
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:300;
+  line-height:1.8;
+}
+
 </style>
 
 <!-- Structured Data for Google -->
@@ -670,8 +821,207 @@ footer span.brand{color:var(--gold)}
   <div class="nav-right">
     <div class="live-dot"></div>
     <span>Live · 9:10 AM ET Daily</span>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- DROPDOWN MENU -->
+<div class="dropdown-menu" id="dropdownMenu">
+  <a class="dropdown-item" onclick="openPage('about')">// About Stratum</a>
+  <a class="dropdown-item" onclick="openPage('faq')">// FAQ</a>
+  <a class="dropdown-item" onclick="openPage('privacy')">// Privacy Policy</a>
+  <a class="dropdown-item" onclick="openPage('terms')">// Terms &amp; Conditions</a>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page-overlay" id="page-about">
+  <button class="page-close" onclick="closePage('about')">✕ Close</button>
+  <div class="page-inner">
+    <div class="page-tag">// About</div>
+    <h1 class="page-title">What Is<br>Stratum Wealth?</h1>
+    <div class="page-section">
+      <h3>The Mission</h3>
+      <p>Stratum Wealth was built on a simple idea: the kind of market intelligence that moves institutional money shouldn't be locked behind six-figure Bloomberg terminals or expensive research subscriptions.</p>
+      <p>We deliver a daily market intelligence briefing — every morning at 9:10 AM Eastern — covering the signals, sectors, and stories that matter. Written in plain English. No Wall Street jargon. No spin.</p>
+    </div>
+    <div class="page-section">
+      <h3>What You Get</h3>
+      <ul>
+        <li>A 10-section daily intelligence report covering macro, trade ideas, geopolitical risks, and more</li>
+        <li>Cross-language signal analysis — sources tracked across English, Chinese, Japanese, and Arabic media</li>
+        <li>Top 5 ranked actionable trade ideas with conviction scores and time horizons</li>
+        <li>Bias-aware reporting — we flag where Western and non-Western narratives diverge</li>
+        <li>Delivered to your inbox every morning, 365 days a year</li>
+      </ul>
+    </div>
+    <div class="page-section">
+      <h3>Who It's For</h3>
+      <p>Stratum is built for everyday people who want to understand what's actually moving markets — not for hedge fund managers who already have research teams. If you're new to investing, curious about markets, or just want to stay informed without spending hours reading financial news, Stratum is for you.</p>
+    </div>
+    <div class="page-section">
+      <h3>The Tiers</h3>
+      <ul>
+        <li><strong style="color:var(--white)">Free</strong> — One full report per week. Forever free. No credit card required.</li>
+        <li><strong style="color:var(--white)">Plus ($19.99/mo)</strong> — Daily reports plus Financial Advisor Deep Dive every Sunday.</li>
+        <li><strong style="color:var(--white)">Quant ($49.99/mo)</strong> — Everything in Plus, plus weekly summaries, monthly wrap-ups, and congressional trading watch.</li>
+      </ul>
+    </div>
+    <div class="page-section">
+      <h3>Disclaimer</h3>
+      <p>Stratum Wealth is an informational service. Nothing in our reports constitutes financial advice. Always consult a qualified financial professional before making investment decisions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ PAGE -->
+<div class="page-overlay" id="page-faq">
+  <button class="page-close" onclick="closePage('faq')">✕ Close</button>
+  <div class="page-inner">
+    <div class="page-tag">// FAQ</div>
+    <h1 class="page-title">Frequently Asked<br>Questions</h1>
+    <div class="page-section">
+      <div class="faq-item">
+        <div class="faq-q">Is Stratum really free?</div>
+        <div class="faq-a">Yes. The Free tier costs nothing and requires no credit card. You'll receive one full-quality intelligence report per week, delivered on a random weekday at 9:10 AM ET. The report is identical in quality to what paid subscribers receive.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When do reports arrive?</div>
+        <div class="faq-a">Reports are delivered every morning at 9:10 AM Eastern Time. Free tier subscribers receive one report per week. Plus and Quant subscribers receive a report every day.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between Free, Plus, and Quant?</div>
+        <div class="faq-a">Free gets one report per week. Plus ($19.99/mo) gets daily reports plus a Financial Advisor Deep Dive every Sunday. Quant ($49.99/mo) gets everything in Plus, plus weekly summaries, a monthly wrap-up, and congressional trading watch signals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the Financial Advisor Deep Dive?</div>
+        <div class="faq-a">A dedicated section analyzing key stocks in depth — covering earnings trends, valuation metrics, analyst targets, margins, and a final Buy / Hold / Sell verdict. Delivered every Sunday for Plus and Quant subscribers.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is Congressional Trading Watch?</div>
+        <div class="faq-a">A section that tracks unusual trading activity by U.S. politicians and flags patterns that may signal regulatory or policy developments before they become public news. Available on the Quant tier.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What languages do you analyze?</div>
+        <div class="faq-a">Our cross-language analysis covers English, Chinese, Japanese, and Arabic sources. We look for divergences between what Western media reports and what non-Western sources are saying — often the most valuable signals come from these gaps.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I cancel anytime?</div>
+        <div class="faq-a">Yes. Cancel anytime from your billing portal with no penalties. You'll retain access until the end of your current billing period, then drop to the Free tier automatically.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this financial advice?</div>
+        <div class="faq-a">No. Stratum Wealth is an informational and educational service only. Nothing in our reports should be construed as financial advice. Always consult a qualified financial professional before making investment decisions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I manage or cancel my subscription?</div>
+        <div class="faq-a">Click "Manage Subscription" in any report email, or visit stratumwealth.ca and use the manage subscription link in the footer. You can upgrade, downgrade, or cancel directly from there.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">I didn't receive my report. What should I do?</div>
+        <div class="faq-a">Check your spam or promotions folder first. If you still can't find it, make sure you confirmed your email subscription. Free tier subscribers only receive reports on their designated weekly day, not every day.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY POLICY PAGE -->
+<div class="page-overlay" id="page-privacy">
+  <button class="page-close" onclick="closePage('privacy')">✕ Close</button>
+  <div class="page-inner">
+    <div class="page-tag">// Legal</div>
+    <h1 class="page-title">Privacy<br>Policy</h1>
+    <div class="page-section">
+      <h3>Last Updated</h3>
+      <p>April 2026</p>
+    </div>
+    <div class="page-section">
+      <h3>What We Collect</h3>
+      <ul>
+        <li>Your email address — required to deliver reports</li>
+        <li>Your name — optional, used to personalize report emails</li>
+        <li>Payment information — processed securely by our payment provider. We never store your card details.</li>
+        <li>Subscription status and tier — to determine which reports you receive</li>
+      </ul>
+    </div>
+    <div class="page-section">
+      <h3>How We Use It</h3>
+      <ul>
+        <li>To deliver your daily market intelligence reports</li>
+        <li>To process subscription payments and manage your billing</li>
+        <li>To send transactional emails (welcome, confirmation, cancellation)</li>
+        <li>We do not sell your data. We do not use your data for advertising.</li>
+      </ul>
+    </div>
+    <div class="page-section">
+      <h3>Third Parties</h3>
+      <p>We use trusted third-party services to operate Stratum Wealth — including a payment processor for billing and an email delivery service for sending reports. These services receive only the minimum data necessary to perform their function.</p>
+    </div>
+    <div class="page-section">
+      <h3>Your Rights</h3>
+      <ul>
+        <li>You can unsubscribe at any time using the link in any email</li>
+        <li>You can request deletion of your data by emailing us at privacy@stratumwealth.ca</li>
+        <li>We comply with Canadian privacy law (PIPEDA)</li>
+      </ul>
+    </div>
+    <div class="page-section">
+      <h3>Cookies</h3>
+      <p>Stratum Wealth does not use tracking cookies or advertising pixels. We do not track your behavior across other websites.</p>
+    </div>
+    <div class="page-section">
+      <h3>Contact</h3>
+      <p>Questions about privacy? Email us at privacy@stratumwealth.ca</p>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS PAGE -->
+<div class="page-overlay" id="page-terms">
+  <button class="page-close" onclick="closePage('terms')">✕ Close</button>
+  <div class="page-inner">
+    <div class="page-tag">// Legal</div>
+    <h1 class="page-title">Terms &amp;<br>Conditions</h1>
+    <div class="page-section">
+      <h3>Last Updated</h3>
+      <p>April 2026</p>
+    </div>
+    <div class="page-section">
+      <h3>Not Financial Advice</h3>
+      <p>Stratum Wealth is an informational and educational service. Nothing published in our reports constitutes financial advice, investment advice, trading advice, or any other kind of advice. Always consult a qualified financial professional before making any investment decision. Stratum Wealth is not liable for any financial losses arising from use of our reports.</p>
+    </div>
+    <div class="page-section">
+      <h3>Subscriptions</h3>
+      <ul>
+        <li>Paid subscriptions are billed monthly or annually depending on your selection</li>
+        <li>You may cancel at any time — access continues until the end of the current billing period</li>
+        <li>We do not offer refunds for partial billing periods</li>
+        <li>Free tier access is provided indefinitely at no charge</li>
+      </ul>
+    </div>
+    <div class="page-section">
+      <h3>Intellectual Property</h3>
+      <p>All reports, content, and analysis published by Stratum Wealth are for your personal use only. You may not reproduce, republish, resell, or distribute our reports without written permission. Sharing individual insights is fine — republishing entire reports is not.</p>
+    </div>
+    <div class="page-section">
+      <h3>Limitation of Liability</h3>
+      <p>Stratum Wealth provides information on an "as is" basis. We make no guarantees about the accuracy, completeness, or timeliness of our reports. To the maximum extent permitted by law, Stratum Wealth is not liable for any direct, indirect, or consequential damages arising from your use of our service.</p>
+    </div>
+    <div class="page-section">
+      <h3>Governing Law</h3>
+      <p>These terms are governed by the laws of the Province of Quebec, Canada. Any disputes shall be resolved in the courts of Quebec.</p>
+    </div>
+    <div class="page-section">
+      <h3>Changes to These Terms</h3>
+      <p>We may update these terms from time to time. Continued use of Stratum Wealth after changes constitutes acceptance of the updated terms.</p>
+    </div>
+    <div class="page-section">
+      <h3>Contact</h3>
+      <p>Questions? Email us at support@stratumwealth.ca</p>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero" style="padding:0;min-height:600px;display:flex;align-items:stretch;">
@@ -2047,6 +2397,53 @@ function showTerms(e) {
 function hideTerms() {
   document.getElementById('terms-section').style.display = 'none';
 }
+
+// ── HAMBURGER MENU ──
+function toggleMenu() {
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('dropdownMenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+
+function openPage(id) {
+  // Close menu first
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('dropdownMenu').classList.remove('open');
+  // Open page
+  document.getElementById('page-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePage(id) {
+  document.getElementById('page-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('dropdownMenu');
+  var btn = document.getElementById('hamburger');
+  if (menu && menu.classList.contains('open')) {
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+    }
+  }
+});
+
+// Close pages with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    ['about','faq','privacy','terms'].forEach(function(id) {
+      var el = document.getElementById('page-' + id);
+      if (el && el.classList.contains('open')) {
+        closePage(id);
+      }
+    });
+    closeModal();
+  }
+});
 
 function shakeEl(el) {
   el.classList.remove('shake');
