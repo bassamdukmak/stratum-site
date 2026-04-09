@@ -50,6 +50,9 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*:not(input):not(textarea):not(select) { user-select:none; -webkit-user-select:none; cursor:default; }
+input, textarea, select { cursor:text; user-select:text; }
+button, a, [onclick] { cursor:pointer !important; }
 
 :root {
   --navy:       #1B2A4A;
@@ -608,8 +611,8 @@ footer span.brand{color:var(--gold)}
   display:none;
   position:fixed;
   top:46px;
-  right:0;
-  width:260px;
+  right:20px;
+  width:220px;
   background:var(--surface);
   border:1px solid var(--border2);
   border-top:2px solid var(--gold);
