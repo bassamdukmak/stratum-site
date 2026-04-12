@@ -291,11 +291,18 @@ nav{
 
 /* SUCCESS / ERROR */
 .form-success{
-  display:none;padding:13px 16px;
-  border:1px solid var(--gold-dim);background:rgba(201,168,76,0.06);
-  color:var(--gold);font-size:12px;letter-spacing:1px;margin-bottom:10px;
+  display:none;padding:20px;
+  border:1px solid rgba(93,232,142,0.12);background:rgba(93,232,142,0.04);
+  font-size:12px;margin-bottom:10px;border-radius:4px;
 }
 .form-success.visible{display:block}
+.form-success .s-title{font-size:14px;font-weight:500;color:#5DE88E;margin-bottom:6px;}
+.form-success .s-desc{font-size:12px;color:#7A8099;line-height:1.6;}
+.form-success .s-desc strong{color:#E4E8F0;}
+.form-success .s-steps{margin-top:12px;padding-top:12px;border-top:1px solid rgba(93,232,142,0.08);}
+.form-success .s-step{display:flex;gap:10px;margin-bottom:6px;font-size:12px;color:#7A8099;align-items:flex-start;}
+.form-success .s-step strong{color:#C4C8D4;}
+.form-success .s-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#5DE88E;background:rgba(93,232,142,0.1);min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;}
 .form-error{
   display:none;padding:13px 16px;
   border:1px solid #6B3030;background:rgba(107,48,48,0.1);
@@ -1841,7 +1848,7 @@ footer span.brand{color:var(--gold)}
       <li class="off"><span class="ico-off">□</span>No financial advisor</li>
       <li class="off"><span class="ico-off">□</span>No congressional trading</li>
     </ul>
-    <div class="form-success" id="free-success">▸ Check your inbox — verify your email to activate your subscription.</div>
+    <div class="form-success" id="free-success"></div>
     <div class="form-error" id="free-error"></div>
     <div style="margin-top:auto;">
     <form class="email-row" id="freeForm" onsubmit="handleFreeSignup(event)">
@@ -2220,6 +2227,13 @@ async function handleFreeSignup(e) {
       form.style.display = 'none';
       document.getElementById('free-tc-row').style.display = 'none';
       document.getElementById('free-form-note').style.display = 'none';
+      success.innerHTML = '<div class="s-title">Almost there — check your email</div>' +
+        '<div class="s-desc">We sent a confirmation link to <strong>' + email + '</strong></div>' +
+        '<div class="s-steps">' +
+        '<div class="s-step"><span class="s-num">1</span> Open the email from <strong>Stratum Wealth</strong></div>' +
+        '<div class="s-step"><span class="s-num">2</span> Click <strong>Verify My Email</strong></div>' +
+        '<div class="s-step"><span class="s-num">3</span> Your first report arrives within the week</div>' +
+        '</div>';
       success.classList.add('visible');
     } else {
       const data = await res.json().catch(() => ({}));
@@ -2241,6 +2255,13 @@ async function handleFreeSignup(e) {
     form.style.display = 'none';
     document.getElementById('free-tc-row').style.display = 'none';
     document.getElementById('free-form-note').style.display = 'none';
+    success.innerHTML = '<div class="s-title">Almost there — check your email</div>' +
+      '<div class="s-desc">We sent a confirmation link to <strong>' + email + '</strong></div>' +
+      '<div class="s-steps">' +
+      '<div class="s-step"><span class="s-num">1</span> Open the email from <strong>Stratum Wealth</strong></div>' +
+      '<div class="s-step"><span class="s-num">2</span> Click <strong>Verify My Email</strong></div>' +
+      '<div class="s-step"><span class="s-num">3</span> Your first report arrives within the week</div>' +
+      '</div>';
     success.classList.add('visible');
   }
 }
