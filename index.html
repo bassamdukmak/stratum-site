@@ -1851,6 +1851,7 @@ footer span.brand{color:var(--gold)}
     <div class="form-success" id="free-success"></div>
     <div class="form-error" id="free-error"></div>
     <div style="margin-top:auto;">
+    <input class="e-input" type="text" id="free-name" placeholder="Your name" autocomplete="given-name" style="width:100%;margin-bottom:6px;border:1px solid var(--border2);">
     <form class="email-row" id="freeForm" onsubmit="handleFreeSignup(event)">
       <input class="e-input" type="email" id="free-email" placeholder="your@email.com" required autocomplete="email">
       <button class="e-btn" type="submit" id="free-btn">Subscribe</button>
@@ -2199,6 +2200,7 @@ async function handleFreeSignup(e) {
   tcErr.classList.remove('show');
 
   const email = document.getElementById('free-email').value.trim();
+  const freeName = (document.getElementById('free-name').value || '').trim();
   const btn = document.getElementById('free-btn');
   const form = document.getElementById('freeForm');
   const success = document.getElementById('free-success');
@@ -2214,7 +2216,7 @@ async function handleFreeSignup(e) {
     const res = await fetch(API_BASE + '/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, tier: 'free' })
+      body: JSON.stringify({ email, name: freeName || undefined, tier: 'free' })
     });
 
     if (res.ok) {
