@@ -743,6 +743,23 @@ footer span.brand{color:var(--gold)}
   line-height:1.8;
 }
 
+
+/* ── HERO TICKER ROWS ── */
+.ticker-area{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden;position:relative;}
+.ticker-area::before,.ticker-area::after{content:'';position:absolute;top:0;height:100%;width:50px;z-index:3;pointer-events:none;}
+.ticker-area::before{left:0;background:linear-gradient(90deg,#070709,transparent);}
+.ticker-area::after{right:0;background:linear-gradient(-90deg,#070709,transparent);}
+.t-row{display:flex;gap:6px;white-space:nowrap;will-change:transform;}
+.t-row-left{animation:tickSlideL var(--speed) linear infinite;}
+.t-row-right{animation:tickSlideR var(--speed) linear infinite;}
+@keyframes tickSlideL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes tickSlideR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.t-pill{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.5px;padding:6px 10px;border-radius:2px;flex-shrink:0;display:inline-flex;align-items:center;gap:5px;border:1px solid #1C2030;background:#0C0E14;}
+.t-pill.t-up{color:#2ECC71;border-color:rgba(46,204,113,0.15);}
+.t-pill.t-down{color:#E74C3C;border-color:rgba(231,76,60,0.15);}
+.t-pill.t-neutral{color:#7A8099;}
+.t-pill.t-gold{color:#C9A84C;border-color:rgba(201,168,76,0.15);}
+.t-chg{font-size:8px;opacity:0.6;}
 </style>
 
 <!-- Structured Data for Google -->
@@ -1122,12 +1139,7 @@ footer span.brand{color:var(--gold)}
               <div style="font-size:10px;letter-spacing:3px;color:#4A5270;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;"><span style="display:block;width:14px;height:1px;background:#C9A84C;"></span>01 / 08 · What Is Stratum</div>
               <div style="font-family:'IBM Plex Sans',sans-serif;font-size:24px;font-weight:300;color:#E4E8F0;line-height:1.2;margin-bottom:28px;">Institutional-grade intel<br><strong style="font-weight:600;color:#C9A84C;">for everyone.</strong></div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">9:10</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">AM ET Daily</div></div>
-              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">10</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">Report Sections</div></div>
-              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">4</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">Languages Scanned</div></div>
-              <div style="background:#10131A;border:1px solid #1C2030;padding:20px;"><div style="font-size:32px;font-weight:500;color:#C9A84C;line-height:1;margin-bottom:8px;">$0</div><div style="font-size:10px;letter-spacing:2px;color:#4A5270;text-transform:uppercase;">To Start</div></div>
-            </div>
+            <div class="ticker-area" id="heroTickerArea"></div>
           </div>
 
           <!-- Slide 2: Inside Reports -->
@@ -2610,6 +2622,34 @@ async function openPortal() {
     // Clean the URL so refreshing doesn't re-trigger
     window.history.replaceState({}, '', '/');
   }
+})();
+</script>
+
+<script>
+(function(){
+var tk=[
+{s:'AAPL',c:'+1.2%',d:'up'},{s:'MSFT',c:'+0.8%',d:'up'},{s:'GOOG',c:'+0.3%',d:'neutral'},{s:'AMZN',c:'+1.5%',d:'up'},{s:'META',c:'-0.6%',d:'down'},{s:'BRK.B',c:'+0.4%',d:'neutral'},{s:'V',c:'+0.7%',d:'up'},{s:'JNJ',c:'+0.2%',d:'neutral'},{s:'WMT',c:'+0.9%',d:'up'},{s:'PG',c:'+0.3%',d:'neutral'},
+{s:'NVDA',c:'+3.4%',d:'up'},{s:'AMD',c:'+2.7%',d:'up'},{s:'SMCI',c:'+5.3%',d:'up'},{s:'PLTR',c:'+4.2%',d:'up'},{s:'TSM',c:'+1.8%',d:'up'},{s:'AVGO',c:'+1.1%',d:'up'},{s:'ARM',c:'+2.9%',d:'up'},{s:'SNOW',c:'-1.2%',d:'down'},{s:'AI',c:'+3.6%',d:'up'},{s:'MRVL',c:'+1.4%',d:'up'},
+{s:'XOM',c:'+2.1%',d:'up'},{s:'CVX',c:'+1.9%',d:'up'},{s:'OXY',c:'+2.4%',d:'up'},{s:'COP',c:'+1.7%',d:'up'},{s:'SLB',c:'+1.3%',d:'up'},{s:'HAL',c:'+0.9%',d:'up'},{s:'LMT',c:'+3.1%',d:'up'},{s:'RTX',c:'+2.6%',d:'up'},{s:'NOC',c:'+2.2%',d:'up'},{s:'GD',c:'+1.8%',d:'up'},
+{s:'JPM',c:'+1.1%',d:'up'},{s:'BAC',c:'+0.6%',d:'up'},{s:'GS',c:'+1.4%',d:'up'},{s:'MS',c:'+0.9%',d:'up'},{s:'WFC',c:'-0.3%',d:'down'},{s:'C',c:'+0.5%',d:'up'},{s:'SCHW',c:'+0.8%',d:'up'},{s:'BLK',c:'+1.2%',d:'up'},{s:'AXP',c:'+0.7%',d:'up'},{s:'COF',c:'-0.4%',d:'down'},
+{s:'SPY',c:'+0.9%',d:'up'},{s:'QQQ',c:'+1.4%',d:'up'},{s:'IWM',c:'-0.5%',d:'down'},{s:'GLD',c:'+1.8%',d:'gold'},{s:'SLV',c:'+1.1%',d:'gold'},{s:'USO',c:'+2.3%',d:'up'},{s:'XLE',c:'+1.6%',d:'up'},{s:'XLF',c:'+0.8%',d:'up'},{s:'ARKK',c:'+1.9%',d:'up'},{s:'BTC',c:'+2.3%',d:'gold'},
+{s:'TLT',c:'-0.7%',d:'down'},{s:'HYG',c:'+0.2%',d:'neutral'},{s:'DXY',c:'-0.2%',d:'down'},{s:'VIX',c:'+8.1%',d:'down'},{s:'EEM',c:'-1.1%',d:'down'},{s:'FXI',c:'-1.4%',d:'down'},{s:'KWEB',c:'-0.8%',d:'down'},{s:'SMH',c:'+2.1%',d:'up'},{s:'XLK',c:'+1.3%',d:'up'},{s:'ETH',c:'+3.0%',d:'gold'}
+];
+function bld(items,dir,spd){
+var r=document.createElement('div');r.className='t-row '+dir;r.style.setProperty('--speed',spd);
+var dbl=items.concat(items);
+for(var i=0;i<dbl.length;i++){var p=document.createElement('span');p.className='t-pill t-'+dbl[i].d;p.innerHTML=dbl[i].s+' <span class="t-chg">'+dbl[i].c+'</span>';r.appendChild(p);}
+return r;
+}
+var a=document.getElementById('heroTickerArea');
+if(a){
+a.appendChild(bld(tk.slice(0,10),'t-row-left','35s'));
+a.appendChild(bld(tk.slice(10,20),'t-row-right','40s'));
+a.appendChild(bld(tk.slice(20,30),'t-row-left','38s'));
+a.appendChild(bld(tk.slice(30,40),'t-row-right','42s'));
+a.appendChild(bld(tk.slice(40,50),'t-row-left','36s'));
+a.appendChild(bld(tk.slice(50,60),'t-row-right','44s'));
+}
 })();
 </script>
 </body>
