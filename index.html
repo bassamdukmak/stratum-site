@@ -2106,6 +2106,19 @@ footer span.brand{color:var(--gold)}
   </div>
 </div>
 
+<!-- BOTTOM CTA -->
+<div style="text-align:center;padding:64px 48px;border-top:1px solid #1C2030;background:linear-gradient(180deg,#0B0D12 0%,#0E1220 100%);">
+  <div style="font-family:'IBM Plex Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:#E4E8F0;letter-spacing:-1px;margin-bottom:8px;">Tomorrow at 9:10 AM,</div>
+  <div style="font-family:'IBM Plex Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:#C9A84C;letter-spacing:-1px;margin-bottom:24px;">you'll know what they don't.</div>
+  <div style="max-width:400px;margin:0 auto;">
+    <div style="display:flex;gap:0;">
+      <input type="email" id="bottom-email" placeholder="your@email.com" style="flex:1;padding:14px 16px;background:#10131A;border:1px solid #242840;border-right:none;color:#E4E8F0;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;">
+      <button onclick="var e=document.getElementById('bottom-email').value;if(e){document.getElementById('free-email').value=e;document.getElementById('freeForm').dispatchEvent(new Event('submit',{cancelable:true}));}" style="padding:14px 24px;background:#C9A84C;color:#0B0D12;border:1px solid #C9A84C;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Start Free</button>
+    </div>
+    <div style="font-size:10px;color:#4A5270;margin-top:10px;">Free forever · 1 report/week · No credit card</div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <span class="brand">Stratum Wealth</span>
