@@ -1631,12 +1631,7 @@ footer span.brand{color:var(--gold)}
     <div class="mslide on">
       <div class="mslide-lbl">01 / 08 &middot; What Is Stratum</div>
       <div class="mslide-ttl">Institutional-grade intel<br><strong>for everyone.</strong></div>
-      <div class="mslide-stats">
-        <div class="mslide-stat"><span class="mstat-v">9:10</span><span class="mstat-k">AM ET Daily</span></div>
-        <div class="mslide-stat"><span class="mstat-v">10</span><span class="mstat-k">Report Sections</span></div>
-        <div class="mslide-stat"><span class="mstat-v">4</span><span class="mstat-k">Languages Scanned</span></div>
-        <div class="mslide-stat"><span class="mstat-v">$0</span><span class="mstat-k">To Start</span></div>
-      </div>
+      <div class="ticker-area" id="mobileTickerArea"></div>
     </div>
 
     <!-- M-Slide 2: Inside Every Report -->
@@ -2649,6 +2644,15 @@ a.appendChild(bld(tk.slice(20,30),'t-row-left','38s'));
 a.appendChild(bld(tk.slice(30,40),'t-row-right','42s'));
 a.appendChild(bld(tk.slice(40,50),'t-row-left','36s'));
 a.appendChild(bld(tk.slice(50,60),'t-row-right','44s'));
+}
+var m=document.getElementById('mobileTickerArea');
+if(m){
+m.appendChild(bld(tk.slice(0,10),'t-row-left','30s'));
+m.appendChild(bld(tk.slice(10,20),'t-row-right','35s'));
+m.appendChild(bld(tk.slice(20,30),'t-row-left','32s'));
+m.appendChild(bld(tk.slice(30,40),'t-row-right','37s'));
+m.appendChild(bld(tk.slice(40,50),'t-row-left','33s'));
+m.appendChild(bld(tk.slice(50,60),'t-row-right','38s'));
 }
 })();
 </script>
