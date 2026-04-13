@@ -244,6 +244,8 @@ nav{
   outline:none;transition:border-color 0.15s;
 }
 .e-input::placeholder{color:var(--text-dim)}
+.e-input:-webkit-autofill,.e-input:-webkit-autofill:hover,.e-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 30px #070709 inset!important;-webkit-text-fill-color:#E4E8F0!important;border:1px solid #242840!important;transition:background-color 5000s ease-in-out 0s;}
+.modal-input:-webkit-autofill,.modal-input:-webkit-autofill:hover,.modal-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 30px #10131A inset!important;-webkit-text-fill-color:#E4E8F0!important;border:1px solid #242840!important;transition:background-color 5000s ease-in-out 0s;}
 .e-input:focus{border-color:var(--navy-light)}
 .e-btn{
   padding:13px 18px;background:var(--navy);border:1px solid var(--navy-light);
@@ -2111,11 +2113,13 @@ footer span.brand{color:var(--gold)}
   <div style="font-family:'IBM Plex Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:#E4E8F0;letter-spacing:-1px;margin-bottom:8px;">Tomorrow at 9:10 AM,</div>
   <div style="font-family:'IBM Plex Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:#C9A84C;letter-spacing:-1px;margin-bottom:24px;">you'll know what they don't.</div>
   <div style="max-width:400px;margin:0 auto;">
-    <div style="display:flex;gap:0;">
-      <input type="email" id="bottom-email" placeholder="your@email.com" style="flex:1;padding:14px 16px;background:#10131A;border:1px solid #242840;border-right:none;color:#E4E8F0;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;">
-      <button onclick="var e=document.getElementById('bottom-email').value;if(e){document.getElementById('free-email').value=e;document.getElementById('freeForm').dispatchEvent(new Event('submit',{cancelable:true}));}" style="padding:14px 24px;background:#C9A84C;color:#0B0D12;border:1px solid #C9A84C;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Start Free</button>
+    <div id="bottom-form" style="display:flex;gap:0;">
+      <input type="email" id="bottom-email" placeholder="your@email.com" class="e-input" style="flex:1;padding:14px 16px;background:#070709;border:1px solid #242840;border-right:none;color:#E4E8F0;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;">
+      <button id="bottom-btn" onclick="handleBottomSignup()" style="padding:14px 24px;background:#C9A84C;color:#0B0D12;border:1px solid #C9A84C;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Start Free</button>
     </div>
-    <div style="font-size:10px;color:#4A5270;margin-top:10px;">Free forever · 1 report/week · No credit card</div>
+    <div id="bottom-success" style="display:none;margin-top:12px;padding:16px;background:rgba(93,232,142,0.04);border:1px solid rgba(93,232,142,0.12);border-radius:4px;"></div>
+    <div id="bottom-error" style="display:none;margin-top:12px;font-size:12px;color:#E05555;"></div>
+    <div id="bottom-note" style="font-size:10px;color:#4A5270;margin-top:10px;">Free forever · 1 report/week · No credit card</div>
   </div>
 </div>
 
@@ -2668,6 +2672,46 @@ m.appendChild(bld(tk.slice(40,50),'t-row-left','33s'));
 m.appendChild(bld(tk.slice(50,60),'t-row-right','38s'));
 }
 })();
+</script>
+<script>
+async function handleBottomSignup(){
+  var email=document.getElementById('bottom-email').value.trim();
+  var btn=document.getElementById('bottom-btn');
+  var form=document.getElementById('bottom-form');
+  var success=document.getElementById('bottom-success');
+  var error=document.getElementById('bottom-error');
+  var note=document.getElementById('bottom-note');
+  if(!email)return;
+  btn.disabled=true;btn.textContent='...';
+  error.style.display='none';success.style.display='none';
+  try{
+    var res=await fetch(API_BASE+'/subscribe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,tier:'free'})
+    });
+    if(res.ok){
+      form.style.display='none';note.style.display='none';
+      success.innerHTML='<div style="font-size:14px;font-weight:500;color:#5DE88E;margin-bottom:6px;">Almost there — check your email</div><div style="font-size:12px;color:#7A8099;">We sent a confirmation link to <strong style=\"color:#E4E8F0\">'+email+'</strong></div>';
+      success.style.display='block';
+    }else{
+      var data=await res.json().catch(function(){return{};});
+      if(data.already){
+        form.style.display='none';note.style.display='none';
+        success.innerHTML='<div style="font-size:13px;color:#C9A84C;">'+data.error+'</div>';
+        success.style.display='block';
+      }else{
+        error.textContent=data.error||'Something went wrong.';
+        error.style.display='block';
+        btn.disabled=false;btn.textContent='START FREE';
+      }
+    }
+  }catch(err){
+    form.style.display='none';note.style.display='none';
+    success.innerHTML='<div style="font-size:14px;font-weight:500;color:#5DE88E;margin-bottom:6px;">Almost there — check your email</div><div style="font-size:12px;color:#7A8099;">We sent a confirmation link to <strong style=\"color:#E4E8F0\">'+email+'</strong></div>';
+    success.style.display='block';
+  }
+}
 </script>
 </body>
 </html>
