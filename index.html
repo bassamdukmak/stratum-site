@@ -2219,6 +2219,11 @@ footer span.brand{color:var(--gold)}
     </div>
     <div id="bottom-success" style="display:none;margin-top:12px;padding:16px;background:rgba(93,232,142,0.04);border:1px solid rgba(93,232,142,0.12);border-radius:4px;"></div>
     <div id="bottom-error" style="display:none;margin-top:12px;font-size:12px;color:#E05555;"></div>
+    <div class="tc-row" id="bottom-tc-row" style="margin-top:12px;text-align:left;">
+      <input type="checkbox" id="bottom-tc" name="bottom-tc">
+      <label for="bottom-tc">I have read and agree to the <a href="/terms.html" target="_blank">Terms and Conditions</a> and acknowledge that Stratum is an informational tool, not financial advice.</label>
+    </div>
+    <div class="tc-error" id="bottom-tc-error">▸ Please accept the Terms and Conditions</div>
     <div id="bottom-note" style="font-size:10px;color:#4A5270;margin-top:10px;">Free forever · 1 report/week · No credit card</div>
   </div>
 </div>
@@ -2796,13 +2801,25 @@ async function handleBottomSignup(){
   var success=document.getElementById('bottom-success');
   var error=document.getElementById('bottom-error');
   var note=document.getElementById('bottom-note');
+  var tc=document.getElementById('bottom-tc');
+  var tcRow=document.getElementById('bottom-tc-row');
+  var tcErr=document.getElementById('bottom-tc-error');
   if(!email)return;
+  if(!tc.checked){
+    tcErr.style.display='block';
+    tcRow.classList.add('tc-row-error');
+    return;
+  }
+  tcErr.style.display='none';
+  tcRow.classList.remove('tc-row-error');
   btn.disabled=true;btn.textContent='...';
   error.style.display='none';success.style.display='none';
 
   function showUniform(){
     form.style.display='none';
     note.style.display='none';
+    tcRow.style.display='none';
+    tcErr.style.display='none';
     buildBottomSuccess(success, email);
     success.style.display='block';
   }
