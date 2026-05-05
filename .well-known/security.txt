@@ -1,10 +1,11 @@
-Contact: mailto:security@stratumwealth.ca
 Contact: mailto:stratumwealth@stratumwealth.ca
 Expires: 2027-04-30T23:59:59.000Z
 Preferred-Languages: en
 Canonical: https://stratumwealth.ca/.well-known/security.txt
-Policy: https://stratumwealth.ca/terms
+Policy: https://stratumwealth.ca/terms.html
 
 # If you have found a security issue affecting Stratum Wealth, please email
-# the addresses above. Please give us a reasonable window to respond and patch
-# before any public disclosure. Thank you for helping keep our subscribers safe.
+# the address above. We aim to acknowledge receipt within 5 business days
+# and to remediate confirmed issues within a reasonable window. Please give
+# us a fair opportunity to respond and patch before any public disclosure.
+# Thank you for helping keep our subscribers safe.
