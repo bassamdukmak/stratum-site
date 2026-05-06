@@ -1,3 +1,163 @@
+# Stratum Wealth — robots.txt
+# Cloudflare auto-prepends a managed block for major AI crawlers
+# (ClaudeBot, GPTBot, Google-Extended, CCBot, Bytespider, Amazonbot,
+#  Applebot-Extended, meta-externalagent, CloudflareBrowserRenderingCrawler).
+# This file extends that list with bots Cloudflare's managed list does NOT cover.
+
+# ─────────────────────────────────────────────────────────────
+# AI TRAINING / SCRAPING — DISALLOW
+# ─────────────────────────────────────────────────────────────
+
+# OpenAI (additional crawlers beyond GPTBot)
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Anthropic (additional beyond ClaudeBot)
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+# Google AI extensions
+User-agent: GoogleOther
+Disallow: /
+
+# Meta / Facebook
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+# Diffbot
+User-agent: Diffbot
+Disallow: /
+
+# You.com
+User-agent: YouBot
+Disallow: /
+
+# DuckAssist (DuckDuckGo AI)
+User-agent: DuckAssistBot
+Disallow: /
+
+# Common Crawl variants
+User-agent: CCBot
+Disallow: /
+
+# Mistral
+User-agent: MistralAI-User
+Disallow: /
+
+# xAI / Grok
+User-agent: xAI
+Disallow: /
+
+User-agent: Grok
+Disallow: /
+
+# Apple
+User-agent: Applebot-Extended
+Disallow: /
+
+# Bloomberg / financial-data scrapers
+User-agent: Bloomberg
+Disallow: /
+
+# Misc commercial scrapers
+User-agent: AwarioRssBot
+Disallow: /
+
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+User-agent: magpie-crawler
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: peer39_crawler
+Disallow: /
+
+User-agent: peer39_crawler/1.0
+Disallow: /
+
+User-agent: PiplBot
+Disallow: /
+
+User-agent: scrapy
+Disallow: /
+
+User-agent: Seekr
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: VelenPublicWebCrawler
+Disallow: /
+
+User-agent: webzio-extended
+Disallow: /
+
+# ─────────────────────────────────────────────────────────────
+# ADMIN / SENSITIVE PATHS — DISALLOW FOR EVERYONE
+# (Defense in depth — these endpoints are also gated by ADMIN_SECRET)
+# ─────────────────────────────────────────────────────────────
+
+User-agent: *
+Disallow: /admin/
+Disallow: /debug/
+Disallow: /api/
+
+# ─────────────────────────────────────────────────────────────
+# DEFAULT — Allow well-behaved search engines
+# ─────────────────────────────────────────────────────────────
+
 User-agent: *
 Allow: /
+
 Sitemap: https://stratumwealth.ca/sitemap.xml
