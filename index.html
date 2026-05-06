@@ -353,11 +353,23 @@ nav{
 
 /* ── FOOTER ── */
 footer{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 32px;background:var(--navy);border-top:1px solid var(--navy-light);
+  background:var(--navy);border-top:1px solid var(--navy-light);
+  padding:18px 32px;
 }
-footer span{font-size:14px;font-weight:500;letter-spacing:2px;color:#6A7A99;text-transform:uppercase;}
+footer .footer-row1{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;margin-bottom:14px;
+}
+footer .footer-left{display:flex;align-items:center;flex-wrap:wrap;gap:14px;}
+footer .footer-links{display:flex;align-items:center;flex-wrap:wrap;gap:18px;}
+footer span{font-size:13px;font-weight:500;letter-spacing:1.5px;color:#6A7A99;text-transform:uppercase;}
 footer span.brand{color:var(--gold)}
+footer a{color:#4A5270;text-decoration:none;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.15s;}
+footer a:hover{color:var(--gold)}
+footer .footer-disclaimer{
+  font-size:10px;color:#3A4060;line-height:1.7;letter-spacing:0.5px;
+  text-transform:none;padding-top:14px;border-top:1px solid var(--navy-light);
+}
 
 /* ── MODAL ── */
 .modal-overlay{
@@ -458,7 +470,11 @@ footer span.brand{color:var(--gold)}
   .data-cell:nth-child(2){border-right:none}
   .data-val{font-size:26px}
   .data-key{font-size:10px;letter-spacing:1px}
-  footer{flex-direction:column;gap:8px;text-align:center}
+  footer{padding:16px 16px}
+  footer .footer-row1{flex-direction:column;align-items:flex-start;gap:12px}
+  footer .footer-left,footer .footer-links{gap:12px 16px}
+  footer span,footer a{font-size:11px;letter-spacing:1px}
+  footer .footer-disclaimer{font-size:9.5px;line-height:1.65}
   /* Override hero inline padding:0 and min-height:600px */
   .hero{padding:0!important;min-height:unset!important}
   /* Override hero left panel inline padding:64px 48px */
@@ -2104,14 +2120,20 @@ footer span.brand{color:var(--gold)}
 
 <!-- FOOTER -->
 <footer>
-  <span class="brand">Stratum Wealth</span>
-  <span>Daily · 9:10 AM ET · Multilingual · Bias-Aware</span>
-  <span>stratumwealth.ca</span>
-  <span><a href="/terms.html" style="color:#4A5270;text-decoration:none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#4A5270'">Terms</a></span>
-  <span><a href="/privacy.html" style="color:#4A5270;text-decoration:none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#4A5270'">Privacy</a></span>
-  <span><a href="javascript:void(0)" onclick="openManagePortal()" style="color:#4A5270;text-decoration:none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#4A5270'">Manage Subscription</a></span>
-  <span><a href="mailto:stratumwealth@stratumwealth.ca" style="color:#4A5270;text-decoration:none;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='#4A5270'">Contact</a></span>
-  <span style="display:block;width:100%;font-size:10px;color:#3A4060;margin-top:14px;line-height:1.6;">Stratum Wealth, Ontario, Canada · stratumwealth@stratumwealth.ca · We aim to meet WCAG 2.0 AA accessibility standards; if you have difficulty using this site, please email us. © 2026 Stratum Wealth. Informational service only — not financial advice.</span>
+  <div class="footer-row1">
+    <div class="footer-left">
+      <span class="brand">Stratum Wealth</span>
+      <span>Daily · 9:10 AM ET · Multilingual · Bias-Aware</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://stratumwealth.ca">stratumwealth.ca</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="javascript:void(0)" onclick="openManagePortal()">Manage Subscription</a>
+      <a href="mailto:stratumwealth@stratumwealth.ca">Contact</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">Stratum Wealth, Ontario, Canada · stratumwealth@stratumwealth.ca · We aim to meet WCAG 2.0 AA accessibility standards; if you have difficulty using this site, please email us. © 2026 Stratum Wealth. Informational service only — not financial advice.</div>
 </footer>
 
 <!-- MANAGE SUBSCRIPTION MODAL -->
