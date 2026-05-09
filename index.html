@@ -2735,6 +2735,21 @@ async function handleBottomSignup(){
     showUniform();
   }
 }
+
+// ── AUTO-FOCUS FREE SIGNUP FROM /trial REFERRAL ──
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.has('join')) {
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        var freePlan = document.getElementById('free-plan');
+        var emailInput = document.getElementById('free-email');
+        if (freePlan) freePlan.scrollIntoView({behavior:'smooth', block:'center'});
+        if (emailInput) emailInput.focus();
+      }, 350);
+    });
+  }
+})();
 </script>
 </body>
 </html>
