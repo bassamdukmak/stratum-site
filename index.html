@@ -2739,16 +2739,35 @@ async function handleBottomSignup(){
 // ── AUTO-FOCUS FREE SIGNUP FROM /trial REFERRAL ──
 (function(){
   var params = new URLSearchParams(window.location.search);
-  if (params.has('join')) {
-    window.addEventListener('load', function(){
-      setTimeout(function(){
-        var freePlan = document.getElementById('free-plan');
-        var emailInput = document.getElementById('free-email');
-        if (freePlan) freePlan.scrollIntoView({behavior:'smooth', block:'center'});
-        if (emailInput) emailInput.focus();
-      }, 350);
-    });
-  }
+  if (!params.has('join')) return;
+  window.addEventListener('load', function(){
+    // Step 1: Smooth scroll to free plan
+    setTimeout(function(){
+      var freePlan = document.getElementById('free-plan');
+      if (freePlan) freePlan.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 300);
+    // Step 2: Wait for scroll to settle, then focus + glow
+    setTimeout(function(){
+      var emailInput = document.getElementById('free-email');
+      if (!emailInput) return;
+      try { emailInput.focus({preventScroll:true}); } catch(e) { emailInput.focus(); }
+      emailInput.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+      var pulses = 0;
+      var maxPulses = 6;
+      var on = false;
+      var interval = setInterval(function(){
+        on = !on;
+        emailInput.style.boxShadow = on ? '0 0 0 3px #C9A84C, 0 0 24px rgba(201,168,76,0.5)' : '0 0 0 0 transparent';
+        emailInput.style.borderColor = on ? '#C9A84C' : '';
+        pulses++;
+        if (pulses >= maxPulses) {
+          clearInterval(interval);
+          emailInput.style.boxShadow = '';
+          emailInput.style.borderColor = '';
+        }
+      }, 400);
+    }, 1100);
+  });
 })();
 </script>
 </body>
