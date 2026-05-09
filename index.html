@@ -2435,19 +2435,51 @@ async function submitUpgrade() {
   submitBtn.textContent = 'PROCESSING...';
 
   try {
-    // 1) Register or update the subscriber record. Server response is uniform —
-    // it never tells us whether the email was new, already subscribed, or rejected.
-    // Existing-tier conflicts are handled at /create-checkout (where intent is explicit).
-    const honeypot = (document.getElementById('free-company') || {}).value || '';
+    var isTrial = currentModalTier === 'plus_trial';
+    var checkoutTier = isTrial ? 'plus' : currentModalTier;
+    var honeypot = (document.getElementById('free-company') || {}).value || '';
+
+    if (isTrial) {
+      // ── TRIAL FLOW: register w/ trial_intent, then show check-inbox state ──
+      // Backend will send a trial verification email; clicking the link redirects
+      // to Stripe checkout w/ 7-day trial. No /create-checkout call here.
+      var trialIntent = currentBilling === 'annual' ? 'plus_annual' : 'plus_monthly';
+      try {
+        await fetch(API_BASE + '/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, name: name, tier: 'plus', trial_intent: trialIntent, company: honeypot })
+        });
+      } catch (subErr) {
+        // Server uses a uniform response, so we don't surface backend status —
+        // even network failures still show the generic check-inbox message.
+        console.warn('[Trial] subscribe call error (non-fatal):', subErr);
+      }
+      // Replace modal body with confirmation. User goes to inbox to continue.
+      var modalBody = document.getElementById('modal-body') || document.querySelector('.modal-content') || submitBtn.closest('.modal');
+      if (modalBody) {
+        modalBody.innerHTML =
+          '<div style="text-align:center;padding:32px 24px;">' +
+            '<div style="font-size:48px;color:#C9A84C;margin-bottom:16px;">\u2713</div>' +
+            '<h2 style="font-size:22px;color:#E4E8F0;margin:0 0 16px;font-weight:400;">Check your inbox</h2>' +
+            '<p style="font-size:14px;color:#7A8099;line-height:1.7;margin:0 0 8px;">We sent a link to <strong style="color:#E4E8F0;">' + email.replace(/[<>&"]/g, '') + '</strong> to start your 7-day free trial.</p>' +
+            '<p style="font-size:13px;color:#7A8099;line-height:1.7;margin:0 0 24px;">Click the button in the email to verify your address and add a card. No charge today.</p>' +
+            '<p style="font-size:12px;color:#4A5270;line-height:1.7;margin:0;">Don\u2019t see it? Check your spam folder, or wait a minute and refresh.</p>' +
+          '</div>';
+      } else {
+        alert('Check your inbox — we sent you a link to start your free trial.');
+      }
+      return;
+    }
+
+    // ── STANDARD PAID FLOW: register + checkout (Plus/Quant non-trial) ──
     await fetch(API_BASE + '/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, name: name, tier: currentModalTier, company: honeypot })
     });
 
-    // 2) Get Stripe checkout URL
-    var checkoutTier = currentModalTier === 'plus_trial' ? 'plus' : currentModalTier;
-    var withTrial = currentModalTier === 'plus_trial';
+    var withTrial = false;
     const res = await fetch(API_BASE + '/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2467,7 +2499,7 @@ async function submitUpgrade() {
         window.location.href = data.url;
       } else {
         // Backend returned ok:true but no checkout URL — usually means email flagged ineligible (existing sub, disposable, etc.)
-        alert(data.message || 'We could not start your trial right now. If this email already has an account, please log in or use a different email.');
+        alert(data.message || 'We could not start checkout right now. If this email already has an account, please log in or use a different email.');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Continue to Secure Checkout \u2192';
       }
