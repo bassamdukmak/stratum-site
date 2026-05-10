@@ -669,6 +669,141 @@ footer .footer-disclaimer{
 .dropdown-item:last-child { border-bottom:none; }
 .dropdown-item:hover { background:var(--surface2); color:var(--gold); padding-left:26px; }
 
+/* ── WHAT'S NEW MENU MARKER ── */
+.dropdown-item.has-new-marker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-item.has-new-marker .dropdown-item-label {
+  display: inline-flex;
+  align-items: center;
+}
+.dropdown-item .new-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-right: 8px;
+  animation: whatsnew-pulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(201,168,76,0.7);
+  flex-shrink: 0;
+}
+.dropdown-item .new-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 2px 6px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+@keyframes whatsnew-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.7); }
+  50% { box-shadow: 0 0 0 5px rgba(201,168,76,0); }
+}
+
+/* ── PULSE DOT ON HAMBURGER (when there are unseen entries) ── */
+.hamburger.has-new::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(201,168,76,0.7);
+  animation: whatsnew-pulse 2s infinite;
+}
+.hamburger { position: relative; }
+
+/* ── WHAT'S NEW PAGE OVERLAY — TIMELINE ── */
+.update-list {
+  position: relative;
+  margin-top: 20px;
+}
+.update-list::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: var(--border2);
+}
+.update-entry {
+  position: relative;
+  padding: 0 0 48px 36px;
+}
+.update-entry:last-child { padding-bottom: 0; }
+.update-entry::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border2);
+  z-index: 1;
+}
+.update-entry.is-new::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+}
+.update-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.update-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.update-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid var(--gold-dim);
+}
+.update-tag.tag-fix { color: var(--green); border-color: rgba(76,175,124,0.4); }
+.update-tag.tag-design { color: #B89DD4; border-color: rgba(184,157,212,0.4); }
+.update-new-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  background: var(--gold);
+  color: var(--bg);
+  padding: 2px 7px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.update-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 22px;
+  color: var(--white);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.update-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
 /* ── PAGE OVERLAYS ── */
 .page-overlay {
   display:none;
@@ -882,6 +1017,10 @@ footer .footer-disclaimer{
   <a class="dropdown-item" onclick="openPage('faq')">// FAQ</a>
   <a class="dropdown-item" href="/privacy.html">// Privacy Policy</a>
   <a class="dropdown-item" href="/terms.html">// Terms &amp; Conditions</a>
+  <a class="dropdown-item has-new-marker" id="whatsNewMenuItem" onclick="openPage('whatsnew')">
+    <span class="dropdown-item-label"><span class="new-pulse" id="whatsNewPulse"></span>// What's New</span>
+    <span class="new-count" id="whatsNewCount">2</span>
+  </a>
 </div>
 
 <!-- ABOUT PAGE -->
@@ -971,6 +1110,43 @@ footer .footer-disclaimer{
         <div class="faq-q">I didn't receive my report. What should I do?</div>
         <div class="faq-a">Check your spam or promotions folder first. If you still can't find it, make sure you confirmed your email subscription. Free tier subscribers only receive reports on their designated weekly day, not every day.</div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- WHAT'S NEW PAGE -->
+<div class="page-overlay" id="page-whatsnew">
+  <button class="page-close" onclick="closePage('whatsnew')">✕ Close</button>
+  <div class="page-inner">
+    <div class="page-tag">// What's New</div>
+    <h1 class="page-title">Recent<br>Product Updates</h1>
+    <p class="page-subtitle" style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:60px;max-width:560px;">A running log of what we've changed, added, or fixed across the daily, weekly, and monthly reports. Newest entries first.</p>
+
+    <div class="update-list">
+
+      <!-- May 9, 2026 — Cross-Language Signals v2 -->
+      <div class="update-entry is-new">
+        <div class="update-meta">
+          <span class="update-date">May 9, 2026</span>
+          <span class="update-tag">Feature</span>
+          <span class="update-new-badge">New</span>
+        </div>
+        <h3 class="update-title">Cross-Language Signals v2</h3>
+        <p class="update-desc">We rebuilt the Regional Radar with a two-pass intelligence pipeline. A dedicated searcher now pulls candidates across roughly 110 countries, then a separate judge ranks them by magnitude, tradability, and forward repricing path. The result is more diverse signals across regions, fewer recycled forecasts, and more concrete dated events that map cleanly to tradable tickers.</p>
+      </div>
+
+      <!-- May 9, 2026 — Refreshed Email Palette -->
+      <div class="update-entry is-new">
+        <div class="update-meta">
+          <span class="update-date">May 9, 2026</span>
+          <span class="update-tag tag-design">Design</span>
+          <span class="update-new-badge">New</span>
+        </div>
+        <h3 class="update-title">Refreshed Email Palette</h3>
+        <p class="update-desc">New color system across daily, weekly, and monthly reports. Mid-navy backgrounds with warmer gold accents and brighter body text, tuned specifically for iOS Gmail dark mode so the email reads clean instead of washed out on iPhones.</p>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2539,19 +2715,53 @@ function openPage(id) {
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('dropdownMenu').classList.remove('open');
   // Close ALL other pages first
-  ['about','faq','privacy','terms'].forEach(function(pid) {
+  ['about','faq','privacy','terms','whatsnew'].forEach(function(pid) {
     var el = document.getElementById('page-' + pid);
     if (el) el.classList.remove('open');
   });
   // Open requested page
   document.getElementById('page-' + id).classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // ── WHAT'S NEW: mark all entries as seen ──
+  if (id === 'whatsnew') {
+    try {
+      localStorage.setItem('stratum-whatsnew-seen', '2026-05-09');
+    } catch(e) { /* localStorage may be disabled, fine */ }
+    var ham = document.getElementById('hamburger');
+    if (ham) ham.classList.remove('has-new');
+    var pulse = document.getElementById('whatsNewPulse');
+    if (pulse) pulse.style.display = 'none';
+    var count = document.getElementById('whatsNewCount');
+    if (count) count.style.display = 'none';
+  }
 }
 
 function closePage(id) {
   document.getElementById('page-' + id).classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// ── WHAT'S NEW: hide pulse/count if user has already seen the latest entry ──
+// Latest entry date is hardcoded; bump this string when shipping a new entry.
+(function(){
+  var LATEST_ENTRY_DATE = '2026-05-09';
+  var seen = '';
+  try { seen = localStorage.getItem('stratum-whatsnew-seen') || ''; } catch(e) {}
+  if (seen >= LATEST_ENTRY_DATE) {
+    // Already seen — suppress all "new" indicators
+    var ham = document.getElementById('hamburger');
+    if (ham) ham.classList.remove('has-new');
+    var pulse = document.getElementById('whatsNewPulse');
+    if (pulse) pulse.style.display = 'none';
+    var count = document.getElementById('whatsNewCount');
+    if (count) count.style.display = 'none';
+  } else {
+    // Not seen yet — show pulse on hamburger
+    var ham2 = document.getElementById('hamburger');
+    if (ham2) ham2.classList.add('has-new');
+  }
+})();
 
 // Close menu when clicking outside
 document.addEventListener('click', function(e) {
@@ -2568,7 +2778,7 @@ document.addEventListener('click', function(e) {
 // Close pages with Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    ['about','faq','privacy','terms'].forEach(function(id) {
+    ['about','faq','privacy','terms','whatsnew'].forEach(function(id) {
       var el = document.getElementById('page-' + id);
       if (el && el.classList.contains('open')) {
         closePage(id);
