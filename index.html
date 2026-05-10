@@ -704,18 +704,10 @@ footer .footer-disclaimer{
   50% { box-shadow: 0 0 0 5px rgba(201,168,76,0); }
 }
 
-/* ── PULSE DOT ON HAMBURGER (when there are unseen entries) ── */
+/* ── PULSE DOT ON HAMBURGER (DISABLED 2026-05-10) ── */
+/* User feedback: too much yellow on the nav. Indicator stays inside the menu only. */
 .hamburger.has-new::after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 0 rgba(201,168,76,0.7);
-  animation: whatsnew-pulse 2s infinite;
+  display: none;
 }
 .hamburger { position: relative; }
 
