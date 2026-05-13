@@ -2800,8 +2800,8 @@ async function openBillingPortal(email) {
       body: JSON.stringify({ email })
     });
     if (res.ok) {
-      const data = await res.json();
-      window.location.href = data.url;
+      // Portal URL is delivered via email (security model). No redirect possible.
+      alert('Check your inbox — if a Stratum subscription exists for that email, we just sent a secure link to manage it. The link expires in 15 minutes.');
     } else {
       const data = await res.json().catch(() => ({}));
       alert(data.error || 'Could not find a subscription for that email. Please check and try again.');
@@ -2844,7 +2844,21 @@ async function openPortal() {
     });
     const data = await res.json();
     if (res.ok) {
-      window.location.href = data.url;
+      // Backend sends the portal URL via email out-of-band (security model:
+      // uniform {ok:true,message:"..."} response prevents enumeration). So we
+      // swap the modal to an inline success state instead of redirecting —
+      // previously redirected to data.url which is always undefined → /undefined 404.
+      var modalBox = document.querySelector('#manageModal .modal');
+      if (modalBox) {
+        modalBox.innerHTML =
+          '<button class="modal-close" onclick="closeManageModal()">\u2715 CLOSE</button>' +
+          '<div class="modal-tag" style="color:#7FB069;">// Email Sent</div>' +
+          '<h2>Check your inbox</h2>' +
+          '<p class="modal-sub">If a Stratum subscription exists for that email, we just sent you a secure link to manage it. Click the link in your inbox to upgrade, downgrade, or cancel.</p>' +
+          '<p class="modal-sub" style="font-size:11px;opacity:0.7;margin-top:12px;">The link expires in 15 minutes for your security. Check spam if you don\u2019t see it within a minute.</p>' +
+          '<button class="modal-submit" onclick="closeManageModal()" style="margin-top:20px;">Got it</button>' +
+          '<div class="modal-note">Powered by Stripe \u00b7 Secure \u00b7 Cancel anytime</div>';
+      }
     } else {
       err.textContent = '▸ ' + (data.error || 'No subscription found for this email.');
       err.classList.add('show');
