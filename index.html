@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="LRtcdugbI-66f7ibRPXCUOglVvkmYolq4HQ44786xFM" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stratum Wealth | Daily AI Market Intelligence Newsletter, Free Forever</title>
+<title>Stratum Wealth | Daily AI Market Intelligence Newsletter | 7-Day Free Trial</title>
 
 <!-- FAVICON: Stratum strata bars logo -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 
 <!-- SEO META TAGS -->
-<meta name="description" content="Stratum Wealth delivers AI-powered daily market intelligence every morning at 9:10 AM ET. Free forever. Get actionable trade ideas, congressional trading watch, multilingual cross-signal analysis, and financial advisor deep dives. Start free, no credit card required.">
+<meta name="description" content="Stratum Wealth delivers AI-powered daily market intelligence every morning at 9:10 AM ET. Try Plus free for 7 days — daily reports, actionable trade ideas, congressional trading watch, multilingual cross-signal analysis, and financial advisor deep dives.">
 <meta name="keywords" content="daily market intelligence newsletter, AI stock market analysis, free stock market newsletter, market intelligence report, daily trading newsletter, stock market briefing, congressional trading watch, financial newsletter Canada, AI market analysis, stock picks newsletter, daily stock analysis, market intelligence free, institutional research newsletter, trade ideas newsletter, stock market Canada, investment newsletter, market briefing daily, financial advisor newsletter, stock market signals, multilingual market analysis">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Stratum Wealth">
@@ -22,13 +22,13 @@
 <meta name="category" content="Finance, Investment, Market Analysis">
 <meta name="coverage" content="Worldwide">
 <meta name="distribution" content="Global">
-<link rel="canonical" href="https://stratumwealth.ca/">
+<link rel="canonical" href="#plans">
 
 <!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://stratumwealth.ca">
 <meta property="og:title" content="Stratum Wealth | Free Daily AI Market Intelligence Newsletter">
-<meta property="og:description" content="The edge Wall Street doesn't share. AI-powered daily market intelligence, multilingual, bias-aware, cross-signal. Free forever. Delivered at 9:10 AM ET.">
+<meta property="og:description" content="The edge Wall Street doesn't share. AI-powered daily market intelligence, multilingual, bias-aware, cross-signal. Try Plus free for 7 days. Delivered at 9:10 AM ET.">
 <meta property="og:image" content="https://stratumwealth.ca/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -39,7 +39,7 @@
 <!-- TWITTER CARD -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stratum Wealth | Free Daily AI Market Intelligence">
-<meta name="twitter:description" content="AI-powered daily market intelligence, free forever. Trade ideas, congressional trading watch, multilingual signals. Delivered 9:10 AM ET daily.">
+<meta name="twitter:description" content="AI-powered daily market intelligence. Trade ideas, congressional trading watch, multilingual signals. Try Plus free for 7 days. Delivered 9:10 AM ET daily.">
 <meta name="twitter:image" content="https://stratumwealth.ca/og-image.png">
 <meta name="twitter:site" content="@stratumwealth">
 <meta name="twitter:creator" content="@stratumwealth">
@@ -159,6 +159,77 @@ nav{
   font-family:'IBM Plex Sans',sans-serif;font-weight:300;
 }
 .hero-desc em{font-style:normal;color:var(--text-primary);}
+/* ─── HERO ACTIONS (NEW) ─── */
+.hero-actions{
+  display:flex;gap:12px;
+  margin-top:36px;
+  flex-wrap:wrap;
+  position:relative;z-index:2;
+}
+.hero-cta{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 24px;
+  text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;
+  border:1px solid;
+  min-width:240px;
+  transition:all 0.18s ease;
+}
+.hero-cta.primary{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:var(--black);
+}
+.hero-cta.primary:hover{
+  background:var(--gold-hover);
+  border-color:var(--gold-hover);
+  transform:translateY(-1px);
+}
+.hero-cta.secondary{
+  background:transparent;
+  border-color:var(--navy-light);
+  color:var(--white);
+}
+.hero-cta.secondary:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  transform:translateY(-1px);
+}
+.cta-icon{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:24px;font-weight:500;
+  min-width:30px;letter-spacing:-0.5px;
+}
+.hero-cta.primary .cta-icon{color:var(--black)}
+.hero-cta.secondary .cta-icon{color:var(--gold)}
+.cta-text{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.cta-line1{
+  font-size:12px;font-weight:600;letter-spacing:2.2px;
+  text-transform:uppercase;line-height:1;
+}
+.cta-line2{
+  font-size:10px;font-weight:400;letter-spacing:1.2px;
+  opacity:0.75;line-height:1;
+}
+@media (max-width: 980px){
+  /* Stack CTAs earlier on tablets/phones where the right-column slideshow
+     drops below the hero-left content, narrowing available width */
+  .hero-actions{gap:10px}
+  .hero-cta{min-width:200px;padding:16px 20px;flex:1 1 220px}
+}
+@media (max-width: 600px){
+  .hero-actions{flex-direction:column;gap:10px;margin-top:28px}
+  .hero-cta{min-width:0;width:100%;padding:16px 20px}
+  .cta-icon{font-size:20px;min-width:24px}
+  .cta-line1{font-size:11px}
+  .cta-line2{font-size:9.5px}
+}
+@media (max-width: 380px){
+  .hero-cta{padding:14px 16px}
+  .cta-line1{font-size:10.5px;letter-spacing:1.8px}
+  .cta-line2{font-size:9px}
+}
+
 
 /* ── DATA STRIP ── */
 .data-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border2);background:var(--black);}
@@ -239,22 +310,29 @@ nav{
 .email-row{display:flex;margin-bottom:10px;}
 .e-input{
   flex:1;padding:13px 16px;background:var(--black);
-  border:1px solid var(--border2);border-right:none;
+  border:1px solid var(--navy-light);border-right:none;
   color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:15px;
   outline:none;transition:border-color 0.15s;
 }
-.e-input::placeholder{color:var(--text-dim)}
+.e-input::placeholder{color:var(--text-secondary);opacity:1}
+/* Symmetric stacked-input variant: matches the visual weight of Plus/Quant plan CTAs. */
+.e-input.symmetric{
+  display:block;width:100%;flex:none;
+  border:1px solid var(--navy-light);
+  margin-bottom:8px;
+}
+.e-input.symmetric:last-of-type{margin-bottom:0}
 .e-input:-webkit-autofill,.e-input:-webkit-autofill:hover,.e-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 30px #070709 inset!important;-webkit-text-fill-color:#E4E8F0!important;border:1px solid #242840!important;transition:background-color 5000s ease-in-out 0s;}
 .modal-input:-webkit-autofill,.modal-input:-webkit-autofill:hover,.modal-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 30px #10131A inset!important;-webkit-text-fill-color:#E4E8F0!important;border:1px solid #242840!important;transition:background-color 5000s ease-in-out 0s;}
 .e-input:focus{border-color:var(--navy-light)}
 .e-btn{
-  padding:13px 18px;background:var(--navy);border:1px solid var(--navy-light);
-  color:var(--text-primary);font-family:'IBM Plex Mono',monospace;font-size:13px;
+  padding:13px 18px;background:var(--gold);border:1px solid var(--gold);
+  color:var(--black);font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
   letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.15s;white-space:nowrap;
 }
-.e-btn:hover{background:var(--navy-light);color:var(--white)}
+.e-btn:hover{background:var(--gold-hover);border-color:var(--gold-hover)}
 .e-btn:disabled{opacity:0.5;cursor:not-allowed}
-.form-note{font-size:14px;color:var(--text-muted);letter-spacing:1px;}
+.form-note{font-size:14px;color:var(--text-secondary);letter-spacing:1px;}
 
 /* T&C CHECKBOX */
 .tc-row{
@@ -266,7 +344,7 @@ nav{
   accent-color:var(--gold);cursor:pointer;
 }
 .tc-row label{
-  font-size:13px;color:var(--text-muted);line-height:1.5;cursor:pointer;
+  font-size:13px;color:var(--text-secondary);line-height:1.5;cursor:pointer;
 }
 .tc-row label a{color:var(--gold);text-decoration:none;}
 .tc-row label a:hover{text-decoration:underline;}
@@ -805,6 +883,12 @@ footer .footer-disclaimer{
   z-index:999;
   overflow-y:auto;
   animation:page-in 0.25s ease;
+  -webkit-overflow-scrolling:touch;
+}
+.page-overlay#page-sample{
+  /* Sample overlay carries its own dark email background and full-width layout. */
+  background:#161B26;
+  padding-top:54px;
 }
 .page-overlay.open { display:block; }
 @keyframes page-in {
@@ -905,6 +989,50 @@ footer .footer-disclaimer{
 .t-pill.t-neutral{color:#7A8099;}
 .t-pill.t-gold{color:#C9A84C;border-color:rgba(201,168,76,0.15);}
 .t-chg{font-size:8px;opacity:0.6;}
+
+
+/* ═══ EMBEDDED SAMPLE REPORT STYLES (scoped to #stratum-sample) ═══ */
+#stratum-sample table, #stratum-sample td, #stratum-sample div, #stratum-sample p, #stratum-sample a, #stratum-sample span { -webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
+@media(prefers-color-scheme:light) {
+#stratum-sample table, #stratum-sample td { background-color:inherit !important;color:inherit !important; }
+#stratum-sample .force-dark-bg { background-color:#161B26 !important; }
+#stratum-sample .force-dark-surface { background-color:#1c2238 !important; }
+#stratum-sample .force-dark-black { background-color:#0c0f18 !important; }
+#stratum-sample .force-dark-text { color:#cfd5e3 !important; }
+}
+@media(prefers-color-scheme:dark) {
+#stratum-sample .force-dark-bg { background-color:#161B26 !important; }
+#stratum-sample .force-dark-surface { background-color:#1c2238 !important; }
+#stratum-sample .force-dark-black { background-color:#0c0f18 !important; }
+}
+#stratum-sample table, #stratum-sample td, #stratum-sample div, #stratum-sample p, #stratum-sample span, #stratum-sample a, #stratum-sample h1, #stratum-sample h2, #stratum-sample h3, #stratum-sample h4, #stratum-sample h5, #stratum-sample h6 { font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; }
+@media only screen and (max-width: 600px) {
+#stratum-sample table[width="680"] { width: 100% !important; max-width: 100% !important; }
+#stratum-sample td[width="50%"] { display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important; }
+#stratum-sample .sample-banner-table td { display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 4px 0 !important; }
+#stratum-sample .sample-banner-table td[align="right"] { text-align: left !important; }
+#stratum-sample .footer-cta-table td { display: block !important;
+    width: 100% !important;
+    padding: 6px 0 !important; }
+#stratum-sample .footer-cta-table a { display: block !important;
+    text-align: center !important; }
+#stratum-sample td[style*="padding:14px 16px"], #stratum-sample td[style*="padding:10px 16px"], #stratum-sample td[style*="padding:16px"] { padding: 12px 14px !important; }
+#stratum-sample td[style*="padding:0 32px"] { padding-left: 16px !important;
+    padding-right: 16px !important; }
+#stratum-sample td[style*="padding:20px 32px"] { padding: 14px 16px !important; }
+#stratum-sample span[style*="font-size:24px"] { font-size: 20px !important; }
+#stratum-sample span[style*="font-size:22px"] { font-size: 18px !important; }
+#stratum-sample td[style*="font-size:11px"][style*="letter-spacing:2px"] { font-size: 10px !important;
+    letter-spacing: 1.5px !important; }
+#stratum-sample td[style*="font-size:14px"][style*="font-weight:500"] { font-size: 13px !important; }
+}
+
+/* ═══ END SAMPLE STYLES ═══ */
 </style>
 
 <!-- Structured Data for Google -->
@@ -914,7 +1042,7 @@ footer .footer-disclaimer{
   "@type": "WebSite",
   "name": "Stratum Wealth",
   "url": "https://stratumwealth.ca",
-  "description": "AI-powered daily market intelligence newsletter. Free forever. Delivered at 9:10 AM ET.",
+  "description": "AI-powered daily market intelligence newsletter. 7-day free trial of Plus. Delivered at 9:10 AM ET.",
   "publisher": {
     "@type": "Organization",
     "name": "Stratum Wealth",
@@ -943,7 +1071,7 @@ footer .footer-disclaimer{
       "name": "Free Tier",
       "price": "0",
       "priceCurrency": "CAD",
-      "description": "One full report per week, same content as Plus tier on the day it lands. No credit card required."
+      "description": "7-day free trial of Plus — daily reports including the Financial Advisor Deep Dive."
     },
     {
       "@type": "Offer",
@@ -1043,7 +1171,7 @@ footer .footer-disclaimer{
     <div class="page-section">
       <h3>The Tiers</h3>
       <ul>
-        <li><strong style="color:var(--white)">Free</strong>, One full report per week on a randomized day. No Financial Advisor layer. Forever free. No credit card required.</li>
+        <li><strong style="color:var(--white)">Free Trial</strong>, 7 days of daily Plus reports including the Sunday FA Deep Dive.</li>
         <li><strong style="color:var(--white)">Plus ($19.99/mo)</strong>, Daily reports every morning at 9:10 AM ET, including the Financial Advisor Deep Dive layer. No weekly summaries or congressional trading.</li>
         <li><strong style="color:var(--white)">Quant ($49.99/mo)</strong>, Everything in Plus, plus weekly summaries (Sundays), monthly wrap-ups, and Congressional &amp; Political Trading Watch.</li>
       </ul>
@@ -1064,19 +1192,19 @@ footer .footer-disclaimer{
     <div class="page-section">
       <div class="faq-item">
         <div class="faq-q">Is Stratum really free?</div>
-        <div class="faq-a">Yes. The Free tier costs nothing and requires no credit card. You'll receive one full intelligence report per week, delivered on a randomized day at 9:10 AM ET. The Free report does not include the Financial Advisor Deep Dive layer — that is a Plus and Quant feature.</div>
+        <div class="faq-a">Yes. Every new signup gets a 7-day free trial of Plus — daily reports including the Financial Advisor Deep Dive, delivered every morning at 9:10 AM ET. After 7 days the trial ends automatically. No charges, ever.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">When do reports arrive?</div>
-        <div class="faq-a">Reports are delivered every morning at 9:10 AM Eastern Time. Free tier subscribers receive one report per week on a randomized day. Plus and Quant subscribers receive a report every day.</div>
+        <div class="faq-a">Reports are delivered every morning at 9:10 AM Eastern Time. Free Trial users receive a full report every day during their 7-day window. Plus and Quant subscribers receive a report every day, ongoing.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What's the difference between Free, Plus, and Quant?</div>
-        <div class="faq-a">Free gets one full report per week (no Financial Advisor layer). Plus ($19.99/mo) gets a full report every day, including the Financial Advisor Deep Dive layer. Quant ($49.99/mo) gets everything in Plus, plus weekly summaries (Sundays), monthly wrap-ups, and Congressional &amp; Political Trading Watch.</div>
+        <div class="faq-a">Free Trial is 7 days of full Plus access — daily reports plus the Financial Advisor Deep Dive. Plus ($19.99/mo) is the same daily flow, ongoing. Quant ($49.99/mo) is Plus plus weekly summaries (Sundays), monthly wrap-ups, and Congressional &amp; Political Trading Watch.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What is the Financial Advisor Deep Dive?</div>
-        <div class="faq-a">A dedicated layer analyzing key stocks in depth, covering earnings trends, valuation metrics, analyst targets, margins, ownership, and a final verdict (STRONG BUY, BUY, BUILD SLOWLY, WAIT, or AVOID). Delivered as part of the daily report for Plus and Quant subscribers. Not included on the Free tier.</div>
+        <div class="faq-a">A dedicated layer analyzing key stocks in depth, covering earnings trends, valuation metrics, analyst targets, margins, ownership, and a final verdict (STRONG BUY, BUY, BUILD SLOWLY, WAIT, or AVOID). Delivered as part of the daily report for Plus and Quant subscribers, and included in the 7-day Free Trial.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What is Congressional Trading Watch?</div>
@@ -1088,7 +1216,7 @@ footer .footer-disclaimer{
       </div>
       <div class="faq-item">
         <div class="faq-q">Can I cancel anytime?</div>
-        <div class="faq-a">Yes. Cancel anytime from your billing portal with no penalties. You'll retain access until the end of your current billing period, then drop to the Free tier automatically.</div>
+        <div class="faq-a">Yes. Cancel anytime from your billing portal with no penalties. You'll retain access until the end of your current billing period.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Is this financial advice?</div>
@@ -1100,7 +1228,7 @@ footer .footer-disclaimer{
       </div>
       <div class="faq-item">
         <div class="faq-q">I didn't receive my report. What should I do?</div>
-        <div class="faq-a">Check your spam or promotions folder first. If you still can't find it, make sure you confirmed your email subscription. Free tier subscribers only receive reports on their designated weekly day, not every day.</div>
+        <div class="faq-a">Check your spam or promotions folder first. If you still can't find it, make sure you confirmed your email subscription.</div>
       </div>
     </div>
   </div>
@@ -1143,6 +1271,22 @@ footer .footer-disclaimer{
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════
+     SAMPLE REPORT PAGE OVERLAY
+     Opened by hero CTA → openPage('sample')
+     Closed by X button → closePage('sample') or ESC key
+     ═══════════════════════════════════════════════════ -->
+<div class="page-overlay" id="page-sample">
+  <button class="page-close" onclick="closePage('sample')">✕ Close</button>
+  <div id="stratum-sample">
+
+
+<div style="display:none;font-size:1px;color:#161B26;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Stratum Intelligence Daily Briefing</div><table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" bgcolor="#161B26" class="force-dark-bg" style="background-color:#161B26 !important;"><tr><td align="center" bgcolor="#161B26" class="force-dark-bg" style="background-color:#161B26 !important;"><table width="680" border="0" cellpadding="0" cellspacing="0" role="presentation" bgcolor="#161B26" class="force-dark-bg" style="max-width:680px;width:100%;background-color:#161B26 !important;"><tr><td style="background:#0c0f18;border-bottom:2px solid #a39060;padding:20px 32px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;letter-spacing:5px;color:#e8eaf0;text-transform:uppercase;">STRAT</span><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;letter-spacing:5px;color:#a39060;text-transform:uppercase;">UM</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#5e6680;text-transform:uppercase;margin-left:16px;">WEALTH</span></td><td align="right"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#a39060;text-transform:uppercase;background:#1c2238;border:1px solid #353d54;padding:4px 10px;">PLUS</span></td></tr></table></td></tr><tr><td style="background:#1c2238;border-bottom:1px solid #252b40;padding:10px 32px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:#5e6680;text-transform:uppercase;">Wednesday, May 13, 2026</td><td align="right" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:#5e6680;text-transform:uppercase;">9:10 AM ET</td></tr></table></td></tr><tr><td style="padding:20px 32px 0;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;color:#a39060;text-transform:uppercase;margin-bottom:6px;">// Daily Intelligence Briefing</div><div style="font-size:11px;color:#5e6680;">Market Regime: <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;padding:3px 8px;background:rgba(95,165,128,0.15);color:#5fa580;border:1px solid rgba(95,165,128,0.3);">RISK-ON</span></div></td></tr><tr><td style="padding:0 32px 32px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:28px 0 14px;border-bottom:1px solid #252b40;"><tr><td width="28" style="padding-bottom:8px;"><div style="width:24px;height:24px;background:#a39060;text-align:center;line-height:24px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0c0f18;">01</div></td><td style="padding:0 0 8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#a39060;text-transform:uppercase;font-weight:500;">Executive Snapshot</td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="1" style="background:#252b40;margin-bottom:14px;"><tr><td width="50%" valign="top" style="background:#1c2238;padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#a39060;text-transform:uppercase;margin-bottom:6px;">Top Macro Driver</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;">April CPI surge to 3.8% annual driven by Iran conflict energy shock—core CPI hit 2.8% with 0.4% monthly gain . Energy prices alone contributed 40% of the headline acceleration.</div></td><td width="50%" valign="top" style="background:#1c2238;padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#a39060;text-transform:uppercase;margin-bottom:6px;">Top Geopolitical Signal</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;">Trump administration unveiled new Iran oil sanctions targeting China trade networks while dismissing Tehran&#39;s peace proposal .  President calls ceasefire on &quot;massive life support&quot; as Iran seeks US blockade removal .</div></td></tr><tr><td width="50%" valign="top" style="background:#1c2238;padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#a39060;text-transform:uppercase;margin-bottom:6px;">Top Policy Catalyst</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;">Enhanced Iran Sanctions Act passed House on March 16, now in Senate Foreign Relations Committee .  Bill mandates sanctions on foreign persons involved in Iranian oil processing, export, or sale .</div></td><td width="50%" valign="top" style="background:#1c2238;padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#a39060;text-transform:uppercase;margin-bottom:6px;">Market Regime</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;">Despite hot inflation data pressuring yields, S&amp;P 500 and Nasdaq remain near record highs with tech leadership intact .</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px;"><tr><td width="2" style="background:#a39060;"></td><td style="background:#1c2238;padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:#a39060;text-transform:uppercase;margin-bottom:6px;">Bottom Line</div><div style="font-size:13px;color:#a8b0c4;line-height:1.7;">Oil holds near $107.45 while Washington tightens Iran sanctions ahead of Trump&#39;s Beijing summit.  Markets price 98% hold probability through 2026 but 30% hike chance by December . Cisco earnings after close test AI infrastructure demand thesis with $5B+ order guidance.</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:28px 0 14px;border-bottom:1px solid #252b40;"><tr><td width="28" style="padding-bottom:8px;"><div style="width:24px;height:24px;background:#a39060;text-align:center;line-height:24px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0c0f18;">02</div></td><td style="padding:0 0 8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#a39060;text-transform:uppercase;font-weight:500;">Top 5 Actionable Ideas</td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:12px;"><tr><td width="4" style="background:#5fa580;font-size:1px;">&nbsp;</td><td style="padding:16px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td style="font-size:14px;font-weight:500;color:#e8eaf0;">1. Energy Majors</td><td width="80" align="right"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;background:rgba(95,165,128,0.15);color:#5fa580;border:1px solid rgba(95,165,128,0.3);">Bullish</span></td></tr></table><div style="margin-bottom:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">XOM</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">CVX</span></div><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:10px;"><tr><td width="80" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;text-transform:uppercase;">Confidence</td><td style="padding:0 10px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td width="86%" style="background:#a39060;height:4px;font-size:1px;">&nbsp;</td><td style="background:#252b40;height:4px;font-size:1px;">&nbsp;</td></tr></table></td><td width="36" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a39060;font-weight:500;text-align:right;">86%</td></tr></table><div style="font-size:12px;color:#a8b0c4;line-height:1.7;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Saudi Aramco CEO warns market loses 100 million barrels weekly, pushing normalization into 2027 if disruptions continue . Brent hit $138 in April with EIA expecting Q2 inventory draws of 8.5M barrels daily, keeping prices near $106 . Fresh sanctions target IRGC oil operations plus 12 entities in Iran-China trade chain .</div><div style="font-size:10px;color:#5e6680;margin-bottom:4px;"><strong style="color:#a8b0c4;">Horizon:</strong> 6 to 12 months &nbsp;&middot;&nbsp; <strong style="color:#a8b0c4;">Exit:</strong> Strait reopens with sustained 90%+ traffic flow or WTI below $85 for two weeks</div><div style="font-size:10px;color:#5e6680;margin-bottom:6px;letter-spacing:1px;"><span style="text-transform:uppercase;font-weight:500;color:#5e6680;">Signal Type:</span> <span style="color:#5fa580;font-weight:500;">Confirmed Data</span></div><div style="font-size:11px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;font-style:italic;"><strong style="color:#a39060;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;">Today's Posture:</strong> Build core position; Iran blockade sustains pricing power through Q4 even with eventual ceasefire.</div><div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 10px;margin-top:10px;background:rgba(163,144,96,0.15);color:#a39060;border:1px solid rgba(163,144,96,0.3);">&#9658; BUILD SLOWLY</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:12px;"><tr><td width="4" style="background:#5fa580;font-size:1px;">&nbsp;</td><td style="padding:16px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td style="font-size:14px;font-weight:500;color:#e8eaf0;">2. AI Infrastructure (semis only)</td><td width="80" align="right"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;background:rgba(95,165,128,0.15);color:#5fa580;border:1px solid rgba(95,165,128,0.3);">Bullish</span></td></tr></table><div style="margin-bottom:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">NVDA</span></div><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:10px;"><tr><td width="80" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;text-transform:uppercase;">Confidence</td><td style="padding:0 10px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td width="79%" style="background:#a39060;height:4px;font-size:1px;">&nbsp;</td><td style="background:#252b40;height:4px;font-size:1px;">&nbsp;</td></tr></table></td><td width="36" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a39060;font-weight:500;text-align:right;">79%</td></tr></table><div style="font-size:12px;color:#a8b0c4;line-height:1.7;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Cisco raised FY26 AI infrastructure order outlook above $5B after Q2 booked $2.1B, with $3B converting to hyperscaler revenue . Cisco sees pipeline of $2.5B+ in high-performance networking orders across sovereign, Neocloud, and enterprise customers . SoftBank unveiled soaring OpenAI stake gains while Nvidia CEO joins Trump&#39;s China summit delegation .</div><div style="font-size:10px;color:#5e6680;margin-bottom:4px;"><strong style="color:#a8b0c4;">Horizon:</strong> 3 to 6 months &nbsp;&middot;&nbsp; <strong style="color:#a8b0c4;">Exit:</strong> Hyperscaler capex guidance cuts from 2+ major cloud providers in same quarter</div><div style="font-size:10px;color:#5e6680;margin-bottom:6px;letter-spacing:1px;"><span style="text-transform:uppercase;font-weight:500;color:#5e6680;">Signal Type:</span> <span style="color:#5fa580;font-weight:500;">Confirmed Data</span></div><div style="font-size:11px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;font-style:italic;"><strong style="color:#a39060;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;">Today's Posture:</strong> Add on any post-earnings weakness; hyperscaler capex cycle accelerating despite macro noise.</div><div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 10px;margin-top:10px;background:rgba(163,144,96,0.15);color:#a39060;border:1px solid rgba(163,144,96,0.3);">&#9658; BUILD SLOWLY</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:12px;"><tr><td width="4" style="background:#5fa580;font-size:1px;">&nbsp;</td><td style="padding:16px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td style="font-size:14px;font-weight:500;color:#e8eaf0;">3. Mega-Cap Tech & AI Demand</td><td width="80" align="right"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;background:rgba(95,165,128,0.15);color:#5fa580;border:1px solid rgba(95,165,128,0.3);">Bullish</span></td></tr></table><div style="margin-bottom:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">BABA</span></div><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:10px;"><tr><td width="80" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;text-transform:uppercase;">Confidence</td><td style="padding:0 10px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td width="72%" style="background:#a39060;height:4px;font-size:1px;">&nbsp;</td><td style="background:#252b40;height:4px;font-size:1px;">&nbsp;</td></tr></table></td><td width="36" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a39060;font-weight:500;text-align:right;">72%</td></tr></table><div style="font-size:12px;color:#a8b0c4;line-height:1.7;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Nvidia&#39;s Huang joining US delegation to China signals potential chip export easement . Chinese ADRs positioned to benefit if summit produces trade tension reduction. Alibaba reports this week as broader US-China normalization theme develops . Energy-driven inflation pressures make defensive positioning in profitable growth names attractive.</div><div style="font-size:10px;color:#5e6680;margin-bottom:4px;"><strong style="color:#a8b0c4;">Horizon:</strong> 4 to 8 months &nbsp;&middot;&nbsp; <strong style="color:#a8b0c4;">Exit:</strong> Summit ends with expanded sanctions or trade restrictions rather than normalization</div><div style="font-size:10px;color:#5e6680;margin-bottom:6px;letter-spacing:1px;"><span style="text-transform:uppercase;font-weight:500;color:#5e6680;">Signal Type:</span> <span style="color:#a8b0c4;font-weight:500;">Developing Signal</span></div><div style="font-size:11px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;font-style:italic;"><strong style="color:#a39060;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;">Today's Posture:</strong> Watch for earnings reaction; geopolitical thaw ahead of Trump-Xi summit creates rerating potential.</div><div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 10px;margin-top:10px;background:rgba(122,128,153,0.15);color:#a8b0c4;border:1px solid rgba(122,128,153,0.3);">&#9658; WATCH TOO EARLY</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:12px;"><tr><td width="4" style="background:#a8b0c4;font-size:1px;">&nbsp;</td><td style="padding:16px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td style="font-size:14px;font-weight:500;color:#e8eaf0;">4. Financials & Banks</td><td width="80" align="right"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;background:rgba(122,128,153,0.15);color:#a8b0c4;border:1px solid rgba(122,128,153,0.3);">Neutral</span></td></tr></table><div style="margin-bottom:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">JPM</span></div><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:10px;"><tr><td width="80" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;text-transform:uppercase;">Confidence</td><td style="padding:0 10px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td width="67%" style="background:#a39060;height:4px;font-size:1px;">&nbsp;</td><td style="background:#252b40;height:4px;font-size:1px;">&nbsp;</td></tr></table></td><td width="36" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a39060;font-weight:500;text-align:right;">67%</td></tr></table><div style="font-size:12px;color:#a8b0c4;line-height:1.7;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Fed funds futures price 30% chance of rate hike by December as inflation pressures mount . 10-year Treasury yields hit 4.46%, highest since July . Banks benefit from steeper yield curve but face headwinds from potential energy-related credit stress and consumer pressure from higher costs.</div><div style="font-size:10px;color:#5e6680;margin-bottom:4px;"><strong style="color:#a8b0c4;">Horizon:</strong> 6 to 9 months &nbsp;&middot;&nbsp; <strong style="color:#a8b0c4;">Exit:</strong> Fed pivots to cut cycle or credit losses accelerate beyond normalized levels</div><div style="font-size:10px;color:#5e6680;margin-bottom:6px;letter-spacing:1px;"><span style="text-transform:uppercase;font-weight:500;color:#5e6680;">Signal Type:</span> <span style="color:#a39060;font-weight:500;">Market Signal</span></div><div style="font-size:11px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;font-style:italic;"><strong style="color:#a39060;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;">Today's Posture:</strong> Hold existing positions; rate hike probability supports NIM expansion but credit normalization continues.</div><div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 10px;margin-top:10px;background:rgba(122,128,153,0.15);color:#a8b0c4;border:1px solid rgba(122,128,153,0.3);">&#9658; WAIT ANOTHER WEEK</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:12px;"><tr><td width="4" style="background:#5fa580;font-size:1px;">&nbsp;</td><td style="padding:16px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:8px;"><tr><td style="font-size:14px;font-weight:500;color:#e8eaf0;">5. Commodities & Materials</td><td width="80" align="right"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;background:rgba(95,165,128,0.15);color:#5fa580;border:1px solid rgba(95,165,128,0.3);">Bullish</span></td></tr></table><div style="margin-bottom:8px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">FCX</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">GLD</span></div><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:10px;"><tr><td width="80" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;text-transform:uppercase;">Confidence</td><td style="padding:0 10px;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td width="63%" style="background:#a39060;height:4px;font-size:1px;">&nbsp;</td><td style="background:#252b40;height:4px;font-size:1px;">&nbsp;</td></tr></table></td><td width="36" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#a39060;font-weight:500;text-align:right;">63%</td></tr></table><div style="font-size:12px;color:#a8b0c4;line-height:1.7;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Core inflation hit 2.8% with energy up 28.4% annually . Gold declined to $4,693 but silver gained 2% . Iran conflict creates both supply-side inflation and safe haven demand. Industrial metals benefit from AI infrastructure buildout and potential China stimulus.</div><div style="font-size:10px;color:#5e6680;margin-bottom:4px;"><strong style="color:#a8b0c4;">Horizon:</strong> 3 to 6 months &nbsp;&middot;&nbsp; <strong style="color:#a8b0c4;">Exit:</strong> Fed delivers 75bp+ rate hike or Iran conflict resolves with immediate production restoration</div><div style="font-size:10px;color:#5e6680;margin-bottom:6px;letter-spacing:1px;"><span style="text-transform:uppercase;font-weight:500;color:#5e6680;">Signal Type:</span> <span style="color:#a39060;font-weight:500;">Market Signal</span></div><div style="font-size:11px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;font-style:italic;"><strong style="color:#a39060;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;">Today's Posture:</strong> Hedge portfolio with small allocation; inflation persistence supports both industrial metals and gold despite rate pressure.</div><div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 10px;margin-top:10px;background:rgba(163,144,96,0.15);color:#a39060;border:1px solid rgba(163,144,96,0.3);">&#9658; BUILD SLOWLY</div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:28px 0 14px;border-bottom:1px solid #252b40;"><tr><td width="28" style="padding-bottom:8px;"><div style="width:24px;height:24px;background:#a39060;text-align:center;line-height:24px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0c0f18;">RR</div></td><td style="padding:0 0 8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#a39060;text-transform:uppercase;font-weight:500;">Regional Radar</td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;border-left:3px solid #3a4870;margin-bottom:10px;"><tr><td style="padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#e8eaf0;letter-spacing:1px;margin-bottom:10px;">Wildcard Signal: South Korea</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Samsung Electronics accelerated P5 Fab 2 mega-fab construction by at least 6 months to compete for AI chip dominance, signaling intensifying competition in AI semiconductor manufacturing capacity.</div><div style="margin-top:8px;padding-top:8px;border-top:1px solid #252b40;font-size:11px;color:#cfd5e3;line-height:1.6;"><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Source:</span> KED Global, today<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Tickers to watch:</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">SSNLF</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">SKM</span><br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Portfolio impact:</span> Bullish signal for memory chip leaders as AI infrastructure demand drives accelerated capex deployment.<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Net read:</span> AI capex acceleration<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Connects to:</span> AI infrastructure, Semiconductor shortage<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Proxy quality:</span> <span style="color:#5fa580;font-weight:500;">Direct proxy</span><br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Posture:</span> Watch<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Western coverage:</span> <span style="color:#a39060;font-weight:500;">Under-reported</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;border-left:3px solid #3a4870;margin-bottom:10px;"><tr><td style="padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#e8eaf0;letter-spacing:1px;margin-bottom:10px;">Wildcard Signal: Indonesia</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Indonesia raised Rupiah risk reserves after the currency weakened past 17,500 per dollar amid MSCI rebalancing and foreign selling pressure, signaling growing EM currency stress.</div><div style="margin-top:8px;padding-top:8px;border-top:1px solid #252b40;font-size:11px;color:#cfd5e3;line-height:1.6;"><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Source:</span> Jakarta Globe, today<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Tickers to watch:</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">EWI</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">IDX</span><br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Portfolio impact:</span> Defensive positioning warranted as EM currency interventions typically precede broader regional contagion risk.<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Net read:</span> EM currency stress<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Connects to:</span> Dollar strength, EM outflows<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Proxy quality:</span> <span style="color:#a39060;font-weight:500;">Sector proxy</span><br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Posture:</span> Avoid<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Western coverage:</span> <span style="color:#c87a7a;font-weight:500;">Not covered yet</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;border-left:3px solid #3a4870;margin-bottom:10px;"><tr><td style="padding:14px 16px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#e8eaf0;letter-spacing:1px;margin-bottom:10px;">Wildcard Signal: Thailand</div><div style="font-size:13px;color:#cfd5e3;line-height:1.6;margin-bottom:8px;font-family:'IBM Plex Sans',sans-serif;">Thai AirAsia suspended 9 international routes from Don Mueang Airport due to rising jet fuel costs linked to Middle East conflict, signaling oil price transmission to EM airline earnings.</div><div style="margin-top:8px;padding-top:8px;border-top:1px solid #252b40;font-size:11px;color:#cfd5e3;line-height:1.6;"><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Source:</span> Bangkok Post, today<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Tickers to watch:</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">EWT</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:#a39060;background:#23293e;border:1px solid #353d54;padding:2px 8px;letter-spacing:1px;display:inline-block;margin:2px;">XLE</span><br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Portfolio impact:</span> Oil price shock creating earnings headwinds for EM airlines, with broader tourism sector risk.<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Net read:</span> Oil shock transmission<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Connects to:</span> Energy inflation, EM earnings pressure<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Proxy quality:</span> <span style="color:#a39060;font-weight:500;">Sector proxy</span><br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Posture:</span> Avoid<br><span style="color:#a39060;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;">Western coverage:</span> <span style="color:#c87a7a;font-weight:500;">Not covered yet</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:28px 0 14px;border-bottom:1px solid #252b40;"><tr><td width="28" style="padding-bottom:8px;"><div style="width:24px;height:24px;background:#a39060;text-align:center;line-height:24px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0c0f18;">04</div></td><td style="padding:0 0 8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#a39060;text-transform:uppercase;font-weight:500;">Macro Snapshot</td></tr></table><div style="height:2px;background:linear-gradient(90deg,#a39060,transparent);"></div><div style="background:#0D1018;border:1px solid rgba(201,168,76,0.12);border-top:none;padding:16px;margin-bottom:10px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;letter-spacing:3px;color:#a39060;margin-bottom:10px;">COMMODITIES</div><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:10px;"><tr><td style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:bold;color:#e8eaf0;">BRENT CRUDE</td><td style="text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:bold;color:#E05555;">$107.45 <span style="font-size:9px;">-0.2% today</span></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr><td valign="middle" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#3A4260;padding-right:6px;white-space:nowrap;">$58.72</td><td valign="middle" width="100%"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr><td valign="middle" width="80%" height="14" style="background:linear-gradient(90deg,#3ECF7B,#a39060);height:14px;font-size:1px;line-height:14px;border-radius:7px 0 0 7px;">&nbsp;</td><td valign="middle" width="14" height="14" style="padding:0;background:#e8eaf0;border-radius:50%;border:2px solid #a39060;font-size:1px;line-height:14px;">&nbsp;</td><td valign="middle" width="20%" height="14" style="background:#161B2A;height:14px;font-size:1px;line-height:14px;border-radius:0 7px 7px 0;">&nbsp;</td></tr></table></td><td valign="middle" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#3A4260;padding-left:6px;white-space:nowrap;">$119.4</td></tr></table><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#3A4260;padding-top:3px;text-align:center;">52-week range — upper third</div><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:6px 0;border-top:1px solid rgba(255,255,255,0.04);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:bold;color:#a39060;width:70px;vertical-align:top;">GOLD</td><td style="padding:6px 0;border-top:1px solid rgba(255,255,255,0.04);font-size:11px;color:#7E89A4;">Pressured by rising real rates despite inflation surge</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:6px 0;border-top:1px solid rgba(255,255,255,0.04);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:bold;color:#a39060;width:70px;vertical-align:top;">SILVER</td><td style="padding:6px 0;border-top:1px solid rgba(255,255,255,0.04);font-size:11px;color:#7E89A4;">Outperforms with 2% gain on industrial demand</td></tr></table></div><div style="height:2px;background:linear-gradient(90deg,#E05555,transparent);"></div><div style="background:#0D1018;border:1px solid rgba(224,85,85,0.12);border-top:none;padding:16px;margin-bottom:10px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;letter-spacing:3px;color:#E05555;margin-bottom:10px;">INFLATION</div><table width="100%" cellpadding="0" cellspacing="3" border="0" style="margin-bottom:10px;"><tr><td width="33%" style="text-align:center;padding:8px 4px;background:rgba(255,255,255,0.02);border:1px solid #161B2A;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:bold;letter-spacing:1px;color:#3A4260;">COOLING</div></td><td width="33%" style="text-align:center;padding:8px 4px;background:rgba(255,255,255,0.02);border:1px solid #161B2A;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:bold;letter-spacing:1px;color:#3A4260;">STABLE</div></td><td width="33%" style="text-align:center;padding:8px 4px;background:#E0555512;border:1px solid #E055554D;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:bold;letter-spacing:1px;color:#E05555;">HEATING</div></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#E05555;width:60px;vertical-align:top;">ENERGY</td><td style="padding:5px 0;font-size:11px;color:#7E89A4;">17.9% annual gain drives headline acceleration</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#E05555;width:60px;vertical-align:top;">CORE</td><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-size:11px;color:#7E89A4;">2.8% annual, 0.4% monthly—broadest pressure since 2023</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#E05555;width:60px;vertical-align:top;">WAGES</td><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-size:11px;color:#7E89A4;">Real earnings turned negative for first time since April 2023</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#E05555;width:60px;vertical-align:top;">TRANSPORT</td><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-size:11px;color:#7E89A4;">Airline fares up 20.7% annually as fuel costs surge</td></tr></table></div><div style="height:2px;background:linear-gradient(90deg,#3ECF7B,transparent);"></div><div style="background:#0D1018;border:1px solid rgba(62,207,123,0.12);border-top:none;padding:16px;margin-bottom:10px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;letter-spacing:3px;color:#3ECF7B;margin-bottom:10px;">RATES IMPACT</div><table width="100%" cellpadding="0" cellspacing="3" border="0" style="margin-bottom:10px;"><tr><td width="33%" style="text-align:center;padding:8px 4px;background:rgba(255,255,255,0.02);border:1px solid #161B2A;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:bold;letter-spacing:1px;color:#3A4260;">CUTTING</div></td><td width="33%" style="text-align:center;padding:8px 4px;background:#3ECF7B12;border:1px solid #3ECF7B4D;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:bold;letter-spacing:1px;color:#3ECF7B;">HOLDING</div></td><td width="33%" style="text-align:center;padding:8px 4px;background:rgba(255,255,255,0.02);border:1px solid #161B2A;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:bold;letter-spacing:1px;color:#3A4260;">HIKING</div></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#3ECF7B;width:70px;vertical-align:top;">FED</td><td style="padding:5px 0;font-size:11px;color:#7E89A4;">98% hold probability June FOMC, 30% hike chance December</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#3ECF7B;width:70px;vertical-align:top;">10Y</td><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-size:11px;color:#7E89A4;">4.46% yield hits highest since July on inflation persistence</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:bold;color:#3ECF7B;width:70px;vertical-align:top;">MORTGAGE</td><td style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.03);font-size:11px;color:#7E89A4;">Rising costs pressure housing affordability further</td></tr></table><div style="font-size:11px;color:#7E89A4;line-height:1.5;padding:3px 0;">THIS IS NOT FINANCIAL ADVICE. Stratum Intelligence is for informational and educational purposes only.</div></div><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin:28px 0 14px;border-bottom:1px solid #252b40;"><tr><td width="28" style="padding-bottom:8px;"><div style="width:24px;height:24px;background:#a39060;text-align:center;line-height:24px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#0c0f18;">FA</div></td><td style="padding:0 0 8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#a39060;text-transform:uppercase;font-weight:500;">Financial Advisor Deep Dive</td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:16px;"><tr><td style="padding:14px 16px;border-bottom:1px solid #252b40;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#e8eaf0;letter-spacing:1px;">XOM</span><span style="font-size:12px;color:#a8b0c4;margin-left:10px;font-weight:300;">Exxon Mobil Corporation</span></td><td align="right" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;">FMP + Finnhub · Data: A · Complete</td></tr></table></td></tr><tr><td style="padding:0;"><table width="100%" border="0" cellpadding="0" cellspacing="1" style="background:#252b40;"><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$150.63</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">P/E Ratio</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">24.89 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">expensive for energy</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">EPS (TTM)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$6.05</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price Target</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$164.54 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">9.2% upside</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Net Margin</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">7.76% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">modest for energy</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">ROE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">9.77% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">good for energy</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">FCF / Share</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$4.49 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">healthy</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Debt / Equity</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">0.19 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">conservative for energy</span></div></td></tr></table></td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:#161B26;"><span style="font-size:10px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;">Growth-Adjusted View:</span> <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:#a8b0c4;">undervalued relative to growth (PEG 0.2)</span></td></tr><tr><td style="padding:14px 16px;border-top:1px solid #252b40;"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:1px;color:#a8b0c4;">Quant: 6.6/10 &#8594; WAIT <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#a39060;border:1px solid #6e5e3c;padding:1px 6px;margin-left:8px;text-transform:uppercase;vertical-align:middle;">Energy</span></div></td></tr><tr><td style="padding:0 16px 14px;font-size:12px;color:#a8b0c4;line-height:1.6;font-family:'IBM Plex Sans',sans-serif;">Watchlist only — hold off on entry. Score reflects soft FCF/share of $4.49 alongside exceptional growth-adjusted view (PEG 0.2).</td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:rgba(201,168,76,0.03);"><div style="font-size:12px;color:#a8b0c4;line-height:1.6;">Due to <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">86% bullish</span> conviction, <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">Hybrid: 7.6/10 &#8594; BUILD SLOWLY</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:16px;"><tr><td style="padding:14px 16px;border-bottom:1px solid #252b40;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#e8eaf0;letter-spacing:1px;">NVDA</span><span style="font-size:12px;color:#a8b0c4;margin-left:10px;font-weight:300;">NVIDIA Corporation</span></td><td align="right" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;">FMP + Finnhub · Data: A · Complete</td></tr></table></td></tr><tr><td style="padding:0;"><table width="100%" border="0" cellpadding="0" cellspacing="1" style="background:#252b40;"><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$220.78</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">P/E Ratio</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">45.27 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">elevated for semiconductors</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">EPS (TTM)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$4.94</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price Target</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$279.00 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">26.3% upside</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Net Margin</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">55.6% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">exceptional for semiconductors</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">ROE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">104.37% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">excellent for semiconductors</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">FCF / Share</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$3.98 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">healthy</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Debt / Equity</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">0.07 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">conservative for semiconductors</span></div></td></tr></table></td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:#161B26;"><span style="font-size:10px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;">Growth-Adjusted View:</span> <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:#a8b0c4;">undervalued relative to growth (PEG 0.4)</span></td></tr><tr><td style="padding:14px 16px;border-top:1px solid #252b40;"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:1px;color:#6FBF8F;">Quant: 8.3/10 &#8594; BUY <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#a39060;border:1px solid #6e5e3c;padding:1px 6px;margin-left:8px;text-transform:uppercase;vertical-align:middle;">Semiconductors</span></div></td></tr><tr><td style="padding:0 16px 14px;font-size:12px;color:#a8b0c4;line-height:1.6;font-family:'IBM Plex Sans',sans-serif;">Financials support entry, with exceptional growth-adjusted view (PEG 0.4). Watch for soft FCF/share of $3.98.</td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:rgba(201,168,76,0.03);"><div style="font-size:12px;color:#a8b0c4;line-height:1.6;">Due to <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">79% bullish</span> conviction, <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">Hybrid: 8.1/10 &#8594; BUY</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:16px;"><tr><td style="padding:14px 16px;border-bottom:1px solid #252b40;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#e8eaf0;letter-spacing:1px;">BABA</span><span style="font-size:12px;color:#a8b0c4;margin-left:10px;font-weight:300;">Alibaba Group Holding Limited</span></td><td align="right" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;">FMP + Finnhub · Data: A · Complete</td></tr></table></td></tr><tr><td style="padding:0;"><table width="100%" border="0" cellpadding="0" cellspacing="1" style="background:#252b40;"><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$134.78</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">P/E Ratio</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">N/A</div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">EPS (TTM)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$4.87</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price Target</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$194.23 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">44.1% upside</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Net Margin</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">9.13% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">strong for retail</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">ROE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">9.06% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">adequate for retail</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">FCF / Share</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$-3.25 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#c87a7a;">concern</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Debt / Equity</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">0.25 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">conservative for retail</span></div></td></tr></table></td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:#161B26;"><span style="font-size:10px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;">Growth-Adjusted View:</span> <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:#5e6680;">Not rateable, growth data unavailable</span></td></tr><tr><td style="padding:14px 16px;border-top:1px solid #252b40;"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:1px;color:#a8b0c4;">Quant: 5.0/10 &#8594; WAIT <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#a39060;border:1px solid #6e5e3c;padding:1px 6px;margin-left:8px;text-transform:uppercase;vertical-align:middle;">Retail</span></div></td></tr><tr><td style="padding:0 16px 14px;font-size:12px;color:#a8b0c4;line-height:1.6;font-family:'IBM Plex Sans',sans-serif;">Watchlist only — hold off on entry. Score reflects weak FCF/share of $-3.25 alongside strong debt/equity of 0.25.</td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:rgba(201,168,76,0.03);"><div style="font-size:12px;color:#a8b0c4;line-height:1.6;">Due to <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">72% bullish</span> conviction, <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#a39060;">Hybrid: 6.1/10 &#8594; WAIT</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:16px;"><tr><td style="padding:14px 16px;border-bottom:1px solid #252b40;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#e8eaf0;letter-spacing:1px;">JPM</span><span style="font-size:12px;color:#a8b0c4;margin-left:10px;font-weight:300;">JPMorgan Chase & Co.</span></td><td align="right" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;">FMP + Finnhub · Data: A · Complete</td></tr></table></td></tr><tr><td style="padding:0;"><table width="100%" border="0" cellpadding="0" cellspacing="1" style="background:#252b40;"><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$304.88</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">P/E Ratio</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">14.44 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">elevated for banks</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">EPS (TTM)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$21.38</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price Target</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$338.78 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">11.1% upside</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Net Margin</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">20.66%</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">ROE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">16.32% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">strong for banks</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">FCF / Share</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$50.54 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">healthy</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Debt / Equity</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">3.39</div></td></tr></table></td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:#161B26;"><span style="font-size:10px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;">Growth-Adjusted View:</span> <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:#a8b0c4;">expensive even after growth (PEG 3.2)</span></td></tr><tr><td style="padding:14px 16px;border-top:1px solid #252b40;"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:1px;color:#a8b0c4;">Quant: 5.4/10 &#8594; WAIT <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#a39060;border:1px solid #6e5e3c;padding:1px 6px;margin-left:8px;text-transform:uppercase;vertical-align:middle;">Financials</span></div></td></tr><tr><td style="padding:0 16px 14px;font-size:12px;color:#a8b0c4;line-height:1.6;font-family:'IBM Plex Sans',sans-serif;">Watchlist only — hold off on entry. Score reflects weak growth-adjusted view (PEG 3.2) alongside solid net margin of 20.7%.</td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:rgba(201,168,76,0.03);"><div style="font-size:12px;color:#a8b0c4;line-height:1.6;">Due to <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">67% neutral</span> conviction, <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#a39060;">Hybrid: 6.1/10 &#8594; WAIT</span></div></td></tr></table><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;margin-bottom:16px;"><tr><td style="padding:14px 16px;border-bottom:1px solid #252b40;"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#e8eaf0;letter-spacing:1px;">FCX</span><span style="font-size:12px;color:#a8b0c4;margin-left:10px;font-weight:300;">Freeport-McMoRan Inc.</span></td><td align="right" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#5e6680;letter-spacing:1px;">FMP + Finnhub · Data: B · Complete</td></tr></table></td></tr><tr><td style="padding:0;"><table width="100%" border="0" cellpadding="0" cellspacing="1" style="background:#252b40;"><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$66.03</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">P/E Ratio</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">34.89 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">expensive for commodity inputs</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">EPS (TTM)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$1.89</div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Price Target</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$67.00 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">1.5% upside</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Net Margin</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">10.34% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">strong for commodity inputs</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">ROE</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">14.52% <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">strong for commodity inputs</span></div></td></tr><tr><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">FCF / Share</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">$4.33 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5fa580;">healthy</span></div></td><td width="50%" valign="top" style="background:#161B26;padding:10px 16px;"><div style="font-size:9px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;margin-bottom:3px;">Debt / Equity</div><div style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;color:#e8eaf0;">0.53 <span style="font-size:10px;font-family:'IBM Plex Sans',sans-serif;font-weight:400;color:#5e6680;">moderate for commodity inputs</span></div></td></tr></table></td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:#161B26;"><span style="font-size:10px;letter-spacing:1px;color:#5e6680;text-transform:uppercase;">Growth-Adjusted View:</span> <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:#a8b0c4;">undervalued relative to growth (PEG 0.6)</span></td></tr><tr><td style="padding:14px 16px;border-top:1px solid #252b40;"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:1px;color:#a39060;">Quant: 7.3/10 &#8594; BUILD SLOWLY <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#a39060;border:1px solid #6e5e3c;padding:1px 6px;margin-left:8px;text-transform:uppercase;vertical-align:middle;">Industrial</span></div></td></tr><tr><td style="padding:0 16px 14px;font-size:12px;color:#a8b0c4;line-height:1.6;font-family:'IBM Plex Sans',sans-serif;">Build a position gradually. Exceptional growth-adjusted view (PEG 0.6), though middling net margin of 10.3% argues for measured entry.</td></tr><tr><td style="padding:10px 16px;border-top:1px solid #252b40;background:rgba(201,168,76,0.03);"><div style="font-size:12px;color:#a8b0c4;line-height:1.6;">Due to <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#5fa580;">63% bullish</span> conviction, <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#a39060;">Hybrid: 6.8/10 &#8594; WAIT</span></div></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;"><tr><td style="padding:12px 16px;background:#1c2238;border:1px solid #252b40;border-left:2px solid #a39060;"><div style="font-size:10px;color:#5e6680;line-height:1.7;"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#a39060;">Quant Rating</span> evaluates financial fundamentals only. <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#a39060;">Hybrid Rating</span> combines fundamentals with real-time market conviction to provide a complete picture.</div></td></tr></table></td></tr><tr><td style="padding:0 32px 48px;"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#1c2238;border:1px solid #252b40;border-left:2px solid #a39060;"><tr><td style="padding:28px 28px;text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;color:#a39060;text-transform:uppercase;margin-bottom:14px;">// End of Sample Report</div><div style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:300;color:#e8eaf0;line-height:1.3;margin-bottom:10px;">This is what subscribers receive <strong style="color:#a39060;font-weight:600;">every morning at 9:10 AM Eastern.</strong></div><div style="font-family:'IBM Plex Sans',sans-serif;font-size:13px;color:#a8b0c4;line-height:1.7;margin-bottom:22px;max-width:520px;margin-left:auto;margin-right:auto;">Start with a 7-day free trial — daily reports plus the Sunday FA Deep Dive. Stay on with Plus ($19.99/mo) or upgrade to Quant ($49.99/mo) for weekly, monthly, and Congressional Trading Watch.</div><table class="footer-cta-table" border="0" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;"><tr><td style="padding:0 6px;"><a href="#plans" onclick="closePage('sample');setTimeout(startFreeTrialFlow,250);return false;" style="display:inline-block;background:#a39060;color:#0c0f18;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:15px 28px;text-decoration:none;">Start 7-Day Free Trial &rarr;</a></td><td style="padding:0 6px;"><a href="#plans" onclick="closePage('sample');document.getElementById('plans').scrollIntoView({behavior:'smooth',block:'start'});return false;" style="display:inline-block;background:transparent;color:#e8eaf0;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 28px;text-decoration:none;border:1px solid #353d54;">See All Tiers</a></td></tr></table></td></tr></table><div style="margin-top:24px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:#5e6680;line-height:1.7;letter-spacing:0.3px;"><strong style="color:#a8b0c4;font-weight:500;">Disclaimer.</strong> This is an archived sample of the Stratum Daily Intelligence briefing published on May 13, 2026, and is presented for illustrative purposes only. Prices, conviction scores, and fundamental data reflect that date and are not current. Nothing in this report constitutes financial, investment, tax, or legal advice. Stratum Intelligence is a research and analysis product, not a registered investment advisor. All trading and investment decisions are made at the reader's sole discretion and risk. Past performance does not guarantee future results.</div></td></tr></table></td></tr></table></td></tr></table>
+
+  </div>
+</div>
+
+
 
 <!-- HERO -->
 <div class="hero" style="padding:0;min-height:600px;display:flex;align-items:stretch;">
@@ -1156,8 +1300,26 @@ footer .footer-disclaimer{
         <p class="hero-desc">
           Institutional-grade market intelligence, <em>multilingual, bias-aware, cross-signal.</em><br>
           Delivered to your inbox every morning at 9:10 AM Eastern.<br>
-          Free forever. Upgrade for daily reports &amp; full analysis.
+          Try Plus free for 7 days.
         </p>
+
+        <!-- ─── HERO ACTIONS (NEW CTAs) ─── -->
+        <div class="hero-actions">
+          <a class="hero-cta primary" href="#" onclick="openPage('sample');return false;">
+            <span class="cta-icon">▸</span>
+            <span class="cta-text">
+              <span class="cta-line1">See Sample Report</span>
+              <span class="cta-line2">A real archived briefing</span>
+            </span>
+          </a>
+          <a class="hero-cta secondary" href="#plans" onclick="return startFreeTrialFlow();">
+            <span class="cta-icon">$0</span>
+            <span class="cta-text">
+              <span class="cta-line1">Start Free Trial</span>
+              <span class="cta-line2">Daily reports &amp; FA Deep Dive</span>
+            </span>
+          </a>
+        </div>
       </div>
 
       <!-- FEATURE BULLETS -->
@@ -1398,9 +1560,9 @@ footer .footer-disclaimer{
               <div style="font-family:'IBM Plex Sans',sans-serif;font-size:24px;font-weight:300;color:#E4E8F0;line-height:1.2;margin-bottom:28px;">Start free.<br><strong style="font-weight:600;color:#C9A84C;">Upgrade when ready.</strong></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="plan-pick-card" onclick="document.getElementById('free-plan').scrollIntoView({behavior:'smooth',block:'center'});" style="background:#10131A;border:2px solid #1C2030;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s;" onmouseover="this.style.borderColor='#C9A84C'" onmouseout="this.style.borderColor='#1C2030'">
-                <div><span style="font-size:12px;color:#7A8099;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Free</span><div style="font-size:11px;color:#4A5270;margin-top:3px;font-family:'IBM Plex Sans',sans-serif;">1 report/week · No card needed</div></div>
-                <div style="text-align:right;"><span style="font-size:24px;font-weight:500;color:#E4E8F0;">$0</span><div style="font-size:10px;color:#4A5270;letter-spacing:1px;">/ forever</div></div>
+              <div class="plan-pick-card" onclick="startFreeTrialFlow();" style="background:#10131A;border:2px solid #1C2030;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s;" onmouseover="this.style.borderColor='#C9A84C'" onmouseout="this.style.borderColor='#1C2030'">
+                <div><span style="font-size:12px;color:#7A8099;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Free Trial</span><div style="font-size:11px;color:#4A5270;margin-top:3px;font-family:'IBM Plex Sans',sans-serif;">7 days of Plus reports</div></div>
+                <div style="text-align:right;"><span style="font-size:24px;font-weight:500;color:#E4E8F0;">$0</span><div style="font-size:10px;color:#4A5270;letter-spacing:1px;">/ 7 days</div></div>
               </div>
               <div class="plan-pick-card" onclick="document.getElementById('free-plan').nextElementSibling.scrollIntoView({behavior:'smooth',block:'center'});" style="background:#151821;border:2px solid #C9A84C;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s;" onmouseover="this.style.boxShadow='0 0 0 1px #C9A84C'" onmouseout="this.style.boxShadow='none'">
                 <div><span style="font-size:12px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-weight:600;">Plus</span><div style="font-size:11px;color:#7A8099;margin-top:3px;font-family:'IBM Plex Sans',sans-serif;">Daily + Financial Advisor</div></div>
@@ -1846,9 +2008,9 @@ footer .footer-disclaimer{
       <div class="mslide-lbl">05 / 08 &middot; Choose Your Plan</div>
       <div class="mslide-ttl">Start free.<br><strong>Upgrade when ready.</strong></div>
       <div>
-        <div class="mplan-card" onclick="document.getElementById('free-plan').scrollIntoView({behavior:'smooth',block:'center'});">
-          <div><div class="mplan-name">Free</div><div class="mplan-sub">1 report/week &middot; No card needed</div></div>
-          <div><div class="mplan-price">$0</div><div class="mplan-per">/ forever</div></div>
+        <div class="mplan-card" onclick="startFreeTrialFlow();">
+          <div><div class="mplan-name">Free Trial</div><div class="mplan-sub">7 days of Plus reports</div></div>
+          <div><div class="mplan-price">$0</div><div class="mplan-per">/ 7 days</div></div>
         </div>
         <div class="mplan-card featured" onclick="document.getElementById('free-plan').nextElementSibling.scrollIntoView({behavior:'smooth',block:'center'});">
           <div><div class="mplan-name">Plus</div><div class="mplan-sub">Daily + Financial Advisor</div></div>
@@ -1975,7 +2137,7 @@ footer .footer-disclaimer{
   </div>
   <div class="data-cell">
     <span class="data-val">$0</span>
-    <span class="data-key">Free Tier · No Card Needed</span>
+    <span class="data-key">7-Day Free Trial</span>
   </div>
 </div>
 
@@ -1987,22 +2149,25 @@ footer .footer-disclaimer{
 </div>
 
 <div class="plans-wrapper">
-<div class="plans">
+
+
+
+<div class="plans" id="plans">
 
   <!-- FREE -->
   <div class="plan" id="free-plan">
     <div class="plan-accent"></div>
-    <div class="plan-tier">// Free Tier</div>
+    <div class="plan-tier">// Free Trial</div>
     <div class="plan-price">
       <span class="p-currency">$</span>
       <span class="p-amount">0</span>
-      <span class="p-period">/ forever</span>
+      <span class="p-period">/ 7 days</span>
     </div>
     <div class="plan-annual">&nbsp;</div>
-    <div class="plan-desc">Same full report as Plus, delivered once per week on a random day.</div>
+    <div class="plan-desc">7 days of daily Plus reports — including the Sunday FA Deep Dive.</div>
     <ul class="feat">
-      <li><span class="ico-on">■</span>1 full report per week (random day)</li>
-      <li class="off"><span class="ico-off">□</span>Daily delivery, Plus only</li>
+      <li><span class="ico-on">■</span>7 days of daily Plus reports</li>
+      <li><span class="ico-on">■</span>Full FA Deep Dive included</li>
       <li class="off"><span class="ico-off">□</span>Weekly summary, Quant only</li>
       <li class="off"><span class="ico-off">□</span>Monthly wrap-up, Quant only</li>
       <li class="off"><span class="ico-off">□</span>Congressional trading, Quant only</li>
@@ -2010,11 +2175,9 @@ footer .footer-disclaimer{
     <div class="form-success" id="free-success"></div>
     <div class="form-error" id="free-error"></div>
     <div style="margin-top:auto;">
-    <input class="e-input" type="text" id="free-name" placeholder="Your name" autocomplete="given-name" style="width:100%;margin-bottom:6px;border:1px solid var(--border2);">
-    <form class="email-row" id="freeForm" onsubmit="handleFreeSignup(event)">
-      <input class="e-input" type="email" id="free-email" placeholder="your@email.com" required autocomplete="email">
-      <button class="e-btn" type="submit" id="free-btn">Subscribe</button>
-    </form>
+    <form id="freeForm" onsubmit="handleFreeSignup(event)">
+    <input class="e-input symmetric" type="text" id="free-name" placeholder="Your name" autocomplete="given-name">
+    <input class="e-input symmetric" type="email" id="free-email" placeholder="your@email.com" required autocomplete="email">
     <!-- Honeypot: real users never see or fill this. Bots that auto-fill all fields will trip it. -->
     <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
       <label for="company">Company (leave blank)</label>
@@ -2022,10 +2185,15 @@ footer .footer-disclaimer{
     </div>
     <div class="tc-row" id="free-tc-row">
       <input type="checkbox" id="free-tc" name="free-tc">
-      <label for="free-tc">I have read and agree to the <a href="/terms.html" target="_blank">Terms and Conditions</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, I acknowledge that Stratum is an informational tool, not financial advice, and I consent to receive the Stratum newsletter at the email I provided.</label>
+      <label for="free-tc">I agree to the <a href="/terms.html" target="_blank">Terms</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
     </div>
     <div class="tc-error" id="free-tc-error">▸ Please accept the Terms and Conditions</div>
-    <div class="form-note" id="free-form-note">No credit card required</div>
+    <div class="form-note" id="free-form-note"></div>
+    <button class="btn-up" type="submit" id="free-btn" style="margin-top:14px;">
+      Start Free Trial, 7 Days Free
+    </button>
+    <div class="up-note">7 days of daily Plus reports · Just your email</div>
+    </form>
     </div>
   </div>
 
@@ -2054,12 +2222,8 @@ footer .footer-disclaimer{
       <li class="off"><span class="ico-off">□</span>Monthly wrap-up, Quant only</li>
       <li class="off"><span class="ico-off">□</span>Congressional trading, Quant only</li>
     </ul>
-    <button class="btn-up" onclick="openModal('plus', true)" id="plus-btn" style="margin-bottom:8px;">
-      Start Free Trial, 7 Days Free
-    </button>
-    <div style="font-size:10px;color:#7A8099;text-align:center;margin-top:-4px;margin-bottom:8px;line-height:1.4;letter-spacing:0.3px;">Card required · No charge for 7 days · Auto-converts to $19.99/mo unless canceled before day 8</div>
-    <button class="btn-up outline" onclick="openModal('plus', false)" style="margin-bottom:0;">
-      Subscribe Now, $19.99 / month
+    <button class="btn-up" onclick="openModal('plus', false)" id="plus-btn" style="margin-bottom:0;">
+      Subscribe to Plus, $19.99 / month
     </button>
     <div class="up-note">Or $17.99/mo billed annually · Cancel anytime</div>
   </div>
@@ -2273,16 +2437,16 @@ footer .footer-disclaimer{
   <div style="max-width:400px;margin:0 auto;">
     <div id="bottom-form" style="display:flex;gap:0;">
       <input type="email" id="bottom-email" placeholder="your@email.com" class="e-input" style="flex:1;padding:14px 16px;background:#070709;border:1px solid #242840;border-right:none;color:#E4E8F0;font-family:'IBM Plex Mono',monospace;font-size:13px;outline:none;">
-      <button id="bottom-btn" onclick="handleBottomSignup()" style="padding:14px 24px;background:#C9A84C;color:#0B0D12;border:1px solid #C9A84C;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Start Free</button>
+      <button id="bottom-btn" onclick="handleBottomSignup()" style="padding:14px 24px;background:#C9A84C;color:#0B0D12;border:1px solid #C9A84C;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;">Start Free Trial</button>
     </div>
     <div id="bottom-success" style="display:none;margin-top:12px;padding:16px;background:rgba(93,232,142,0.04);border:1px solid rgba(93,232,142,0.12);border-radius:4px;"></div>
     <div id="bottom-error" style="display:none;margin-top:12px;font-size:12px;color:#E05555;"></div>
     <div class="tc-row" id="bottom-tc-row" style="margin-top:12px;text-align:left;">
       <input type="checkbox" id="bottom-tc" name="bottom-tc">
-      <label for="bottom-tc">I have read and agree to the <a href="/terms.html" target="_blank">Terms and Conditions</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, I acknowledge that Stratum is an informational tool, not financial advice, and I consent to receive the Stratum newsletter at the email I provided.</label>
+      <label for="bottom-tc">I agree to the <a href="/terms.html" target="_blank">Terms</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
     </div>
     <div class="tc-error" id="bottom-tc-error">▸ Please accept the Terms and Conditions</div>
-    <div id="bottom-note" style="font-size:10px;color:#4A5270;margin-top:10px;">Free forever · 1 report/week · No credit card</div>
+    <div id="bottom-note" style="font-size:10px;color:#4A5270;margin-top:10px;">7-day free trial · Just your email</div>
   </div>
 </div>
 
@@ -2362,7 +2526,7 @@ footer .footer-disclaimer{
 
     <div class="modal-tc">
       <input type="checkbox" id="modal-tc" name="modal-tc">
-      <label for="modal-tc">I have read and agree to the <a href="/terms.html" target="_blank">Terms and Conditions</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, I acknowledge that Stratum is an informational tool, not financial advice, and I consent to receive the Stratum newsletter and account-related emails at the email I provided.</label>
+      <label for="modal-tc">I agree to the <a href="/terms.html" target="_blank">Terms</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
     </div>
     <div class="modal-tc-error" id="modal-tc-error">▸ Please accept the Terms and Conditions</div>
 
@@ -2478,13 +2642,6 @@ var currentModalTier = 'plus';
 var currentBilling = 'monthly';
 
 var modalConfig = {
-  plus_trial: {
-    tag: '// Stratum Plus, 7-Day Free Trial',
-    title: 'Start Your Free Trial',
-    sub: 'Card required · No charge today · Your card will be charged automatically on day 8 unless you cancel before then. Cancel anytime through your billing portal.',
-    monthly: { label: 'Stratum Plus · Free for 7 days, then $19.99/mo', amount: '' },
-    annual:  { label: 'Stratum Plus · Free for 7 days, then $17.99/mo', amount: '' }
-  },
   plus: {
     tag: '// Stratum Plus Access',
     title: 'Subscribe to Plus',
@@ -2631,7 +2788,7 @@ async function submitUpgrade() {
             '<div style="font-size:48px;color:#C9A84C;margin-bottom:16px;">\u2713</div>' +
             '<h2 style="font-size:22px;color:#E4E8F0;margin:0 0 16px;font-weight:400;">Check your inbox</h2>' +
             '<p style="font-size:14px;color:#7A8099;line-height:1.7;margin:0 0 8px;">We sent a link to <strong style="color:#E4E8F0;">' + email.replace(/[<>&"]/g, '') + '</strong> to start your 7-day free trial.</p>' +
-            '<p style="font-size:13px;color:#7A8099;line-height:1.7;margin:0 0 24px;">Click the button in the email to verify your address and add a card. No charge today.</p>' +
+            '<p style="font-size:13px;color:#7A8099;line-height:1.7;margin:0 0 24px;">Click the button in the email to verify your address and start your trial. No card required.</p>' +
             '<p style="font-size:12px;color:#4A5270;line-height:1.7;margin:0;">Don\u2019t see it? Check your spam folder, or wait a minute and refresh.</p>' +
           '</div>';
       } else {
@@ -2707,7 +2864,7 @@ function openPage(id) {
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('dropdownMenu').classList.remove('open');
   // Close ALL other pages first
-  ['about','faq','privacy','terms','whatsnew'].forEach(function(pid) {
+  ['about','faq','privacy','terms','whatsnew','sample'].forEach(function(pid) {
     var el = document.getElementById('page-' + pid);
     if (el) el.classList.remove('open');
   });
@@ -2770,7 +2927,7 @@ document.addEventListener('click', function(e) {
 // Close pages with Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    ['about','faq','privacy','terms','whatsnew'].forEach(function(id) {
+    ['about','faq','privacy','terms','whatsnew','sample'].forEach(function(id) {
       var el = document.getElementById('page-' + id);
       if (el && el.classList.contains('open')) {
         closePage(id);
@@ -2991,23 +3148,52 @@ async function handleBottomSignup(){
   }
 }
 
-// ── OPEN PLUS 7-DAY FREE TRIAL FROM /trial REFERRAL ──
+// ── OPEN FREE TRIAL SIGNUP FROM /?join= REFERRAL ──
+// Previously opened a paid Plus signup modal. Now routes to the simple
+// Free Trial signup form on the homepage instead.
 (function(){
   var params = new URLSearchParams(window.location.search);
   if (!params.has('join')) return;
-  function tryOpen(){
-    if (typeof openModal === 'function') {
-      openModal('plus', true);
+  function tryScroll(){
+    var el = document.getElementById('free-plan');
+    if (el) {
+      startFreeTrialFlow();
     } else {
-      setTimeout(tryOpen, 100);
+      setTimeout(tryScroll, 100);
     }
   }
   if (document.readyState === 'complete') {
-    setTimeout(tryOpen, 200);
+    setTimeout(tryScroll, 200);
   } else {
-    window.addEventListener('load', function(){ setTimeout(tryOpen, 200); });
+    window.addEventListener('load', function(){ setTimeout(tryScroll, 200); });
   }
 })();
+
+// ── HERO/SAMPLE "START FREE TRIAL" FLOW ──
+// Scrolls visitor to the plans section so they see all 3 tiers, then
+// focuses the Free Trial name input ~600ms later so they're ready to type.
+function startFreeTrialFlow() {
+  // 1. Scroll the plans section into view at the TOP of the viewport,
+  //    so all 3 tier cards are visible side-by-side first.
+  var plansEl = document.getElementById('plans');
+  if (plansEl) {
+    plansEl.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  // 2. After the scroll settles, scroll a little further to center the
+  //    Free Trial card and focus its name input.
+  setTimeout(function(){
+    var freeEl = document.getElementById('free-plan');
+    if (freeEl) {
+      freeEl.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    setTimeout(function(){
+      var nameInput = document.getElementById('free-name');
+      if (nameInput) nameInput.focus({preventScroll:true});
+    }, 500);
+  }, 800);
+  return false; // prevent default anchor navigation
+}
+
 </script>
 </body>
 </html>
