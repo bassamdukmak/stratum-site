@@ -2537,6 +2537,49 @@ footer .footer-disclaimer{
   </div>
 </div>
 
+<!-- ── TRIAL MODAL ──
+     Pops over the plans section after the hero "Start Free Trial" scroll completes.
+     Uses the same .modal-overlay / .modal CSS as upgradeModal for visual consistency.
+     Submits to the no-card trial path (tier='free' with no trial_intent). -->
+<div class="modal-overlay" id="trialModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeTrialModal()">✕ CLOSE</button>
+    <div class="modal-tag">// Start Your 7-Day Trial</div>
+    <h2>Try Plus free for 7 days</h2>
+    <p class="modal-sub">Daily reports + Sunday Financial Advisor Deep Dive. No card required. No charge today, ever.</p>
+
+    <div class="modal-field">
+      <label class="modal-label" for="trial-m-name">Full Name</label>
+      <input class="modal-input" id="trial-m-name" type="text" placeholder="Your name" autocomplete="given-name">
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label" for="trial-m-email">Email Address</label>
+      <input class="modal-input" id="trial-m-email" type="email" placeholder="your@email.com" autocomplete="email">
+      <div class="modal-error" id="trial-m-email-error">▸ Please enter a valid email</div>
+    </div>
+
+    <!-- Honeypot: real users never see this. Bots that fill all fields trip it. -->
+    <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+      <label for="trial-m-company">Company (leave blank)</label>
+      <input type="text" id="trial-m-company" name="company" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="modal-tc">
+      <input type="checkbox" id="trial-m-tc" name="trial-m-tc">
+      <label for="trial-m-tc">I agree to the <a href="/terms.html" target="_blank">Terms</a> and <a href="/privacy.html" target="_blank">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
+    </div>
+    <div class="modal-tc-error" id="trial-m-tc-error">▸ Please accept the Terms and Conditions</div>
+
+    <div class="modal-error" id="trial-m-success" style="display:none;color:#5fa580;border-color:rgba(95,165,128,0.3);background:rgba(95,165,128,0.05);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;padding:12px 14px;margin:8px 0 12px;"></div>
+
+    <button class="modal-submit" id="trial-m-submit-btn" onclick="handleTrialModalSignup()">
+      Start My 7-Day Trial →
+    </button>
+    <div class="modal-note">No card · No charge · Cancel by ignoring it</div>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════════
 // STRATUM, FRONTEND
@@ -2636,6 +2679,141 @@ async function handleFreeSignup(e) {
     showUniformSuccess();
   }
 }
+
+// ═══════════════════════════════════════════════════════
+// TRIAL MODAL — pops after hero "Start Free Trial" scroll
+// ═══════════════════════════════════════════════════════
+
+function openTrialModal() {
+  // Reset form state on every open
+  var emailInput = document.getElementById('trial-m-email');
+  var nameInput = document.getElementById('trial-m-name');
+  var tcCheck = document.getElementById('trial-m-tc');
+  var emailErr = document.getElementById('trial-m-email-error');
+  var tcErr = document.getElementById('trial-m-tc-error');
+  var successBox = document.getElementById('trial-m-success');
+  var submitBtn = document.getElementById('trial-m-submit-btn');
+
+  // Pre-fill from the inline free form if user already typed there
+  var freeEmail = document.getElementById('free-email');
+  var freeName = document.getElementById('free-name');
+  if (freeEmail && freeEmail.value.trim() && !emailInput.value) {
+    emailInput.value = freeEmail.value.trim();
+  }
+  if (freeName && freeName.value.trim() && !nameInput.value) {
+    nameInput.value = freeName.value.trim();
+  }
+
+  // Reset error/success states (but keep any pre-fill in place)
+  if (emailErr) emailErr.classList.remove('show');
+  if (tcErr) tcErr.classList.remove('show');
+  if (successBox) {
+    successBox.style.display = 'none';
+    successBox.textContent = '';
+  }
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Start My 7-Day Trial →';
+  }
+  // Show all form fields again in case a prior submit hid them
+  ['trial-m-name','trial-m-email','trial-m-tc'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) {
+      var wrap = el.closest('.modal-field') || el.closest('.modal-tc') || el;
+      wrap.style.display = '';
+    }
+  });
+
+  document.getElementById('trialModal').classList.add('open');
+  // Focus the name input after the modal animates in
+  setTimeout(function() {
+    var first = nameInput && !nameInput.value ? nameInput : emailInput;
+    if (first) first.focus();
+  }, 250);
+}
+
+function closeTrialModal() {
+  document.getElementById('trialModal').classList.remove('open');
+}
+
+async function handleTrialModalSignup() {
+  var nameInput = document.getElementById('trial-m-name');
+  var emailInput = document.getElementById('trial-m-email');
+  var honeypot = document.getElementById('trial-m-company');
+  var tcCheck = document.getElementById('trial-m-tc');
+  var tcErr = document.getElementById('trial-m-tc-error');
+  var emailErr = document.getElementById('trial-m-email-error');
+  var successBox = document.getElementById('trial-m-success');
+  var submitBtn = document.getElementById('trial-m-submit-btn');
+
+  var email = (emailInput.value || '').trim();
+  var name = (nameInput.value || '').trim();
+  var honeypotVal = (honeypot && honeypot.value || '').trim();
+
+  // T&C check
+  if (!tcCheck.checked) {
+    tcErr.classList.add('show');
+    var tcRow = tcCheck.closest('.modal-tc');
+    if (tcRow && typeof shakeEl === 'function') shakeEl(tcRow);
+    return;
+  }
+  tcErr.classList.remove('show');
+
+  // Email check
+  if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+    emailErr.classList.add('show');
+    if (typeof shakeEl === 'function') shakeEl(emailInput);
+    return;
+  }
+  emailErr.classList.remove('show');
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'SUBSCRIBING...';
+
+  function showUniformSuccess() {
+    // Hide form fields
+    ['trial-m-name','trial-m-email'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) {
+        var wrap = el.closest('.modal-field');
+        if (wrap) wrap.style.display = 'none';
+      }
+    });
+    var tcWrap = tcCheck.closest('.modal-tc');
+    if (tcWrap) tcWrap.style.display = 'none';
+    submitBtn.style.display = 'none';
+    // Show success message
+    successBox.style.display = 'block';
+    successBox.innerHTML =
+      '<strong style="color:#5fa580;font-weight:600;font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;">✓ Check your inbox</strong>' +
+      '<div style="margin-top:8px;color:#a8b0c4;">We sent a verification link to <strong style="color:#E4E8F0;">' + email.replace(/[<>&"]/g, '') + '</strong>. Click the button in the email to start your 7-day trial. No card required.</div>';
+  }
+
+  try {
+    await fetch(API_BASE + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, name: name || undefined, tier: 'free', company: honeypotVal })
+    });
+    showUniformSuccess();
+  } catch (err) {
+    showUniformSuccess();
+  }
+}
+
+// Close trial modal on backdrop click (anywhere outside .modal content)
+document.addEventListener('click', function(e) {
+  var overlay = document.getElementById('trialModal');
+  if (!overlay || !overlay.classList.contains('open')) return;
+  if (e.target === overlay) closeTrialModal();
+});
+
+// Close trial modal on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  var overlay = document.getElementById('trialModal');
+  if (overlay && overlay.classList.contains('open')) closeTrialModal();
+});
 
 // ── MODAL ──
 var currentModalTier = 'plus';
@@ -3174,22 +3352,28 @@ async function handleBottomSignup(){
 // focuses the Free Trial name input ~600ms later so they're ready to type.
 function startFreeTrialFlow() {
   // 1. Scroll the plans section into view at the TOP of the viewport,
-  //    so all 3 tier cards are visible side-by-side first.
+  //    so the user sees the plan context before the modal pops.
   var plansEl = document.getElementById('plans');
   if (plansEl) {
     plansEl.scrollIntoView({behavior:'smooth', block:'start'});
   }
   // 2. After the scroll settles, scroll a little further to center the
-  //    Free Trial card and focus its name input.
+  //    Free Trial card, THEN pop the trial modal over it so the user
+  //    can sign up immediately without typing into the inline form.
   setTimeout(function(){
     var freeEl = document.getElementById('free-plan');
     if (freeEl) {
       freeEl.scrollIntoView({behavior:'smooth', block:'center'});
     }
     setTimeout(function(){
-      var nameInput = document.getElementById('free-name');
-      if (nameInput) nameInput.focus({preventScroll:true});
-    }, 500);
+      if (typeof openTrialModal === 'function') {
+        openTrialModal();
+      } else {
+        // Fallback if modal isn't loaded yet — focus inline form
+        var nameInput = document.getElementById('free-name');
+        if (nameInput) nameInput.focus({preventScroll:true});
+      }
+    }, 600);
   }, 800);
   return false; // prevent default anchor navigation
 }
