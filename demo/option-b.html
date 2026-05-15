@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMO B — Hero "Try Plus Free for 7 Days" → Plus Trial Modal</title>
+<style>
+:root {
+  --gold: #C9A84C; --gold-hover: #D4B86A; --gold-dim: #7A6030;
+  --black: #070709; --bg: #0B0D12; --surface: #10131A; --surface2: #151821;
+  --border: #1C2030; --border2: #242840; --navy-light: #2E4270;
+  --text-primary: #C4C8D4; --text-secondary: #7A8099; --text-muted: #4A5270;
+  --white: #E4E8F0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text-secondary); font-family: 'IBM Plex Mono', 'Menlo', monospace; font-size: 14px; line-height: 1.5; }
+.demo-banner { background: #6b8eb5; color: var(--black); padding: 8px 16px; font-weight: 700; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-align: center; font-family: 'IBM Plex Sans', sans-serif; }
+
+.hero { padding: 60px 24px; max-width: 1200px; margin: 0 auto; }
+.hero-tag { font-size: 10px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.hero-tag::before { content: ""; width: 24px; height: 1px; background: var(--gold-dim); display: block; }
+.hero h1 { font-family: 'IBM Plex Sans', sans-serif; font-size: clamp(36px, 6vw, 64px); font-weight: 300; color: var(--white); line-height: 1.0; letter-spacing: -2px; margin-bottom: 24px; }
+.hero h1 strong { font-weight: 600; color: var(--gold); }
+.hero-desc { font-size: 13px; color: var(--text-secondary); max-width: 520px; line-height: 1.9; font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; margin-bottom: 32px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-cta { display: flex; align-items: center; gap: 10px; padding: 12px 18px; text-decoration: none; border: 1px solid; max-height: 64px; transition: all 0.18s ease; cursor: pointer; }
+.hero-cta.primary { background: var(--gold); border-color: var(--gold); color: var(--black); }
+.hero-cta.primary:hover { background: var(--gold-hover); }
+.hero-cta.secondary { background: transparent; border-color: var(--navy-light); color: var(--white); }
+.hero-cta.secondary:hover { border-color: var(--gold); color: var(--gold); }
+.cta-icon { font-family: 'IBM Plex Sans', sans-serif; font-size: 22px; font-weight: 500; min-width: 28px; line-height: 1; }
+.hero-cta.primary .cta-icon { color: var(--black); }
+.hero-cta.secondary .cta-icon { color: var(--gold); }
+.cta-text { display: flex; flex-direction: column; gap: 3px; }
+.cta-line1 { font-size: 11px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; line-height: 1.2; }
+.cta-line2 { font-size: 9.5px; font-weight: 400; letter-spacing: 1.2px; opacity: 0.75; line-height: 1.2; }
+
+.plans-section { background: var(--surface); padding: 80px 24px; }
+.plans { display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1200px; margin: 0 auto; gap: 0; border: 1px solid var(--border2); }
+.plan { padding: 40px 28px; border-right: 1px solid var(--border2); position: relative; min-height: 600px; display: flex; flex-direction: column; }
+.plan:last-child { border-right: none; }
+.plan.plus { background: var(--surface2); border-top: 3px solid var(--gold); }
+.plan-tag-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%) translateY(-50%); background: var(--gold); color: var(--black); padding: 4px 12px; font-size: 9px; font-weight: 700; letter-spacing: 2px; }
+.plan-label { font-size: 11px; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 16px; }
+.plan-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 16px; color: var(--white); }
+.plan-price .dollar { font-size: 18px; }
+.plan-price .num { font-size: 56px; font-weight: 300; line-height: 1; }
+.plan-price.gold .num { color: var(--gold); }
+.plan-price .cents { font-size: 16px; }
+.plan-price .period { font-size: 11px; color: var(--text-muted); margin-left: 8px; }
+.plan-billed { font-size: 11px; color: var(--gold); margin-bottom: 16px; opacity: 0.8; }
+.plan-desc { font-size: 12px; line-height: 1.7; margin-bottom: 24px; color: var(--text-secondary); }
+.plan-features { list-style: none; margin-bottom: 24px; flex-grow: 1; }
+.plan-features li { font-size: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); color: var(--text-primary); display: flex; gap: 8px; align-items: flex-start; }
+.plan-features li::before { content: "▪"; color: var(--gold); }
+.plan-features li.dim { color: var(--text-muted); }
+.plan-features li.dim::before { color: var(--text-muted); }
+.plan-input { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border2); color: var(--white); font-family: inherit; font-size: 12px; margin-bottom: 8px; }
+.plan-input::placeholder { color: var(--text-muted); }
+.plan-tc { display: flex; gap: 8px; font-size: 10.5px; line-height: 1.5; color: var(--text-muted); margin: 8px 0 12px; }
+.plan-tc a { color: var(--gold); }
+.plan-cta { width: 100%; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--gold); }
+.plan-cta.gold { background: var(--gold); color: var(--black); }
+.plan-cta.gold:hover { background: var(--gold-hover); }
+.plan-cta.outline { background: transparent; color: var(--gold); border-color: var(--gold); }
+.plan-cta.outline:hover { background: var(--gold); color: var(--black); }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 16px; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--surface2); border: 1px solid var(--border2); border-top: 3px solid var(--gold); padding: 32px; max-width: 460px; width: 100%; position: relative; }
+.modal-close { position: absolute; top: 12px; right: 12px; background: transparent; border: 1px solid var(--border2); color: var(--text-muted); padding: 4px 8px; font-size: 9px; cursor: pointer; }
+.modal-tag { font-size: 9.5px; color: var(--gold); letter-spacing: 2px; margin-bottom: 16px; }
+.modal h2 { font-family: 'IBM Plex Sans', sans-serif; color: var(--white); font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+.modal-sub { color: var(--text-secondary); font-size: 12px; line-height: 1.6; margin-bottom: 20px; }
+.modal-input { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border2); color: var(--white); font-family: inherit; font-size: 13px; margin-bottom: 10px; }
+.modal-tc { display: flex; gap: 8px; font-size: 11px; line-height: 1.5; color: var(--text-muted); margin: 8px 0 16px; }
+.modal-submit { width: 100%; padding: 14px; background: var(--gold); color: var(--black); border: 1px solid var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 2px; cursor: pointer; }
+
+.flow-badge { background: rgba(107, 142, 181, 0.15); border: 1px dashed #6b8eb5; color: #6b8eb5; padding: 6px 12px; font-size: 10px; letter-spacing: 1.5px; margin: 24px auto; max-width: 600px; text-align: center; }
+
+@media (max-width: 900px) {
+  .plans { grid-template-columns: 1fr; }
+  .plan { border-right: none; border-bottom: 1px solid var(--border2); min-height: auto; }
+  .plan:last-child { border-bottom: none; }
+  .hero-actions { flex-direction: column; }
+  .hero-cta { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">DEMO B — Hero CTAs say "Try Plus Free for 7 Days" — same flow, clearer wording</div>
+
+<section class="hero">
+  <div class="hero-tag">Market Intelligence Terminal</div>
+  <h1>The Edge<br><strong>Wall Street</strong><br>Doesn't Share.</h1>
+  <p class="hero-desc">Institutional-grade market intelligence, multilingual, bias-aware, cross-signal. Delivered to your inbox every morning at 9:10 AM Eastern. Try Plus free for 7 days.</p>
+
+  <div class="hero-actions">
+    <a class="hero-cta primary">
+      <span class="cta-icon">▸</span>
+      <span class="cta-text">
+        <span class="cta-line1">See Sample Report</span>
+        <span class="cta-line2">A real archived briefing</span>
+      </span>
+    </a>
+    <a class="hero-cta secondary" onclick="goToPlans()">
+      <span class="cta-icon">$0</span>
+      <span class="cta-text">
+        <span class="cta-line1">Try Plus Free for 7 Days</span>
+        <span class="cta-line2">No card required · Cancel anytime</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="flow-badge">↓ Wording change: "Try Plus Free for 7 Days" is clearer than generic "Start Free Trial" — users know which tier they're trialing</div>
+</section>
+
+<section class="plans-section" id="plans">
+  <div class="plans">
+
+    <div class="plan">
+      <div class="plan-label">// FREE TIER</div>
+      <div class="plan-price"><span class="dollar">$</span><span class="num">0</span><span class="period">/ forever</span></div>
+      <div class="plan-desc">1 report per week. Same content, randomized weekday. A taste before you commit.</div>
+      <ul class="plan-features">
+        <li>1 daily report per week</li>
+        <li>Randomized weekday</li>
+        <li>Same content as paid tiers</li>
+        <li class="dim">No FA Deep Dive</li>
+        <li class="dim">No Weekly summary</li>
+        <li class="dim">No Congressional trading</li>
+      </ul>
+      <input class="plan-input" placeholder="Your name">
+      <input class="plan-input" placeholder="your@email.com">
+      <div class="plan-tc"><input type="checkbox"> I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a></div>
+      <button class="plan-cta outline">Sign Up Free</button>
+    </div>
+
+    <div class="plan plus">
+      <div class="plan-tag-badge">MOST POPULAR</div>
+      <div class="plan-label">// PLUS TIER</div>
+      <div class="plan-price gold"><span class="dollar">$</span><span class="num">19</span><span class="cents">.99</span><span class="period">/ month</span></div>
+      <div class="plan-billed">$17.99/mo billed annually · Save 10%</div>
+      <div class="plan-desc">Daily Intelligence + Financial Advisor Deep Dive. Every morning at 9:10 AM. <strong style="color:var(--gold)">Try free for 7 days.</strong></div>
+      <ul class="plan-features">
+        <li>Daily report every morning at 9:10 AM</li>
+        <li>Full 10-section analysis</li>
+        <li>Top 5 trade ideas + conviction scores</li>
+        <li>Regional signals: 1 to 4 daily, any country</li>
+        <li>Financial Advisor deep dive (Sundays)</li>
+        <li>EPS · P/E · Analyst price targets</li>
+      </ul>
+      <input class="plan-input" placeholder="Your name">
+      <input class="plan-input" placeholder="your@email.com">
+      <div class="plan-tc"><input type="checkbox"> I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a></div>
+      <button class="plan-cta gold" onclick="openTrialModal()">Start 7-Day Free Trial</button>
+    </div>
+
+    <div class="plan">
+      <div class="plan-label">// QUANT TIER</div>
+      <div class="plan-price"><span class="dollar">$</span><span class="num">49</span><span class="cents">.99</span><span class="period">/ month</span></div>
+      <div class="plan-billed">$44.99/mo billed annually · For serious investors</div>
+      <div class="plan-desc">Everything in Plus + Weekly &amp; Monthly summaries + Congressional trading watch. The complete edge.</div>
+      <ul class="plan-features">
+        <li>Everything in Plus, and:</li>
+        <li>Weekly stock selection (Sundays)</li>
+        <li>Monthly wrap-up &amp; final decisions</li>
+        <li>Congressional &amp; political trading watch</li>
+        <li>Suspicious timing vs. committee hearings</li>
+        <li>Specific names, tickers, dates flagged</li>
+      </ul>
+      <button class="plan-cta outline" style="margin-top:auto">Subscribe to Quant</button>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="trialModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeTrialModal()">✕ CLOSE</button>
+    <div class="modal-tag">// Start Your 7-Day Plus Trial</div>
+    <h2>Try Plus free for 7 days</h2>
+    <p class="modal-sub">Daily reports + Sunday Financial Advisor Deep Dive. No card required. No charge today, ever.</p>
+    <input class="modal-input" placeholder="Your name">
+    <input class="modal-input" placeholder="your@email.com">
+    <div class="modal-tc"><input type="checkbox"> I agree to the Terms and Privacy Policy</div>
+    <button class="modal-submit">Start My 7-Day Trial →</button>
+  </div>
+</div>
+
+<script>
+function goToPlans() {
+  document.getElementById('plans').scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(()=> {
+    document.querySelector('.plan.plus').scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(openTrialModal, 600);
+  }, 800);
+}
+function openTrialModal() { document.getElementById('trialModal').classList.add('open'); }
+function closeTrialModal() { document.getElementById('trialModal').classList.remove('open'); }
+document.getElementById('trialModal').addEventListener('click', e => { if(e.target.id==='trialModal') closeTrialModal(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeTrialModal(); });
+</script>
+</body>
+</html>
