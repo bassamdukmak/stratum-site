@@ -2159,19 +2159,20 @@ footer .footer-disclaimer{
   <!-- FREE -->
   <div class="plan" id="free-plan">
     <div class="plan-accent"></div>
-    <div class="plan-tier">// Free Trial</div>
+    <div class="plan-tier">// Free Tier</div>
     <div class="plan-price">
       <span class="p-currency">$</span>
       <span class="p-amount">0</span>
-      <span class="p-period">/ 7 days</span>
+      <span class="p-period">/ forever</span>
     </div>
-    <div class="plan-annual">&nbsp;</div>
-    <div class="plan-desc">7 days of daily Plus reports — including the Sunday FA Deep Dive.</div>
+    <div class="plan-annual">No card. No commitment.</div>
+    <div class="plan-desc">A weekly taste of Stratum intelligence. Plus your first 7 days as a free trial of the full Plus experience.</div>
     <ul class="feat">
-      <li><span class="ico-on">■</span>7 days of daily Plus reports</li>
-      <li><span class="ico-on">■</span>Full FA Deep Dive included</li>
+      <li><span class="ico-on">■</span>7-day Plus trial included</li>
+      <li><span class="ico-on">■</span>1 weekly report after trial</li>
+      <li><span class="ico-on">■</span>Same institutional content</li>
+      <li class="off"><span class="ico-off">□</span>FA Deep Dive, Plus only</li>
       <li class="off"><span class="ico-off">□</span>Weekly summary, Quant only</li>
-      <li class="off"><span class="ico-off">□</span>Monthly wrap-up, Quant only</li>
       <li class="off"><span class="ico-off">□</span>Congressional trading, Quant only</li>
     </ul>
     <div class="form-success" id="free-success"></div>
@@ -2192,9 +2193,9 @@ footer .footer-disclaimer{
     <div class="tc-error" id="free-tc-error">▸ Please accept the Terms and Conditions</div>
     <div class="form-note" id="free-form-note"></div>
     <button class="btn-up" type="submit" id="free-btn" style="margin-top:14px;">
-      Start Free Trial, 7 Days Free
+      Sign Up Free
     </button>
-    <div class="up-note">7 days of daily Plus reports · Just your email</div>
+    <div class="up-note">7-day Plus trial included · No card required</div>
     </form>
     </div>
   </div>
@@ -2228,6 +2229,12 @@ footer .footer-disclaimer{
       Subscribe to Plus, $19.99 / month
     </button>
     <div class="up-note">Or $17.99/mo billed annually · Cancel anytime</div>
+    <!-- Secondary trial CTA: smaller, dashed border, sits below the main subscribe button -->
+    <button type="button" onclick="openTrialModal()" id="plus-trial-btn"
+            style="width:100%;padding:11px 14px;margin-top:12px;background:transparent;color:#C4C8D4;border:1px dashed #7A6030;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;cursor:pointer;transition:all 0.18s ease;">
+      Or start with a free trial
+      <span style="display:inline-block;background:rgba(201,168,76,0.15);color:#C9A84C;padding:2px 7px;font-size:8.5px;letter-spacing:1px;margin-left:6px;">7 DAYS FREE</span>
+    </button>
   </div>
 
   <!-- QUANT -->
