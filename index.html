@@ -371,6 +371,31 @@ nav{
 .btn-up.outline:hover{background:var(--navy);color:var(--white);}
 .up-note{font-size:14px;color:var(--text-muted);letter-spacing:1px;text-align:center;margin-top:10px;}
 
+/* ── BILLING TOGGLE (section-level, replaces modal toggle) ── */
+.billing-row{
+  display:flex;justify-content:center;align-items:center;gap:14px;
+  padding:24px 32px 8px;background:var(--bg);
+  border-bottom:1px solid var(--border2);
+}
+.billing-toggle{
+  display:flex;border:1px solid var(--border2);
+  width:100%;max-width:340px;
+}
+.billing-toggle button{
+  flex:1;padding:11px 14px;border:none;cursor:pointer;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  transition:background 0.15s, color 0.15s;
+}
+.billing-toggle button .save-tag{
+  color:var(--gold);font-size:9px;margin-left:6px;letter-spacing:1.5px;
+}
+.billing-toggle button.active .save-tag{color:#0B0D12;opacity:0.65;}
+@media (max-width:600px){
+  .billing-row{padding:18px 16px 6px;}
+  .billing-toggle button{padding:10px 8px;font-size:10px;letter-spacing:1.5px;}
+}
+
 /* SUCCESS / ERROR */
 .form-success{
   display:none;padding:20px;
@@ -2150,6 +2175,14 @@ footer .footer-disclaimer{
   <span class="sec-meta">Choose Your Access Level</span>
 </div>
 
+<!-- Section-level billing toggle. setBilling() updates both cards + modal in sync. -->
+<div class="billing-row">
+  <div class="billing-toggle" role="tablist" aria-label="Billing period">
+    <button id="toggle-monthly" class="active" onclick="setBilling('monthly')" role="tab" aria-selected="true" style="background:var(--gold);color:#0B0D12;">Monthly</button>
+    <button id="toggle-annual" onclick="setBilling('annual')" role="tab" aria-selected="false" style="background:var(--black);color:var(--text-muted);">Annual <span class="save-tag">Save 10%</span></button>
+  </div>
+</div>
+
 <div class="plans-wrapper">
 
 
@@ -2228,7 +2261,7 @@ footer .footer-disclaimer{
     <button class="btn-up" onclick="openModal('plus', false)" id="plus-btn" style="margin-bottom:0;">
       Subscribe to Plus, $19.99 / month
     </button>
-    <div class="up-note">Or $17.99/mo billed annually · Cancel anytime</div>
+    <div class="up-note" id="plus-up-note">7-day free trial · Cancel anytime</div>
     <!-- Secondary trial CTA: smaller, dashed border, sits below the main subscribe button -->
     <button type="button" onclick="openTrialModal()" id="plus-trial-btn"
             style="width:100%;padding:11px 14px;margin-top:12px;background:transparent;color:#C4C8D4;border:1px dashed #7A6030;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;cursor:pointer;transition:all 0.18s ease;">
@@ -2259,7 +2292,7 @@ footer .footer-disclaimer{
     <button class="btn-up outline" onclick="openModal('quant')" id="quant-btn">
       Start Quant, $49.99 / month
     </button>
-    <div class="up-note">Or $44.99/mo billed annually · Cancel anytime</div>
+    <div class="up-note" id="quant-up-note">Cancel anytime</div>
   </div>
 
 </div><!-- end plans -->
@@ -2502,19 +2535,7 @@ footer .footer-disclaimer{
     <h2 id="modal-title">Upgrade to Plus</h2>
     <p class="modal-sub" id="modal-sub">Daily reports, weekly summaries, and monthly wrap-ups. Every morning at 9:10 AM ET.</p>
 
-    <!-- BILLING TOGGLE -->
-    <div style="display:flex;margin-bottom:20px;border:1px solid var(--border2);">
-      <button id="toggle-monthly" onclick="setBilling('monthly')" style="
-        flex:1;padding:11px;border:none;cursor:pointer;
-        background:var(--gold);color:#0B0D12;
-        font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-        transition:all 0.15s;">MONTHLY</button>
-      <button id="toggle-annual" onclick="setBilling('annual')" style="
-        flex:1;padding:11px;border:none;cursor:pointer;
-        background:var(--black);color:var(--text-muted);
-        font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-        transition:all 0.15s;">ANNUAL <span style="color:var(--gold);font-size:9px;">SAVE 10%</span></button>
-    </div>
+    <!-- Modal-level billing toggle removed — chosen on the pricing section, inherited via currentBilling. -->
 
     <div class="modal-price">
       <span class="modal-price-label" id="modal-price-label">Stratum Plus · Monthly</span>
@@ -2828,6 +2849,9 @@ document.addEventListener('keydown', function(e) {
 var currentModalTier = 'plus';
 var currentBilling = 'monthly';
 
+// Initialize card UI to monthly on load (runs after setBilling is defined).
+document.addEventListener('DOMContentLoaded', function(){ setBilling('monthly'); });
+
 var modalConfig = {
   plus: {
     tag: '// Stratum Plus Access',
@@ -2845,26 +2869,81 @@ var modalConfig = {
   }
 };
 
+// Card-level pricing data — single source of truth. Stripe prices unchanged.
+var cardPricing = {
+  plus: {
+    monthly: { whole:'19', decimal:'.99', sub:'<span>Billed monthly</span> &middot; Cancel anytime',
+              btn:'Subscribe to Plus, $19.99 / month', note:'7-day free trial &middot; Cancel anytime' },
+    annual:  { whole:'17', decimal:'.99', sub:'<span>Billed annually &middot; Save 10%</span>',
+              btn:'Subscribe to Plus, $17.99 / month', note:'$215.88 billed yearly &middot; Cancel anytime' }
+  },
+  quant: {
+    monthly: { whole:'49', decimal:'.99', sub:'<span>Billed monthly</span> &middot; Cancel anytime',
+              btn:'Start Quant, $49.99 / month', note:'Cancel anytime' },
+    annual:  { whole:'44', decimal:'.99', sub:'<span>Billed annually &middot; Save 10%</span>',
+              btn:'Start Quant, $44.99 / month', note:'$539.88 billed yearly &middot; Cancel anytime' }
+  }
+};
+
+function _renderCard(tier, billing) {
+  var d = cardPricing[tier][billing];
+  // Plus uses 'plus-amount' / 'plus-decimal' / 'plus-annual' / 'plus-btn' / 'plus-up-note'
+  // Quant uses 'prem-amount' / 'prem-decimal' / 'prem-annual' / 'quant-btn' / 'quant-up-note'
+  var prefix = tier === 'plus' ? 'plus' : 'prem';
+  var btnId = tier === 'plus' ? 'plus-btn' : 'quant-btn';
+  var noteId = tier === 'plus' ? 'plus-up-note' : 'quant-up-note';
+  var amt = document.getElementById(prefix + '-amount');
+  var dec = document.getElementById(prefix + '-decimal');
+  var sub = document.getElementById(prefix + '-annual');
+  var btn = document.getElementById(btnId);
+  var note = document.getElementById(noteId);
+  if (amt) amt.textContent = d.whole;
+  if (dec) dec.textContent = d.decimal;
+  if (sub) sub.innerHTML = d.sub;
+  if (btn) btn.textContent = d.btn;
+  if (note) note.textContent = d.note.replace(/&middot;/g, '\u00B7');
+}
+
 function setBilling(billing) {
   currentBilling = billing;
-  var cfg = modalConfig[currentModalTier][billing];
-  document.getElementById('modal-price-label').textContent = cfg.label;
-  document.getElementById('modal-price-amount').textContent = cfg.amount;
 
-  // Toggle button styles
+  // Update modal price display (if modal config has this tier — skip for legacy tiers)
+  var modalCfg = modalConfig[currentModalTier] && modalConfig[currentModalTier][billing];
+  if (modalCfg) {
+    var lbl = document.getElementById('modal-price-label');
+    var amt = document.getElementById('modal-price-amount');
+    if (lbl) lbl.textContent = modalCfg.label;
+    if (amt) amt.textContent = modalCfg.amount;
+  }
+
+  // Update section-level toggle button styles
   var monthly = document.getElementById('toggle-monthly');
   var annual  = document.getElementById('toggle-annual');
-  if (billing === 'monthly') {
-    monthly.style.background = 'var(--gold)';
-    monthly.style.color = '#0B0D12';
-    annual.style.background = 'var(--black)';
-    annual.style.color = 'var(--text-muted)';
-  } else {
-    annual.style.background = 'var(--gold)';
-    annual.style.color = '#0B0D12';
-    monthly.style.background = 'var(--black)';
-    monthly.style.color = 'var(--text-muted)';
+  if (monthly && annual) {
+    if (billing === 'monthly') {
+      monthly.classList.add('active');
+      monthly.setAttribute('aria-selected', 'true');
+      monthly.style.background = 'var(--gold)';
+      monthly.style.color = '#0B0D12';
+      annual.classList.remove('active');
+      annual.setAttribute('aria-selected', 'false');
+      annual.style.background = 'var(--black)';
+      annual.style.color = 'var(--text-muted)';
+    } else {
+      annual.classList.add('active');
+      annual.setAttribute('aria-selected', 'true');
+      annual.style.background = 'var(--gold)';
+      annual.style.color = '#0B0D12';
+      monthly.classList.remove('active');
+      monthly.setAttribute('aria-selected', 'false');
+      monthly.style.background = 'var(--black)';
+      monthly.style.color = 'var(--text-muted)';
+    }
   }
+
+  // Update both paid cards
+  _renderCard('plus', billing);
+  _renderCard('quant', billing);
 }
 
 function openModal(tier, withTrial) {
@@ -2874,14 +2953,14 @@ function openModal(tier, withTrial) {
     effectiveTier = (withTrial === false) ? 'plus' : 'plus_trial';
   }
   currentModalTier = effectiveTier;
-  currentBilling = 'monthly';
+  // Inherit currentBilling from section toggle — do NOT reset.
   var cfg = modalConfig[currentModalTier];
   document.getElementById('modal-tag-label').textContent = cfg.tag;
   document.getElementById('modal-title').textContent = cfg.title;
   document.getElementById('modal-sub').textContent = cfg.sub;
 
-  // Reset to monthly
-  setBilling('monthly');
+  // Sync modal price display to the billing the user picked at section level.
+  setBilling(currentBilling);
 
   // Pre-fill email if typed in free field
   var freeEmail = document.getElementById('free-email');
