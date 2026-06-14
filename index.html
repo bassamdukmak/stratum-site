@@ -1853,15 +1853,15 @@ function buildSuccess(box, email, mode){
   var h = document.createElement('h4');
   h.textContent = '▸ Almost there, check your email';
   var p = document.createElement('p');
-  p.appendChild(document.createTextNode('We sent a verification link to '));
+  p.appendChild(document.createTextNode('If this email is new, we just sent a verification link to '));
   var b = document.createElement('strong');
   b.style.color = '#ECEFF6';
   b.textContent = email;
   p.appendChild(b);
   if (mode === 'free') {
-    p.appendChild(document.createTextNode('. Click it to verify and your free subscription begins. Your first report arrives within the week.'));
+    p.appendChild(document.createTextNode('. Click it to verify and your free subscription begins, with your first report arriving within the week. If you are already subscribed, you are all set and no email is needed.'));
   } else {
-    p.appendChild(document.createTextNode('. Click it to verify and your 7-day Plus trial starts right away. No card required.'));
+    p.appendChild(document.createTextNode('. Click it to verify and your 7-day Plus trial starts right away, no card required. If you are already subscribed, you are all set and no email is needed.'));
   }
   box.appendChild(h);
   box.appendChild(p);
