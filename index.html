@@ -2058,6 +2058,12 @@ async function submitUpgrade(){
     setTimeout(function(){ focusCapture('hero'); }, 300);
   });
 })();
+
+// ── #manage deep-link opens the Manage Subscription dialog ──
+(function(){
+  if (window.location.hash !== '#manage') return;
+  setTimeout(function(){ if (typeof openManage === 'function') openManage(); }, 200);
+})();
 </script>
 </body>
 </html>
