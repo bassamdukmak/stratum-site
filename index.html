@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stratum Intelligence · The newsletter that keeps receipts</title>
 <meta name="description" content="Daily market intelligence for retail investors. Every verdict timestamped, every outcome tracked. Delivered before market open.">
+<link rel="canonical" href="https://stratumwealth.ca/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stratumwealth.ca/">
+<meta property="og:title" content="Stratum Intelligence · The newsletter that keeps receipts">
+<meta property="og:description" content="Daily market intelligence for retail investors. Every verdict timestamped, every outcome tracked. Delivered before market open.">
+<meta property="og:image" content="https://stratumwealth.ca/og-image.png">
+<meta property="og:site_name" content="Stratum Wealth">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stratum Intelligence · The newsletter that keeps receipts">
+<meta name="twitter:description" content="Daily market intelligence for retail investors. Every verdict timestamped, every outcome tracked. Delivered before market open.">
+<meta name="twitter:image" content="https://stratumwealth.ca/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Stratum Wealth","alternateName":"Stratum Intelligence","url":"https://stratumwealth.ca/"},{"@type":"Organization","name":"Stratum Wealth","alternateName":"Stratum Intelligence","url":"https://stratumwealth.ca/","logo":"https://stratumwealth.ca/stratum-logo.png","email":"stratumwealth@stratumwealth.ca"}]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -712,14 +727,14 @@ footer{background:var(--ink);padding:40px 36px 32px}
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#">Stratum<i>.</i></a>
+  <a class="logo" href="/">Stratum<i>.</i></a>
   <div class="nav-right">
     <div class="nav-links">
-      <a onclick="goSection('faq')">FAQ</a>
-      <a onclick="openPage('terms')">Terms</a>
-      <a onclick="openPage('privacy')">Privacy</a>
-      <a onclick="openManage()">Manage</a>
-      <a onclick="openContact()">Contact</a>
+      <a href="#faq" onclick="goSection('faq')">FAQ</a>
+      <a href="/terms" onclick="openPage('terms'); return false">Terms</a>
+      <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
+      <a href="#manage" onclick="openManage(); return false">Manage</a>
+      <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
     </div>
     <button class="nav-cta" onclick="goSection('plans')">Start free</button>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
@@ -730,12 +745,12 @@ footer{background:var(--ink);padding:40px 36px 32px}
 
 <!-- MOBILE DROPDOWN -->
 <div class="menu-drop" id="menuDrop">
-  <a class="go" onclick="goSection('plans')">Start free</a>
-  <a onclick="goSection('faq')">FAQ</a>
-  <a onclick="openPage('terms')">Terms</a>
-  <a onclick="openPage('privacy')">Privacy</a>
-  <a onclick="openManage()">Manage subscription</a>
-  <a onclick="openContact()">Contact</a>
+  <a class="go" href="#plans" onclick="goSection('plans')">Start free</a>
+  <a href="#faq" onclick="goSection('faq')">FAQ</a>
+  <a href="/terms" onclick="openPage('terms'); return false">Terms</a>
+  <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
+  <a href="#manage" onclick="openManage(); return false">Manage subscription</a>
+  <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -851,7 +866,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
     <div class="sec-intro rv">
       <div class="eyebrow">Inside every report</div>
       <h2>One brief. <strong>Read in minutes,</strong> not hours.</h2>
-      <p>Ten sections distilled into a morning read built for people with jobs, not Bloomberg terminals.</p>
+      <p>Market intelligence distilled into a morning read built for people with jobs, not Bloomberg terminals.</p>
     </div>
     <div class="inside">
       <div class="in-cell tall rv">
@@ -1071,11 +1086,12 @@ footer{background:var(--ink);padding:40px 36px 32px}
 <!-- FOOTER -->
 <footer>
   <div class="foot-top">
-    <a class="logo" href="#">Stratum<i>.</i></a>
+    <a class="logo" href="/">Stratum<i>.</i></a>
     <div class="foot-links">
-      <a href="javascript:void(0)" onclick="openPage('terms')">Terms</a>
-      <a href="javascript:void(0)" onclick="openPage('privacy')">Privacy</a>
-      <a onclick="openContact()">Contact</a>
+      <a href="/best-investing-newsletter">How it works</a>
+      <a href="/terms" onclick="openPage('terms'); return false">Terms</a>
+      <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
+      <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
     </div>
     <span class="mono-label">Daily · Before market open · stratumwealth.ca</span>
   </div>
@@ -1090,7 +1106,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
   <button class="page-close" onclick="closePage('terms')">✕ Close</button>
   <div class="page-inner">
     <div class="eyebrow">Legal · Document 02</div>
-    <h1 class="doc-title">Terms of<br><strong>Service.</strong></h1>
+    <h2 class="doc-title">Terms of<br><strong>Service.</strong></h2>
     <div class="doc-meta">Last updated: June 13, 2026 · Effective for all users on or after June 13, 2026. By continuing to use Stratum after this date, you accept these terms.</div>
     <div class="doc">
 
@@ -1209,7 +1225,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
   <button class="page-close" onclick="closePage('privacy')">✕ Close</button>
   <div class="page-inner">
     <div class="eyebrow">Legal · Document 01</div>
-    <h1 class="doc-title">Privacy<br><strong>Policy.</strong></h1>
+    <h2 class="doc-title">Privacy<br><strong>Policy.</strong></h2>
     <div class="doc-meta">Last updated: June 13, 2026 · How we collect, use, and protect your personal information under PIPEDA and CASL.</div>
     <div class="doc">
 

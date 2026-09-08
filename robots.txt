@@ -5,34 +5,31 @@
 # This file extends that list with bots Cloudflare's managed list does NOT cover.
 
 # ─────────────────────────────────────────────────────────────
-# AI TRAINING / SCRAPING — DISALLOW
+# AI SEARCH — ALLOW; AI TRAINING / SCRAPING — DISALLOW BELOW
 # ─────────────────────────────────────────────────────────────
 
-# OpenAI (additional crawlers beyond GPTBot)
+# AI search indexing and user-requested retrieval. Repeat sensitive paths because
+# specific user-agent groups do not inherit the wildcard group's exclusions.
 User-agent: ChatGPT-User
-Disallow: /
-
 User-agent: OAI-SearchBot
-Disallow: /
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: DuckAssistBot
+User-agent: YouBot
+User-agent: MistralAI-User
+User-agent: MistralAI-Index
+Allow: /
+Disallow: /admin/
+Disallow: /debug/
+Disallow: /api/
 
-# Anthropic (additional beyond ClaudeBot)
+# Anthropic training and legacy agents
 User-agent: anthropic-ai
 Disallow: /
 
 User-agent: Claude-Web
-Disallow: /
-
-User-agent: Claude-User
-Disallow: /
-
-User-agent: Claude-SearchBot
-Disallow: /
-
-# Perplexity
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: Perplexity-User
 Disallow: /
 
 # Google AI extensions
@@ -60,20 +57,12 @@ Disallow: /
 User-agent: Diffbot
 Disallow: /
 
-# You.com
-User-agent: YouBot
-Disallow: /
-
-# DuckAssist (DuckDuckGo AI)
-User-agent: DuckAssistBot
-Disallow: /
-
 # Common Crawl variants
 User-agent: CCBot
 Disallow: /
 
-# Mistral
-User-agent: MistralAI-User
+# Mistral training
+User-agent: MistralAI-Training
 Disallow: /
 
 # xAI / Grok

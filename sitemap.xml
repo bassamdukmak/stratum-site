@@ -11,12 +11,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stratumwealth.ca/terms.html</loc>
+    <loc>https://stratumwealth.ca/terms</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://stratumwealth.ca/privacy.html</loc>
+    <loc>https://stratumwealth.ca/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
