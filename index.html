@@ -555,6 +555,9 @@ footer{background:var(--ink);padding:40px 36px 32px}
 .foot-links{display:flex;gap:26px}
 .foot-links a{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);text-decoration:none}
 .foot-links a:hover{color:var(--sub)}
+.preferred-source{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:12px 16px;border:1px solid var(--gold-dim);border-radius:4px;color:var(--gold);font-size:12px;text-decoration:none}
+.preferred-source:hover{border-color:var(--gold);color:var(--gold-hi)}
+.preferred-source:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
 .foot-legal{
   max-width:1240px;margin:22px auto 0;
   font-size:11px;font-weight:300;line-height:1.8;color:var(--dim);
@@ -1094,6 +1097,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
       <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
       <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
     </div>
+    <a class="preferred-source" href="https://www.google.com/preferences/source?q=stratumwealth.ca"><span aria-hidden="true">★</span> Add Stratum as a preferred source on Google</a>
     <span class="mono-label">Daily · Before market open · stratumwealth.ca</span>
   </div>
   <p class="foot-legal">
