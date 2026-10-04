@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow,max-image-preview:large"><title>Your First Week With Stratum | Subscriber Guide</title><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:        #07090F;
+  --bg:         #0A0D15;
+  --surface:    #10141F;
+  --surface-2:  #151B2A;
+  --line:       #1E2538;
+  --line-2:     #283049;
+
+  --gold:       #C9A84C;
+  --gold-hi:    #E3C778;
+  --gold-dim:   #7A6030;
+
+  --green:      #4DB89C;
+  --red:        #C46A5A;
+  --amber:      #C9A84C;
+
+  --text:       #C9CEDD;
+  --sub:        #8B93AB;
+  --mute:       #545D7A;
+  --dim:        #323A55;
+  --white:      #ECEFF6;
+
+  --sans:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--sub);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold-dim);color:var(--white)}
+a{color:inherit}
+button{font-family:inherit}
+
+/* ── GRAIN OVERLAY ── */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:90;
+  opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.logo{
+  font-family:var(--mono);font-size:14px;font-weight:600;
+  letter-spacing:6px;text-transform:uppercase;color:var(--white);
+  text-decoration:none;
+}
+.logo i{font-style:normal;color:var(--gold)}
+nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:18px 36px;background:rgba(7,9,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-right{display:flex;align-items:center;gap:22px;flex-wrap:wrap}.nav-right a{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-decoration:none;color:var(--sub)}.nav-right a:hover{color:var(--gold)}
+a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:5px}
+.hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(1100px 600px at 78% -10%, rgba(201,168,76,0.07), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(36,54,89,0.35), transparent 60%),
+    var(--ink);}
+.hero-inner{position:relative;z-index:1;max-width:1240px;margin:auto;padding:76px 36px 64px}.hero h1{max-width:850px;font-size:clamp(36px,5.6vw,68px);font-weight:300;color:var(--white);line-height:1.08;letter-spacing:-1.5px;margin:24px 0}.hero h1 strong{font-weight:500;color:var(--gold)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.5;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px}
+.eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}.hero p{max-width:700px;font-size:17px;font-weight:300;line-height:1.8}.hero .meta{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--sub);margin-top:24px}
+main{max-width:1240px;margin:auto;padding:48px 36px 72px}.reading{max-width:760px}h2{font-size:clamp(25px,3vw,34px);font-weight:300;color:var(--white);letter-spacing:-.6px;line-height:1.2;margin:36px 0 16px}p{font-weight:300;line-height:1.8;margin:0 0 18px}.reading a,footer a{color:var(--gold);text-underline-offset:4px}strong{font-weight:500;color:var(--text)}
+table{width:100%;border-collapse:collapse;margin:24px 0}th,td{text-align:left;border-bottom:1px solid var(--line);padding:14px 10px;vertical-align:top;font-weight:300}th{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:500}td{font-size:14px;line-height:1.7}
+footer{background:var(--ink);border-top:1px solid var(--line);padding:36px}.foot-inner{max-width:1168px;margin:auto}footer p{max-width:800px;font-size:12px}footer .logo{display:inline-block;margin-bottom:22px}
+@media(max-width:600px){nav{padding:18px 22px;align-items:flex-start;flex-direction:column;gap:16px}.nav-right{gap:16px}.nav-right a{font-size:9px;letter-spacing:1px}.hero-inner{padding:48px 22px}.hero h1{letter-spacing:-1px}main{padding:24px 22px 48px}footer{padding:28px 22px}th,td{padding:12px 6px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><meta name="description" content="Get started with Stratum: verify your email, understand your plan, read your first report and manage your subscription."><link rel="canonical" href="https://stratumwealth.ca/start-here"><link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png"><meta property="og:type" content="website"><meta property="og:site_name" content="Stratum Wealth"><meta property="og:title" content="Your First Week With Stratum | Subscriber Guide"><meta property="og:description" content="Get started with Stratum: verify your email, understand your plan, read your first report and manage your subscription."><meta property="og:url" content="https://stratumwealth.ca/start-here"><meta property="og:image" content="https://stratumwealth.ca/og-image.png"><meta name="twitter:card" content="summary_large_image"></head><body><nav aria-label="Main navigation"><a class="logo" href="https://stratumwealth.ca/">Stratum<i>.</i></a><div class="nav-right"><a href="#first-email">First email</a><a href="#first-read">First read</a><a href="/daily-guide">Read the Daily</a><a href="https://stratumwealth.ca/#manage">Manage subscription</a></div></nav>
+<header class="hero"><div class="hero-inner"><div class="eyebrow">For new subscribers</div><h1>You’re in.<br><strong>Start here.</strong></h1><p>You don’t need to follow every stock or understand every market headline. Here’s how to get your first report, find the parts that matter to you, and make sense of what you’re reading.</p></div></header>
+<main><div class="reading">
+<section id="first-email"><h2>First, make sure we can reach you.</h2><p><strong>Signed up for Free or a trial?</strong> Open the verification email and confirm your address. Your seven-day Plus trial starts when you verify. If you bought a paid plan, keep your checkout receipt and use the same email when managing your subscription.</p><p>Check Spam, Promotions and any other inbox tabs if you can’t find a Stratum email. Mark it as wanted mail and add the sender to your contacts.</p><p><a href="mailto:stratumwealth@stratumwealth.ca?subject=Help%20with%20my%20first%20Stratum%20email">Still missing your first email? Contact us →</a></p></section>
+<section><h2>Know what’s coming.</h2><table><thead><tr><th>Your plan</th><th>What to expect</th></tr></thead><tbody><tr><td>Free</td><td>One full report each week. You won’t receive an email every weekday.</td></tr><tr><td>Plus or Plus trial</td><td>Weekday reports before North American market open, with deeper company research.</td></tr><tr><td>Quant</td><td>Weekday reports, plus weekly summaries, monthly wrap-ups and Congressional Trading Watch.</td></tr></tbody></table><p>A seven-day trial doesn’t mean seven market-day reports. Weekends fall inside the trial period. At the end of the no-card trial, you continue on Free unless you choose a paid plan.</p></section>
+<section id="first-read"><h2>Your first read: don’t start with every ticker.</h2><p><strong>Start with the market overview.</strong> Get the context for the edition before looking at individual ideas.</p><p><strong>Then choose one idea.</strong> Pick a company or topic you already recognize. Read the explanation, the stated research view and any risks alongside it. You can skip the rest and come back later.</p><p><strong>Save the email.</strong> The report date gives you a reference point when you revisit a view. Reading an idea does not create an obligation to trade it.</p></section>
+<p><a href="/daily-guide">Open the full Daily reader’s guide →</a> — tickers, confidence, horizon, exit, Regional Radar, financials and the snapshots, explained field by field.</p><section><h2>What am I looking at?</h2><table><thead><tr><th>In your report</th><th>In plain English</th></tr></thead><tbody><tr><td>Stock verdict</td><td>The report’s research view on a company. Read it with the explanation, not on its own.</td></tr><tr><td>Conviction score</td><td>A score used in the research presentation. It is not your chance of making money.</td></tr><tr><td>Regional Radar</td><td>Market context from different regions. The countries and topics can change between editions.</td></tr><tr><td>FA Deep Dive</td><td>A closer look at a covered company, included with Plus and Quant. “FA” does not mean you have a personal financial advisor.</td></tr><tr><td>Congressional Trading Watch</td><td>Publicly disclosed US congressional trades. A filing may appear after the trade; it does not establish current holdings or wrongdoing.</td></tr></tbody></table></section>
+<section><h2>A “Buy” label is not a command.</h2><p>A stock can be interesting and still be wrong for your circumstances. A verdict doesn’t account for your portfolio, cash needs or tolerance for losses. Stratum is informational research, not personalized investment advice.</p><p>“Wait” and “Avoid” are useful conclusions too. You do not need to take action after every report.</p></section>
+<section><h2>By the end of your first week.</h2><p>You should know whether the cadence fits your routine, which sections you use, and whether the briefings help you understand the market. Evaluate that before judging the subscription by a single stock’s short-term move.</p><p>Past winning examples on the website are selected examples, not a complete track record. No report promises a return.</p></section>
+<section><h2>Your subscription stays in your hands.</h2><p>Use <a href="https://stratumwealth.ca/#manage">Manage subscription</a> on the website and enter your subscription email. We’ll send a secure billing-portal link where you can change or cancel a paid plan.</p><p>To stop newsletter emails, use the unsubscribe link in an email. For a paid plan, use the billing portal to check or cancel your subscription rather than relying on an email unsubscribe.</p><p>For a billing question or something unclear in a report, <a href="mailto:stratumwealth@stratumwealth.ca">contact Stratum</a>. Include the report date if it’s a research question. Never send your password or card details.</p></section>
+</div></main><footer><div class="foot-inner"><a class="logo" href="https://stratumwealth.ca/">Stratum<i>.</i></a><p>Stratum Wealth · Subscriber guide.</p></div></footer></body></html>
