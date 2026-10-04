@@ -1,8 +1,6 @@
 # Stratum Wealth — robots.txt
-# Cloudflare auto-prepends a managed block for major AI crawlers
-# (ClaudeBot, GPTBot, Google-Extended, CCBot, Bytespider, Amazonbot,
-#  Applebot-Extended, meta-externalagent, CloudflareBrowserRenderingCrawler).
-# This file extends that list with bots Cloudflare's managed list does NOT cover.
+# Search and user-requested retrieval are allowed. Training restrictions are
+# explicit here so the policy does not depend on Cloudflare injection.
 
 # ─────────────────────────────────────────────────────────────
 # AI SEARCH — ALLOW; AI TRAINING / SCRAPING — DISALLOW BELOW
@@ -24,6 +22,14 @@ Allow: /
 Disallow: /admin/
 Disallow: /debug/
 Disallow: /api/
+
+# Training crawlers
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Bytespider
+User-agent: Amazonbot
+Disallow: /
 
 # Anthropic training and legacy agents
 User-agent: anthropic-ai
@@ -138,15 +144,9 @@ Disallow: /
 # ─────────────────────────────────────────────────────────────
 
 User-agent: *
+Allow: /
 Disallow: /admin/
 Disallow: /debug/
 Disallow: /api/
-
-# ─────────────────────────────────────────────────────────────
-# DEFAULT — Allow well-behaved search engines
-# ─────────────────────────────────────────────────────────────
-
-User-agent: *
-Allow: /
 
 Sitemap: https://stratumwealth.ca/sitemap.xml
