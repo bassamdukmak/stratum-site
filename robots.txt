@@ -18,15 +18,27 @@ User-agent: DuckAssistBot
 User-agent: YouBot
 User-agent: MistralAI-User
 User-agent: MistralAI-Index
+User-agent: Meta-ExternalFetcher
+User-agent: Amzn-SearchBot
+User-agent: Amzn-User
+User-agent: Applebot
+User-agent: Googlebot
+User-agent: bingbot
 Allow: /
 Disallow: /admin/
 Disallow: /debug/
 Disallow: /api/
 
+# Google combines Gemini grounding and training under this token.
+# Owner-approved reuse is limited to these two public marketing pages.
+User-agent: Google-Extended
+Disallow: /
+Allow: /$
+Allow: /best-investing-newsletter$
+
 # Training crawlers
 User-agent: GPTBot
 User-agent: ClaudeBot
-User-agent: Google-Extended
 User-agent: Bytespider
 User-agent: Amazonbot
 Disallow: /
@@ -47,9 +59,6 @@ User-agent: FacebookBot
 Disallow: /
 
 User-agent: Meta-ExternalAgent
-Disallow: /
-
-User-agent: Meta-ExternalFetcher
 Disallow: /
 
 # Cohere
