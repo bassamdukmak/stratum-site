@@ -711,6 +711,9 @@ footer{background:var(--ink);padding:40px 36px 32px}
 }
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .read-link{color:var(--gold);font-size:13px;text-underline-offset:4px}
+
+/* Local chart replacement: incumbent site styling retained. */
+.chart-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.chart-tabs button{background:transparent;border:1px solid var(--line);color:var(--mute);padding:8px 16px;font-family:var(--mono);font-size:11px;letter-spacing:1px;cursor:pointer}.chart-tabs button[aria-selected="true"]{color:var(--gold);border-color:var(--gold)}.chart-context{font-family:var(--sans);font-size:12px;color:var(--mute);font-weight:300;margin-top:8px}.chart-card #plot{height:320px;position:relative}.chart-readout{position:absolute;top:0;right:0;display:flex;gap:12px;font-family:var(--mono);font-size:10px;color:var(--mute);pointer-events:none}.chart-readout strong{font-weight:400;color:var(--white)}@media(max-width:650px){.chart-card #plot{height:280px}.chart-readout{font-size:9px;gap:8px}.chart-ret b{max-width:200px;line-height:1.6}.chart-tabs button{padding:8px 12px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://stratumwealth.ca/#organization","name":"Stratum Wealth","alternateName":"Stratum","url":"https://stratumwealth.ca/","logo":"https://stratumwealth.ca/stratum-logo.png","email":"stratumwealth@stratumwealth.ca","description":"Stratum Wealth publishes Stratum Intelligence at stratumwealth.ca: an AI-assisted market intelligence newsletter for retail investors. It provides informational research, not personalized wealth management."},{"@type":"WebSite","@id":"https://stratumwealth.ca/#website","url":"https://stratumwealth.ca/","name":"Stratum Wealth","alternateName":"Stratum","publisher":{"@id":"https://stratumwealth.ca/#organization"},"inLanguage":"en-CA"},{"@type":"WebPage","@id":"https://stratumwealth.ca/#webpage","url":"https://stratumwealth.ca/","name":"AI Market Intelligence Newsletter | Stratum Wealth","description":"Stratum Wealth publishes AI-assisted market intelligence for retail investors. Free weekly reports; Plus and Quant add weekday premarket briefings.","inLanguage":"en-CA","isPartOf":{"@id":"https://stratumwealth.ca/#website"},"publisher":{"@id":"https://stratumwealth.ca/#organization"}}]}</script>
 </head>
@@ -852,18 +855,11 @@ footer{background:var(--ink);padding:40px 36px 32px}
       </div>
     </div>
 
-    <!-- RECEIPT CHART: real MU call, FMP closing prices -->
     <div class="chart-card rv" id="chartCard">
-      <div class="chart-head">
-        <div>
-          <span class="chart-tk">MU <small>Micron · Buy verdict</small></span>
-        </div>
-        <span class="chart-ret">+64<small>%</small><b>since the call · peaked +99%</b></span>
-      </div>
-      <div class="chart-box" id="chartBox" aria-hidden="true"></div>
-      <div class="chart-foot">
-        <span class="chart-mark">▲ Called · May 01 · 9:10 ET</span>
-        <span>FMP closing prices · As of Jun 10, 2026 · Selected example · Not indicative of future results</span>
+      <div class="chart-tabs" role="tablist" aria-label="Choose a stock example" id="tabs"></div>
+      <div id="chartPanel" role="tabpanel" aria-labelledby="tab0">
+      <div class="chart-head"><div><span class="chart-tk" id="chart-title"></span><p class="chart-context" id="context"></p></div><span class="chart-ret" id="latest"></span></div>
+      <div class="chart-box" id="plot"><div class="chart-readout" id="readout" aria-live="polite"></div></div>
       </div>
     </div>
   </div>
@@ -1676,104 +1672,7 @@ async function submitManage(){
 // RECEIPT CHART: MU real FMP closes, Apr 29 to Jun 10 2026.
 // Rendered at true pixel size so nothing stretches.
 // ═══════════════════════════════════════════════════════
-(function(){
-  var box = document.getElementById('chartBox');
-  var card = document.getElementById('chartCard');
-  if (!box || !card) return;
 
-  // Real closing prices (FMP). Call = index 2 (May 01). Peak = Jun 03.
-  var P = [518.46,517.16,542.21,576.45,640.20,666.59,646.63,746.81,795.33,
-           766.58,803.63,776.01,724.66,681.54,698.74,731.99,762.10,751.00,
-           895.88,928.41,923.52,971.00,1035.50,1064.10,1079.57,996.00,
-           864.01,949.28,935.89,891.88];
-  var CALL = 2;
-  var PEAK = P.indexOf(Math.max.apply(null, P));
-  var NS = 'http://www.w3.org/2000/svg';
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var revealed = false;
-
-  function el(name, attrs){
-    var e = document.createElementNS(NS, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    return e;
-  }
-
-  function build(animate){
-    var W = box.clientWidth, H = box.clientHeight;
-    if (W < 10 || H < 10) return;
-    box.innerHTML = '';
-    var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H});
-
-    var lo = Math.min.apply(null, P), hi = Math.max.apply(null, P);
-    var pad = (hi - lo) * 0.06;
-    lo -= pad; hi += pad;
-    var TOP = 26, BOT = 10, L = 4, R = 8;
-    function x(i){ return L + (i / (P.length - 1)) * (W - L - R); }
-    function y(v){ return TOP + (1 - (v - lo) / (hi - lo)) * (H - TOP - BOT); }
-
-    // baseline + dashed call marker
-    svg.appendChild(el('line', {x1:0, y1:H-1, x2:W, y2:H-1, stroke:'#1E2538', 'stroke-width':1}));
-    svg.appendChild(el('line', {x1:x(CALL), y1:TOP-8, x2:x(CALL), y2:H-1, stroke:'#7A6030', 'stroke-width':1, 'stroke-dasharray':'3 5'}));
-
-    function pathFrom(a, b){
-      var d = '';
-      for (var i = a; i <= b; i++) d += (i === a ? 'M' : 'L') + x(i).toFixed(1) + ',' + y(P[i]).toFixed(1);
-      return d;
-    }
-    svg.appendChild(el('path', {d: pathFrom(0, CALL), fill:'none', stroke:'#545D7A', 'stroke-width':2}));
-    var post = el('path', {d: pathFrom(CALL, P.length-1), fill:'none', stroke:'#C9A84C', 'stroke-width':2.5, 'stroke-linejoin':'round'});
-    svg.appendChild(post);
-
-    // peak annotation
-    var px = x(PEAK), py = y(P[PEAK]);
-    svg.appendChild(el('circle', {cx:px, cy:py, r:3, fill:'#C9A84C'}));
-    var peakLabel = el('text', {x:px, y:py-10, 'text-anchor':'middle', fill:'#8B93AB',
-      style:'font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase'});
-    peakLabel.textContent = '+99% \u00b7 Jun 03';
-    svg.appendChild(peakLabel);
-
-    // call + end dots (true circles: pixel space, no distortion)
-    svg.appendChild(el('circle', {cx:x(CALL), cy:y(P[CALL]), r:4.5, fill:'#0A0D15', stroke:'#C9A84C', 'stroke-width':2}));
-    var endDot = el('circle', {cx:x(P.length-1), cy:y(P[P.length-1]), r:4.5, fill:'#4DB89C'});
-    svg.appendChild(endDot);
-
-    box.appendChild(svg);
-
-    if (animate && !reduced) {
-      var len = post.getTotalLength();
-      post.style.strokeDasharray = len;
-      post.style.strokeDashoffset = len;
-      peakLabel.style.opacity = '0';
-      endDot.style.opacity = '0';
-      requestAnimationFrame(function(){
-        post.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1) .3s';
-        post.style.strokeDashoffset = '0';
-        peakLabel.style.transition = 'opacity .5s ease 1.5s';
-        endDot.style.transition = 'opacity .4s ease 2.1s';
-        peakLabel.style.opacity = '1';
-        endDot.style.opacity = '1';
-      });
-    }
-  }
-
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting && !revealed) {
-        revealed = true;
-        build(true);
-        io.unobserve(card);
-      }
-    });
-  }, {threshold: 0.25});
-  io.observe(card);
-
-  var rT;
-  window.addEventListener('resize', function(){
-    if (!revealed) return;
-    clearTimeout(rT);
-    rT = setTimeout(function(){ build(false); }, 150);
-  });
-})();
 
 // ═══════════════════════════════════════════════════════
 // SCROLL REVEALS + idea bar animation
@@ -2102,5 +2001,22 @@ async function submitUpgrade(){
   setTimeout(function(){ if (typeof openManage === 'function') openManage(); }, 200);
 })();
 </script>
-</body>
+<script id="examples" type="application/json">[{"ticker":"MU","name":"Micron","recordDate":"2026-05-02","verdict":"WAIT","entryDate":"2026-05-04","windowDays":90,"entryPrice":576.45,"peakDate":"2026-06-25","bars":[{"date":"2026-05-04","close":576.45,"open":560.6,"high":592.799,"low":557.76},{"date":"2026-05-05","close":640.2,"open":609.775,"high":651.74,"low":605.47},{"date":"2026-05-06","close":666.59,"open":660.37,"high":667.67,"low":627.58},{"date":"2026-05-07","close":646.63,"open":649.83,"high":683.09,"low":635.4201},{"date":"2026-05-08","close":746.81,"open":676.45,"high":747.21,"low":676.21},{"date":"2026-05-11","close":795.33,"open":792.98,"high":818.67,"low":768.0},{"date":"2026-05-12","close":766.58,"open":774.7,"high":782.76,"low":706.601},{"date":"2026-05-13","close":803.63,"open":813.155,"high":814.95,"low":779.47},{"date":"2026-05-14","close":776.01,"open":787.62,"high":812.0,"low":775.63},{"date":"2026-05-15","close":724.66,"open":732.57,"high":749.59,"low":719.0},{"date":"2026-05-18","close":681.54,"open":750.46,"high":757.0,"low":663.25},{"date":"2026-05-19","close":698.74,"open":665.58,"high":725.95,"low":652.21},{"date":"2026-05-20","close":731.99,"open":734.955,"high":735.68,"low":700.66},{"date":"2026-05-21","close":762.1,"open":736.36,"high":764.9,"low":732.2},{"date":"2026-05-22","close":751,"open":756.815,"high":780.1999,"low":747.2},{"date":"2026-05-26","close":895.88,"open":820.5,"high":916.7999,"low":820.295},{"date":"2026-05-27","close":928.41,"open":955.66,"high":956.16,"low":888.15},{"date":"2026-05-28","close":923.52,"open":929.83,"high":949.4899,"low":904.78},{"date":"2026-05-29","close":971,"open":957.0,"high":981.0,"low":940.51},{"date":"2026-06-01","close":1035.5,"open":1009.72,"high":1046.97,"low":1009.5},{"date":"2026-06-02","close":1064.1,"open":1050.0,"high":1076.56,"low":1017.201},{"date":"2026-06-03","close":1079.57,"open":1079.01,"high":1089.29,"low":1038.5},{"date":"2026-06-04","close":996,"open":1007.1,"high":1036.3699,"low":971.68},{"date":"2026-06-05","close":864.01,"open":944.4,"high":961.89,"low":864.01},{"date":"2026-06-08","close":949.28,"open":938.265,"high":962.95,"low":916.5},{"date":"2026-06-09","close":935.89,"open":988.175,"high":989.15,"low":854.35},{"date":"2026-06-10","close":891.88,"open":905.13,"high":957.48,"low":883.25},{"date":"2026-06-11","close":995.87,"open":904.37,"high":996.77,"low":895.5},{"date":"2026-06-12","close":981.61,"open":971.81,"high":1012.6198,"low":960.19},{"date":"2026-06-15","close":1087.99,"open":1055.89,"high":1097.47,"low":1051.5001},{"date":"2026-06-16","close":1020.76,"open":1099.7,"high":1110.3999,"low":1020.0},{"date":"2026-06-17","close":1043.19,"open":1061.3,"high":1093.67,"low":1014.14},{"date":"2026-06-18","close":1133.99,"open":1108.065,"high":1149.43,"low":1092.7935},{"date":"2026-06-22","close":1211.38,"open":1196.215,"high":1213.56,"low":1168.57},{"date":"2026-06-23","close":1051.77,"open":1080.0,"high":1125.0,"low":1038.5},{"date":"2026-06-24","close":1048.51,"open":1082.22,"high":1083.32,"low":991.1001},{"date":"2026-06-25","close":1213.56,"open":1233.0,"high":1255.0,"low":1136.31},{"date":"2026-06-26","close":1132.33,"open":1139.075,"high":1198.7121,"low":1121.36},{"date":"2026-06-29","close":1145.28,"open":1128.7,"high":1148.79,"low":1023.65},{"date":"2026-06-30","close":1154.29,"open":1144.73,"high":1168.68,"low":1124.66},{"date":"2026-07-01","close":1032.28,"open":1082.01,"high":1097.0,"low":1032.2},{"date":"2026-07-02","close":975.56,"open":1041.5,"high":1064.64,"low":950.28},{"date":"2026-07-06","close":984.75,"open":1007.0,"high":1019.0,"low":980.85},{"date":"2026-07-07","close":938.38,"open":923.01,"high":942.02,"low":891.66},{"date":"2026-07-08","close":948.8,"open":902.64,"high":959.0,"low":900.41},{"date":"2026-07-09","close":991.64,"open":1016.51,"high":1035.5,"low":987.13},{"date":"2026-07-10","close":979.3,"open":964.975,"high":998.0,"low":954.13},{"date":"2026-07-13","close":937,"open":929.0,"high":943.5,"low":902.6},{"date":"2026-07-14","close":983.12,"open":988.38,"high":994.8,"low":950.07},{"date":"2026-07-15","close":904.28,"open":975.805,"high":978.4,"low":873.6301},{"date":"2026-07-16","close":853.2,"open":866.765,"high":887.71,"low":840.51},{"date":"2026-07-17","close":848.95,"open":822.525,"high":903.96,"low":804.0},{"date":"2026-07-20","close":865.46,"open":885.57,"high":900.9999,"low":858.9},{"date":"2026-07-21","close":970.82,"open":925.35,"high":982.88,"low":916.5701},{"date":"2026-07-22","close":959.48,"open":938.25,"high":982.62,"low":936.06},{"date":"2026-07-23","close":990.21,"open":975.13,"high":1011.77,"low":964.4},{"date":"2026-07-24","close":920.95,"open":959.03,"high":967.14,"low":904.0},{"date":"2026-07-27","close":900.2,"open":932.445,"high":935.0,"low":854.79},{"date":"2026-07-28","close":820.53,"open":839.61,"high":848.36,"low":789.09},{"date":"2026-07-29","close":739,"open":833.0,"high":841.8,"low":737.88},{"date":"2026-07-30","close":874.66,"open":793.135,"high":882.5,"low":789.0},{"date":"2026-07-31","close":823.03,"open":919.65,"high":930.88,"low":818.0}],"originalVerdictAvailable":true,"windowEnd":"2026-07-31","windowClosed":true,"snapshotDate":"2026-10-02"},{"ticker":"MRVL","name":"Marvell Technology","recordDate":"2026-05-14","verdict":"BULLISH","originalVerdictAvailable":false,"entryDate":"2026-05-14","windowDays":35,"windowEnd":"2026-06-18","windowClosed":true,"snapshotDate":"2026-10-02","entryPrice":182.58,"peakDate":"2026-06-04","bars":[{"date":"2026-05-14","close":182.58,"open":180.875,"high":192.15,"low":177.33},{"date":"2026-05-15","close":176.89,"open":173.9,"high":182.14,"low":173.34},{"date":"2026-05-18","close":168.93,"open":181.772,"high":182.71,"low":165.1},{"date":"2026-05-19","close":176.27,"open":164.61,"high":181.64,"low":162.852},{"date":"2026-05-20","close":186.8,"open":183.45,"high":193.32,"low":182.28},{"date":"2026-05-21","close":190.69,"open":192.51,"high":194.58,"low":188.2},{"date":"2026-05-22","close":196.33,"open":194.72,"high":198.395,"low":192.22},{"date":"2026-05-26","close":208.26,"open":211.24,"high":217.45,"low":200.04},{"date":"2026-05-27","close":198.7,"open":217.98,"high":218.2599,"low":196.25},{"date":"2026-05-28","close":204.83,"open":198.75,"high":207.4,"low":194.7},{"date":"2026-05-29","close":205,"open":204.44,"high":208.76,"low":199.2001},{"date":"2026-06-01","close":219.43,"open":198.91,"high":225.14,"low":195.12},{"date":"2026-06-02","close":290.79,"open":253.46,"high":291.3,"low":252.43},{"date":"2026-06-03","close":301.65,"open":317.63,"high":324.2,"low":294.0101},{"date":"2026-06-04","close":316.43,"open":282.95,"high":321.5,"low":277.56},{"date":"2026-06-05","close":263.47,"open":299.5,"high":300.7243,"low":261.39},{"date":"2026-06-08","close":288.85,"open":288.69,"high":304.96,"low":281.36},{"date":"2026-06-09","close":266.88,"open":299.76,"high":302.4,"low":244.0},{"date":"2026-06-10","close":252.59,"open":263.5,"high":272.47,"low":252.26},{"date":"2026-06-11","close":280.71,"open":260.54,"high":282.32,"low":258.43},{"date":"2026-06-12","close":279.7,"open":270.07,"high":287.98,"low":267.31},{"date":"2026-06-15","close":308.88,"open":296.71,"high":312.9799,"low":288.09},{"date":"2026-06-16","close":278.67,"open":299.13,"high":317.0,"low":278.13},{"date":"2026-06-17","close":289.54,"open":292.89,"high":307.37,"low":283.3201},{"date":"2026-06-18","close":310.58,"open":305.465,"high":329.88,"low":302.36}]},{"ticker":"PLTR","name":"Palantir","recordDate":"2026-08-03","verdict":"BUILD SLOWLY","originalVerdictAvailable":true,"entryDate":"2026-08-03","windowDays":90,"windowEnd":"2026-11-01","windowClosed":false,"snapshotDate":"2026-10-02","entryPrice":125.65,"peakDate":"2026-09-24","bars":[{"date":"2026-08-03","close":125.65,"open":126.7,"high":126.965,"low":123.6567},{"date":"2026-08-04","close":162.66,"open":145.145,"high":164.52,"low":143.28},{"date":"2026-08-05","close":158.43,"open":162.0,"high":166.08,"low":158.25},{"date":"2026-08-06","close":155.92,"open":155.87,"high":158.0,"low":152.7},{"date":"2026-08-07","close":172.01,"open":160.07,"high":172.41,"low":159.96},{"date":"2026-08-10","close":175.23,"open":171.01,"high":179.6,"low":170.87},{"date":"2026-08-11","close":174.94,"open":174.18,"high":177.94,"low":172.72},{"date":"2026-08-12","close":171.04,"open":174.07,"high":175.09,"low":168.34},{"date":"2026-08-13","close":179.01,"open":173.4,"high":179.91,"low":172.3301},{"date":"2026-08-14","close":174.04,"open":179.48,"high":180.18,"low":173.8},{"date":"2026-08-17","close":172.55,"open":174.06,"high":176.275,"low":172.3013},{"date":"2026-08-18","close":171.54,"open":171.97,"high":174.98,"low":170.61},{"date":"2026-08-19","close":175.19,"open":172.61,"high":176.82,"low":169.7705},{"date":"2026-08-20","close":173.96,"open":175.88,"high":176.46,"low":172.03},{"date":"2026-08-21","close":179.94,"open":173.98,"high":182.44,"low":172.55},{"date":"2026-08-24","close":175.89,"open":177.39,"high":178.75,"low":171.31},{"date":"2026-08-25","close":172.73,"open":176.63,"high":179.87,"low":172.2004},{"date":"2026-08-26","close":177.5,"open":170.6,"high":178.49,"low":168.9},{"date":"2026-08-27","close":185.93,"open":178.75,"high":186.86,"low":178.01},{"date":"2026-08-28","close":186.29,"open":184.95,"high":188.37,"low":184.38},{"date":"2026-08-31","close":186.38,"open":184.495,"high":187.94,"low":183.79},{"date":"2026-09-01","close":179.92,"open":182.98,"high":186.55,"low":179.75},{"date":"2026-09-02","close":169.46,"open":176.99,"high":177.57,"low":165.71},{"date":"2026-09-03","close":182.53,"open":172.5,"high":185.83,"low":171.91},{"date":"2026-09-04","close":174.33,"open":180.01,"high":182.19,"low":173.67},{"date":"2026-09-08","close":170.3,"open":173.6,"high":175.82,"low":170.0},{"date":"2026-09-09","close":169.53,"open":171.47,"high":171.8599,"low":168.61},{"date":"2026-09-10","close":165.86,"open":167.35,"high":168.9999,"low":164.55},{"date":"2026-09-11","close":167.23,"open":168.1,"high":168.61,"low":165.4},{"date":"2026-09-14","close":173.31,"open":169.695,"high":174.3599,"low":166.42},{"date":"2026-09-15","close":172.56,"open":170.5,"high":176.59,"low":169.45},{"date":"2026-09-16","close":174.34,"open":170.39,"high":174.7651,"low":168.96},{"date":"2026-09-17","close":176.24,"open":175.95,"high":177.88,"low":172.607},{"date":"2026-09-18","close":177.64,"open":177.18,"high":177.75,"low":172.0},{"date":"2026-09-21","close":183.09,"open":178.725,"high":183.38,"low":176.76},{"date":"2026-09-22","close":184.99,"open":185.125,"high":185.54,"low":182.03},{"date":"2026-09-23","close":191.79,"open":186.29,"high":193.79,"low":182.94},{"date":"2026-09-24","close":192.59,"open":189.2,"high":194.68,"low":188.24},{"date":"2026-09-25","close":189.67,"open":192.71,"high":194.214,"low":189.35},{"date":"2026-09-28","close":187.48,"open":186.231,"high":190.25,"low":185.62},{"date":"2026-09-29","close":186.97,"open":187.34,"high":188.63,"low":184.81},{"date":"2026-09-30","close":187.05,"open":187.91,"high":190.99,"low":187.0},{"date":"2026-10-01","close":190.04,"open":190.09,"high":191.8,"low":186.6},{"date":"2026-10-02","close":188.75,"open":193.03,"high":194.78,"low":188.26}]},{"ticker":"AMAT","name":"Applied Materials","recordDate":"2026-05-16","verdict":"BULLISH","originalVerdictAvailable":false,"entryDate":"2026-05-18","windowDays":35,"windowEnd":"2026-06-20","windowClosed":true,"snapshotDate":"2026-10-02","entryPrice":413.57,"peakDate":"2026-06-18","bars":[{"date":"2026-05-18","close":413.57,"open":441.31,"high":441.71,"low":408.09},{"date":"2026-05-19","close":406.91,"open":404.37,"high":415.4641,"low":397.3701},{"date":"2026-05-20","close":426.85,"open":416.445,"high":427.5,"low":415.85},{"date":"2026-05-21","close":427.36,"open":424.185,"high":430.98,"low":421.609},{"date":"2026-05-22","close":432.16,"open":434.345,"high":438.125,"low":430.29},{"date":"2026-05-26","close":454.89,"open":444.738,"high":456.78,"low":438.0},{"date":"2026-05-27","close":448.25,"open":461.215,"high":462.4,"low":441.12},{"date":"2026-05-28","close":449.68,"open":446.13,"high":457.68,"low":438.25},{"date":"2026-05-29","close":450.06,"open":452.77,"high":460.46,"low":445.7},{"date":"2026-06-01","close":458.17,"open":444.54,"high":463.8799,"low":438.22},{"date":"2026-06-02","close":490.05,"open":465.3,"high":491.51,"low":461.45},{"date":"2026-06-03","close":500.77,"open":487.95,"high":508.2599,"low":487.36},{"date":"2026-06-04","close":501.7,"open":485.655,"high":510.75,"low":480.11},{"date":"2026-06-05","close":453.01,"open":479.71,"high":484.9,"low":452.905},{"date":"2026-06-08","close":492.17,"open":476.0,"high":497.71,"low":471.115},{"date":"2026-06-09","close":499.21,"open":501.72,"high":525.9799,"low":466.51},{"date":"2026-06-10","close":497.01,"open":502.79,"high":534.44,"low":494.88},{"date":"2026-06-11","close":552.64,"open":522.485,"high":557.62,"low":519.9},{"date":"2026-06-12","close":567.25,"open":548.62,"high":569.95,"low":544.07},{"date":"2026-06-15","close":585.78,"open":589.98,"high":599.62,"low":580.51},{"date":"2026-06-16","close":568.23,"open":581.985,"high":600.91,"low":567.65},{"date":"2026-06-17","close":592.92,"open":592.015,"high":623.35,"low":590.825},{"date":"2026-06-18","close":617.11,"open":622.52,"high":638.9,"low":612.5}]}]</script><script>
+const slides=JSON.parse(document.getElementById('examples').textContent),NS='http://www.w3.org/2000/svg',box=document.getElementById('plot'),tabs=document.getElementById('tabs');let slideIndex=0,active=0,mounted=false;
+const pct=v=>(v>=0?'+':'')+v.toFixed(2)+'%',ms=d=>Date.parse(d+'T12:00:00Z'),dateLabel=d=>new Date(ms(d)).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}),tickLabel=d=>new Date(ms(d)).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+slides.forEach((s,i)=>{const b=document.createElement('button');b.id='tab'+i;b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-controls','chartPanel');b.textContent=s.ticker;b.onclick=()=>choose(i,true);b.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const j=(slideIndex+(e.key==='ArrowRight'?1:-1)+slides.length)%slides.length;choose(j,true);document.getElementById('tab'+j).focus();}};tabs.append(b);});const count=document.createElement('span');count.className='example-count';count.id='example-count';count.hidden=true;tabs.append(count);
+function choose(i,animate){slideIndex=i;const s=slides[i];active=s.bars.length-1;document.querySelectorAll('[role=tab]').forEach((b,j)=>{b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1;});document.getElementById('chartPanel').setAttribute('aria-labelledby','tab'+i);document.getElementById('example-count').textContent=(i+1)+' of '+slides.length+' examples';document.getElementById('chart-title').textContent=s.ticker;document.getElementById('context').textContent=s.name+' · '+(s.originalVerdictAvailable?s.verdict:'Bullish')+' · '+dateLabel(s.recordDate);draw(animate);}
+function draw(animate=false){const s=slides[slideIndex],B=s.bars,P=B.map(b=>b.close),R=P.map(p=>(p/s.entryPrice-1)*100),peakIndex=P.indexOf(Math.max(...P)),last=B.length-1,W=box.clientWidth,H=box.clientHeight,L=W<500?46:56,E=W<500?14:28,T=38,BOT=45,axis=({MU:{min:-25,max:125,step:25},MRVL:{min:-20,max:100,step:20},PLTR:{min:-20,max:80,step:20},AMAT:{min:-20,max:80,step:20}})[s.ticker],start=ms(B[0].date),span=ms(B[last].date)-start,x=i=>L+(ms(B[i].date)-start)/span*(W-L-E),y=v=>T+(axis.max-v)/(axis.max-axis.min)*(H-T-BOT);if(W<10)return;
+ const metric=document.getElementById('latest');metric.replaceChildren();metric.append(document.createTextNode(pct(R[last])));const meta=document.createElement('b');meta.textContent=(s.windowClosed?'Window closed':'As of '+tickLabel(B[last].date))+' · peak '+pct(R[peakIndex]);metric.append(meta);
+ box.querySelector('svg')?.remove();const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('role','img');svg.setAttribute('aria-label',s.ticker+' '+s.verdict+' record. Closing-price change '+pct(R[last])+(s.windowClosed?' at window end; peak ':' at snapshot; peak ')+pct(R[peakIndex])+'.');box.append(svg);function add(tag,a,text){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;svg.append(e);return e;}
+ const font='font-family:IBM Plex Mono,monospace;font-size:11px';for(let v=axis.min;v<=axis.max;v+=axis.step){add('line',{x1:L,y1:y(v),x2:W-E,y2:y(v),stroke:v===0?'#6d7893':'#283049','stroke-width':v===0?1.3:1,'stroke-dasharray':v===0?'':'2 5'});add('text',{x:L-9,y:y(v)+4,'text-anchor':'end',fill:'#b3bbcd',style:font},v+'%');}
+ const post=add('path',{d:B.map((b,i)=>(i?'L':'M')+x(i).toFixed(2)+','+y(R[i]).toFixed(2)).join(' '),fill:'none',stroke:'#c9a84c','stroke-width':2.5,'stroke-linejoin':'round','stroke-linecap':'round'});
+ for(const i of[0,peakIndex,last])add('circle',{cx:x(i),cy:y(R[i]),r:4,fill:i===last?'#4db89c':'#101521',stroke:i===last?'#4db89c':'#c9a84c','stroke-width':2});
+ for(const i of[0,Math.floor(last/3),Math.floor(2*last/3),last])add('text',{x:x(i),y:H-16,'text-anchor':i===0?'start':i===last?'end':'middle',fill:'#b3bbcd',style:font},tickLabel(B[i].date));add('text',{x:Math.max(L+65,Math.min(W-E-65,x(peakIndex))),y:y(R[peakIndex])-13,'text-anchor':'middle',fill:'#c9a84c',style:font},'Peak close '+pct(R[peakIndex]));
+ const cross=add('line',{x1:x(active),y1:T,x2:x(active),y2:H-BOT,stroke:'#78839e','stroke-dasharray':'2 4'}),dot=add('circle',{cx:x(active),cy:y(R[active]),r:4.5,fill:'#eceff6',stroke:'#101521','stroke-width':2});function select(i){active=i;cross.setAttribute('x1',x(i));cross.setAttribute('x2',x(i));dot.setAttribute('cx',x(i));dot.setAttribute('cy',y(R[i]));const out=document.getElementById('readout');out.replaceChildren();for(const [text,strong]of[[dateLabel(B[i].date),false],['$'+P[i].toFixed(2),true],[pct(R[i]),true]]){const el=document.createElement(strong?'strong':'span');el.textContent=text;out.append(el);}}
+ svg.addEventListener('pointermove',e=>{const r=svg.getBoundingClientRect(),target=e.clientX-r.left;let best=0;for(let i=1;i<B.length;i++)if(Math.abs(x(i)-target)<Math.abs(x(best)-target))best=i;select(best);});select(active);
+ if(animate&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const len=post.getTotalLength();post.style.strokeDasharray=len;post.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:850,easing:'ease-out'});}
+}
+choose(0,false);new ResizeObserver(()=>draw(false)).observe(box);const reveal=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){draw(true);reveal.disconnect();}},{threshold:.25});reveal.observe(document.getElementById('chartCard'));
+</script></body>
 </html>
