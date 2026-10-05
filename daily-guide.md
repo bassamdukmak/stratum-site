@@ -184,6 +184,8 @@ Where present, the score is a summary research assessment; Data Grade describes 
 
 [Worked example: Microsoft revenue and cash flow →](https://stratumwealth.ca/microsoft-revenue-cash-flow-fy2025)
 
+[Read a real congressional disclosure, field by field →](https://stratumwealth.ca/congressional-stock-disclosures)
+
 ## Congressional Trading Watch
 
 Available with Quant. Public information, with disclosure limits.
