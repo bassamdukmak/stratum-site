@@ -47,6 +47,18 @@ Negotiated responses use `Vary: Accept` and no-store. Origin asset caching is
 preserved. If traffic warrants shared caching, introduce bounded html/md cache
 keys and repeat alternating-variant checks; do not rely on Vary alone.
 
+## Live deployment — 2026-10-07
+
+Published through the owner's signed-in Cloudflare Dashboard because Wrangler
+OAuth was unavailable. The exact local source was copied to worker.js; character
+count 5,118 and FNV-1a 3864147570 matched before deployment. The initial code
+version was 5c00b01f; later settings deployments retain that code.
+The route stratumwealth.ca/* is active, workers.dev and preview URLs are disabled,
+and logs and traces are enabled. The route uses Fail open (proceed) on quota
+exhaustion so existing GitHub Pages HTML remains reachable; this Worker performs
+content negotiation, not security enforcement. Keep that route setting when
+recreating the deployment. No paid plan or persistent API credential was created.
+
 ## Rollback
 
 Remove only this Worker's stratumwealth.ca route to restore direct GitHub Pages

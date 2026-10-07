@@ -1,5 +1,6 @@
 {
   "name": "stratum-agent-readiness",
+  "account_id": "5af98987ce71fd166eb69c2f9907ccdd",
   "main": "worker.mjs",
   "compatibility_date": "2026-10-07",
   "workers_dev": false,

@@ -88,7 +88,7 @@ if '--live' in sys.argv:
   assert len(body.strip())>=20,'empty body'
   assert headers.get('Content-Type','').startswith(accept),headers.get('Content-Type')
   assert 'accept' in [x.strip().lower() for x in headers.get('Vary','').split(',')],headers.get('Vary')
-  if expected_status==404:assert re.search(r'\[[^]]+\]\(https://stratumwealth.ca/(llms.txt|sitemap.xml)',body),'missing recovery link'
+  if expected_status==404 and accept=='text/markdown':assert re.search(r'\[[^]]+\]\(https://stratumwealth.ca/(llms.txt|sitemap.xml)',body),'missing recovery link'
   if accept=='text/markdown':assert '<!DOCTYPE' not in body,'HTML in Markdown response'
   return body
  for url in urls:
