@@ -1,0 +1,8 @@
+{
+  "name": "stratum-agent-readiness",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-07",
+  "workers_dev": false,
+  "routes": [{ "pattern": "stratumwealth.ca/*", "zone_name": "stratumwealth.ca" }],
+  "observability": { "enabled": true, "traces": { "enabled": true } }
+}

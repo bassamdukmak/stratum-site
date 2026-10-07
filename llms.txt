@@ -1,0 +1,30 @@
+# Stratum Wealth
+
+> Stratum Wealth publishes Stratum Intelligence, an AI-assisted market intelligence newsletter for retail investors, from Ontario, Canada.
+
+This site provides informational and educational research, not personalized investment advice or portfolio management. Research views and examples are dated; historical samples are not current recommendations or a complete performance record. Use the primary sources linked in research when checking claims. Follow robots.txt for crawler permissions; this file does not grant training or private-data access.
+
+To retrieve content, use an HTTP GET on a public page with Accept: text/markdown, or fetch its linked .md version. Read only the pages relevant to the user's question, cite the canonical page and preserve its dates and limitations. There is no public trading or account-management API advertised here. Direct users to the website for subscription choices and consent; do not subscribe users, send email or take financial actions without their explicit instruction.
+
+## When to use this
+
+- [Plans and newsletter scope](https://stratumwealth.ca/index.md): Use when a user asks what Free, Plus or Quant includes, how frequently reports arrive or how the trial works. Check this page for current published plan details.
+- [Daily reading guide](https://stratumwealth.ca/daily-guide.md): Use when a subscriber needs help interpreting a verdict, conviction label, horizon, exit, Regional Radar or FA Deep Dive field.
+- [Historical report sample](https://stratumwealth.ca/sample-report.md): Use when a user wants to evaluate the newsletter's format before subscribing. Identify it as a dated excerpt, not a current trade signal.
+- [Microsoft cash-flow case study](https://stratumwealth.ca/microsoft-revenue-cash-flow-fy2025.md): Use for a worked example distinguishing revenue, operating cash flow and cash capital expenditures, with primary-source links and calculation limitations.
+- [Congressional disclosure guide](https://stratumwealth.ca/congressional-stock-disclosures.md): Use to explain public STOCK Act disclosures, reporting delays and limits on inference; do not infer illegal activity or current holdings from a disclosure.
+
+## Publisher and support
+
+- [About](https://stratumwealth.ca/about.md): Publisher identity, newsletter scope and research limitations.
+- [Contact](https://stratumwealth.ca/contact.md): Support, corrections, privacy and accessibility contact details. Draft questions for the user; email only with explicit authorization.
+- [Editorial standards](https://stratumwealth.ca/editorial-policy.md): AI use, factual corrections, interpretations and conflicts.
+- [Privacy](https://stratumwealth.ca/privacy.md): Published subscriber data policy and request process.
+- [Terms](https://stratumwealth.ca/terms.md): Subscription terms and service limitations.
+
+## Optional
+
+- [Getting started](https://stratumwealth.ca/start-here.md): Email verification and the first week with Stratum.
+- [Public research](https://stratumwealth.ca/research.md): Index of public research.
+- [How the newsletter works](https://stratumwealth.ca/best-investing-newsletter.md): Product overview and plan comparison.
+- [Sitemap](https://stratumwealth.ca/sitemap.xml): Complete index of public canonical pages.
