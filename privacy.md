@@ -105,7 +105,7 @@ We may update this policy as our service evolves. Material changes will be commu
 
 The third-party services listed in Section 04 (Resend, Stripe, Supabase, Railway, Anthropic) may change as our infrastructure evolves. We will update this Privacy Policy when we add, remove, or replace a subprocessor. Material changes affecting how your data is handled will be communicated by email at least 30 days in advance.
 
-Contact 
+Contact
 
 For privacy questions, data access requests, or to file a complaint:
 [stratumwealth@stratumwealth.ca](mailto:stratumwealth@stratumwealth.ca)

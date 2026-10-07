@@ -3,7 +3,7 @@ Source: https://stratumwealth.ca/terms
 # Terms of
 **Service.**
 
-⚠ Important — Please Read 
+⚠ Important — Please Read
 
 **Stratum is not investment advice.** We are a market intelligence newsletter, not a registered investment advisor, broker-dealer, or financial planner. Nothing we publish — including trade ideas, conviction scores, action labels, or stock selections — should be treated as a recommendation to buy, sell, or hold any security. You are solely responsible for your investment decisions and should consult a licensed financial advisor before acting on anything you read here. Past performance does not guarantee future results, and any investment can lose value.
 
@@ -145,7 +145,7 @@ If you believe content on stratumwealth.ca or in our newsletter infringes your c
 
 Stratum depends on third-party infrastructure (including hosting, payment, email-delivery, and AI providers) to operate. We are not liable for delays, missed reports, or other service interruptions caused by events outside our reasonable control, including but not limited to upstream provider outages, internet failures, natural disasters, war, government action, labor disputes, cyberattacks, or pandemic-related disruption. We will use reasonable efforts to restore service promptly. Where a paid subscriber experiences a sustained service interruption that is our fault and that materially deprives them of the service they paid for, we may, at our discretion and as our sole remedy, extend the subscription period by a reasonable equivalent.
 
-Contact 
+Contact
 
 Questions about these Terms?
 [stratumwealth@stratumwealth.ca](mailto:stratumwealth@stratumwealth.ca)

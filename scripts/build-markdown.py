@@ -52,7 +52,7 @@ for slug in PAGES:
  content+=render(main)
  if slug=='index':
   content+='\n\n## Publisher and policies\n\nStratum Wealth · Ontario, Canada · [Contact](https://stratumwealth.ca/contact)\n\n[About](https://stratumwealth.ca/about) · [Terms](https://stratumwealth.ca/terms) · [Privacy](https://stratumwealth.ca/privacy) · [Editorial standards](https://stratumwealth.ca/editorial-policy)\n'
- content=re.sub(r'\n[ \t]+','\n',content);content=re.sub(r'\n{3,}','\n\n',content).strip()
+ content=re.sub(r'[ \t]+\n','\n',content);content=re.sub(r'\n[ \t]+','\n',content);content=re.sub(r'\n{3,}','\n\n',content).strip()
  output='Source: '+(BASE if slug=='index' else BASE+slug)+'\n\n'+content+'\n';target=ROOT/(slug+'.md')
  if '--check' in sys.argv:
   if not target.exists() or target.read_text()!=output:stale.append(target.name)
