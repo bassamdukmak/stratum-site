@@ -43,9 +43,9 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text-secondary);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.6;overflow-x:hidden}
 
-.ticker-bar{background:var(--navy);border-bottom:1px solid var(--navy-light);padding:9px 0;overflow:hidden;position:sticky;top:0;z-index:101}
+.ticker-bar{background:#07090F;border-bottom:1px solid #1E2538;padding:9px 0;overflow:hidden;position:sticky;top:0;z-index:101}
 .ticker-track{display:flex;animation:ticker 50s linear infinite;white-space:nowrap;width:max-content}
-.ticker-item{font-size:10px;font-weight:500;letter-spacing:2px;color:#8A9BBF;text-transform:uppercase;padding:0 32px;border-right:1px solid var(--navy-light);flex-shrink:0}
+.ticker-item{font-size:10px;font-weight:500;letter-spacing:2px;color:#8B93AB;text-transform:uppercase;padding:0 32px;border-right:1px solid #1E2538;flex-shrink:0}
 .ti{color:var(--gold);margin-right:6px}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
@@ -178,9 +178,39 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 40px
 .cta-tier.hl .ct-price{color:var(--gold)}
 .ct-desc{font-size:10px;color:var(--text-muted);letter-spacing:1px}
 
-footer{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:var(--navy);border-top:1px solid var(--navy-light)}
-footer span{font-size:10px;font-weight:500;letter-spacing:2px;color:#6A7A99;text-transform:uppercase}
-footer span.brand{color:var(--gold)}
+footer{background:#07090F;padding:40px 36px 32px}
+.foot-top{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  max-width:1240px;margin:0 auto;padding-bottom:24px;border-bottom:1px solid #1E2538;
+}
+.foot-links{display:flex;gap:26px}
+.foot-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8B93AB;text-decoration:none}
+.foot-links a:hover{color:#8B93AB}
+.preferred-source{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:12px 16px;border:1px solid var(--gold-dim);border-radius:4px;color:var(--gold);font-size:12px;text-decoration:none}
+.preferred-source:hover{border-color:var(--gold);color:#E3C778}
+.preferred-source:focus-visible{outline:2px solid #E3C778;outline-offset:4px}
+.foot-legal{
+  max-width:1240px;margin:22px auto 0;
+  font-size:11px;font-weight:300;line-height:1.8;color:#8B93AB;
+}
+
+footer{border-top:1px solid #1E2538;font-family:'IBM Plex Sans',sans-serif;color:#8B93AB}
+footer a{color:inherit;text-underline-offset:3px}
+footer a:hover{color:var(--gold-hover)}
+footer a:focus-visible,.sec p a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+footer .logo{letter-spacing:6px;color:#ECEFF6}
+footer .logo i{font-style:normal;color:var(--gold)}
+footer .mono-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#8B93AB}
+.foot-links{flex-wrap:wrap}
+@media(min-width:1100px){
+  .foot-top{display:grid;grid-template-columns:auto auto 1fr;gap:24px 48px}
+  .foot-top>p{justify-self:end}
+  .foot-top>.preferred-source{grid-column:1 / 3;justify-self:start}
+  .foot-top>.mono-label{grid-column:3;justify-self:end;text-align:right}
+}
+.sec p a{color:#8B93AB;text-underline-offset:3px}
+.sec p a:hover{color:var(--gold-hover)}
+@media(max-width:700px){footer{padding:32px 20px}.foot-top{align-items:flex-start}.foot-links{gap:16px}}
 
 @media(max-width:700px){
   .hero{padding:40px 20px}
@@ -215,7 +245,6 @@ footer span.brand{color:var(--gold)}
   nav{padding:0 20px;height:44px}
   .logo{font-size:12px;letter-spacing:3px}
   .nav-home,.nav-right span{font-size:9px}
-  footer{flex-direction:column;gap:8px;text-align:center;padding:16px 20px}
 }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://stratumwealth.ca/best-investing-newsletter#webpage","url":"https://stratumwealth.ca/best-investing-newsletter","name":"Free Weekly AI Investing Newsletter | Stratum Wealth","description":"Get Stratum\u2019s free weekly AI-assisted investing newsletter: ranked stock research and global market context. No card required. Daily delivery on paid plans.","inLanguage":"en-CA","isPartOf":{"@id":"https://stratumwealth.ca/#website"},"publisher":{"@id":"https://stratumwealth.ca/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stratumwealth.ca/"},{"@type":"ListItem","position":2,"name":"Free Weekly Investing Newsletter","item":"https://stratumwealth.ca/best-investing-newsletter"}]}]}</script>
@@ -464,14 +493,22 @@ footer span.brand{color:var(--gold)}
 
 <div class="content"><div class="sec"><h2>See how to read a report.</h2><p><a href="/daily-guide">Explore the Daily reader’s guide</a> for confidence, horizon, exit and Regional Radar. Already subscribed? <a href="/start-here">Start with your first week</a>.</p></div></div>
 <footer>
-  <p><a href="/sample-report">Read a Daily sample</a> · <a href="/editorial-policy">Editorial standards and corrections</a></p>
-<span class="brand">Stratum Wealth</span>
-  <span>Daily · Before Market Open · Multilingual · Bias-Aware</span>
-  <span>stratumwealth.ca</span>
-  <span><a href="https://stratumwealth.ca/terms" style="color:#6A7A99;text-decoration:none;">Terms</a></span>
-  <span><a href="https://stratumwealth.ca/privacy" style="color:#6A7A99;text-decoration:none;">Privacy</a></span>
-  <span><a href="mailto:stratumwealth@stratumwealth.ca" style="color:#6A7A99;text-decoration:none;">Contact</a></span>
-  <span style="display:block;width:100%;font-size:9px;color:#3A4060;margin-top:14px;line-height:1.6;text-transform:none;letter-spacing:0;">Stratum Wealth, Ontario, Canada · stratumwealth@stratumwealth.ca · We aim to meet WCAG 2.0 AA accessibility standards; if you have difficulty using this site, please email us. © 2026 Stratum Wealth. Informational service only — not financial advice.</span>
+  <div class="foot-top">
+    <a class="logo" href="/">Stratum<i>.</i></a>
+    <div class="foot-links">
+      <a href="/best-investing-newsletter">How it works</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="mailto:stratumwealth@stratumwealth.ca">Contact</a>
+    </div>
+    <p><a href="/sample-report">Read a Daily sample</a> · <a href="/editorial-policy">Editorial standards and corrections</a></p>
+<a class="preferred-source" href="https://www.google.com/preferences/source?q=stratumwealth.ca"><span aria-hidden="true">★</span> Add Stratum as a preferred source on Google</a>
+    <span class="mono-label">Daily · Before market open · stratumwealth.ca</span>
+  </div>
+  <p class="foot-legal"><a href="/research">Research</a> · <a href="/start-here">Start here</a> · <a href="/daily-guide">How to read your Daily</a></p>
+  <p class="foot-legal">
+    Stratum Wealth, Ontario, Canada · stratumwealth@stratumwealth.ca. Stratum is an informational and educational research service, not a registered investment advisor, broker-dealer, or financial planner. Nothing in our reports, including verdicts, conviction scores, and trade ideas, is a personalized recommendation. Past results referenced are selected examples and are not indicative of future performance. Congressional Trading Watch reports on publicly disclosed filings under the STOCK Act only; we do not allege or imply illegal activity by any individual. All investment decisions are made at the reader's sole discretion and risk. We aim to meet WCAG 2.0 AA accessibility standards; if you have difficulty using this site, please email us.
+  </p>
 </footer>
 
 <script>
