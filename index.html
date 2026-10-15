@@ -1438,6 +1438,14 @@ footer{background:var(--ink);padding:40px 36px 32px}
 // Set this to the live Railway backend URL before deploy.
 // ═══════════════════════════════════════════════════════
 var API_BASE = 'https://stratum-api-production.up.railway.app';
+var REQUEST_RETRY_MESSAGE = 'We could not complete your request. Please try again shortly.';
+async function postStratum(path, payload){
+  var response = await fetch(API_BASE + path, {
+    method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
+  });
+  if (!response.ok) throw new Error(REQUEST_RETRY_MESSAGE);
+  return response;
+}
 
 // ── TICKER: duplicate track for seamless loop ──
 (function(){
@@ -1570,12 +1578,12 @@ async function submitManage(){
     btn.textContent = 'Email me a secure link \u2192';
   }
   try {
-    await fetch(API_BASE + '/create-portal', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email: email })
-    });
-  } catch (e) { /* uniform response below regardless */ }
+    await postStratum('/create-portal', { email: email });
+  } catch (e) {
+    done();
+    alert(REQUEST_RETRY_MESSAGE);
+    return;
+  }
   alert('Check your inbox. If a Stratum subscription exists for that email, we just sent a secure link to manage it. The link expires in 15 minutes.');
   done();
   closeManage();
@@ -1763,13 +1771,13 @@ async function submitSignup(){
     ? { email: email, tier: 'free', company: honeypot }
     : { email: email, tier: 'free', trial_intent: 'homepage_nocard', company: honeypot };
   try {
-    await fetch(API_BASE + '/subscribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
-    });
+    await postStratum('/subscribe', payload);
     done();
-  } catch (err) { done(); }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = mode === 'free' ? 'Start free →' : 'Start free trial →';
+    alert(REQUEST_RETRY_MESSAGE);
+  }
 }
 
 // ── SIGNUP MODAL ── end
@@ -1836,14 +1844,12 @@ async function handleSignup(e, prefix){
   }
 
   try {
-    await fetch(API_BASE + '/subscribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email: email, tier: 'free', trial_intent: 'homepage_nocard', company: honeypot })
-    });
+    await postStratum('/subscribe', { email: email, tier: 'free', trial_intent: 'homepage_nocard', company: honeypot });
     showUniform();
   } catch (err) {
-    showUniform();
+    btn.disabled = false;
+    btn.textContent = 'Start free trial';
+    alert(REQUEST_RETRY_MESSAGE);
   }
 }
 
@@ -1953,17 +1959,9 @@ async function submitUpgrade(){
   }
 
   try {
-    await fetch(API_BASE + '/subscribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email: email, name: name, tier: modalTier, company: honeypot })
-    });
+    await postStratum('/subscribe', { email: email, name: name, tier: modalTier, company: honeypot });
 
-    var res = await fetch(API_BASE + '/create-checkout', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email: email, name: name, tier: modalTier, billing: modalBilling, trial: false })
-    });
+    var res = await postStratum('/create-checkout', { email: email, name: name, tier: modalTier, billing: modalBilling, trial: false });
 
     if (res.ok) {
       var data = await res.json();
@@ -1984,7 +1982,7 @@ async function submitUpgrade(){
       resetBtn();
     }
   } catch (err) {
-    alert('Connection error. Please try again.');
+    alert(REQUEST_RETRY_MESSAGE);
     resetBtn();
   }
 }
