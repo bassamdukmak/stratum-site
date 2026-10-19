@@ -173,7 +173,7 @@ footer span.brand{color:var(--gold)}
 <div class="hero">
   <div class="hero-tag">Legal · Document 01</div>
   <h1>Privacy<br><strong>Policy.</strong></h1>
-  <div class="hero-sub">Last updated: May 4, 2026 · Effective for all users on or after May 4, 2026. By continuing to use Stratum after this date, you accept this policy.</div>
+  <div class="hero-sub">Last updated: October 18, 2026 · Original policy effective May 4, 2026. The hosting provider update described below is subject to the material-change commitments in Sections 11 and 12.</div>
 </div>
 
 <main>
@@ -209,14 +209,15 @@ footer span.brand{color:var(--gold)}
 <ul>
   <li><strong>Resend</strong> — sends the newsletter and transactional emails on our behalf. Receives your email address and the email content. Resend may track whether emails are opened and whether links inside the email are clicked, which we use in aggregate to measure newsletter effectiveness. We do not use this data for advertising and do not share it with third parties.</li>
   <li><strong>Stripe</strong> — processes payments for paid tiers. Receives your email, name, and payment details directly from you (we don't pass your card number).</li>
-  <li><strong>Supabase</strong> — hosts our database. Stores subscriber records and report archives.</li>
+  <li><strong>Supabase and Neon (part of Databricks)</strong> — provide database infrastructure for Stratum. Supabase currently hosts production subscriber records, report archives and delivery/operational records. An isolated migration-testing copy was created in Neon on October 14, 2026. Its live application and migration-history rows were removed on October 16, 2026. Following approval, a fresh migration-testing copy was created in Neon on October 18, 2026. That copy remains private, and production continues to use Supabase. We plan to move production hosting to Neon after the applicable advance notice and approved migration steps.</li>
   <li><strong>Railway</strong> — hosts our application servers.</li>
   <li><strong>Anthropic</strong> — powers parts of our content analysis pipeline. We do not send your email address, name, or other personal identifiers to Anthropic. Our prompts to Anthropic's API contain only publicly available market data, our own analytical context, and content we are generating. Subscriber-identifying information is never included in any prompt.</li>
 </ul>
 <p>We <strong>do not sell, rent, or trade</strong> your personal information to anyone, ever. We don't share it with advertisers or data brokers. The only times we would disclose your data outside the providers above are: (a) if you explicitly ask us to, (b) to comply with a valid legal order from Canadian authorities, or (c) to protect against fraud or harm to other users.</p>
 
 <h2><span class="num">05</span>Where Your Data Is Stored</h2>
-<p>Your data is stored on infrastructure operated by Supabase and Railway, which use data centers primarily in the United States. By using Stratum, you consent to your data being processed outside Canada. The vendors we use (Stripe, Resend, Supabase, Railway, Anthropic) all maintain industry-standard security practices and are subject to applicable privacy regulations.</p>
+<p>The production Supabase database is hosted in the United States (Oregon). The Neon testing database is configured in the United States (Ohio). Railway hosts our application servers. Our database providers and their approved subprocessors may provide operational support or processing from other countries. Information processed outside Canada may be subject to that country's laws, including lawful access by its authorities. We remain responsible for the personal information under our control and use safeguards and contractual or other measures to protect it.</p>
+<p>The earlier testing copy was created before this notice. Its live copied rows and the old local data exports were removed on October 16, 2026. Removing live rows does not mean every provider-held historical copy was immediately erased. Following approval, a fresh migration-testing copy was created in Neon on October 18, 2026. The temporary local exports used for that copy were removed after verification. Our production service remains on Supabase. We plan to move production hosting after completing the relevant privacy and security review and approved migration steps. Material changes remain subject to the advance email notice commitments in Sections 11 and 12.</p>
 
 <h2><span class="num">06</span>How Long We Keep It</h2>
 <ul>
@@ -241,7 +242,7 @@ footer span.brand{color:var(--gold)}
 <p>To exercise any of these rights, email us at <a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a>. We'll respond within 30 days.</p>
 
 <h2><span class="num">09</span>Security</h2>
-<p>We protect your data with HTTPS encryption, strict server-side input validation, rate limiting, IP-level abuse detection, and database row-level security. Payment data is handled exclusively by Stripe (PCI-DSS compliant) and never touches our servers in raw form. Despite our best efforts, no internet service can guarantee absolute security. If a data breach affecting your personal information occurs, we will notify you and the Office of the Privacy Commissioner of Canada <strong>within 72 hours of becoming aware of the breach</strong>, in accordance with PIPEDA's breach-notification requirements.</p>
+<p>We protect your data with HTTPS encryption, strict server-side input validation, rate limiting, IP-level abuse detection, and database row-level security. Payment data is handled exclusively by Stripe (PCI-DSS compliant) and never touches our servers in raw form. Despite our best efforts, no internet service can guarantee absolute security. If a data breach affecting your personal information occurs, we will notify you and the Office of the Privacy Commissioner of Canada <strong>within 72 hours of becoming aware of the breach</strong>. Where notification is required by PIPEDA, we will act as soon as feasible. Our stated 72-hour commitment does not postpone any earlier notification required by applicable law.</p>
 
 <h2><span class="num">10</span>Children</h2>
 <p>Stratum is not intended for anyone under 18. We do not knowingly collect data from minors. If you believe a child has signed up, contact us and we'll delete the account.</p>
@@ -250,7 +251,7 @@ footer span.brand{color:var(--gold)}
 <p>We may update this policy as our service evolves. Material changes will be communicated via email to active subscribers at least 30 days before taking effect. The "Last updated" date at the top of this page reflects the most recent revision.</p>
 
 <h2><span class="num">12</span>Changes to Subprocessors</h2>
-<p>The third-party services listed in Section 04 (Resend, Stripe, Supabase, Railway, Anthropic) may change as our infrastructure evolves. We will update this Privacy Policy when we add, remove, or replace a subprocessor. Material changes affecting how your data is handled will be communicated by email at least 30 days in advance.</p>
+<p>The third-party services listed in Section 04 (Resend, Stripe, Supabase, Neon, Railway, Anthropic) may change as our infrastructure evolves. We will update this Privacy Policy when we add, remove, or replace a subprocessor. Material changes affecting how your data is handled will be communicated by email at least 30 days in advance.</p>
 
 <div class="contact">
   <span class="label">Contact</span>

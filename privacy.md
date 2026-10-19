@@ -47,7 +47,7 @@ We share the minimum amount of data necessary with the third-party services that
 
 - **Stripe** — processes payments for paid tiers. Receives your email, name, and payment details directly from you (we don't pass your card number).
 
-- **Supabase** — hosts our database. Stores subscriber records and report archives.
+- **Supabase and Neon (part of Databricks)** — provide database infrastructure for Stratum. Supabase currently hosts production subscriber records, report archives and delivery/operational records. An isolated migration-testing copy was created in Neon on October 14, 2026. Its live application and migration-history rows were removed on October 16, 2026. Following approval, a fresh migration-testing copy was created in Neon on October 18, 2026. That copy remains private, and production continues to use Supabase. We plan to move production hosting to Neon after the applicable advance notice and approved migration steps.
 
 - **Railway** — hosts our application servers.
 
@@ -57,7 +57,9 @@ We **do not sell, rent, or trade** your personal information to anyone, ever. We
 
 ## 05Where Your Data Is Stored
 
-Your data is stored on infrastructure operated by Supabase and Railway, which use data centers primarily in the United States. By using Stratum, you consent to your data being processed outside Canada. The vendors we use (Stripe, Resend, Supabase, Railway, Anthropic) all maintain industry-standard security practices and are subject to applicable privacy regulations.
+The production Supabase database is hosted in the United States (Oregon). The Neon testing database is configured in the United States (Ohio). Railway hosts our application servers. Our database providers and their approved subprocessors may provide operational support or processing from other countries. Information processed outside Canada may be subject to that country's laws, including lawful access by its authorities. We remain responsible for the personal information under our control and use safeguards and contractual or other measures to protect it.
+
+The earlier testing copy was created before this notice. Its live copied rows and the old local data exports were removed on October 16, 2026. Removing live rows does not mean every provider-held historical copy was immediately erased. Following approval, a fresh migration-testing copy was created in Neon on October 18, 2026. The temporary local exports used for that copy were removed after verification. Our production service remains on Supabase. We plan to move production hosting after completing the relevant privacy and security review and approved migration steps. Material changes remain subject to the advance email notice commitments in Sections 11 and 12.
 
 ## 06How Long We Keep It
 
@@ -91,7 +93,7 @@ To exercise any of these rights, email us at [stratumwealth@stratumwealth.ca](ma
 
 ## 09Security
 
-We protect your data with HTTPS encryption, strict server-side input validation, rate limiting, IP-level abuse detection, and database row-level security. Payment data is handled exclusively by Stripe (PCI-DSS compliant) and never touches our servers in raw form. Despite our best efforts, no internet service can guarantee absolute security. If a data breach affecting your personal information occurs, we will notify you and the Office of the Privacy Commissioner of Canada **within 72 hours of becoming aware of the breach**, in accordance with PIPEDA's breach-notification requirements.
+We protect your data with HTTPS encryption, strict server-side input validation, rate limiting, IP-level abuse detection, and database row-level security. Payment data is handled exclusively by Stripe (PCI-DSS compliant) and never touches our servers in raw form. Despite our best efforts, no internet service can guarantee absolute security. If a data breach affecting your personal information occurs, we will notify you and the Office of the Privacy Commissioner of Canada **within 72 hours of becoming aware of the breach**. Where notification is required by PIPEDA, we will act as soon as feasible. Our stated 72-hour commitment does not postpone any earlier notification required by applicable law.
 
 ## 10Children
 
@@ -103,7 +105,7 @@ We may update this policy as our service evolves. Material changes will be commu
 
 ## 12Changes to Subprocessors
 
-The third-party services listed in Section 04 (Resend, Stripe, Supabase, Railway, Anthropic) may change as our infrastructure evolves. We will update this Privacy Policy when we add, remove, or replace a subprocessor. Material changes affecting how your data is handled will be communicated by email at least 30 days in advance.
+The third-party services listed in Section 04 (Resend, Stripe, Supabase, Neon, Railway, Anthropic) may change as our infrastructure evolves. We will update this Privacy Policy when we add, remove, or replace a subprocessor. Material changes affecting how your data is handled will be communicated by email at least 30 days in advance.
 
 Contact
 
