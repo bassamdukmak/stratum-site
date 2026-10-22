@@ -742,8 +742,8 @@ footer{background:var(--ink);padding:40px 36px 32px}
       <a href="/research">Research</a>
       <a href="/daily-guide">Read the Daily</a>
       <a href="#faq" onclick="goSection('faq')">FAQ</a>
-      <a href="/terms" onclick="openPage('terms'); return false">Terms</a>
-      <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
       <a href="#manage" onclick="openManage(); return false">Manage</a>
       <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
     </div>
@@ -761,8 +761,8 @@ footer{background:var(--ink);padding:40px 36px 32px}
   <a href="/start-here">New subscriber? Start here</a>
   <a href="/daily-guide">Read the Daily</a>
   <a href="#faq" onclick="goSection('faq')">FAQ</a>
-  <a href="/terms" onclick="openPage('terms'); return false">Terms</a>
-  <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
+  <a href="/terms">Terms</a>
+  <a href="/privacy">Privacy</a>
   <a href="#manage" onclick="openManage(); return false">Manage subscription</a>
   <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
 </div>
@@ -796,7 +796,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
           <div class="cap-note">7-day Plus trial · No card required · Verify your email and it starts right away</div>
           <div class="tc-row" id="hero-tc-row">
             <input type="checkbox" id="hero-tc">
-            <label for="hero-tc">I agree to the <a href="/terms" onclick="event.preventDefault();event.stopPropagation();openPage('terms')">Terms</a> and <a href="/privacy" onclick="event.preventDefault();event.stopPropagation();openPage('privacy')">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
+            <label for="hero-tc">I agree to the <a href="/terms" target="_blank" rel="noopener">Terms</a> and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
           </div>
           <div class="tc-msg" id="hero-tc-error">▸ Please accept the Terms to continue</div>
           <div class="form-error" id="hero-error"></div>
@@ -1089,7 +1089,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
         </div>
         <div class="tc-row" id="bottom-tc-row">
           <input type="checkbox" id="bottom-tc">
-          <label for="bottom-tc">I agree to the <a href="/terms" onclick="event.preventDefault();event.stopPropagation();openPage('terms')">Terms</a> and <a href="/privacy" onclick="event.preventDefault();event.stopPropagation();openPage('privacy')">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
+          <label for="bottom-tc">I agree to the <a href="/terms" target="_blank" rel="noopener">Terms</a> and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
         </div>
         <div class="tc-msg" id="bottom-tc-error">▸ Please accept the Terms to continue</div>
         <div class="form-error" id="bottom-error"></div>
@@ -1106,8 +1106,8 @@ footer{background:var(--ink);padding:40px 36px 32px}
     <a class="logo" href="/">Stratum<i>.</i></a>
     <div class="foot-links">
       <a href="/best-investing-newsletter">How it works</a>
-      <a href="/terms" onclick="openPage('terms'); return false">Terms</a>
-      <a href="/privacy" onclick="openPage('privacy'); return false">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
       <a href="mailto:stratumwealth@stratumwealth.ca" onclick="openContact(); return false">Contact</a>
     </div>
     <p><a href="/about">About</a> · <a href="/contact">Contact details</a> · <a href="/sample-report">Read a Daily sample</a> · <a href="/editorial-policy">Editorial standards and corrections</a></p>
@@ -1120,235 +1120,6 @@ footer{background:var(--ink);padding:40px 36px 32px}
   </p>
 </footer>
 
-
-<!-- TERMS OVERLAY -->
-<div class="page-overlay" id="page-terms" role="dialog" aria-modal="true" aria-label="Terms of Service">
-  <button class="page-close" onclick="closePage('terms')">✕ Close</button>
-  <div class="page-inner">
-    <div class="eyebrow">Legal · Document 02</div>
-    <h2 class="doc-title">Terms of<br><strong>Service.</strong></h2>
-    <div class="doc-meta">Last updated: June 13, 2026 · Effective for all users on or after June 13, 2026. By continuing to use Stratum after this date, you accept these terms.</div>
-    <div class="doc">
-
-      <div class="doc-alert">
-        <span class="label">⚠ Important · Please Read</span>
-        <p><strong>Stratum is not investment advice.</strong> We are a market intelligence newsletter, not a registered investment advisor, broker-dealer, or financial planner. Nothing we publish, including trade ideas, conviction scores, action labels, or stock selections, should be treated as a recommendation to buy, sell, or hold any security. You are solely responsible for your investment decisions and should consult a licensed financial advisor before acting on anything you read here. Past performance does not guarantee future results, and any investment can lose value.</p>
-      </div>
-
-      <p>These Terms of Service ("Terms") govern your access to and use of the services provided by <strong>Stratum Wealth</strong> ("Stratum," "we," "us"), including stratumwealth.ca and our newsletter, Stratum Intelligence. By signing up, subscribing, or otherwise using our service, you agree to these Terms.</p>
-
-      <h2><span class="num">01</span>What Stratum Provides</h2>
-      <p>Stratum publishes a market intelligence newsletter for retail investors. Our reports synthesize publicly available information - financial news, congressional trading disclosures, geopolitical events, multilingual market sources, and quantitative signals - into structured daily, weekly, and monthly briefings.</p>
-      <p>We offer three subscription tiers:</p>
-      <ul>
-        <li><strong>Free - $0/month.</strong> One full report per week, delivered on a randomized day.</li>
-        <li><strong>Plus - $19.99 CAD/month</strong> ($17.99/mo if billed annually). Daily reports, including the Financial Advisor Deep Dive layer.</li>
-        <li><strong>Quant - $49.99 CAD/month</strong> ($44.99/mo if billed annually). Everything in Plus, plus weekly summaries (Sundays), monthly wrap-ups, and the Congressional &amp; Political Trading Watch.</li>
-      </ul>
-      <p>Pricing and features may change. Existing subscribers will be notified at least 30 days before any price increase takes effect. Annual subscriptions are billed once and renew annually unless canceled.</p>
-
-      <h2><span class="num">02</span>Not Financial Advice</h2>
-      <p>This is the most important section. Read it carefully.</p>
-      <p>Stratum's content is for <strong>informational and educational purposes only</strong>. We are not a registered investment advisor, broker-dealer, securities firm, or financial planner under any Canadian provincial securities regulator, the OSC, the SEC, or any other authority. We do not provide personalized investment advice, portfolio management, or financial planning services.</p>
-      <p>The trade ideas, action labels (including but not limited to <strong>STRONG BUY, BUY, BUILD SLOWLY, WAIT,</strong> and <strong>AVOID</strong>), conviction scores, sector calls, financial-advisor verdicts (SUPPORTS, PARTIALLY SUPPORTS, CONTRADICTS), and any other content we publish are <strong>generalized observations based on public information</strong>, not recommendations tailored to your individual financial situation, risk tolerance, time horizon, or goals.</p>
-      <p>You acknowledge that:</p>
-      <ul>
-        <li>Investing in securities involves risk, including the loss of principal.</li>
-        <li>Past performance does not guarantee future results.</li>
-        <li>Markets are unpredictable, and any signal we publish can be wrong.</li>
-        <li>You should consult a licensed financial advisor, accountant, or tax professional before making investment decisions.</li>
-        <li>You are solely responsible for your investment choices and their consequences.</li>
-        <li>No fiduciary, advisory, or agency relationship is created between you and Stratum by virtue of your subscription, your reading of our reports, or any communication between us.</li>
-      </ul>
-      <p>If you are looking for personalized investment advice, please consult a registered investment advisor in your jurisdiction.</p>
-
-      <h2><span class="num">02a</span>Forward-Looking Statements</h2>
-      <p>Our reports contain forward-looking statements about markets, sectors, companies, and macroeconomic conditions. These statements reflect our current analysis of publicly available information and involve known and unknown risks, uncertainties, and assumptions. Actual results may differ materially from any view, projection, or scenario we describe. We undertake no obligation to update or revise forward-looking statements in light of new information, future events, or otherwise. You should not place undue reliance on any single report, signal, or label.</p>
-
-      <h2><span class="num">03</span>Eligibility</h2>
-      <p>Our content - market news, analysis, trade ideas - is readable by anyone. However, because our Terms require you to accept responsibility for your own investment decisions, <strong>creating a subscription account requires you to be at least 18</strong>. This is a contract law requirement, not a content restriction. If you're under 18, you're welcome to read anything publicly available on our site - you just can't hold a subscription account.</p>
-      <p>By signing up, you confirm that you are at least 18 years old and have the legal capacity to agree to these Terms.</p>
-
-      <h2><span class="num">04</span>Account and Email</h2>
-      <p>You must provide a valid email address to receive our newsletter. You agree to:</p>
-      <ul>
-        <li>Provide accurate information when signing up.</li>
-        <li>Not share your subscription with others (paid tiers are for individual use).</li>
-        <li>Not use temporary, disposable, or fraudulent email addresses to circumvent free trial limits, abuse our signup system, or evade prior account terminations.</li>
-        <li>Keep us informed if your contact information changes.</li>
-      </ul>
-      <p>We may suspend or terminate accounts that violate these rules, abuse our infrastructure (e.g., automated signups, scraping), or attempt to circumvent our security measures.</p>
-
-      <h2><span class="num">05</span>Payment, Trials, and Refunds</h2>
-      <p><strong>Payments</strong> are processed by Stripe. By subscribing to a paid tier, you authorize recurring monthly charges to the payment method you provide. You can cancel anytime via your billing portal - we send you a link by email when you click "Manage Subscription."</p>
-      <p><strong>Free trials</strong> may be offered at our discretion, typically for 7 days of Plus access. <strong>No credit or debit card is required to start a trial.</strong> During the trial you receive full Plus features at no charge. <strong>At the end of the trial, your subscription automatically reverts to the Free plan. You will not be charged, and no payment method is collected or billed.</strong> To continue with paid Plus or Quant after the trial, you must actively choose to upgrade and provide payment at that time. Trials are limited to one per email address. We verify trial eligibility server-side and reserve the right to deny a trial to anyone who has previously used one or whose signup shows signs of abuse.</p>
-      <p><strong>Refunds:</strong> Subscriptions auto-renew until canceled. <strong>We do not provide refunds or credits for partial billing periods, unused months, or cancellations made after a renewal date.</strong> If you cancel, you will retain access until the end of your current billing period and your subscription will not renew. The only exceptions are billing errors made by us or our payment processor (for example, duplicate charges or an incorrect amount). If you believe a charge is the result of a billing error, contact us at <a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a> within 30 days of the charge and we will review the case in good faith. Granting a refund in one case does not establish a right to refunds in any other case.</p>
-      <p><strong>Chargebacks:</strong> If you believe a charge is in error, please contact us first. If you initiate a chargeback through your card issuer without first contacting us and giving us a reasonable opportunity to address the issue, we reserve the right to suspend or terminate your subscription, decline future signups associated with your email or payment method, and dispute the chargeback with the documentation we have on file.</p>
-
-      <h2><span class="num">06</span>Acceptable Use</h2>
-      <p>You agree not to:</p>
-      <ul>
-        <li>Republish, redistribute, or commercially resell our reports without written permission.</li>
-        <li>Scrape, mirror, or systematically copy our content.</li>
-        <li>Use automated tools (bots, headless browsers, scripts) to interact with our site beyond normal browsing.</li>
-        <li>Attempt to reverse-engineer, attack, or probe our infrastructure for vulnerabilities outside a coordinated disclosure process (see <a href="/.well-known/security.txt">security.txt</a>).</li>
-        <li>Use Stratum to impersonate another person, send spam, or violate any applicable law.</li>
-        <li>Subscribe other people's email addresses without their consent.</li>
-      </ul>
-      <p>You may share individual quotes or excerpts on social media or with friends, with attribution. Use common sense.</p>
-
-      <h2><span class="num">07</span>Intellectual Property</h2>
-      <p>The content, design, trade-mark "Stratum Intelligence," logo, and all original analysis we publish are owned by Stratum Wealth and protected by Canadian and international copyright law. You receive a personal, non-transferable, revocable license to access and read the reports for your own use. All other rights are reserved.</p>
-      <p>Third-party content we reference (news headlines, financial data, etc.) remains the property of its respective owners. We claim fair-dealing rights for the purposes of commentary, analysis, and news reporting.</p>
-
-      <h2><span class="num">08</span>Limitation of Liability</h2>
-      <p>To the maximum extent permitted by Canadian law:</p>
-      <ul>
-        <li>Stratum is provided <strong>"as is"</strong> with no warranties of any kind, express or implied. We don't guarantee accuracy, completeness, or that any signal will produce a profitable outcome.</li>
-        <li>We are not liable for any direct, indirect, incidental, consequential, or punitive damages - including lost profits, lost trading opportunities, or losses sustained from acting on our content - even if we were advised of the possibility.</li>
-        <li>Our total liability to you in any 12-month period is limited to the amount you've paid us during that period (or zero, if you're on the Free tier).</li>
-      </ul>
-      <p>Some jurisdictions don't allow certain limitations on liability, so portions of the above may not apply to you. Where required by law, our liability is limited to the maximum extent permitted.</p>
-
-      <h2><span class="num">09</span>Indemnification</h2>
-      <p>You agree to indemnify and hold Stratum, its operators, and contributors harmless from any claims, losses, or expenses arising from your use of our service, your violation of these Terms, or your violation of any law or third-party right.</p>
-
-      <h2><span class="num">10</span>Termination</h2>
-      <p>You can cancel anytime via the unsubscribe link in any email or through your billing portal. We can terminate or suspend your access if you breach these Terms, abuse our service, or if we discontinue Stratum entirely. We'll give you reasonable notice except in cases of serious abuse.</p>
-
-      <h2><span class="num">11</span>Changes to These Terms</h2>
-      <p>We may update these Terms as our service evolves. Material changes will be communicated by email at least 30 days before they take effect. Continued use of Stratum after the effective date means you accept the updated Terms.</p>
-
-      <h2><span class="num">12</span>Governing Law</h2>
-      <p>These Terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein. Any disputes will be resolved in the courts of Ontario, except where applicable consumer protection law gives you the right to a different forum.</p>
-
-      <h2><span class="num">13</span>Severability</h2>
-      <p>If any part of these Terms is found unenforceable, the rest remains in effect.</p>
-
-      <h2><span class="num">14</span>Copyright Complaints</h2>
-      <p>If you believe content on stratumwealth.ca or in our newsletter infringes your copyright, send a written notice to <a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a> containing: (a) your contact information, (b) identification of the copyrighted work, (c) the location of the allegedly infringing material, (d) a statement made in good faith that the use is unauthorized, and (e) a statement, made under penalty of perjury, that you are the copyright owner or authorized to act on their behalf. We will review and respond within a reasonable time and may remove or disable access to material we determine to be infringing.</p>
-
-      <h2><span class="num">15</span>Service Interruptions and Force Majeure</h2>
-      <p>Stratum depends on third-party infrastructure (including hosting, payment, email-delivery, and AI providers) to operate. We are not liable for delays, missed reports, or other service interruptions caused by events outside our reasonable control, including but not limited to upstream provider outages, internet failures, natural disasters, war, government action, labor disputes, cyberattacks, or pandemic-related disruption. We will use reasonable efforts to restore service promptly. Where a paid subscriber experiences a sustained service interruption that is our fault and that materially deprives them of the service they paid for, we may, at our discretion and as our sole remedy, extend the subscription period by a reasonable equivalent.</p>
-
-      <div class="doc-contact">
-        <span class="label">Contact</span>
-        <p>Questions about these Terms?<br><a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a></p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- PRIVACY OVERLAY -->
-<div class="page-overlay" id="page-privacy" role="dialog" aria-modal="true" aria-label="Privacy Policy">
-  <button class="page-close" onclick="closePage('privacy')">✕ Close</button>
-  <div class="page-inner">
-    <div class="eyebrow">Legal · Document 01</div>
-    <h2 class="doc-title">Privacy<br><strong>Policy.</strong></h2>
-    <div class="doc-meta">Last updated: October 19, 2026 · Original policy effective May 4, 2026. The hosting provider update described below is subject to the material-change commitments in Sections 11 and 12.</div>
-    <div class="doc">
-
-      <p>This Privacy Policy explains how <strong>Stratum Wealth</strong> ("Stratum," "we," "us") collects, uses, and protects your personal information when you use stratumwealth.ca and our newsletter services. We are committed to handling your data lawfully and transparently under Canadian privacy laws - specifically PIPEDA (Personal Information Protection and Electronic Documents Act) and CASL (Canada's Anti-Spam Legislation).</p>
-
-      <h2><span class="num">01</span>Who We Are</h2>
-      <p>Stratum Wealth, based in Canada, publishes Stratum Intelligence, its market intelligence newsletter for retail investors. We are the data controller of any personal information you provide through our website and newsletter.</p>
-
-      <h2><span class="num">02</span>What We Collect</h2>
-      <p>When you sign up for our free or paid newsletter, we collect:</p>
-      <ul>
-        <li><strong>Email address</strong> - required, so we can send you the newsletter.</li>
-        <li><strong>Name</strong> - optional on signup; collected automatically by Stripe if you upgrade to a paid plan.</li>
-        <li><strong>Payment information</strong> - handled directly by Stripe if you subscribe to Plus or Quant. We never see or store your card number; we only receive a customer ID from Stripe.</li>
-        <li><strong>IP address and basic request metadata</strong> - logged for security and abuse prevention (e.g., detecting fake signups).</li>
-        <li><strong>Subscription status and history</strong> - your current tier (Free, Plus, Quant), whether you've used a free trial, and dates relevant to billing.</li>
-      </ul>
-      <p>We do not collect your phone number, address, financial account details, or browsing history. We do not use third-party advertising trackers, and we do not run advertising on stratumwealth.ca.</p>
-
-      <h2><span class="num">03</span>Why We Collect It</h2>
-      <ul>
-        <li>To send you the newsletter you signed up for.</li>
-        <li>To verify your email address (single-use confirmation link).</li>
-        <li>To process payments and manage your subscription if you're on a paid tier.</li>
-        <li>To prevent abuse - for example, blocking IPs that flood our signup form with fake addresses.</li>
-        <li>To respond to support requests if you email us.</li>
-      </ul>
-      <p>By submitting your email through our signup form and accepting our Terms, you provide <strong>express consent under Canada's Anti-Spam Legislation (CASL)</strong> to receive commercial electronic messages from Stratum Wealth at the email address you provided, including newsletter content, product updates, and account-related notices. You may withdraw this consent at any time using the unsubscribe link in any email or by contacting <a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a>. We will honor unsubscribe requests within 10 business days as required by CASL.</p>
-
-      <h2><span class="num">04</span>Who We Share It With</h2>
-      <p>We share the minimum amount of data necessary with the third-party services that power Stratum:</p>
-      <ul>
-        <li><strong>Resend</strong> - sends the newsletter and transactional emails on our behalf. Receives your email address and the email content. Resend may track whether emails are opened and whether links inside the email are clicked, which we use in aggregate to measure newsletter effectiveness. We do not use this data for advertising and do not share it with third parties.</li>
-        <li><strong>Stripe</strong> - processes payments for paid tiers. Receives your email, name, and payment details directly from you (we don't pass your card number).</li>
-        <li><strong>Supabase and Neon (part of Databricks)</strong> - provide database infrastructure for Stratum. Neon hosts production subscriber records, report archives and delivery/operational records. Supabase is temporarily retained for migration verification and rollback. An isolated migration-testing copy was created in Neon on October 14, 2026. Its live application and migration-history rows were removed on October 16, 2026. Following approval, a fresh migration-testing copy was created in Neon on October 18, 2026. That copy remained private before the approved production move. Production moved to Neon on October 19, 2026 after the relevant privacy and security review and approved migration steps.</li>
-        <li><strong>Railway</strong> - hosts our application servers.</li>
-        <li><strong>Anthropic</strong> - powers parts of our content analysis pipeline. We do not send your email address, name, or other personal identifiers to Anthropic. Our prompts to Anthropic's API contain only publicly available market data, our own analytical context, and content we are generating. Subscriber-identifying information is never included in any prompt.</li>
-      </ul>
-      <p>We <strong>do not sell, rent, or trade</strong> your personal information to anyone, ever. We don't share it with advertisers or data brokers. The only times we would disclose your data outside the providers above are: (a) if you explicitly ask us to, (b) to comply with a valid legal order from Canadian authorities, or (c) to protect against fraud or harm to other users.</p>
-
-      <h2><span class="num">05</span>Where Your Data Is Stored</h2>
-      <p>The production Neon database is hosted in the United States (Ohio). The former production Supabase database is hosted in the United States (Oregon) and is temporarily retained for migration verification and rollback. Railway hosts our application servers. Our database providers and their approved subprocessors may provide operational support or processing from other countries. Information processed outside Canada may be subject to that country's laws, including lawful access by its authorities. We remain responsible for the personal information under our control and use safeguards and contractual or other measures to protect it.</p>
-      <p>The earlier testing copy was created before this notice. Its live copied rows and the old local data exports were removed on October 16, 2026. Removing live rows does not mean every provider-held historical copy was immediately erased. Following approval, a fresh migration-testing copy was created in Neon on October 18, 2026. The temporary local exports used for that copy were removed after verification. Our production service moved to Neon on October 19, 2026 after the relevant privacy and security review and approved migration steps. Supabase is temporarily retained for migration verification and rollback. Material changes remain subject to the advance email notice commitments in Sections 11 and 12.</p>
-
-      <h2><span class="num">06</span>How Long We Keep It</h2>
-      <ul>
-        <li><strong>Active subscribers</strong> - for as long as you remain subscribed.</li>
-        <li><strong>Unsubscribed users</strong> - we retain your email in a suppression list so we don't accidentally email you again. You can request full deletion (see Section 8).</li>
-        <li><strong>Payment records</strong> - kept for as long as Canadian tax law requires (typically 6 years).</li>
-        <li><strong>Security logs</strong> - IP addresses and request metadata are kept up to 30 days, then auto-deleted.</li>
-      </ul>
-
-      <h2><span class="num">07</span>Cookies and Tracking</h2>
-      <p>stratumwealth.ca does not currently use cookies for tracking, analytics, or advertising. We do not run Google Analytics, Facebook Pixel, or any similar third-party tracker. We host our typography files ourselves; loading these fonts does not require a request to Google Fonts. If we add analytics in the future, this policy will be updated and you'll be notified.</p>
-
-      <h2><span class="num">08</span>Your Rights</h2>
-      <p>Under PIPEDA, you have the right to:</p>
-      <ul>
-        <li><strong>Access</strong> the personal information we hold about you.</li>
-        <li><strong>Correct</strong> any inaccurate or incomplete information.</li>
-        <li><strong>Request deletion</strong> of your data (subject to legal record-keeping requirements for paid subscribers).</li>
-        <li><strong>Withdraw consent</strong> at any time by unsubscribing - every newsletter email contains an unsubscribe link.</li>
-        <li><strong>File a complaint</strong> with the Office of the Privacy Commissioner of Canada if you believe we've mishandled your data.</li>
-      </ul>
-      <p>To exercise any of these rights, email us at <a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a>. We'll respond within 30 days.</p>
-
-      <h2><span class="num">09</span>Security</h2>
-      <p>We protect your data with HTTPS encryption, strict server-side input validation, rate limiting, IP-level abuse detection, and database row-level security. Payment data is handled exclusively by Stripe (PCI-DSS compliant) and never touches our servers in raw form. Despite our best efforts, no internet service can guarantee absolute security. If a data breach affecting your personal information occurs, we will notify you and the Office of the Privacy Commissioner of Canada <strong>within 72 hours of becoming aware of the breach</strong>. Where notification is required by PIPEDA, we will act as soon as feasible. Our stated 72-hour commitment does not postpone any earlier notification required by applicable law.</p>
-
-      <h2><span class="num">10</span>Children</h2>
-      <p>Stratum is not intended for anyone under 18. We do not knowingly collect data from minors. If you believe a child has signed up, contact us and we'll delete the account.</p>
-
-      <h2><span class="num">11</span>Changes to This Policy</h2>
-      <p>We may update this policy as our service evolves. Material changes will be communicated via email to active subscribers at least 30 days before taking effect. The "Last updated" date at the top of this page reflects the most recent revision.</p>
-
-      <h2><span class="num">12</span>Changes to Subprocessors</h2>
-      <p>The third-party services listed in Section 04 (Resend, Stripe, Supabase, Neon, Railway, Anthropic) may change as our infrastructure evolves. We will update this Privacy Policy when we add, remove, or replace a subprocessor. Material changes affecting how your data is handled will be communicated by email at least 30 days in advance.</p>
-
-      <div class="doc-contact">
-        <span class="label">Contact</span>
-        <p>For privacy questions, data access requests, or to file a complaint:<br><a href="mailto:stratumwealth@stratumwealth.ca">stratumwealth@stratumwealth.ca</a></p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- MANAGE SUBSCRIPTION MODAL -->
-<div class="modal-overlay" id="manageModal" role="dialog" aria-modal="true" aria-labelledby="manage-title">
-  <div class="modal" style="max-width:420px">
-    <button class="modal-close" onclick="closeManage()">✕ Close</button>
-    <div class="eyebrow">Manage subscription</div>
-    <h2 id="manage-title">Manage or cancel</h2>
-    <p class="modal-sub">Enter your subscription email. We will send a secure link to your billing portal where you can upgrade, downgrade, or cancel. The link expires in 15 minutes.</p>
-    <div class="m-field">
-      <label for="portal-email">Email address</label>
-      <input id="portal-email" type="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
-      <div class="m-err" id="portal-error">▸ Please enter a valid email</div>
-    </div>
-    <button class="m-submit" id="portal-btn" onclick="submitManage()">Email me a secure link →</button>
-    <div class="m-note">Powered by Stripe · Secure · Cancel anytime</div>
-  </div>
-</div>
 
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contact-title" onclick="if(event.target===this)closeContact()">
@@ -1395,7 +1166,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
 
     <div class="tc-row">
       <input type="checkbox" id="m-tc">
-      <label for="m-tc">I agree to the <a href="/terms" onclick="event.preventDefault();event.stopPropagation();openPage('terms')">Terms</a> and <a href="/privacy" onclick="event.preventDefault();event.stopPropagation();openPage('privacy')">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
+      <label for="m-tc">I agree to the <a href="/terms" target="_blank" rel="noopener">Terms</a> and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
     </div>
     <div class="m-err" id="m-tc-error">▸ Please accept the Terms to continue</div>
 
@@ -1422,7 +1193,7 @@ footer{background:var(--ink);padding:40px 36px 32px}
 
     <div class="tc-row">
       <input type="checkbox" id="su-tc">
-      <label for="su-tc">I agree to the <a href="/terms" onclick="event.preventDefault();event.stopPropagation();openPage('terms')">Terms</a> and <a href="/privacy" onclick="event.preventDefault();event.stopPropagation();openPage('privacy')">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
+      <label for="su-tc">I agree to the <a href="/terms" target="_blank" rel="noopener">Terms</a> and <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>, and consent to receive Stratum emails. Stratum is informational only, not financial advice.</label>
     </div>
     <div class="m-err" id="su-tc-error">▸ Please accept the Terms to continue</div>
 
