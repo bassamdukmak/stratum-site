@@ -1121,6 +1121,23 @@ footer{background:var(--ink);padding:40px 36px 32px}
 </footer>
 
 
+<!-- MANAGE SUBSCRIPTION MODAL -->
+<div class="modal-overlay" id="manageModal" role="dialog" aria-modal="true" aria-labelledby="manage-title">
+  <div class="modal" style="max-width:420px">
+    <button class="modal-close" onclick="closeManage()">✕ Close</button>
+    <div class="eyebrow">Manage subscription</div>
+    <h2 id="manage-title">Manage or cancel</h2>
+    <p class="modal-sub">Enter your subscription email. We will send a secure link to your billing portal where you can upgrade, downgrade, or cancel. The link expires in 15 minutes.</p>
+    <div class="m-field">
+      <label for="portal-email">Email address</label>
+      <input id="portal-email" type="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
+      <div class="m-err" id="portal-error">▸ Please enter a valid email</div>
+    </div>
+    <button class="m-submit" id="portal-btn" onclick="submitManage()">Email me a secure link →</button>
+    <div class="m-note">Powered by Stripe · Secure · Cancel anytime</div>
+  </div>
+</div>
+
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contact-title" onclick="if(event.target===this)closeContact()">
   <div class="modal" style="max-width:420px">
